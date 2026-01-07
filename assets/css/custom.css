@@ -1,3 +1,91 @@
+/* ========================================
+   Header Menu
+   ======================================== */
+
+/* Hide text title */
+.main-menu > a {
+    display: none !important;
+}
+
+/* ========================================
+   Article
+   ======================================== */
+
+.article-content {
+    margin-bottom: 40px !important;
+}
+
+article .prose {
+    line-height: 1.8 !important;
+}
+
+/* ========================================
+   Article Header
+   ======================================== */
+
+article header {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+article header .author {
+    width: 70% !important;
+}
+@media (max-width: 1023px) {
+    article header .author {
+        width: 100% !important;
+    }
+}
+
+/* ========================================
+   Social Icons
+   ======================================== */
+
+/* Left align social share buttons above Related section */
+article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
+    margin-bottom: 80px !important;
+    justify-content: flex-start !important;
+}
+
+/* Make social icons background transparent */
+article section.flex.flex-row.flex-wrap a.m-1.rounded {
+    background-color: transparent !important;
+}
+article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
+    background-color: rgb(var(--color-primary-500)) !important;
+}
+.dark article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
+    background-color: rgb(var(--color-primary-400)) !important;
+}
+
+/* ========================================
+   Related
+   ======================================== */
+
+/* Hide excerpts */
+article .prose.dark\:prose-invert.py-1 {
+    display: none !important;
+}
+
+/* ========================================
+   Article Footer Navigation
+   ======================================== */
+
+/* Make navigation links same width as Related cards */
+article footer {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* Hide navigadation date */
+article footer time {
+    display: none !important;
+}
+
+/* ========================================
+   Browser Compatibility Fixes
+   ======================================== */
+
 /* Fix: Arc shows "Skip to main content" */
 a[href="#main-content"] {
     position: absolute !important;
@@ -8,13 +96,13 @@ a[href="#main-content"] {
     overflow: hidden !important;
 }
 
-/* Fix: Arc doesn’t enable "backdrop-filter" */
+/* Fix: Arc doesn't enable "backdrop-filter" */
 .backdrop-blur-2xl {
     -webkit-backdrop-filter: blur(24px) !important;
     backdrop-filter: blur(24px) !important;
 }
 
-/* Fix: one-light color scheme background isn’t enabled */
+/* Fix: one-light color scheme background isn't enabled */
 .bg-neutral {
     background-color: rgb(var(--color-neutral-50)) !important;
 }
