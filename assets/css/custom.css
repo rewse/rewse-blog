@@ -11,16 +11,13 @@
    Article
    ======================================== */
 
-article .prose {
-    line-height: 1.8 !important;
-}
-
-.article-content {
+#main-content > article .article-content {
     margin-bottom: 40px !important;
+    line-height: 1.8 !important;
     text-align: justify !important;
 }
 @media (max-width: 1023px) {
-    .article-content {
+    #main-content > article .article-content {
         text-align: left !important;
     }
 }
@@ -60,17 +57,17 @@ article .prose {
    ======================================== */
 
 /* Fix: Dark mode table borders are invisible */
-.article-content table {
+#main-content > article .article-content table {
     border-collapse: collapse !important;
 }
-.article-content th,
-.article-content td {
+#main-content > article .article-content th,
+#main-content > article .article-content td {
     border-bottom-width: 1px !important;
     border-bottom-style: solid !important;
     border-bottom-color: rgb(var(--color-neutral-200)) !important;
 }
-.dark .article-content th,
-.dark .article-content td {
+.dark #main-content > article .article-content th,
+.dark #main-content > article .article-content td {
     border-bottom-color: rgb(var(--color-neutral-600)) !important;
 }
 
@@ -79,12 +76,12 @@ article .prose {
    Article Shortcode
    ======================================== */
 
-.article-content section article {
+#main-content > article .article-content section article {
     margin: 2rem 0 !important;
 }
 
-.article-content section article div.overflow-hidden.pt-1,
-.article-content section article div.overflow-hidden.pt-1 .prose {
+#main-content > article .article-content section article div.overflow-hidden.pt-1,
+#main-content > article .article-content section article div.overflow-hidden.pt-1 .prose {
     margin-top: 5px !important;
     font-size: 0.825rem !important;
     line-height: 1.5 !important;
@@ -96,13 +93,13 @@ article .prose {
    ======================================== */
 
 /* Right align social share buttons above Related section */
-article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
+#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
     margin-bottom: 80px !important;
     justify-content: flex-start !important;
 }
 
 /* Add "Shared by" label before social share buttons */
-article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
+#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
     content: "Share with";
     display: flex;
     align-items: center;
@@ -110,23 +107,23 @@ article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
     font-size: 1rem;
     color: rgb(var(--color-neutral-500));
 }
-.dark article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
+.dark #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
     color: rgb(var(--color-neutral-400));
 }
 
 /* Make social icons background transparent */
-article section.flex.flex-row.flex-wrap a.m-1.rounded {
+#main-content > article section.flex.flex-row.flex-wrap a.m-1.rounded {
     color: rgb(var(--color-neutral-500));
     background-color: transparent !important;
 }
-.dark article section.flex.flex-row.flex-wrap a.m-1.rounded {
+.dark #main-content > article section.flex.flex-row.flex-wrap a.m-1.rounded {
     color: rgb(var(--color-neutral-400));
     background-color: transparent !important;
 }
-article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
+#main-content > article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
     background-color: rgb(var(--color-primary-500)) !important;
 }
-.dark article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
+.dark #main-content > article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
     background-color: rgb(var(--color-primary-400)) !important;
 }
 
@@ -134,8 +131,8 @@ article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
    Related
    ======================================== */
 
-/* Hide excerpts */
-article .prose.dark\:prose-invert.py-1 {
+/* Hide excerpts in Related section only (not in posts list) */
+#main-content > article .prose.dark\:prose-invert.py-1 {
     display: none !important;
 }
 
@@ -144,21 +141,39 @@ article .prose.dark\:prose-invert.py-1 {
    ======================================== */
 
 /* Make navigation links same width as Related cards */
-article footer {
+#main-content > article footer {
     max-width: none !important;
     width: 100% !important;
 }
 
 /* Hide navigadation date */
-article footer time {
+#main-content > article footer time {
     display: none !important;
 }
 
-article footer > div > div> span:nth-child(1) {
+#main-content > article footer > div > div> span:nth-child(1) {
     padding-right: 1rem;
 }
-article footer > div > div> span:nth-child(2) {
+#main-content > article footer > div > div> span:nth-child(2) {
     padding-left: 1rem;
+}
+
+/* ========================================
+   Homepage
+   ======================================== */
+
+#main-content section > h2 {
+    margin: 2rem 0 1rem !important;
+    font-size: 36px !important;
+}
+
+
+/* ========================================
+   List
+   ======================================== */
+
+#main-content > header > h1 {
+    margin-bottom: 1rem !important;
 }
 
 /* ========================================
