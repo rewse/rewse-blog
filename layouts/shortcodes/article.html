@@ -1,6 +1,6 @@
 {{ $link := .Get "link" }}
-{{ $showSummary := .Get "showSummary" }}
-{{ $compactSummary := .Get "compactSummary" | default false }}
+{{ $showSummary := .Get "showSummary" | default true }}
+{{ $compactSummary := .Get "compactSummary" | default true }}
 
 {{/* Circular reference prevention using page context */}}
 {{ $refStack := .Page.Scratch.Get "articleRefStack" | default slice }}
