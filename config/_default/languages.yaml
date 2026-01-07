@@ -11,6 +11,7 @@ ja:
     dateFormat: "2006-01-02"
     logo: "/img/rewse-lab-logo-clear.png"
     description: "Database Technical Expert Blog"
+    copyright: "© { year } Tats Shibata. This work is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)."
 
     author:
       name: "Tats Shibata"
