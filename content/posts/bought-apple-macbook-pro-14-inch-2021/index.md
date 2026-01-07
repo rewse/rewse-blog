@@ -4,7 +4,6 @@ tags:
   - "hardware"
   - "apple"
   - "review"
-  - "affiliate"
   - "shotonnikon"
   - "mac"
 title: "Apple MacBook Pro (14-inch, 2021) を購入"
