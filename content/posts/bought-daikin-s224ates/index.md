@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 模様替えに伴い、エアコンを設置していなかった部屋に [DAIKIN S224ATES](https://www.ac.daikin.co.jp/kabekake/products/e_series) を設置しました。S224ATESは住宅設備店取扱商品で、家電量販店取扱商品のAN224AESと全く同じ仕様で、流通経路が違うだけです。住宅設備店取扱商品のほうが仲介業者が多いことを想定して卸値が安く設定されているのか、最安値で比較すると一般的には住宅設備取扱商品のほうが安くなります。私が購入したときにはS224ATESはAN224AESの半額程度でした。
 

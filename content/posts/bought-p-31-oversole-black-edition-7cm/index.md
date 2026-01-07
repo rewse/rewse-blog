@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 そこそこボリュームのあるきれいめスニーカーを探していたら韓国ブランドの [P-31 Oversole Black Edition 7cm](https://ja.p-31.kr/product/p-31-oversole-black-edition-7cm/72/) を見つけました。Alexander McQueen Men’s Oversized Sneaker in Black へのオマージュをかなり感じますが、ドレスとカジュアルのバランスがちょうど良いです。
 

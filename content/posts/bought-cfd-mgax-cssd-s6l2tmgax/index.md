@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 Macのバックアップは [Synology](https://www.synology.com/ja-jp) DiskStation DS916+ というNASに Time Machine で取得しているのですが、深夜でもハードディスクがカリカリ鳴るので2TBのSSD、[CFD MGAX CSSD-S6L2TMGAX](https://www.cfd.co.jp/biz/product/detail/cssd-s6l2tmgax.html) に換装しました。
 

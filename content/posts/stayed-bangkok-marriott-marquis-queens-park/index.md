@@ -12,7 +12,6 @@ categories:
   - "Travel"
 ---
 
-![](featured.jpg)
 
 バンコク出張に伴い、[Bangkok Marriott Marquis Queen’s Park](https://www.marriott.com/ja/hotels/bkkqp-bangkok-marriott-marquis-queens-park/overview/) に3泊したので、宿泊記を残しておきます。HyattまたはIHG派なのですが、イベント主催者の推奨ホテルがMariott系列とHilton系列しかなかったので、一番新しいここにしました。
 

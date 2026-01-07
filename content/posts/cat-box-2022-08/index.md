@@ -10,6 +10,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 最近のお気に入りは、この箱です。

@@ -9,7 +9,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.jpg)
 
 オンライン会議の機会が増えたことで、状況によってMacのマイクとスピーカーのデバイスを切り替えて使う方も増えたと思います。例えば私は、家族が在宅しているときは [Shokz OpenComm](https://jp.shokz.com/products/bone-conduction-headphone-opencomm) ヘッドセットを使い、家に私しかいないときは [Jabra Speak 510](https://www.jabra.jp/business/speakerphones/jabra-speak-series/jabra-speak-510) スピーカーフォンを使っています。
 

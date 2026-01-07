@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 春休み中の娘が昼食中に「ホテルステイしたい」と言い出したので、その日の午後から近所の [Kimpton Shinjuku Tokyo](https://www.ihg.com/kimptonhotels/hotels/jp/ja/shinjuku-hotel-tokyo-japan/tyosj/hoteldetail)（キンプトン新宿東京）に1泊した宿泊記を残しておきます。Kimpton Shinjuku Tokyo は西新宿にあった栗田工業本社の跡地に2020年10月に建てられた新しいホテルです。西新宿エリアの外資系ホテルはどれも古かったので、新しいホテルは貴重でしょう。規模はそれほど大きくなく、近くの [Hyatt Regency Tokyo](https://www.hyatt.com/ja-JP/hotel/japan/hyatt-regency-tokyo/tyoty) や [Hilton Tokyo](https://www.hilton.com/en/hotels/tyohitw-hilton-tokyo/) の5分の1程度の土地面積のため、ロビーやフロント、車寄せは必要最小限のサイズです。
 

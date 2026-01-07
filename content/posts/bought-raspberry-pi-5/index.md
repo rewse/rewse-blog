@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 自宅では [Home Assistant](https://www.home-assistant.io/) とDNSサーバー用に [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) を使っていたのですが、2から3倍の性能向上と [Raspberry 5](https://www.raspberrypi.com/products/raspberry-pi-5/) は言われていたので、思わず購入してしまいました。ラズパイ4で性能的に特に困っていたわけではないのですが。
 

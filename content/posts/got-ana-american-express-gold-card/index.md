@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 キャンペーン特典がとても大きかったので、ANA American Express Gold Card（ANAアメリカン・エキスプレス・ゴールド・カード）を作りました。
 

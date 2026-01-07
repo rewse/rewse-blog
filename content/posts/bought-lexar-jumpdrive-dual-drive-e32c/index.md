@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 Type-AとType-Cが両端にある回転式キャップのUSBメモリーが好きで、PNY HP x5000m USB 3.1 OTG Flash Drive 16GB を使っていたのですが、今となっては、より安い製品が他にあるので、[Lexar JumpDrive Dual Drive E32c USB 3.2 Gen1 Type-C](https://www.lexar.com/product/lexar-jumpdriver-dual-drive-e32c-usb-3-2-gen1-type-c/) 64GB を買ってみました。[SanDisk Ultra Dual Drive Go USB Type-C](https://www.westerndigital.com/products/usb-flash-drives/sandisk-ultra-dual-drive-go-usb-3-1-type-c) 64GB SDDDC3-064G-G46 も良さそうだったのですが、サイズが少し大きかったので、Lexarにしました。
 

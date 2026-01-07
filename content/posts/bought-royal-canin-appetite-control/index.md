@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 うちのネコはドライの他に一日に一袋の [AIXIA 黒缶パウチ](https://www.aixia.jp/product/result?family_id=182&l=1) を食べていたのですが、自宅で仕事中のおねだりが多すぎて邪魔なので、「おねだりの多い成猫用」と書いてある [Royal Canin アペタイト コントロール](https://www.royalcanin.com/jp/cats/products/retail-products/appetite-control-care-gravy-1466) を試してみることにしました。やや太り気味なので、食事量を増やすわけにはいきません。最初は全然食べなかったのですが、グレイビーソースを指ですくってなめさせて、一粒ずつ手で与えてからは食べるようになりました。
 

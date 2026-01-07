@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 ローテクスニーカーには Nike Internationalist（インターナショナリスト）828041-001 を履いていたのですが、6年でだいぶくたびれてきたので、新しいものを買うことにしました。
 

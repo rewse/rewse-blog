@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 映像撮影機材の決め手に欠けて、いろいろ試しているのですが、Apple iPhone 15 Pro になって端子がUSB-Cになったことを気に [RØDE Vlogger Kit USB-C](https://rode.com/ja/microphones/mobile/vlogger-kit-usb-c) を購入してみました。このキットは [VideoMic Me-C](https://rode.com/ja/microphones/mobile/videomic-me-c) マイクのほかに、[WS9](https://rode.com/ja/accessories/windshields/ws9)ファー付きウインドウシールド、MicroLEDライト、三脚が含まれています。VideoMic Me-C とウインドウシールドだけでも良かったのですが、これだけで10,890円だった一方、キットは12,474円と、あまり金額差がなかったのでキットにしました。
 

@@ -8,7 +8,6 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 寒くなってきたので、ベッドでお昼寝するようになりました。
 

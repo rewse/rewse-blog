@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 我が家ではWi-Fi接続している端末が50台ほどあるため、家庭用Wi-Fiルーターでは力不足です。また、Wi-Fiは応答不能になると影響が大きい重要インフラのため、我が家では企業用Wi-Fiアクセスポイントを2台導入して冗長構成にしています。今回、これを同時クライアント数300以上に対応している Ubiquiti UniFi Access Point U6 Lite (U6-Lite) に変更しました。
 

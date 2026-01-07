@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 家族旅行で [Hyatt Regency Guam](https://www.hyatt.com/ja-JP/hotel/micronesia/hyatt-regency-guam/guamh) に4泊したので、宿泊記を残しておきます。もともとは、海外だと現地で新型コロナウイルス陽性になって帰国できないリスクを考えると、一度泊まったことのある [Hyatt Regency Seragaki Island, Okinawa](https://www.hyatt.com/ja-JP/hotel/japan/hyatt-regency-seragaki-island-okinawa/okaro)（ハイアットリージェンシー瀬良垣アイランド沖縄）くらいにしておこうかと考えていました。しかし、みんな同じことを考えたようで価格が高騰していたので、沖縄くらいの感覚で行けるグアムにしたという経緯です。結果的に8月の沖縄は医療体制が厳しい状況だったのでグアムで良かったかもしれません。
 

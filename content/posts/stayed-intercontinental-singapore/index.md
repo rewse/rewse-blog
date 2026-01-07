@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 シンガポール出張に伴い、今回は [InterContinental Singapore](https://www.ihg.com/intercontinental/hotels/jp/ja/singapore/sinhb/hoteldetail) に7泊したので、宿泊記を残しておきます。ここは過去に泊まったことのあるホテルの中で、相当上位に入るすばらしい雰囲気でした。クラシックさとモダンさ、プラナカン文化が絶妙に混じり合っており、ここにしかない雰囲気があります。建物自体は少々古そうですが、内装は完全にリノベーションされています。
 

@@ -15,7 +15,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 Apple iPhone 12 Pro から iPhone 15 Pro に機種変更しました。iPhone 12 Pro に目立った懸念はなかったのですが、Macにしろ電化製品にしろ「ポートの規格が変わったときは買い換え時」と考えているので、LightningからUSB-Cに変わったこのタイミングで買い替えました。終わりの見えているLightningで接続する周辺機器を買う気になれませんでしたが、USB-Cの周辺機器であれば買う気になります。
 

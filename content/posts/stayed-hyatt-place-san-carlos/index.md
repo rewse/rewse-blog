@@ -12,7 +12,6 @@ categories:
   - "Travel"
 ---
 
-![](featured.jpg)
 
 ベイエリア（シリコンバレー）の Palo Alto 出張に伴い、今回は [Hyatt Place San Carlos](https://www.hyatt.com/ja-JP/hotel/california/hyatt-place-san-carlos/sfozc) に4泊したので、宿泊記を残しておきます。
 

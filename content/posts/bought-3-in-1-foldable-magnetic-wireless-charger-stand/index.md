@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 出張時はiPhoneを有線で充電しているのですが、iPhone 15 Pro に機種変更して常時画面点灯になったため、出張中もスタンドでMagSafe充電したくなりました。また、Apple Watch を [Satechi USB-C Magnetic Charging Dock for Apple Watch](https://satechi.net/products/usb-c-magnetic-charging-dock) で充電しているのですが、出張中はUSB-Cポートが十分に空いてなかったりするので、iPhoneと Apple Watch を一緒に充電できる2-in-1のスタンドを探してみました。
 

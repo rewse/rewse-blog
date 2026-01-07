@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 今まで使っていたドラム式洗濯乾燥機 [Hitachi BD-NV120CL](https://kadenfan.hitachi.co.jp/support/wash/item/BD-NV120CL/index.html) が乾燥時に75dBくらいの騒音が鳴るようになって、だましだまし使っていたものの、いよいよ生乾きになってきてダメなので、[Panasonic NA-LX127AL](https://panasonic.jp/wash/p-db/NA-LX127AL.html) を買いました。
 

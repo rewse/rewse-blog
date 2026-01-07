@@ -12,7 +12,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.jpg)
 
 UniFi OS コンソールの最上位機種 [Ubiquiti UniFi Dream Machine](https://ui.com/us/ja/cloud-gateways/dream-machine) Special Edition (UDM-SE) を使用する機会を得たので、現在使っている [YAMAHA RTX1200](https://network.yamaha.com/products/routers/rtx1200/) をUDM-SEに置き換えてみようと思います。
 

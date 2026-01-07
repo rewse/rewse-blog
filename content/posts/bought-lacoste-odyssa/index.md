@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 Nike Air Max 720 がエア抜けしてしまったので、代わりとなる未来っぽいチャンキーソール（厚底ソール）をさんざん探していたら Lacoste Odyssa を見つけました。
 

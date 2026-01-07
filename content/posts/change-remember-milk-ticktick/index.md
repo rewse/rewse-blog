@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.png)
 
 ToDo管理ソフトには [Remember The Milk](https://www.rememberthemilk.com/) (RTM) を2008年から15年以上有償プランで使用していましたが、[TickTick](https://www.ticktick.com/)に乗り換えて1カ月経ちました。RTMは15年間で大きな機能追加があまりなく、「今ならもっと良いToDo管理ソフトはあるのではないか？」と15年間で何度か乗り換えを検討したものの、他ソフトは必須の機能が欠けていたりして乗り換えは実現していませんでした。
 

@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 ナラティブが深いゲームとホラーゲームが好きなのに、なぜだかオリジナルの PlayStation 2 版は未プレイの [SILIENT HILL 2](https://www.konami.com/games/silenthill/2r/jp/ja/) を購入しました。
 

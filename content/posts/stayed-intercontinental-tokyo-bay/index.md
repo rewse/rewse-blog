@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 IHGの Status Challenge キャンペーンで、あと1泊すると15泊になって2023年末までの IHG Diamond Elite が取得できるため、InterContinental Tokyo Bay（インターコンチネンタル東京ベイ）で1泊修行することにしたので、宿泊記を残しておきます。
 

@@ -12,7 +12,6 @@ categories:
   - "Travel"
 ---
 
-![](featured.jpg)
 
 シドニー出張に伴い、今回は [Hyatt Regency Sydney](https://www.hyatt.com/hyatt-regency/ja-JP/sydrs-hyatt-regency-sydney) に4泊したので、宿泊記を残しておきます。Hyatt Regency Sydney はダーリングハーバーに面していて、ハーバービューの部屋を選ぶ価値があります。Award Category は4です。
 

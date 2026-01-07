@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 JR東日本が始めた銀行サービスである [JRE BANK](https://www.rakuten-bank.co.jp/jrebank/) を開設しました。JRE BANK は特典が豪華で、JR東日本の片道運賃が4割引になる JRE BANK 優待割引券が年間最大10枚、[どこかにビューーン！](https://dokokani-eki-net.com/)2,000ポイント割引クーポンが年間最大12枚、Suicaグリーン券が年間最大4枚もらえます [1](#b40334a6-78f6-4af2-a318-c89cea0743ad)。私はそれほどJR東日本の新幹線や特急に乗らないのですが、VIEW CARD の一つである [LUMINE CARD](https://www.jreast.co.jp/card/first/lumine.html) を持っているので、ひとまず作ってみることにしました。
 

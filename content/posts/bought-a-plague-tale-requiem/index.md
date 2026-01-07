@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 前作の [A Plague Tale: Innocence](https://store.playstation.com/ja-jp/product/JP0075-PPSA04373_00-APLAGUETALEGAME0) は知名度はそれほどありませんでしたが、ダークな雰囲気とすばらしいストーリーで、オマージュしているであろう [The Last of Us](https://www.playstation.com/ja-jp/the-last-of-us/) が好きな人にはぜひ合わせてプレイしてもらいたい内容でした。そんなわけで続編も購入です。
 

@@ -11,6 +11,5 @@ categories:
   - "Travel"
 ---
 
-![](featured.jpg)
 
 AWS re:Invent はイベント名だけど、Amazon re:Invent はビル名。

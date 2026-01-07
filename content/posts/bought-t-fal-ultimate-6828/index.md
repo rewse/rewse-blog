@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [Panasonic NI-WL703](https://panasonic.jp/iron/c-db/products/NI-WL703.html) コードレススチームアイロンを使っていたのですが、どうにもパリッと仕上がらないので、8年ぶりに [T-fal Ultimate 6828](https://www.t-fal.co.jp/products/home-appliances/irons/ultimate_6828/) に買い替えました。
 
