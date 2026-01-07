@@ -1,10 +1,10 @@
 ---
-date: 2024-01-06 13:41:10+09:00
+date: "2024-01-06 13:41:10+09:00"
 tags:
-  - shotonnikon
-  - fashion
-  - review
-title: ZARA Chunky Leather Shoes を購入
+  - "shotonnikon"
+  - "fashion"
+  - "review"
+title: "ZARA Chunky Leather Shoes を購入"
 description: "ZARAでチャンキーソールのダービーシューズを購入しました。コートに合う秋冬のアイテムとして、見た目のバランスが良い一足だと思います"
 summary: "ZARAでチャンキーソールのダービーシューズを購入しました。コートに合う秋冬のアイテムとして、見た目のバランスが良い一足だと思います"
 categories:

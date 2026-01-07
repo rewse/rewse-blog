@@ -1,11 +1,11 @@
 ---
-date: 2023-04-28 19:53:00+09:00
+date: "2023-04-28 19:53:00+09:00"
 tags:
-  - shotonnikon
-  - fashion
-  - review
-  - affiliate
-title: Lacoste Odyssa を購入
+  - "shotonnikon"
+  - "fashion"
+  - "review"
+  - "affiliate"
+title: "Lacoste Odyssa を購入"
 description: "Lacoste Odyssa を購入しました。チャンキーソールと未来的な雰囲気が魅力的な一足です"
 summary: "Lacoste Odyssa を購入しました。チャンキーソールと未来的な雰囲気が魅力的な一足です"
 categories:

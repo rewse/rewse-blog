@@ -1,11 +1,11 @@
 ---
-date: 2024-05-12 23:50:15+09:00
+date: "2024-05-12 23:50:15+09:00"
 tags:
-  - shotonnikon
-  - hardware
-  - review
-  - affiliate
-title: Raspberry Pi 5 を購入
+  - "shotonnikon"
+  - "hardware"
+  - "review"
+  - "affiliate"
+title: "Raspberry Pi 5 を購入"
 description: "Raspberry Pi 5は Raspberry Pi 4 に比べて2から3倍の大幅なパフォーマンス向上が得られます。また、Ubuntuも24.04で対応済みです"
 summary: "Raspberry Pi 5は Raspberry Pi 4 に比べて2から3倍の大幅なパフォーマンス向上が得られます。また、Ubuntuも24.04で対応済みです"
 categories:

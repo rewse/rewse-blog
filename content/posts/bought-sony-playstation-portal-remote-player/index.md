@@ -1,12 +1,12 @@
 ---
-date: 2023-11-19 20:21:28+09:00
+date: "2023-11-19 20:21:28+09:00"
 tags:
-  - hardware
-  - review
-  - game
-  - affiliate
-  - shotonnikon
-title: Sony PlayStation Portal Remote Player を購入
+  - "hardware"
+  - "review"
+  - "game"
+  - "affiliate"
+  - "shotonnikon"
+title: "Sony PlayStation Portal Remote Player を購入"
 description: "PlayStation 5 のリモートプレイ機器、PlayStation Portal を購入しました。ベッドで遊べるのが魅力的で、コントローラーがDualSenseと同じものになっています"
 summary: "PlayStation 5 のリモートプレイ機器、PlayStation Portal を購入しました。ベッドで遊べるのが魅力的で、コントローラーがDualSenseと同じものになっています"
 categories:

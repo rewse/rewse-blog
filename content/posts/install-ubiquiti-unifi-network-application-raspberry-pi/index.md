@@ -1,10 +1,10 @@
 ---
-date: 2022-07-27 20:42:10+09:00
+date: "2022-07-27 20:42:10+09:00"
 tags:
-  - software
-  - ubiquiti
-  - linux
-title: Ubiquiti UniFi Network Application をラズパイにインストール
+  - "software"
+  - "ubiquiti"
+  - "linux"
+title: "Ubiquiti UniFi Network Application をラズパイにインストール"
 description: "この記事では Raspberry Pi 4 Model B に UniFi Network Application を構築してコントローラーにする方法を紹介します"
 summary: "この記事では Raspberry Pi 4 Model B に UniFi Network Application を構築してコントローラーにする方法を紹介します"
 categories:

@@ -1,10 +1,10 @@
 ---
-date: 2022-11-07 17:23:02+09:00
+date: "2022-11-07 17:23:02+09:00"
 tags:
-  - shotonnikon
-  - ubiquiti
-  - hardware
-  - review
+  - "shotonnikon"
+  - "ubiquiti"
+  - "hardware"
+  - "review"
 title: 'Ubiquiti UniFi UDM-SE レビュー: ハードウェア & 初期セットアップ編'
 description: "Ubiquiti UniFi Dream Machine Special Edition (UDM-SE) は、2つの 10Gbps SFP+、1つの 2.5Gbps RJ45、8つのSFP+/SFP対応 1Gbps RJ45 を搭載したエンタープライズグレードのルーターです"
 summary: "Ubiquiti UniFi Dream Machine Special Edition (UDM-SE) は、2つの 10Gbps SFP+、1つの 2.5Gbps RJ45、8つのSFP+/SFP対応 1Gbps RJ45 を搭載したエンタープライズグレードのルーターです"

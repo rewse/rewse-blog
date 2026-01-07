@@ -1,9 +1,9 @@
 ---
-date: 2023-06-19 16:37:54+09:00
+date: "2023-06-19 16:37:54+09:00"
 tags:
-  - hardware
-  - ubiquiti
-title: Ubiquiti UniFi UDM-SE にauひかりからIPv6アドレスを割り当てる方法
+  - "hardware"
+  - "ubiquiti"
+title: "Ubiquiti UniFi UDM-SE にauひかりからIPv6アドレスを割り当てる方法"
 description: "auひかりからUDM-SEにIPv6アドレスを割り当てる設定方法を解説したネットワーク記事です。AtermとUDM-SEの設定、tcpdumpによる確認、ファイアウォールルールの追加などの手順が詳述されています"
 summary: "auひかりからUDM-SEにIPv6アドレスを割り当てる設定方法を解説したネットワーク記事です。AtermとUDM-SEの設定、tcpdumpによる確認、ファイアウォールルールの追加などの手順が詳述されています"
 categories:

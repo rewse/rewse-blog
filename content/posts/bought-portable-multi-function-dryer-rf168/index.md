@@ -1,12 +1,12 @@
 ---
-date: 2022-08-22 18:22:04+09:00
+date: "2022-08-22 18:22:04+09:00"
 tags:
-  - review
-  - shotoniphone
-  - homeappliance
-  - affiliate
-  - itemonaliexpress
-title: Portable Multi-Function Dryer RF168 を購入
+  - "review"
+  - "shotoniphone"
+  - "homeappliance"
+  - "affiliate"
+  - "itemonaliexpress"
+title: "Portable Multi-Function Dryer RF168 を購入"
 description: "ホテルだと水着が翌朝までに乾かせず、ぐっしょりした冷たい水着を着る羽目にいつもなるので、ポータブル衣類乾燥機を買ってみました"
 summary: "ホテルだと水着が翌朝までに乾かせず、ぐっしょりした冷たい水着を着る羽目にいつもなるので、ポータブル衣類乾燥機を買ってみました"
 categories:

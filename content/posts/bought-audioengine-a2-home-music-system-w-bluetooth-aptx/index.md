@@ -1,12 +1,12 @@
 ---
-date: 2024-08-15 18:03:26+09:00
+date: "2024-08-15 18:03:26+09:00"
 tags:
-  - audio
-  - review
-  - itemonamazon
-  - affiliate
-  - shotonnikon
-title: Audioengine A2+ Home Music System w/ Bluetooth aptX を購入
+  - "audio"
+  - "review"
+  - "itemonamazon"
+  - "affiliate"
+  - "shotonnikon"
+title: "Audioengine A2+ Home Music System w/ Bluetooth aptX を購入"
 description: "Macに接続してデスク上で使うスピーカーとして Audioengine A2+ Home Music System w/ Bluetooth aptX を購入しました。コンパクトなボディながら広い音場と明瞭な定位感、前に出てくるようなボーカル再生が特徴的です"
 summary: "Macに接続してデスク上で使うスピーカーとして Audioengine A2+ Home Music System w/ Bluetooth aptX を購入しました。コンパクトなボディながら広い音場と明瞭な定位感、前に出てくるようなボーカル再生が特徴的です"
 categories:

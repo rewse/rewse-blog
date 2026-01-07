@@ -1,11 +1,11 @@
 ---
-date: 2024-01-15 21:18:37+09:00
+date: "2024-01-15 21:18:37+09:00"
 tags:
-  - shotonnikon
-  - fashion
-  - review
-  - affiliate
-title: PADRONE BL Backzip Boots を購入
+  - "shotonnikon"
+  - "fashion"
+  - "review"
+  - "affiliate"
+title: "PADRONE BL Backzip Boots を購入"
 description: "PADRONE BL Backzip Boots を2023年モデルに買い替えました。ヒールが4.5cmあるにも関わらず、ビジネスシューズとそれほど変わらない印象です"
 summary: "PADRONE BL Backzip Boots を2023年モデルに買い替えました。ヒールが4.5cmあるにも関わらず、ビジネスシューズとそれほど変わらない印象です"
 categories:

@@ -1,12 +1,12 @@
 ---
-date: 2022-09-14 19:38:37+09:00
+date: "2022-09-14 19:38:37+09:00"
 tags:
-  - hardware
-  - review
-  - affiliate
-  - crowdfunding
-  - shotonnikon
-title: OBSBOT Meet 4K を購入
+  - "hardware"
+  - "review"
+  - "affiliate"
+  - "crowdfunding"
+  - "shotonnikon"
+title: "OBSBOT Meet 4K を購入"
 description: "クラウドファンディングしていた OBSBOT Meet 4K Webカメラを4カ月ほど使っています。以下は、個人で使うWeb会議用カメラ用途としてのレビューです"
 summary: "クラウドファンディングしていた OBSBOT Meet 4K Webカメラを4カ月ほど使っています。以下は、個人で使うWeb会議用カメラ用途としてのレビューです"
 categories:

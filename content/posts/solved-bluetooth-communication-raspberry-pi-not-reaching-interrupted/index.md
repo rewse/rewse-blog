@@ -1,12 +1,12 @@
 ---
-date: 2024-12-25 18:50:34+09:00
+date: "2024-12-25 18:50:34+09:00"
 tags:
-  - hardware
-  - troubleshooting
-  - review
-  - affiliate
-  - shotonnikon
-title: '[解決済み] ラズパイのBluetooth通信が届かない / 途切れる'
+  - "hardware"
+  - "troubleshooting"
+  - "review"
+  - "affiliate"
+  - "shotonnikon"
+title: "[解決済み] ラズパイのBluetooth通信が届かない / 途切れる"
 description: "Raspberry Pi 5 にSSDを付けると内蔵Bluetoothの通信品質が落ちたため、外付けBluetoothアダプター PLANEX BT-Micro4 を導入しました"
 summary: "Raspberry Pi 5 にSSDを付けると内蔵Bluetoothの通信品質が落ちたため、外付けBluetoothアダプター PLANEX BT-Micro4 を導入しました"
 categories:

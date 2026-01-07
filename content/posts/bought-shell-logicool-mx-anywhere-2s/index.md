@@ -1,12 +1,12 @@
 ---
-date: 2022-06-15 22:06:06+09:00
+date: "2022-06-15 22:06:06+09:00"
 tags:
-  - hardware
-  - review
-  - shotoniphone
-  - affiliate
-  - itemonaliexpress
-title: Logicool MX Anywhere 2S の外装を購入
+  - "hardware"
+  - "review"
+  - "shotoniphone"
+  - "affiliate"
+  - "itemonaliexpress"
+title: "Logicool MX Anywhere 2S の外装を購入"
 description: "Logicool MX Anywhere 2S のラバー部分が加水分解してベトベトしてきたため、なぜかAliExpressに外装だけ売っていたので、それを買って交換することにしました"
 summary: "Logicool MX Anywhere 2S のラバー部分が加水分解してベトベトしてきたため、なぜかAliExpressに外装だけ売っていたので、それを買って交換することにしました"
 categories:

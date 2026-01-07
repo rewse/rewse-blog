@@ -1,11 +1,11 @@
 ---
-date: 2024-12-22 17:55:15+09:00
+date: "2024-12-22 17:55:15+09:00"
 tags:
-  - shotonnikon
-  - fashion
-  - review
-  - affiliate
-title: texcy luxe TU-7044 を購入
+  - "shotonnikon"
+  - "fashion"
+  - "review"
+  - "affiliate"
+title: "texcy luxe TU-7044 を購入"
 description: "コロナ禍で革靴を履く機会が減り足が痛くなったので、スニーカー並みの履き心地の良い革靴 texcy luxe TU-7044を購入しました"
 summary: "コロナ禍で革靴を履く機会が減り足が痛くなったので、スニーカー並みの履き心地の良い革靴 texcy luxe TU-7044を購入しました"
 categories:

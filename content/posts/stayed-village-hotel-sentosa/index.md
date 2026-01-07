@@ -1,11 +1,11 @@
 ---
-date: 2022-09-12 21:33:51+09:00
+date: "2022-09-12 21:33:51+09:00"
 tags:
-  - shotoniphone
-  - review
-  - singapore
-  - hotel
-title: Village Hotel Sentosa に宿泊
+  - "shotoniphone"
+  - "review"
+  - "singapore"
+  - "hotel"
+title: "Village Hotel Sentosa に宿泊"
 description: "Village Hotel Sentosa はカジュアルな雰囲気なものの安っぽくはない、新しいホテルです。Deluxe Room はやや狭いですが、折りたたまれたデスクがあります"
 summary: "Village Hotel Sentosa はカジュアルな雰囲気なものの安っぽくはない、新しいホテルです。Deluxe Room はやや狭いですが、折りたたまれたデスクがあります"
 categories:

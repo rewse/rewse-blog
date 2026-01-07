@@ -1,10 +1,10 @@
 ---
-date: 2024-08-15 21:01:24+09:00
+date: "2024-08-15 21:01:24+09:00"
 tags:
-  - shotonnikon
-  - fashion
-  - review
-title: ZARA VIBRAM Leather Sandal を購入
+  - "shotonnikon"
+  - "fashion"
+  - "review"
+title: "ZARA VIBRAM Leather Sandal を購入"
 description: "最近は厚底のスニーカーばかり履いているので、サンダルも厚底の ZARA VIBRAM Leather Sandal を購入しました。厚みはあるものの土踏まずのところが絞られているので、ぼってりした見た目にはなっていません"
 summary: "最近は厚底のスニーカーばかり履いているので、サンダルも厚底の ZARA VIBRAM Leather Sandal を購入しました。厚みはあるものの土踏まずのところが絞られているので、ぼってりした見た目にはなっていません"
 categories:

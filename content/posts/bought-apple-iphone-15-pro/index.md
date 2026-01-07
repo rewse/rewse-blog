@@ -1,13 +1,13 @@
 ---
-date: 2024-01-08 22:57:23+09:00
+date: "2024-01-08 22:57:23+09:00"
 tags:
-  - hardware
-  - apple
-  - review
-  - shotoniphone
-  - affiliate
-  - phone
-title: Apple iPhone 15 Pro を購入
+  - "hardware"
+  - "apple"
+  - "review"
+  - "shotoniphone"
+  - "affiliate"
+  - "phone"
+title: "Apple iPhone 15 Pro を購入"
 description: "Apple iPhone 15 Proを購入しました。LightningからUSB-Cへの変更、カメラ性能の向上などがあり、前機種である iPhone 12 Pro との比較においても大幅に性能が向上しています"
 summary: "Apple iPhone 15 Proを購入しました。LightningからUSB-Cへの変更、カメラ性能の向上などがあり、前機種である iPhone 12 Pro との比較においても大幅に性能が向上しています"
 categories:

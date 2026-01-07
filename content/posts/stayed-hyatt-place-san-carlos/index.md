@@ -1,11 +1,11 @@
 ---
-date: 2024-03-15 22:58:23+09:00
+date: "2024-03-15 22:58:23+09:00"
 tags:
-  - shotoniphone
-  - review
-  - usa
-  - hotel
-title: Hyatt Place San Carlos に宿泊
+  - "shotoniphone"
+  - "review"
+  - "usa"
+  - "hotel"
+title: "Hyatt Place San Carlos に宿泊"
 description: "2022年にオープンしたHyatt Place San Carlos の客室には大きなコーナーソファが備え付けられており、広々とした居住空間が特徴的です"
 summary: "2022年にオープンしたHyatt Place San Carlos の客室には大きなコーナーソファが備え付けられており、広々とした居住空間が特徴的です"
 categories:

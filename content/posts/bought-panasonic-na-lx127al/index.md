@@ -1,11 +1,11 @@
 ---
-date: 2022-06-08 21:18:13+09:00
+date: "2022-06-08 21:18:13+09:00"
 tags:
-  - shotonnikon
-  - review
-  - homeappliance
-  - affiliate
-title: Panasonic NA-LX127AL を購入
+  - "shotonnikon"
+  - "review"
+  - "homeappliance"
+  - "affiliate"
+title: "Panasonic NA-LX127AL を購入"
 description: "今まで使っていたドラム式洗濯乾燥機 Hitachi BD-NV120CL が乾燥時に75dBくらいの騒音が鳴るようになってしまったので、Panasonic NA-LX127AL を買いました"
 summary: "今まで使っていたドラム式洗濯乾燥機 Hitachi BD-NV120CL が乾燥時に75dBくらいの騒音が鳴るようになってしまったので、Panasonic NA-LX127AL を買いました"
 categories:

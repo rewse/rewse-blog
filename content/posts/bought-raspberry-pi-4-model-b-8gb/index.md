@@ -1,11 +1,11 @@
 ---
-date: 2022-11-09 18:50:19+09:00
+date: "2022-11-09 18:50:19+09:00"
 tags:
-  - shotonnikon
-  - hardware
-  - review
-  - affiliate
-title: Raspberry Pi 4 Model B 8GB を購入
+  - "shotonnikon"
+  - "hardware"
+  - "review"
+  - "affiliate"
+title: "Raspberry Pi 4 Model B 8GB を購入"
 description: "半導体不足と世界中の転売ヤーに狙われていることで、どこにも売っていないラズパイですが、Raspberry Pi 4 Model B 8GB の2台目を購入できました"
 summary: "半導体不足と世界中の転売ヤーに狙われていることで、どこにも売っていないラズパイですが、Raspberry Pi 4 Model B 8GB の2台目を購入できました"
 categories:

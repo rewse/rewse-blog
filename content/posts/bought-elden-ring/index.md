@@ -1,11 +1,11 @@
 ---
-date: 2022-08-18 09:47:20+09:00
+date: "2022-08-18 09:47:20+09:00"
 tags:
-  - itemonamazon
-  - game
-  - review
-  - affiliate
-title: ELDEN RING を購入
+  - "itemonamazon"
+  - "game"
+  - "review"
+  - "affiliate"
+title: "ELDEN RING を購入"
 description: "ELDEN RING をプレイし始めてからすでに2カ月以上経っていますが、全然クリアできる気がしません。オープンワールドがだんだんつらい年齢になってきました"
 summary: "ELDEN RING をプレイし始めてからすでに2カ月以上経っていますが、全然クリアできる気がしません。オープンワールドがだんだんつらい年齢になってきました"
 categories:

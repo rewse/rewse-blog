@@ -1,9 +1,9 @@
 ---
-date: 2022-01-07 17:55:26+09:00
+date: "2022-01-07 17:55:26+09:00"
 tags:
-  - troubleshooting
-  - mac
-title: Macでコピペした画像のフォーマットをTIFFからPNGに自動変更する方法
+  - "troubleshooting"
+  - "mac"
+title: "Macでコピペした画像のフォーマットをTIFFからPNGに自動変更する方法"
 description: "Macでは、クリップボードにコピーされた画像はデフォルトではTIFFとしてペーストされますが、Keyboard Maestro を使うことで、クリップボードに画像がコピーされたタイミングでデフォルトをPNGに自動的に変更することが可能です"
 summary: "Macでは、クリップボードにコピーされた画像はデフォルトではTIFFとしてペーストされますが、Keyboard Maestro を使うことで、クリップボードに画像がコピーされたタイミングでデフォルトをPNGに自動的に変更することが可能です"
 categories:

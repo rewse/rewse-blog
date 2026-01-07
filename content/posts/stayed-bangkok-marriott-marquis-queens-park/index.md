@@ -1,11 +1,11 @@
 ---
-date: 2024-08-25 17:55:25+09:00
+date: "2024-08-25 17:55:25+09:00"
 tags:
-  - hotel
-  - shotoniphone
-  - review
-  - thailand
-title: Bangkok Marriott Marquis Queen’s Park に宿泊
+  - "hotel"
+  - "shotoniphone"
+  - "review"
+  - "thailand"
+title: "Bangkok Marriott Marquis Queen’s Park に宿泊"
 description: "バンコク出張で Bangkok Marriott Marquis Queen’s Park に3泊しました。2棟からなる規模と豪華なロビーで5つ星ホテルの貫禄があります"
 summary: "バンコク出張で Bangkok Marriott Marquis Queen’s Park に3泊しました。2棟からなる規模と豪華なロビーで5つ星ホテルの貫禄があります"
 categories:

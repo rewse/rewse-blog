@@ -1,9 +1,9 @@
 ---
-date: 2024-01-06 19:31:15+09:00
+date: "2024-01-06 19:31:15+09:00"
 tags:
-  - review
-  - phone
-title: 日本通信SIMに乗り換え
+  - "review"
+  - "phone"
+title: "日本通信SIMに乗り換え"
 description: "副回線をpovoから日本通信SIMに変更しました。UQ mobile のバックアップとなるキャリアを選び、1GB/月で290円のプランを選択しました"
 summary: "副回線をpovoから日本通信SIMに変更しました。UQ mobile のバックアップとなるキャリアを選び、1GB/月で290円のプランを選択しました"
 categories:

@@ -1,12 +1,12 @@
 ---
-date: 2022-01-28 17:29:54+09:00
+date: "2022-01-28 17:29:54+09:00"
 tags:
-  - review
-  - cat
-  - affiliate
-  - itemonaliexpress
-  - shotonnikon
-title: Petwant 6 Meal Pet Feeder を購入
+  - "review"
+  - "cat"
+  - "affiliate"
+  - "itemonaliexpress"
+  - "shotonnikon"
+title: "Petwant 6 Meal Pet Feeder を購入"
 description: "1日6回のうちの2回はウェットフードを食べているため、一食分ずつ小分けで入れて、時間になると一部屋ずつ開く回転式の自動給餌器を購入しました"
 summary: "1日6回のうちの2回はウェットフードを食べているため、一食分ずつ小分けで入れて、時間になると一部屋ずつ開く回転式の自動給餌器を購入しました"
 categories:

@@ -1,9 +1,9 @@
 ---
-date: 2024-03-17 17:26:57+09:00
+date: "2024-03-17 17:26:57+09:00"
 tags:
-  - ubiquiti
-  - hardware
-  - review
+  - "ubiquiti"
+  - "hardware"
+  - "review"
 title: 'Ubiquiti UniFi Express レビュー: 監視編'
 description: "UniFi Express は上位クラスのゲートウェイとほぼ同じ監視項目を備えているため、同価格帯の家庭用Wi-Fiルーターとは比べものにならないほどの監視が可能です"
 summary: "UniFi Express は上位クラスのゲートウェイとほぼ同じ監視項目を備えているため、同価格帯の家庭用Wi-Fiルーターとは比べものにならないほどの監視が可能です"

@@ -1,10 +1,10 @@
 ---
-date: 2023-12-16 17:38:06+09:00
+date: "2023-12-16 17:38:06+09:00"
 tags:
-  - shotonnikon
-  - review
-  - affiliate
-title: RØDE Vlogger Kit USB-C を購入
+  - "shotonnikon"
+  - "review"
+  - "affiliate"
+title: "RØDE Vlogger Kit USB-C を購入"
 description: "RØDE Vlogger Kit を購入しました。iPhoneの内蔵マイクに比べて音質を大きく向上させる VideoMic Me が含まれたキットで、付属のmicroLEDライトや三脚も便利です"
 summary: "RØDE Vlogger Kit を購入しました。iPhoneの内蔵マイクに比べて音質を大きく向上させる VideoMic Me が含まれたキットで、付属のmicroLEDライトや三脚も便利です"
 categories:

@@ -1,11 +1,11 @@
 ---
-date: 2024-12-27 22:02:44+09:00
+date: "2024-12-27 22:02:44+09:00"
 tags:
-  - shotonnikon
-  - hardware
-  - review
-  - affiliate
-title: SwitchBot Hub Mini Matter Enabled を購入
+  - "shotonnikon"
+  - "hardware"
+  - "review"
+  - "affiliate"
+title: "SwitchBot Hub Mini Matter Enabled を購入"
 description: "Matter BridgeのSwitchBot Hub Mini Matter Enabledを購入しました。Bluetooth接続のSwitchBotデバイスや赤外線デバイスをMatter対応にできます"
 summary: "Matter BridgeのSwitchBot Hub Mini Matter Enabledを購入しました。Bluetooth接続のSwitchBotデバイスや赤外線デバイスをMatter対応にできます"
 categories:

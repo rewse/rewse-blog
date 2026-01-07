@@ -1,10 +1,10 @@
 ---
-date: 2023-07-17 18:01:53+09:00
+date: "2023-07-17 18:01:53+09:00"
 tags:
-  - itemonamazon
-  - game
-  - review
-  - affiliate
+  - "itemonamazon"
+  - "game"
+  - "review"
+  - "affiliate"
 title: 'A Plague Tale: Requiem を購入'
 description: "ダークな雰囲気とすばらしいストーリーが魅力的な前作に続く続編のゲームソフトを購入しましたた。The Last of Us が好きな人にはオススメの一作です"
 summary: "ダークな雰囲気とすばらしいストーリーが魅力的な前作に続く続編のゲームソフトを購入しましたた。The Last of Us が好きな人にはオススメの一作です"

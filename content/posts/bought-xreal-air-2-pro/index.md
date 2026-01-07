@@ -1,11 +1,11 @@
 ---
-date: 2024-09-11 18:37:09+09:00
+date: "2024-09-11 18:37:09+09:00"
 tags:
-  - shotonnikon
-  - hardware
-  - review
-  - affiliate
-title: XREAL Air 2 Pro を購入
+  - "shotonnikon"
+  - "hardware"
+  - "review"
+  - "affiliate"
+title: "XREAL Air 2 Pro を購入"
 description: "XREAL Air から XREAL Air 2 Pro に買い替えました。エレクトロクロミック調光機能により、グラスの透過度を簡単に変更でき、操作性と映像への集中度が向上しました"
 summary: "XREAL Air から XREAL Air 2 Pro に買い替えました。エレクトロクロミック調光機能により、グラスの透過度を簡単に変更でき、操作性と映像への集中度が向上しました"
 categories:

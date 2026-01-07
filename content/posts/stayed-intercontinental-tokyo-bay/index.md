@@ -1,10 +1,10 @@
 ---
-date: 2022-10-18 20:40:49+09:00
+date: "2022-10-18 20:40:49+09:00"
 tags:
-  - shotoniphone
-  - review
-  - hotel
-title: InterContinental Tokyo Bay に宿泊
+  - "shotoniphone"
+  - "review"
+  - "hotel"
+title: "InterContinental Tokyo Bay に宿泊"
 description: "InterContinental Tokyo Bay の Deluxe Floor の部屋は完璧にリノベーションされており、すばらしい雰囲気です。しかし、共有部は結婚式客だらけで騒々しく、宿泊施設というよりも結婚式場という印象を受けました"
 summary: "InterContinental Tokyo Bay の Deluxe Floor の部屋は完璧にリノベーションされており、すばらしい雰囲気です。しかし、共有部は結婚式客だらけで騒々しく、宿泊施設というよりも結婚式場という印象を受けました"
 categories:

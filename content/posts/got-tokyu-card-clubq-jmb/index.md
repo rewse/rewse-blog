@@ -1,10 +1,10 @@
 ---
-date: 2024-08-23 16:53:42+09:00
+date: "2024-08-23 16:53:42+09:00"
 tags:
-  - shotonnikon
-  - review
-  - money
-title: TOKYU CARD ClubQ JMB を作成
+  - "shotonnikon"
+  - "review"
+  - "money"
+title: "TOKYU CARD ClubQ JMB を作成"
 description: "TOKYU CARD ClubQ JMB を作成しました。ジュニアオートチャージ機能に対応しているのは東急カードだけで、手続きには2カ月近くかかりましたが、ハピタス経由で申し込むと8,000ptもらえます"
 summary: "TOKYU CARD ClubQ JMB を作成しました。ジュニアオートチャージ機能に対応しているのは東急カードだけで、手続きには2カ月近くかかりましたが、ハピタス経由で申し込むと8,000ptもらえます"
 categories:

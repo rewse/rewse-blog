@@ -1,10 +1,10 @@
 ---
-date: 2022-02-09 20:39:25+09:00
+date: "2022-02-09 20:39:25+09:00"
 tags:
-  - shotoniphone
-  - review
-  - money
-title: ANA To Me CARD PASMO JCB ソラチカ一般カードを作成
+  - "shotoniphone"
+  - "review"
+  - "money"
+title: "ANA To Me CARD PASMO JCB ソラチカ一般カードを作成"
 description: "ANA To Me CARD PASMO JCB（ソラチカ一般カード）を使うと、10%目減りするものの、ANAマイルの有効期限を4年間程度延長することができます"
 summary: "ANA To Me CARD PASMO JCB（ソラチカ一般カード）を使うと、10%目減りするものの、ANAマイルの有効期限を4年間程度延長することができます"
 categories:
