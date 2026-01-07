@@ -4,7 +4,6 @@ tags:
   - "hardware"
   - "review"
   - "shotoniphone"
-  - "affiliate"
   - "itemonaliexpress"
 title: "Logicool MX Anywhere 2S の外装を購入"
 description: "Logicool MX Anywhere 2S のラバー部分が加水分解してベトベトしてきたため、なぜかAliExpressに外装だけ売っていたので、それを買って交換することにしました"

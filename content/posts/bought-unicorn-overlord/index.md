@@ -18,7 +18,7 @@ categories:
 
 
 
-{{< youtubeLite id="SYBsn" >}}\_vIqCI?feature=shared
+{{< youtubeLite id="SYBsn_vIqCI" >}}
 
 
 
