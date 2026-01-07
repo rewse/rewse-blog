@@ -38,6 +38,15 @@ article header .author {
 }
 
 /* ========================================
+   Article Shortcode
+   ======================================== */
+
+article section article {
+    margin-bottom: 40px !important;
+}
+
+
+/* ========================================
    Social Icons
    ======================================== */
 
