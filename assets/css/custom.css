@@ -7,6 +7,18 @@
     display: none !important;
 }
 
+.main-menu img.logo {
+    margin: 0 0 20px -10px !important;
+    height: 120px !important;
+    width: 120px !important;
+    max-height: 120px !important;
+    max-width: 120px !important;
+}
+
+.main-menu.flex.pb-3 {
+    margin-top: -40px !important;
+}
+
 /* ========================================
    Article
    ======================================== */
