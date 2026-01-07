@@ -2,8 +2,14 @@
 date: "2021-12-24 03:07:49+09:00"
 title: "About Tats Shibata"
 type: "page"
-url: "/blog/about-tats-shibata/"
+showAuthor: false
+showDate: false
+showPagination: false
+showRelatedContent: false
 ---
+
+## Description
+
 **Tatsunori Shibata** (柴田竜典, シバタツ) has 20+ years of experience in database technology, performance engineering, and pre-sales. As a Senior Manager and Head of Japan Data Solutions Architecture at Amazon Web Services Japan, he leads a team of database and analytics technical experts who provide solutions for AWS customers across various industries.
 
 
@@ -38,7 +44,8 @@ Tokyo, Japan
 
 
 
-- **Head of Japan Data Solutions Architecture**Jun 2019 - Present | 3+ years  
+- **Head of Japan Data Solutions Architecture**  
+  Jun 2019 - Present | 3+ years  
   Head of 10+ Database and Analytics Specialist Solutions Architects. Provide database and analytics technical architecting for AWS customers. Direct-report to global leaderships. Interview 100+ candidates of Solutions Architect, Customer Success Manager, and Bigdata Consultant
 - **Senior Database Specialist Solutions Architect, Databases**  
   Aug 2016 - May 2019 | 2 years 10 months  
@@ -95,12 +102,13 @@ Tokyo, Japan
   * Data warehousing
   * Solution architecting for enterprise customers in financial, telecom, manufacturing, distribution, utility industries, and public sectors
 - OS
-  * Red Hat Enterprise Linux
   * Ubuntu
+  * Red Hat Enterprise Linux
   * macOS
 - Languages
   * SQL
   * Python
+  * JavaScript
   * Java
   * Shell
 - Cloud Computing
