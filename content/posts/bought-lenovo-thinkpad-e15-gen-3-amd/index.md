@@ -4,7 +4,6 @@ tags:
   - "hardware"
   - "review"
   - "windows"
-  - "affiliate"
   - "shotonnikon"
 title: "Lenovo ThinkPad E15 Gen 3 (AMD) を購入"
 description: "義父がWindowsノートPCを買い替えたいとのことなので、Lenovo ThinkPad E15 Gen 3 (AMD) 20YGCTO1WW を代理購入しました"

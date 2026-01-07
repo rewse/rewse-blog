@@ -3,7 +3,6 @@ date: "2022-01-28 17:29:54+09:00"
 tags:
   - "review"
   - "cat"
-  - "affiliate"
   - "itemonaliexpress"
   - "shotonnikon"
 title: "Petwant 6 Meal Pet Feeder を購入"
