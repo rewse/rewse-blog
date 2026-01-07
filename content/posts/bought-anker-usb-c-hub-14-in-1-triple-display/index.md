@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 会社の MacBook Pro をモニターやUSB機器につなぐために [HP Thunderbolt3 Dock 120W G2](https://jp.ext.hp.com/accessories/business/thunderbolt3_120w_g2/) を使っていたのですが、モニターの信号やLANケーブルの通信が一日に数秒程度切れるようになったため、[Anker USB-C Hub (14-in-1, Triple display)](https://www.ankerjapan.com/products/a8389) に買い替えました。
 

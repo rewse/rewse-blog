@@ -9,6 +9,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 天気が良いので、歩いて千駄ヶ谷まで行ってスケートをしました。

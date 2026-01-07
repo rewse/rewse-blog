@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 娘が通塾のために電車に乗る機会が増えましたが、Suicaをなくす可能性を考慮すると高額チャージできません。そのため頻繁にチャージすることになって面倒なので、保護者のクレジットカードで子どものPASMOにオートチャージできる[ジュニアオートチャージ](https://www.topcard.co.jp/services/autocharge/topjr.html)が使える [TOKYU CARD ClubQ JMB](https://www.topcard.co.jp/entry/tokyu-card/) を作成しました。PASMOとクレジットカードの両方を発行している事業者はたくさんありますが、ジュニアオートチャージに対応しているのは東急だけです。
 

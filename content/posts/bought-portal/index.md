@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 集中して作業するときは音楽を聴いていることが多かったのですが、聞き疲れすることが最近多くなってきたのでホワイトノイズに変えることにしました。そこで見つけたのが[Portal](https://portal.app/)で、macOS / iPhone / iPadに対応しています。デザインも非常に美しく、Mac App of the Year 2023 Finalist [1](#3243e862-c546-43d5-a264-9c18254409b3) なだけあります。100種類近くの実録の自然の環境音が収録されており、[Lake Kawaguchi, Japan](https://portal.app/scenes/v1-lake-kawaguchi) なんていうのもあります。私が気に入っているのは [Old Packhorse Bridge, Dartmoor, UK](https://portal.app/scenes/old-packhorse-bridge) です。
 

@@ -4,7 +4,6 @@ title: "What I Use"
 type: "page"
 url: "/blog/uses/"
 ---
-
 ## Computers
 
 

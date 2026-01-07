@@ -12,7 +12,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.jpg)
 
 [Ubiquiti UniFi Express](https://ui.com/us/ja/cloud-gateways/express) (UX) はVPNとDPI (Deep Packet Inspection) を備えたWi-Fiメッシュルーターです。UniFiの中では最小の[ゲートウェイ](https://ui.com/us/ja/cloud-gateways)となっており、以下のとおり、通常の家庭利用には十分な性能となっています。UniFiは法人用Wi-Fiシステムとして有名ですが、UniFi Express によって小規模環境にもさらに気軽に導入できるようになりました。
 

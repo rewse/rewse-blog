@@ -9,7 +9,6 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 久しぶりに大阪城を見てきました。
 

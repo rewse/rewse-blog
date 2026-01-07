@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [Sony PlayStation Portal](https://www.playstation.com/ja-jp/accessories/playstation-portal-remote-player/) が発売された2023年11月には良い充電スタンドがなく、いまいち置き場に困っていました。しかし、最近になってAliExpressで良いものを見つけました。
 

@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 会社のイベント参加に伴い、イベント主催者指定の Kamakura Prince Hotel（鎌倉プリンスホテル） に2泊したので、宿泊記を残しておきます。
 

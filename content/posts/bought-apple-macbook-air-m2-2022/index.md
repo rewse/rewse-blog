@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 2022年6月の一斉値上げは1USD = 105円換算だったのが123円に調整されたためなので、1USD = 140円の今また値上げされる可能性が十分あるので、妻が [MacBook Pro (13-inch, 2018, Four Thunderbolt 3 ports)](https://support.apple.com/kb/SP775?locale=ja_JP) から [MacBook Air (M2, 2022)](https://www.apple.com/jp/macbook-air-m2/) に買い替えました。
 

@@ -10,7 +10,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.png)
 
 **⚠️ 2024/11/06追記**  
 Omnivoreサーバーのシャットダウンが発表されました。詳細は [Details on Omnivore shutting down - Omnivore Blog](https://blog.omnivore.app/p/details-on-omnivore-shutting-down)

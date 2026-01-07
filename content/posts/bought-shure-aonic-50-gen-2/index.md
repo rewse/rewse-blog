@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 深夜に映画を見たり音楽を聴いたりするときには [Sony WH-1000XM2](https://www.sony.jp/headphone/products/WH-1000XM2/) を使っていたのですが、7年目に入ってイヤーパッドに無数のひび割れができ、ヘッドバンドも少し破れていて痛みが激しかったため、買い直すことにしました。
 

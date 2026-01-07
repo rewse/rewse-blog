@@ -15,7 +15,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 娘の10歳の誕生日プレゼントとして iPhone SE（第3世代）を購入しました。最近、周りの友達がキッズケータイを卒業しだしたので、娘も [au mamorino5](https://www.au.com/mobile/product/featurephone/mamorino5/) を卒業です。
 

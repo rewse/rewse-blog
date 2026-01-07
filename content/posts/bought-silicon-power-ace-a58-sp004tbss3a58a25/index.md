@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [Synology](https://www.synology.com/ja-jp) DiskStation DS916+ の Time Machine 用のハードディスクを 2TB SSD、[CFD MGAX CSSD-S6L2TMGAX](https://www.cfd.co.jp/consumer/product/detail/cssd-s6l2tmgax.html) に交換したらメインのハードディスクもSSDに交換して完全無音化したくなりました。再び CFD MGAX でも良かったのですが、MGAXには4TBがラインナップされていなかったので、[Silicon Power Ace A58 SP004TBSS3A58A25](https://www.silicon-power.com/web/jp/product-A58) を購入しました。
 

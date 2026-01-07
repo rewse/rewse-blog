@@ -11,7 +11,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.jpg)
 
 スマートホーム化を進めていると「在宅しているかを知りたい」という機会があります。たとえば「誰かが在宅しているときだけエアコンをオンにしたい」とか「誰かが在宅しているときは警戒レベルを下げたい」などです。不特定の誰かが在宅しているかどうかは [Philips Hue Motion Sensor](https://www.philips-hue.com/ja-jp/p/hue-motion-sensor/8719514342149) を使えば多くの場合でうまくいくでしょう。
 

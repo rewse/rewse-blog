@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [Sony PlayStaion Portal](https://www.playstation.com/ja-jp/accessories/playstation-portal-remote-player/) と [Baldur’s Gate 3](https://www.spike-chunsoft.co.jp/baldursgate3/) の相性が良く、年末年始はこの組み合わせでずっとプレイしているのですが、PlayStation Portal はBluetoothオーディオに対応しておらず、PlayStation Link という独自規格にしか対応していません。一方で内蔵スピーカーの音はすかすかです。そのため、[Sony WH-1000XM2](https://www.sony.jp/headphone/products/WH-1000XM2/) を有線接続していたのですが、PlayStation Portal にはもっと気軽なものが欲しくて、家に転がっていた [Apple EarPods with 3.5 mm Headphone Plug](https://www.apple.com/jp/shop/product/MWU53FE/A/earpods35-mm%E3%83%98%E3%83%83%E3%83%89%E3%83%95%E3%82%A9%E3%83%B3%E3%83%97%E3%83%A9%E3%82%B0) を使ってみると、こちらのほうが PlayStation Portal との相性の良さを感じました。
 

@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 デスクトップスピーカーを [Audioengine A2+ Home Music System w/ Bluetooth aptX](https://audioengine.com/shop/wirelessspeakers/a2-wireless-computer-speakers/) にしたので、A2+の弱点である低域を補うために [FOSTEX PM-SUBmini2 Active Subwoofer](https://www.fostex.jp/products/pm-submini2/) を購入しました。
 

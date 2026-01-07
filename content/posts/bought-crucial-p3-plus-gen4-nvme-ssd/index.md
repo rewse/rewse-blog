@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 このブログを Amazon EC2 から Raspberry Pi 5 に移行したことに伴い、公開Webサーバーのアクセス頻度を壊れやすいmicroSDカードで運用するのはちょっと怖かったので、[Crucial P3 Plus Gen4 NVMe SSD](https://www.crucial.jp/products/ssd/crucial-p3-plus-ssd) 500GB と [Geekworm X1001 PCIe to M.2 Key-M NVMe SSD PIP TOP for Raspberry Pi 5](https://geekworm.com/products/x1001) を購入してSSD化しました。
 

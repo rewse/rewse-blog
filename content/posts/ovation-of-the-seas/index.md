@@ -11,6 +11,5 @@ categories:
   - "Travel"
 ---
 
-![](featured.jpg)
 
 オペラハウスの写真を撮りに行ったら [Ovation of the Seas](https://www.royalcaribbean.jp/ships/OV/) が大きすぎて主題を見失う。

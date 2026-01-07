@@ -15,7 +15,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 仕事用には [Apple MacBook Pro (13-inch, 2020, Two Thunderbolt 3 Ports)](https://support.apple.com/kb/SP818?locale=ja_JP) [1.4GHz 4-Core Intel Core i5, 16GB Memory, 256GB SSD Storage] を使っていたのですが、個人用のMacを [Apple Mac Studio (2022)](https://www.apple.com/jp/mac-studio/) [Apple M1 Max 10-Core CPU 32-Core GPU, 32GB Memory, 512GB SSD Storage] に変えてからは、何をするにも遅く感じるようになりました。
 

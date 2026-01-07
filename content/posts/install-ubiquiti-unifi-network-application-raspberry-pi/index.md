@@ -11,7 +11,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.png)
 
 [Ubiquiti](https://ui.com/jp/ja) UniFi は別途コントローラーを用意する必要があります。コントローラーには [UniFi OS Cloud Gateway](https://ui.com/jp/ja/cloud-gateways) が推奨されていますが、手間を掛ければ Ubuntu / Debian / Windows / macOS に無償配布されている [UniFi Network Application](https://www.ui.com/download/unifi) をインストールして、Self-Hosted環境を構築することもできます。Ubuntu / Debian はx86\_64のみがサポートされていますが、この記事ではARMである [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) に構築する方法を紹介します。
 

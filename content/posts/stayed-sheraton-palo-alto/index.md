@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 パロアルト出張に伴い、今回は [Sheraton Palo Alto](https://www.marriott.co.jp/hotels/travel/sjcsi-sheraton-palo-alto-hotel/) に4泊したので、宿泊記を残しておきます。Hyatt派なので、少し遠いものの2018年に開業した [Hyatt Centric Mountain View](https://www.hyatt.com/en-US/hotel/california/hyatt-centric-mountain-view/sjcct) が気になったのですが、イベント主催者の推奨ホテルが Sheraton Palo Alto で、同僚全員がここに泊まることにしたので、私も合わせることにしました。
 

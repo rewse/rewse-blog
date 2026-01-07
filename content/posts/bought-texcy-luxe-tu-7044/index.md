@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 顧客とのミーティングも徐々に対面が増えてきたのですが、コロナ禍で足が革靴を完全に忘れてしまい、痛くて仕方がありません。そこでスニーカーのような履き心地と評判の [texcy luxe](https://www.asics-trading.co.jp/brand/texcy_luxe/)（テクシーリュクス） を購入することにしました。
 

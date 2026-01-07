@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [タクティクスオウガ](https://www.jp.square-enix.com/tor/)よりも『伝説のオウガバトル』のほうが好きだったので、伝説のオウガバトルをかなり意識していると思われる[ユニコーンオーバーロード](https://unicorn-overlord.com/)を購入しました。
 

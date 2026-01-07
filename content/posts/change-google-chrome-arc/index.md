@@ -10,7 +10,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.png)
 
 Webブラウザーを Google Chrome から[Arc](https://arc.net/gift/dbe06c2f)に乗り換えました。Arcは [The Browser Company](https://thebrowser.company/) という、すでに5億5000万ドルの評価額 [1](#5da31c68-8532-4fe6-ad3f-f95029db5409) になっているスタートアップが開発している無料のWebブラウザーです。Arcの描画エンジンは[Chromium](https://www.chromium.org/Home/)で、ほぼ全てのChrome機能拡張がそのまま使えるため、Chromeとの互換性を気にする必要はありません。Arcの優れている点はいろいろあるのですが、この記事ではその革命的なユーザーインターフェース (UI) にフォーカスします。特にタブをたくさん開いてしまうタイプの方や、タブを必要以上に閉じてしまって同じページを何度も開き直すタイプの方には分かりやすく有益です。
 

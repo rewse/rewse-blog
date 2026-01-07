@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 シンガポール出張中に ELDEN RING を PS Remote Play するのはレイテンシの観点で難しそうなので、レイテンシが関係なさそうな Disco Elysium: The Final Cut を購入しました。これならシンガポールからリモートプレイできるはず。
 

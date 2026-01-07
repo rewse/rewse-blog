@@ -7,7 +7,6 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 新年あけましておめでとうございます。
 

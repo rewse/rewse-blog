@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 The Game Awards 2023 で [Game of the Year](https://thegameawards.com/nominees/game-of-the-year) など合わせて5冠を受賞、[Metascore 96](https://www.metacritic.com/game/baldurs-gate-3/) の [Baldur’s Gate 3](https://baldursgate3.game/) をプレイし始めました。
 

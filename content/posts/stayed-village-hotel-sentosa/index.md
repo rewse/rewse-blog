@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 シンガポールでのイベント参加に伴い、イベント主催者指定の [Village Hotel Sentosa](https://www.fareasthospitality.com/ja-jp/hotels/village-hotel-sentosa) に5泊したので、宿泊記を残しておきます。2019年4月にオープンした新しいホテルで、Village（村）ということでカジュアルな雰囲気なものの、安っぽさはありません。
 

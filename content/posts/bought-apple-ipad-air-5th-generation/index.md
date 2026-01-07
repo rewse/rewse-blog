@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [Apple iPad Air（第3世代）](https://support.apple.com/kb/SP787?locale=ja_JP)を使っていたのですが、[iPad Air (第5世代）](https://www.apple.com/jp/ipad-air/)に買い替えました。iPad Air（第3世代）のCPU性能には特に不満はなかったのですが、当初はサブ機なので64GBで十分だと考えていたものの、実際には Adobe Lightroom Mobile やPhotosのキャッシュ、海外出張の機内で見るためにオフラインダウンロードしている Amazon Prime Video やNetflixの容量が大きく、それなりに使っているアプリもオフロードされて削除されているという機会が少なくなく、そこが一番不満点でした。
 

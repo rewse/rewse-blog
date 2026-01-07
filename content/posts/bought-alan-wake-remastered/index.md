@@ -10,7 +10,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 The Game Awards 2023 で [Best Game Direction](https://thegameawards.com/nominees/best-game-direction) などの3冠を受賞した [Alan Wake 2](https://www.alanwake.com/ja/) が面白そうだったのですが、どうやら1から話が続いているとのことだったので、まずは [Alan Wake Remastered](https://www.alanwake.com/ja/remastered/) をプレイすることにしました。オリジナルがリリースされた年は2010年で、Alan Wake 2 でも「13年前」というセリフがよく出てきます。
 

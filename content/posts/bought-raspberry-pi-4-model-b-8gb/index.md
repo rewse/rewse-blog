@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 半導体不足と世界中の転売ヤーに狙われていることで、どこにも売っていないラズパイですが、[Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) 8GB の2台目を購入できました。自宅にあるセカンダリサーバーが [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/) で、通常運用時の性能は十分なのですが、Ansibleを実行するとプライマリサーバーの Raspberry Pi 4 Model B に比べてだいぶ遅く、Ansibleの実行時間の足を引っ張っていました。そのため、セカンダリサーバーも Raspberry Pi 4 にしたかったところでした。
 

@@ -10,7 +10,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 メインで使っているクレジットカードの [Luxury Card](https://www.luxurycard.co.jp/) でメインで使っている証券会社の[SBI証券のクレカ積立](https://www.sbishinseibank.co.jp/lp/creditcard_sbi.html)ができるようになりました。今までは三井住友カード発行の [ANA Super Flyers Gold Card Visa](https://www.ana.co.jp/ja/jp/amc/premium/sfc/) で0.5%ポイント還元だったのですが、Luxury Card Titanium だと1.0%ポイント還元になります。Luxury Card の発行会社であるAPLUSはSBI新生銀行グループなので、SBIグループでのシナジーが出始めました。
 
