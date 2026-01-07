@@ -9,6 +9,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 娘が3泊で三宅島ツアーに行ったときの船。

@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 2022年2月は大型タイトルラッシュですが、まずはオープンワールドアクションRPG、[Horizon Forbidden West](https://www.playstation.com/ja-jp/games/horizon-forbidden-west/) を購入しました。前作の [Horizon Zero Dawn](https://www.playstation.com/ja-jp/games/horizon-zero-dawn/) は53時間プレイしています。
 

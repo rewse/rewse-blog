@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 最近、黒い靴ばかり買っているので必要性はなかったのですが、BEAMSで13,960円と特価になっていたので、[AirMax 97 Black Anthracite White](https://www.nike.com/jp/t/%E3%83%8A%E3%82%A4%E3%82%AD-%E3%82%A8%E3%82%A2-%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9-97-%E3%83%A1%E3%83%B3%E3%82%BA%E3%82%B7%E3%83%A5%E3%83%BC%E3%82%BA-VQ70Xp/921826-015) を思わず買ってしまいました。
 

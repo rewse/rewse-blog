@@ -12,7 +12,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.png)
 
 UuniFi OS コンソールの最上位機種 [Ubiquiti UniFi Dream Machine Special Edition (UDM-SE)](https://jp.store.ui.com/collections/unifi-network-unifi-os-consoles/products/dream-machine-se) を使用する機会を得たので、現在使っている [YAMAHA RTX1200](https://network.yamaha.com/products/routers/rtx1200/) をUDM-SEに置き換えてみようと思います。UDM-SEはVPN, DPI (Deep Packet Inspection), IDS/IPS（不正侵入検知防御システム）をそなえた10Gbps対応エンタープライズグレードルーターです。UDM-SEのネットワーク関連は、内蔵されている UniFi Network Application から設定します。以下は UniFi Network 7.2 の内容です。
 

@@ -15,7 +15,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 米国出張に合わせて、トラベル VPN Wi-Fi ルーター [GL.iNet Slate (GL-AR750S-Ext)](https://www.gl-inet.com/products/gl-ar750s/) を購入しました。このWi-Fiルーターは手のひらサイズで86gしかなく、電源も5V/2AのUSBから取れます。また、WireGuardとOpenVPNに対応しており、Site-to-Site VPN を構築できます。
 

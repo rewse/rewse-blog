@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 飲み会が増えてきて店を選ぶのが面倒になってきたので、コンシェルジュが使えるカードが欲しくなりました。中でも、コンシェルジュ以外にも魅力的なサービスが多かった [Luxury Card Mastercard Titanium Card](https://www.luxurycard.co.jp/titaniumcard) を作成しました。4月3日に申し込んだところ、4月6日にカード発行のメール受信、4月9日にカードを受け取りました。
 

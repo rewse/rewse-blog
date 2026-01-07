@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.png)
 
 {{< article link="/blog/posts/transfer-uq-mobile/" showSummary=true compactSummary=true >}}
 

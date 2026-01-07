@@ -13,7 +13,6 @@ categories:
   - "Travel"
 ---
 
-![](featured.png)
 
 シンガポール出張のデータ通信には、久しぶりに[Airalo](https://t.afi-b.com/visit.php?a=Z14221Y-3467229x&p=o845890r)のeSIMを使いました。シンガポールでのプランは 3GB 30日 が15米ドルで、お手頃です。
 

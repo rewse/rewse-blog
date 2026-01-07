@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [Brother HL-L2365DW](https://www.brother.co.jp/product/printer/laserprinter/hll2365dw/index.aspx) というA4モノクロレーザープリンターを使っていたのですが、最近、縦線や横線が印刷に入るようになり、ドラムユニットを清掃しても解消しませんでした。ドラムユニット交換しても良かったのですが、A4カラーレーザープリンターの [Brother HL-L3230CDW](https://www.brother.co.jp/product/printer/laserprinter/hll3230cdw/index.aspx) が23,439円だったため、本体ごと買い替えることにしました。
 

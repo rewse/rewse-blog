@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 自宅でメインに使っているコンピューターが [Apple Mac mini (2018)](https://support.apple.com/kb/SP782?locale=ja_JP) [3.2GHz 6-Core Intel Core i7, 32GB Memory, 512GB SSD Storage] だったので、Apple M1 Pro / Max を搭載した Mac mini が発表されることを2021年Q4から期待していたら、2022年3月に Apple M1 Max / Ultra を搭載した [Apple Mac Studio (2022)](https://www.apple.com/jp/mac-studio/) が発表されました。Mac mini と比べると厚みは違いますが、欲しいのはモニターなしのデスクトップ機なので、もちろん購入です。
 

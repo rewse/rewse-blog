@@ -10,7 +10,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 もはやどれがオリジナルなのか分からないくらいクローンがあふれているマージ系ゲームですが、[Merge Mansion](https://mergemansion.jp/) / [Farm Merge Valley](https://www.facebook.com/FarmMergeValley/about) / [Cats Mansion](https://apps.apple.com/jp/app/%E7%8C%AB%E3%81%AE%E8%8D%98%E5%9C%92-%E5%8F%AF%E6%84%9B%E3%81%84-%E3%81%AD%E3%81%93%E3%81%AE%E3%83%9E%E3%83%BC%E3%82%B8%E3%82%B2%E3%83%BC%E3%83%A0/id6470771978) などもプレイしましたが、しっかり続いているのは [Merge Cooking: Theme Restaurant](https://game.happibits.com/) だけです。
 

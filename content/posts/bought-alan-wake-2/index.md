@@ -10,7 +10,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 The Game Awards 2023 で [Best Game Direction](https://thegameawards.com/nominees/best-game-direction) / [Best Narrative](https://thegameawards.com/nominees/best-narrative) / [Best Art Direction](https://thegameawards.com/nominees/best-art-direction) の3冠を受賞した [Alan Wake 2](https://www.alanwake.com/ja/) が面白そうだったので、まずは [Alan Wake Remastered](https://www.alanwake.com/ja/remastered/) を先にクリアし、つづいて2もクリアしました。
 

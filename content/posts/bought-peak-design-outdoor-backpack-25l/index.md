@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [WANDRD](https://www.wandrd.com/) Duo Daypack を今まで使っていたのですが、傷みが激しくなってきたので買い替えることにしました。25L前後で機能的だけどデザインもよいものを探していたところ、ちょうど Peak Design が [Outdoor Backpack](https://www.kickstarter.com/projects/peak-design/the-outdoor-line-by-peak-design) をKickstarterで募集していました。
 

@@ -11,7 +11,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.png)
 
 [Ubiquiti](https://ui.com/jp/ja) UniFi は別途コントローラーを用意する必要があります。コントローラーには [UniFi OS Console](https://ui.com/jp/ja/cloud-gateways) が推奨されていますが、手間を掛ければ Ubuntu / Debian / Windows / macOS に無償配布されている [UniFi Network Application](https://www.ui.com/download/unifi) をインストールして、Self-Hosted環境を構築することもできます。また、UniFi Network Application はUniFiデバイスと同一L2に設置することが期待されていますが、[UniFi Network - Layer 3 Adoption – Ubiquiti Support and Help Center](https://help.ui.com/hc/en-us/articles/204909754-UniFi-Layer-3-Adoption-for-Remote-UniFi-Network-Applications) に従って設定することで、異なるL2をまたぐことができます。この記事では UniFi Network Application を Amazon EC2 上にインストールし、インターネット経由で自宅のUniFiデバイスをコントロールする環境を構築します。
 

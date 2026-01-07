@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 模様替えに伴って5畳用の加湿器が追加で必要になったので、ふるさと納税で [Dainichi HD-RX324](https://www.dainichi-net.co.jp/products/humidifier/lineup/rx2024/) を入手しました。
 

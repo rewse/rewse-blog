@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 夏の土砂降りに普通のスニーカーを履いていると染みてきてぐしょぐしょになるし、かといって長靴はコーディネートが難しいので、GORE-TEXを使った [New Balance M2002R GTX D](https://shop.newbalance.jp/shop/g/gM2002RXD) Black を購入しました。2023年に発売されタイミングから欲しかったのですが、その時は即完売が続いて買えず、やっと今年買うことができました。
 

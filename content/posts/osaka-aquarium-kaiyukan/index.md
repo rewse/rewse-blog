@@ -9,6 +9,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 はじめて海遊館に行きました。

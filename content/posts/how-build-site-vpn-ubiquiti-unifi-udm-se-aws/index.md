@@ -11,7 +11,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.png)
 
 UniFi OS コンソールの最上位機種 [Ubiquiti UniFi Dream Machine Special Edition (UDM-SE)](https://jp.store.ui.com/collections/unifi-network-unifi-os-consoles/products/dream-machine-se) を使用する機会を得たので、現在使っている [YAMAHA RTX1200](https://network.yamaha.com/products/routers/rtx1200/) をUDM-SEに置き換えてみようと思います。RTX1200ではAWSと Site-to-Site VPN を構築していたので、静的ルーティングを使ってUDM-SEでも同様にAWSと Site-to-Site VPN を構成します。
 

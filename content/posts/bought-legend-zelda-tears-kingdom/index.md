@@ -12,7 +12,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.png)
 
 オープンワールドは時間を食いまくるのでなかなかはまれないのですが、 [ゼルダの伝説 ブレス オブ ザ ワイルド](https://www.nintendo.co.jp/zelda/botw/) は最後まで楽しめました。ティアーズ オブ ザ キングダム も当然購入です。
 

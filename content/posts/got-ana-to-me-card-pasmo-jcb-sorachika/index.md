@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 有効期限が切れそうなANAマイルの退避目的に、ANA To Me CARD PASMO JCB、通称ソラチカ一般カードを作りました。
 

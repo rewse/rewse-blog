@@ -10,7 +10,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.png)
 
 [Ubiquiti UniFi Dream Machine Special Edition](https://jp.store.ui.com/products/dream-machine-se) (UDM-SE) とその配下のクライアントにauひかりからIPv6アドレスを割り当てたいと思います。我が家のネットワーク環境は以下のようになっており、auひかりのホームゲートウェイ [Aterm BL900HW](https://www.au.com/support/service/internet/guide/modem/gateway-05/) の下にUDM-SEを配置しています。
 

@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 クラウドファンディングしていた [OBSBOT Meet 4K](https://www.obsbot.com/jp/obsbot-meet-4k-pc-camera) Webカメラを4カ月ほど使っています。以下は、個人で使うWeb会議用カメラ用途としてのレビューです。
 

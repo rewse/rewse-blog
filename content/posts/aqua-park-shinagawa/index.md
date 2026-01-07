@@ -7,6 +7,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 大きな魚を見に、アクアパーク品川に行ってきました。

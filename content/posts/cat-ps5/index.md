@@ -11,6 +11,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 「へー、これってなかなか手に入らないんだ」

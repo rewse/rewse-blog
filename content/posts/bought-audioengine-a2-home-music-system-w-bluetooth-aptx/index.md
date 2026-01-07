@@ -14,7 +14,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 Macに接続してデスク上で使うスピーカーとして [Audioengine A2+ Home Music System w/ Bluetooth aptX](https://audioengine.com/shop/wirelessspeakers/a2-wireless-computer-speakers/) を購入しました。Audioengineはアクティブスピーカーを得意とする2005年に設立された米国オースティンの会社で、A2+は [Adete Tan](https://www.facebook.com/profile.php?id=61555724046725) という世界中のデスクトップ写真を投稿しているFacebookページで比較的よく見る定番機種です。
 

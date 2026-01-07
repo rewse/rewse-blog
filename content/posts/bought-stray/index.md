@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 PlayStations Plus のエッセンシャルとエクストラの差額が3,457円で、Strayが3,520円なら、エクストラにしたほうが良いじゃんと完全にソニーの思惑通りにエクストラにしてStray始めた猫飼いからのレビューです。
 

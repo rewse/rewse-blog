@@ -11,7 +11,6 @@ categories:
   - "Travel"
 ---
 
-![](featured.jpg)
 
 シアトル出張が土日を挟んでいたので、週末に [Bellevue Indoor Range](https://www.bellevueindoorrange.com/) に同僚と行って、銃を撃ってきました。米国では旅行者であっても銃を撃つことができます。Bellevue Indoor Range はシアトルから車で15分ほどの、ワシントン湖を挟んだ向かいのベルビューにあります。銃を販売している [Wade’s Gun Shop](https://www.wadesguns.com/) は日曜日が休みですが、併設している射撃場の Bellevue Indoor Range は日曜日も営業しています。
 

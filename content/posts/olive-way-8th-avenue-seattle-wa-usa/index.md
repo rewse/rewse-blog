@@ -11,6 +11,5 @@ categories:
   - "Travel"
 ---
 
-![](featured.jpg)
 
 [Hyatt at Olive 8](https://www.hyatt.com/ja-JP/hotel/washington/hyatt-at-olive-8/seahs) が立っている Olive Way と 8th Avenue の交差点。

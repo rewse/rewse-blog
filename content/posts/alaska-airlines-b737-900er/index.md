@@ -12,6 +12,5 @@ categories:
   - "Travel"
 ---
 
-![](featured.jpg)
 
 Star Alliance 派ですが、シアトル発サンノゼ行きで United Airlines に都合の良い時刻の便がなかったため、はじめて Alaska Airlines に乗りました。

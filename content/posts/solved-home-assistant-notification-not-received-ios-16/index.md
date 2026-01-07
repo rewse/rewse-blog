@@ -10,7 +10,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.png)
 
 iPhone 12 Pro を iOS 16 にアップグレードしたら Home Assistant からの通知が届かなくなりました。
 

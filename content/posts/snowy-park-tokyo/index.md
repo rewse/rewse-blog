@@ -9,6 +9,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 今シーズン初の降雪だったので、すぐ近くの公園で雪景色を撮影。

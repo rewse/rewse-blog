@@ -10,7 +10,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.jpg)
 
 Macでは、クリップボードにコピーされた画像はデフォルトではTIFFとしてペーストされます。そのため、コピペしただけでファイルの容量が大きく増えるなどの様々な問題が発生する場合があります。この記事では、[Keyboard Maestro](https://www.keyboardmaestro.com/) を使ってクリップボード内の画像のデフォルトをPNGに自動的に変更することで、この問題を解消します。
 

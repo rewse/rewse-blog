@@ -11,7 +11,6 @@ categories:
   - "Computer"
 ---
 
-![](featured.jpg)
 
 Sesame OS1 を搭載した初代SESAMEと SESAME mini は、[Sesame Smart Lock Integration](https://www.home-assistant.io/integrations/sesame/) を使えばAPIキーを設定するだけで Home Assistant から使用することができます。一方、SESAME 3 や SESAME 4、SESAME bot、SESAMEサイクルなどの Sesame OS2 を搭載したスマートロックは対応していません。そこで、この記事では [Template Lock Integration](https://www.home-assistant.io/integrations/lock.template/) を使うことで、SESAME 4 を Home Assistant に対応させます。
 

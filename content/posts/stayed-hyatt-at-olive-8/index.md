@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 シアトル出張に伴い、今回は [Hyatt at Olive 8](https://www.hyatt.com/ja-JP/hotel/washington/hyatt-at-olive-8/seahs) に4泊したので、宿泊記を残しておきます。Hyatt at Olive 8 はコロナ禍前にも何度か泊まったことがあり、良い印象を持っていました。私はHyatt派なのですが、市内中心近くのHyatt系列の4つ星以上のホテルは [Grand Hyatt Seattle](https://www.hyatt.com/ja-JP/hotel/washington/grand-hyatt-seattle/seagh)、Hyatt at Olive 8、[Hyatt Regency Seattle](https://www.hyatt.com/ja-JP/hotel/washington/hyatt-regency-seattle/sears) の3つがあり、ほぼ隣接しています。それぞれの特徴は以下のようになっています。
 

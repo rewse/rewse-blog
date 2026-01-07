@@ -10,7 +10,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 [Baldur’s Gate 3](https://baldursgate3.game/) を140時間掛けてクリアしたので、もう少しさくっと遊べるゲームとして [Metascore 90](https://www.metacritic.com/game/balatro/) / [Steam Positive Rate 97%](https://store.steampowered.com/app/2379780/Balatro/) と非常に評判の良い[Balatro](https://www.playbalatro.com/)を始めました。Balatroはローグライクデッキ構築型カードゲームです。
 

@@ -9,6 +9,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 屋外は暑すぎるので、すみだ水族館に行きました。

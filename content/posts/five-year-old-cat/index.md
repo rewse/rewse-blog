@@ -10,6 +10,5 @@ categories:
   - "Photo"
 ---
 
-![](featured.jpg)
 
 うちのネコが5歳になりました。早いなー。

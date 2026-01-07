@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 リビングの調光機能付きLEDダウンライトは Home Assistant → [Nature Remo](https://shop.nature.global/collections/nature-remo) mini → [Panasonic ワイド21 とったらリモコン（調光タイプ）](https://www2.panasonic.biz/jp/densetsu/haisen/switch_concent/cosmo_wide21/lineup/switch/dimmer/)経由で操作していたのですが、[Nature Remo Custom Integration](https://github.com/yutoyazaki/hass-nature-remo) が3年以上更新されていないことと、Matter Controller である [Open Home Foundation Matter Server](https://github.com/home-assistant-libs/python-matter-server) をラズパイに立ち上げたこともあって [SwitchBot Hub Mini Matter Enabled](https://www.switchbot.jp/products/switchbot-hub-mini-matter) に入れ替えました。この製品は Matter Bridge として動作し、Bluetoothで接続しているSwitchBotデバイスや赤外線通信デバイスを Mater Fabric に入れられるようにします。
 

@@ -11,7 +11,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 最近は厚底のスニーカーばかり履いているので、サンダルも厚底のもが欲しくなり購入したのが ZARA VIBRAM Leather Sandal です。
 

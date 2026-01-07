@@ -13,7 +13,6 @@ categories:
   - "What I Bought"
 ---
 
-![](featured.jpg)
 
 Nintendo Switch にあって Sony PlayStation 5 になかった魅力の一つは、ベッドでごろごろしながらプレイできないことでしょう。それを解決するのが Sony PlayStation Portal Remote Player です。一見、Sony PlayStation 5 のポータブル版にも見えますが、PlayStation 5 にリモートアクセスする周辺機器で、PlayStation 5 が別途必要です。Nintendo Switch が32,978円なのに、リモートアクセスするだけで29,981円するのはどうなんだという気が多少しましたが、[DualSense Wireless Controller](https://www.playstation.com/ja-jp/accessories/dualsense-wireless-controller/) が7,780円、[DualSense Edge Wireless Controller](https://www.playstation.com/ja-jp/accessories/dualsense-edge-wireless-controller/) なんか29,981円もすることを考えると、なんだか高くない気がしてきまして予約しました。転売ヤーの餌食になって、欲しいと思ったときには手に入らないでしょうし。
 
