@@ -19,19 +19,6 @@ categories:
 今年は模様替えをして書斎を作りました。それに伴ってデスク回りがいろいろ変わったのでデスクレシピは上記の通りです。
 
 
-
-- [デスク](#desk)
-- [チェア](#chair)
-- [コンピューター](#computers)
-- [入力デバイス](#input)
-- [出力デバイス](#output)
-- [照明](#lighting)
-- [アート](#arts)
-- [その他の雑貨](#others)
-- [まとめ](#summary)
-
-
-
 ## デスク
 
 
@@ -211,25 +198,117 @@ Windows 11 の入った [Intel NUC 10 Performance kit NUC10i5FNH](https://www.in
 
 キーボードの左奥には [Xencelabs Quick Keys](https://www.xencelabs.com/jp/store/accessories/xencelabs-quick-keys-remote) を置いています。ペンタブレット用の左手デバイスですが、ディスプレイ付きボタンと物理ダイアルという組合わせがショートカットキーボードとして有用です。[Elgato Stream Deck](https://www.elgato.com/jp/ja/p/stream-deck-mk2-black) が有名ですが、Quick Keys は物理ダイアルで音量調整できる点がとても良いです。[Keyboard Maestro](https://www.keyboardmaestro.com/main/) と組み合わせることで複雑なショートカットを作れます。
 
+マウスは [Logicool MX Anywhere 3S](https://www.logicool.co.jp/ja-jp/products/mice/mx-anywhere-3s.html)、マウスパッドは [SteelSeries QcK](https://jp.steelseries.com/gaming-mousepads/qck-series) Small です。Webカメラはクラウドファンディングで購入した [OBSBOT Meet 4K](https://www.obsbot.com/jp/obsbot-meet-4k-pc-camera) です。Meet 4K のマイクはけっこう優秀なので、メインのマイクはこれです。
+
+{{< article link="/blog/posts/bought-obsbot-meet-4k/" >}}
 
 
-[TEMP DISABLED]
-
-
-
-
-
-[TEMP DISABLED]
-
-
-
-
-
-
-
+|  |  |
+| --- | --- |
+| ブランド | [PFU](https://www.pfu.ricoh.com/) |
+| 製品名 | [HHKB Professional HYBRID Type-S](https://happyhackingkb.com/jp/products/hybrid_types/) 英語配列 墨 |
+| 型番 | PD-KB800BS |
+| 購入場所 | [PFUダイレクト - Yahoo!ショッピング](https://store.shopping.yahoo.co.jp/pfudirect/pd-kb800bs.html) |
+| 購入価格 | 35,200円（- 2,760円相当ポイント還元） |
+| 購入日 | 2021-05-09 |
 
 
 
+
+
+|  |  |
+| --- | --- |
+| ブランド | [DOMIKEY](https://domikey.com/) |
+| 製品名 | HHKB Orange Dolch |
+| 購入場所 | [KPrepublic Store - AliExpress](https://www.aliexpress.com/item/4000095659889.html) |
+| 購入価格 | 60.56米ドル |
+| 購入日 | 2021-05-09 |
+
+
+
+
+
+|  |  |
+| --- | --- |
+| 製品名 | ウエンジ無垢材 フリーカット |
+| 仕様 | 294 × 100 × 11mm, 面[A]: 上R面 (3R) + 下糸面 + 磨き, 面[B]: 上R面 (3R) + 下糸面 + 磨き, 面[C]: 上R面( 3R) + 下糸面 + 磨き, 面[D]: 上R面 (3R) + 下糸面 + 磨き, 反り止め:無し, 塗装: ウレタンクリアー 裏捨て塗り（ツヤ全消し）, コーナーR[C]: 10mm, コーナーR[D]: 10mm, 用途: 三方向使用 |
+| 購入場所 | [MARUTOKU SHOP](https://shop.woodworks-marutoku.com/) |
+| 購入価格 | 3,080円 |
+| 購入日 | 2024-08-14 |
+| 納品日 | 2024-09-14 |
+
+
+
+
+
+|  |  |
+| --- | --- |
+| ブランド | [Xencelabs](https://www.xencelabs.com/jp/) |
+| 製品名 | [Quick Keys](https://www.xencelabs.com/jp/products/xencelabs-quick-keys-remote) |
+| 購入場所 | [Amazon](https://amzn.to/40c3If8) |
+| 購入価格 | 9,980円 |
+| 購入日 | 2021-10-25 |
+
+
+
+
+
+|  |  |
+| --- | --- |
+| ブランド | [Logicool](https://www.logicool.co.jp/ja-jp) |
+| 製品名 | [MX Anywhere 3S](https://www.logicool.co.jp/ja-jp/products/mice/mx-anywhere-3s.910-006941.html) |
+| 型番 | MX1800GR |
+| 購入場所 | [ロジクール公式ストア - Yahoo!ショッピング](https://store.shopping.yahoo.co.jp/logicool/4943765062080.html) |
+| 購入価格 | 12,065円（- 1,531円相当ポイント還元） |
+| 購入日 | 2021-05-09 |
+
+
+
+
+
+|  |  |
+| --- | --- |
+| ブランド | [SteelSeries](https://jp.steelseries.com/) |
+| 製品名 | [QcK](https://jp.steelseries.com/gaming-mousepads/qck-series) Small |
+| 型番 | 63005 |
+| 購入場所 | [Amazon](https://amzn.to/40em938) |
+| 購入価格 | 993円 |
+| 購入日 | 2024-02-01 |
+
+
+
+
+
+|  |  |
+| --- | --- |
+| ブランド | [OBSBOT](https://www.obsbot.com/jp) |
+| 製品名 | [OBSBOT Meet 4K](https://www.obsbot.com/jp/obsbot-meet-4k-pc-camera) |
+| 購入場所 | [Indiegogo](https://www.indiegogo.com/projects/obsbot-meet-ai-virtual-background-4k-webcam#/) |
+| 購入価格 | 1,130香港ドル（19,200円） + 送料 117香港ドル （2,000円） |
+| 購入日 | 2021-10-03 |
+| 納品日 | 2022-05-10 |
+
+
+
+
+## 出力デバイス
+
+
+![](DeskRecipe-2.jpg)
+
+
+
+モニターは 27インチ 4K Adobe RGB 99% 対応カラーマネジメントモニターの [BenQ SW271](https://www.benq.com/ja-jp/business/monitor/sw271.html) です。一度 Adobe RGB 対応モニターを使ってしまうとsRGBには戻れないのですが、最近は Display P3 (DCI-P3) 対応モニターも増えてきたので、後継機種はそちらでも良いかもしれません。遮光フードはSW271純正です。フードを付けると外光などの影響を抑えられるのはもちろん、画面に集中できる効果があります。逆に言うと見通しが悪いのですが。
+
+モニターアームには [Ergotron MX Desk Monitor Arm](https://www.ergotron.com/ja-jp/%E8%A3%BD%E5%93%81/%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0/45-214#?%E8%89%B2=%E3%82%A2%E3%83%AB%E3%83%9F%E8%89%B2) を使っています。SW271の重量的には [Ergotron LX Desk Monitor Arm](https://www.ergotron.com/ja-jp/%E8%A3%BD%E5%93%81/%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0/45-241#?%E8%89%B2=%E3%82%A2%E3%83%AB%E3%83%9F%E8%89%B2&attachment%20option=2-Piece%20Clamp) が最適なのですが、MXの曲線が好きでこちらを使っています。SW271はそこそこ重いので大丈夫でしたが、軽すぎるモニターだとMXでは持ち上がってしまうかもしれません。また、LXのほうがMXよりも可動域は大きいです。
+
+デスクトップスピーカーは今まであまり納得がいかず、数年で買い替えることが多かったのですが、今年買った [Audioengine A2+ Home Music System w/ Bluetooth aptX](https://audioengine.com/shop/wirelessspeakers/a2-wireless-computer-speakers/) と [FOSTEX PM-SUBmini2](https://www.fostex.jp/products/pm-submini2/) の組合せは、価格を大きく超えた音質が作れて満足しています。また、[SANWA SUPPLY 100-SPSTN03](https://direct.sanwa.co.jp/ItemPage/100-SPSTN03) でA2+のツイーターを耳の高さにすることも大きな効果がありました。モニター以外に高さが出て、見た目にも良いアクセントになっています。
+
+今年買い替えた [Shure AONIC 50 Gen 2](https://www.shure.com/ja-JP/products/headphones/aonic50) ヘッドホンは FlexiSpot E7H の脚にAliExpressで買った [Sticky ABS Headphone Bracket Wall Mounted](https://s.click.aliexpress.com/e/_opVcKX9) でぶら下げていますが、デスクで使うことはあまりなく、主にリビングで使っています。
+
+{{< article link="/blog/posts/bought-audioengine-a2-home-music-system-w-bluetooth-aptx/" >}}
+{{< article link="/blog/posts/bought-fostex-pm-submini2/" >}}
+{{< article link="/blog/posts/bought-shure-aonic-50-gen-2" >}}
 
 |  |  |
 | --- | --- |
