@@ -27,7 +27,7 @@ disableImageOptimizationMD: false
 disableTextInHeader: false
 
 defaultBackgroundImage: "/img/background.svg"
-defaultFeaturedImage: "/img/fireflies.svg"
+defaultFeaturedImage: "/img/featured.svg"
 defaultSocialImage: "/img/rewse-lab-featured-image.png"
 hotlinkFeatureImage: false
 
