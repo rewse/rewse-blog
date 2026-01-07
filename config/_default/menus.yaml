@@ -7,7 +7,7 @@ main:
     weight: 10
 
   - name: "About"
-    url: "/blog/about-tats-shibata/"
+    pageRef: "pages/about-tats-shibata/"
     weight: 20
 
   - name: "Uses"
