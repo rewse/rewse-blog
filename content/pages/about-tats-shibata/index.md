@@ -136,6 +136,8 @@ Tokyo, Japan
 
 
 
+- ****ExadataがAWSで動く！ Oracle Database@AWS の概要とアーキテクチャについて****  
+  Jul 2025 | db tech showcase
 - ****エンタープライズにおけるデータベースマイグレーション****  
   Sep 2019 | AWS Transformation Day
 - **Amazon RDS for Oracle / SQL Server への移行ベストプラクティス**  
