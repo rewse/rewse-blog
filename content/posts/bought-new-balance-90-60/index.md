@@ -24,6 +24,10 @@ categories:
 
 
 
+
+{{< amazon asin="B0B6W5JNX5" title="New Balance 90/60 MAC" >}}
+
+{{< amazon asin="B0781YXJDF" title="New Balance サポーティブリバウンドインソール RCP280" >}}
 |  |  |
 | --- | --- |
 | ブランド | [New Balance](https://shop.newbalance.jp/) |

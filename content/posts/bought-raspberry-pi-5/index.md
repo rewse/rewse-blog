@@ -45,6 +45,8 @@ Amazon EC2 とラズパイでOSを共通化させたいため、私はラズパ�
 
 
 
+
+{{< amazon asin="B0CQZHN2K4" title="Raspberry Pi 5 8GB" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Raspberry Pi](https://www.raspberrypi.com/) |

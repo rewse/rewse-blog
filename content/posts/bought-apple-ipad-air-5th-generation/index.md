@@ -104,6 +104,10 @@ GFX Bench での Apple iPad Air (5th generation) の計測結果
 
 
 
+
+{{< amazon asin="B09V3HHB1Q" title="Apple iPad Air（第5世代）256 GB Wi-Fi" >}}
+
+{{< amazon asin="B0863FZPGY" title="Apple iPad Pro (11-inch) Smart Keyboard Folio" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Apple](https://www.apple.com/jp/) |

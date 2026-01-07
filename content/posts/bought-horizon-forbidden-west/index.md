@@ -32,6 +32,8 @@ PS5向けダウンロード版に無償アップグレードできるPS4向け�
 
 
 
+
+{{< amazon asin="B09FF4KJ3G" title="Horizon Forbidden West" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [Sony Interactive Entertainment](https://www.playstation.com/ja-jp/) |

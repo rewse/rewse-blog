@@ -22,6 +22,8 @@ categories:
 
 
 
+
+{{< amazon asin="B09DP1G4WM" title="Panasonic NA-LX127AL-W" >}}
 |  | Panasonic NA-LX127A | TOSHIBA TW-127XP1 |
 | --- | --- | --- |
 | 洗濯 / 脱水容量 | 12kg | 12kg |

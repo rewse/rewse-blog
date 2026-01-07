@@ -37,6 +37,10 @@ DS916+からベンチマークが取れたので取ってみました。Time Mac
 
 
 
+
+{{< amazon asin="B0C4NS8NRL" title="CFD MGAX CSSD-S6L2TMGAX" >}}
+
+{{< amazon asin="B0BPLSND97" title="Century 裸族のインナーV2 (CRIN2535V2)" >}}
 |  |  |
 | --- | --- |
 | ブランド | [CFD](https://www.cfd.co.jp/) |

@@ -211,6 +211,10 @@ usb-bootスクリプトを使って、SSDをブートドライブに設定しま
 
 
 
+
+{{< amazon asin="B0BCNV3JP4" title="Crucial P3 Plus Gen4 NVMe SSD 500GB" >}}
+
+{{< amazon asin="B0CQ7QSKQ6" title="Geekworm X1001 PCIe to M.2 Key-M NVMe SSD PIP TOP for Raspberry Pi 5" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Crucial](https://www.crucial.jp/) |

@@ -85,6 +85,8 @@ GFX Bench での Apple iPhone SE (3rd generation) の計測結果
 
 
 
+
+{{< amazon asin="B0BBLYSD9J" title="Apple iPhone SE（第3世代） 128 GB Starlight" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Apple](https://www.apple.com/jp/) |

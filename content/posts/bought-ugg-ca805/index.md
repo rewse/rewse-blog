@@ -27,6 +27,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0BSMQ13VZ" title="UGG CA805" >}}
 |  |  |
 | --- | --- |
 | ブランド | [UGG](https://www.ugg.com/jp/) |

@@ -35,6 +35,8 @@ Baldur’s Gate 3 は前後左右のどちらから音が鳴っているかが�
 
 
 
+
+{{< amazon asin="B0CGRNXKH5" title="final VR2000 for Gaming" >}}
 |  |  |
 | --- | --- |
 | ブランド | [final](https://final-inc.com/) |

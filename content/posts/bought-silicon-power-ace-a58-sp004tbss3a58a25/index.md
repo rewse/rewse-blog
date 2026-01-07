@@ -36,6 +36,10 @@ DS916+からベンチマークが取れたので取ってみました。スル�
 
 
 
+
+{{< amazon asin="B0C4B1MXQ7" title="Silicon Power Ace A58 SP004TBSS3A58A25" >}}
+
+{{< amazon asin="B0BPLSND97" title="Century 裸族のインナーV2 (CRIN2535V2)" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Silicon Power](https://www.silicon-power.com/web/jp/) |

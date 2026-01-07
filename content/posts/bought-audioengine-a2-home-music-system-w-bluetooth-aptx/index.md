@@ -142,6 +142,14 @@ Audioengine A2+ Home Music System w/ Bluetooth aptX は、コンパクトなボ�
 
 
 
+
+{{< amazon asin="B07RT9PBFT" title="Audioengine A2+ Home Music System w/ Bluetooth aptX" >}}
+
+{{< amazon asin="B0BN44PVLK" title="Sanyun SW601 Metal Desktop Speaker Stand" >}}
+
+{{< amazon asin="B09CKVRQRT" title="AZUKI Tech 24K 金メッキ バナナプラグ 8本セット" >}}
+
+{{< amazon asin="B0CTM3KQN1" title="サンワサプライ スピーカースタンド 小型用・クランプ式 100-SPSTN03" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Audioengine](https://audioengine.com/) |

@@ -169,6 +169,8 @@ Linux sierra 4.19.152-ui-alpine #4.19.152 SMP Mon Aug 1 14:24:56 CST 2022 aarch6
 Firmware version: v2.5.11
 
   ___ ___      .__________.__
+
+{{< amazon asin="B086967C9X" title="Ubiquiti UniFi Dream Machine Pro" >}}
  |   |   |____ |__\_  ____/__|
  |   |   /    \|  ||  __) |  |   (c) 2010-2022
  |   |  |   |  \  ||  \   |  |   Ubiquiti Inc.

@@ -44,6 +44,8 @@ AliExpressにポータブル衣類乾燥機というものが売っていたの�
 
 
 
+
+{{< amazon asin="B09MYS34PJ" title="Portable Multi-Function Dryer RF168" >}}
 |  |  |
 | --- | --- |
 | 製品名 | Portable Multi-Function Dryer |

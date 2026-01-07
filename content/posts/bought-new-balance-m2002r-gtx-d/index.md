@@ -27,6 +27,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0BY2C7G7V" title="New Balance M2002R GTX D" >}}
 |  |  |
 | --- | --- |
 | ブランド | [New Balance](https://shop.newbalance.jp/shop/) |

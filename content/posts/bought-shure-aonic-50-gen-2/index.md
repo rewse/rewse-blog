@@ -35,6 +35,8 @@ Shantiのギターだけで決めてしまいましたが、自宅に帰ってUS
 
 
 
+
+{{< amazon asin="B0CGKVDRNW" title="Shure AONIC 50 Gen 2" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Shure](https://www.shure.com/ja-JP) |

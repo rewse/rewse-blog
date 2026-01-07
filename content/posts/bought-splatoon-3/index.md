@@ -23,6 +23,8 @@ categories:
 
 
 
+
+{{< amazon asin="B09Y1R9VG4" title="スプラトゥーン3" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [Nintendo](https://www.nintendo.co.jp/) |

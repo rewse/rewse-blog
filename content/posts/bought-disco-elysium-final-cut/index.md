@@ -23,6 +23,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0B3HSDFD7" title="ディスコ エリジウム ザ ファイナル カット" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [スパイク・チュンソフト](https://www.spike-chunsoft.co.jp/) |
