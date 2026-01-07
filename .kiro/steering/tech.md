@@ -58,3 +58,9 @@ hugo new [page-name]/index.md
 - Google Analytics: 設定済み (G-TPRYLTLRFG)
 - サイトマップ: 自動生成
 - RSS: 自動生成
+
+## 旧ブログ
+
+- このプロジェクトはWordPressで動いている旧ブログからHugoへの移行を行っている
+- 旧ブログは https://rewse.jp/blog/ で公開されている
+- 旧ブログの全ての記事は exported/ にXMLで出力されている
