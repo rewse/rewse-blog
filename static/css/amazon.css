@@ -1,31 +1,27 @@
 /* Amazon Widget Styles */
 .amazon-widget {
-  margin: 2rem 0;
-  max-width: 480px;
+  margin: 32px 0;
+  max-width: none;
   position: relative;
-  border-radius: 15px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  border: 1px solid rgb(203, 203, 203);
+  transition: border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-.amazon-widget:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-.amazon-widget a {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  text-decoration: none;
+@media (min-width: 853px) {
+  .amazon-widget {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .amazon-widget-img {
-  border: 1px solid rgb(var(--color-neutral-200));
-  border-radius: 15px 15px 0 0;
+  border-bottom: 1px solid rgb(203, 203, 203);
+  border-radius: 8px 8px 0 0;
   text-align: center;
   background-color: #fff;
   padding: 16px;
@@ -33,6 +29,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (min-width: 853px) {
+  .amazon-widget-img {
+    border-bottom: none;
+    border-right: 1px solid rgb(203, 203, 203);
+    border-radius: 8px 0 0 8px;
+    width: 300px;
+    min-height: 160px;
+  }
 }
 
 .amazon-widget-img img {
@@ -49,7 +56,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  word-break: auto-phrase;
   gap: 12px;
   color: rgb(var(--color-neutral-500));
   min-height: 160px;
@@ -61,37 +67,49 @@
 
 .amazon-widget-fallback-text {
   font-size: 14px;
+  line-height: 1.4;
   font-weight: 500;
   text-align: center;
+  word-break: auto-phrase;
   max-width: 200px;
-  line-height: 1.4;
 }
 
 .amazon-widget-info {
-  border-right: 1px solid rgb(var(--color-neutral-200));
-  border-bottom: 1px solid rgb(var(--color-neutral-200));
-  border-left: 1px solid rgb(var(--color-neutral-200));
   padding: 15px;
-  border-radius: 0 0 15px 15px;
-  background-color: rgb(var(--color-neutral-100));
+  border-radius: 0 0 8px 8px;
+  background-color: transparent;
   transition: background-color 0.3s ease;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-.amazon-widget:hover .amazon-widget-info {
-  background-color: rgb(var(--color-neutral-50));
+@media (min-width: 853px) {
+  .amazon-widget-info {
+    border-radius: 0 8px 8px 0;
+    padding: 20px;
+  }
 }
 
 .amazon-widget-title {
   text-align: left;
-  font-weight: bold;
+  font-weight: 700;
   display: block;
   color: rgb(var(--color-neutral-800));
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 20px;
+  line-height: 28px;
   margin-bottom: 8px;
 }
 
+.amazon-widget-title:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-primary-500));
+}
+
 .amazon-widget-via {
+  margin-top: 1rem;
   color: rgb(var(--color-neutral-600));
   font-size: 14px;
   display: flex;
@@ -111,25 +129,36 @@
 
 /* Dark mode support */
 
+html.dark .amazon-widget {
+  border-color: rgb(71, 71, 71);
+}
+
 html.dark .amazon-widget-img {
-  background-color: rgb(var(--color-neutral-800));
+  background-color: #fff;
+  border-bottom-color: rgb(71, 71, 71);
+}
+
+@media (min-width: 853px) {
+  html.dark .amazon-widget-img {
+    border-bottom: none;
+    border-right-color: rgb(71, 71, 71);
+  }
 }
 
 html.dark .amazon-widget-fallback {
-  color: rgb(var(--color-neutral-400));
+  color: rgb(var(--color-neutral-500));
 }
 
 html.dark .amazon-widget-info {
-  background-color: rgb(var(--color-neutral-600));
-  border-color: rgb(var(--color-neutral-700));
-}
-
-html.dark .amazon-widget:hover .amazon-widget-info {
-  background-color: rgb(var(--color-neutral-500));
+  background-color: transparent;
 }
 
 html.dark .amazon-widget-title {
   color: rgb(var(--color-neutral-100));
+}
+
+html.dark .amazon-widget-title:hover {
+  text-decoration-color: rgb(var(--color-primary-400));
 }
 
 html.dark .amazon-widget-via {
@@ -137,10 +166,10 @@ html.dark .amazon-widget-via {
 }
 
 /* Responsive design */
-@media (max-width: 480px) {
+@media (max-width: 852px) {
   .amazon-widget {
     max-width: 100%;
-    margin: 2rem 0;
+    margin: 32px 0;
   }
   
   .amazon-widget-img {
@@ -167,10 +196,12 @@ html.dark .amazon-widget-via {
   }
   
   .amazon-widget-title {
-    font-size: 15px;
+    font-size: 18px;
+    line-height: 24px;
   }
   
   .amazon-widget-via {
+    margin-top: 0.3rem;
     font-size: 13px;
   }
 }
