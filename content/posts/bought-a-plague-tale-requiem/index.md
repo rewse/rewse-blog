@@ -19,6 +19,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0BW7YLG41" title="プレイグ テイル –レクイエム–" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [Oizumi Amuzio](http://www.o-amuzio.co.jp/) |

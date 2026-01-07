@@ -31,6 +31,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0CSFDB161" title="PS Portal 用充電スタンド" >}}
 |  |  |
 | --- | --- |
 | 製品名 | Charging Stand for PS Portal |

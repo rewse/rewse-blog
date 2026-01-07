@@ -62,10 +62,9 @@ E7Hが34.9kg + 天板が21.9kg = 合計56.8kgという非常に重いデスク�
 
 もともと使っていた [DEVAISE Metal 3 Drawer Slim Vertical File Cabinet with Lock](https://www.devaise.com/products/devaise-3-drawer-slim-mobile-file-cabinet-with-lock-legal-letter-size-white?variant=37783703093435) の天板に、デスクに合わせて厚さ20mmのタモ集成材を貼りました。これによってデスクとの統一感が出ただけでなく、キャビエットが移動式サイドデスクのようになり、ちょっとした作業で便利に使う気分になりました。キャビネットの天板は [ニトムズ 強力両面テープ No.541](https://www.nitoms.com/products/proself_dbst_str/) で貼っています。発泡ブチルゴム系の両面テープで、厚さが0.75mmとちょうど良く、私が一番信頼している両面テープです。
 
+{{< amazon asin="B0CC1RCDC5" title="FlexiSpot E7H" >}}
 
-
-
-
+{{< amazon asin="B000TGHHCY" title="ニトムズ 強力両面テープ No.541" >}}
 
 |  |  |
 | --- | --- |
@@ -125,9 +124,7 @@ E7Hが34.9kg + 天板が21.9kg = 合計56.8kgという非常に重いデスク�
 
 チェアは、Amazonで激安で売っている時に買った [Koplus Bodyflex](https://www.koplus.com/en/products/bodyflex) です。オランダブランドの美しいデザインと、座面が硬めなのにお尻が痛くならない絶妙さで、ずっと座っていられます。
 
-
-
-
+{{< amazon asin="B007OZ1EBS" title="Koplus Bodyflex" >}}
 
 |  |  |
 | --- | --- |
@@ -202,6 +199,17 @@ Windows 11 の入った [Intel NUC 10 Performance kit NUC10i5FNH](https://www.in
 
 {{< article link="/blog/posts/bought-obsbot-meet-4k/" >}}
 
+{{< amazon asin="B0DNDZ3JX3" title="PFU HHKB Professional HYBRID Type-S 英語配列 墨" >}}
+
+{{< amazon asin="B0B2PHGD6N" title="滑り止めゴム足クッション100粒 9.5*3.7mm" >}}
+
+{{< amazon asin="B08VNCLDTK" title="Xencelabs Quick Keys" >}}
+
+{{< amazon asin="B0C65MQZ65" title="Logicool MX Anywhere 3S" >}}
+
+{{< amazon asin="B000UEZ37G" title="SteelSeries QcK Small" >}}
+
+{{< amazon asin="B0CBJT3D9J" title="OBSBOT Meet 4K" >}}
 
 |  |  |
 | --- | --- |
@@ -309,6 +317,18 @@ Windows 11 の入った [Intel NUC 10 Performance kit NUC10i5FNH](https://www.in
 {{< article link="/blog/posts/bought-audioengine-a2-home-music-system-w-bluetooth-aptx/" >}}
 {{< article link="/blog/posts/bought-fostex-pm-submini2/" >}}
 {{< article link="/blog/posts/bought-shure-aonic-50-gen-2" >}}
+
+{{< amazon asin="B0785MRPQL" title="BenQ SW271" >}}
+
+{{< amazon asin="B001IWOBGI" title="Ergotron MX Desk Monitor Arm" >}}
+
+{{< amazon asin="B07RT9PBFT" title="Audioengine A2+ Home Music System w/ Bluetooth aptX" >}}
+
+{{< amazon asin="B0160TTZYQ" title="FOSTEX PM-SUBmini2 Active Subwoofer" >}}
+
+{{< amazon asin="B0CTM3KQN1" title="サンワサプライ スピーカースタンド 小型用・クランプ式 100-SPSTN03" >}}
+
+{{< amazon asin="B0CGKVDRNW" title="Shure AONIC 50 Gen 2" >}}
 
 |  |  |
 | --- | --- |
@@ -424,13 +444,15 @@ Windows 11 の入った [Intel NUC 10 Performance kit NUC10i5FNH](https://www.in
 
 なお、上記デスクレシピの写真は撮影用にあえて派手なシーンにしています。
 
+{{< amazon asin="B0B8MM8PSQ" title="Philips Hue Full-Color Single Lamp E26 1100lm" >}}
 
+{{< amazon asin="B0BKWM5QZJ" title="Philips Hue PC Light Ribbon for 24-27 inch PC Monitor, Triple Display" >}}
 
+{{< amazon asin="B0CGCP4Y6C" title="Philips Hue Gradation Light Ribbon" >}}
 
+{{< amazon asin="B006K0DH18" title="ELPA コード付ソケット (口金 E26 / 1.5m / ブラック) 中間スイッチ付 KP-M2615H(BK)" >}}
 
-
-
-
+{{< amazon asin="4887062850" title="東海林弘靖『Delicious Lighting』（TOTO出版）" >}}
 
 |  |  |
 | --- | --- |
@@ -577,14 +599,17 @@ iPhoneと Apple Watch のQi充電には 3-in-1 Magnetic Wireless Charging Stand 
 
 足元は [Fabula Living Gimle](https://fabulaliving.dk/en/quick-guide/2/) ow/black 60 × 90cmです。ウール100%の平織りなので、夏はさらさらで、冬は常温です。
 
+{{< amazon asin="B0BPPB1XCW" title="3-in-1 Magnetic Wireless Charging Stand" >}}
 
+{{< amazon asin="B0CQH64G7T" title="Coffee Mug Warmer" >}}
 
+{{< amazon asin="B08HWCWY6Z" title="TickTime" >}}
 
+{{< amazon asin="B0C2S4K41G" title="Amazon Echo Spot (2024)" >}}
 
+{{< amazon asin="B077HNP6RY" title="Culti Thé 1000ml" >}}
 
-
-
-
+{{< amazon asin="B001BC5FVU" title="Lladró Gatito Pasmado" >}}
 
 |  |  |
 | --- | --- |

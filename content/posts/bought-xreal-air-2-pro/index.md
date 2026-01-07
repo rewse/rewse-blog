@@ -108,6 +108,8 @@ XREAL Air から XREAL Air 2 Pro に買い替えました。エレクトロク�
 
 
 
+
+{{< amazon asin="B0CJ4MKNPQ" title="XREAL Air 2 Pro" >}}
 |  |  |
 | --- | --- |
 | ブランド | [XREAL](https://www.xreal.com/jp/) |

@@ -19,6 +19,8 @@ ELDEN RING をプレイし始めてからすでに2カ月以上経っていま�
 
 
 
+
+{{< amazon asin="B09L1B6GJN" title="ELDEN RING" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [BANDAI NAMCO Entertainment](https://www.bandainamcoent.co.jp/) |

@@ -32,6 +32,8 @@ HL-L3230CDWは、今までのHL-L2365DWとカタログ上の見た目は似て�
 
 
 
+
+{{< amazon asin="B07G235ZPN" title="Brother HL-L3230CDW" >}}
 |  | Brother HL-L3230CDW | Canon LBP621C | RICOH P C200L |
 | --- | --- | --- | --- |
 | サイズ (W x D x H) | 410mm x 461mm x 252mm | 430mm x 418mm x 287mm | 412mm x 395mm x 244m |

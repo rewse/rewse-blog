@@ -263,6 +263,12 @@ automation:
 
 
 
+
+{{< amazon asin="B0DBYYZ7PJ" title="Dainichi HD-RX324-W" >}}
+
+{{< amazon asin="B07B7NXV4R" title="SwitchBot Bot" >}}
+
+{{< amazon asin="B0BFR674HF" title="Gosund WP6-1" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Dainichi](https://www.dainichi-net.co.jp/) |

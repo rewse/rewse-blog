@@ -1,0 +1,34 @@
+{{/* Amazon Product Shortcode - Simple and Clean Design with Fallback */}}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/amazon.css">
+
+{{- $tag := .Site.Params.amazonJpAffiliate -}}
+{{- $asin := .Get "asin" -}}
+{{- $title := .Get "title" -}}
+
+<div class="amazon-widget">
+  <a href="https://www.amazon.co.jp/gp/product/{{ $asin }}/?tag={{ $tag }}" target="_blank" rel="noopener noreferrer sponsored"></a>
+  <div class="amazon-widget-img">
+    <img src="https://images.amazon.com/images/P/{{ $asin }}.09._SL160_.jpg" 
+         alt="{{ $title }}" 
+         onload="if(this.naturalWidth <= 1 || this.naturalHeight <= 1) { this.style.display='none'; this.nextElementSibling.style.display='flex'; }"
+         onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+    <div class="amazon-widget-fallback" style="display: none;">
+      <div class="amazon-widget-fallback-icon">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 7h-3V6a4 4 0 0 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zM10 6a2 2 0 0 1 4 0v1h-4V6zm8 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h2v1a1 1 0 0 0 2 0V9h4v1a1 1 0 0 0 2 0V9h2v10z"/>
+        </svg>
+      </div>
+      <div class="amazon-widget-fallback-text">{{ $title }}</div>
+    </div>
+  </div>
+  
+  <div class="amazon-widget-info">
+    <span class="amazon-widget-title">
+      {{ $title }}
+    </span>
+    <span class="amazon-widget-via">
+      <img src="https://www.amazon.co.jp/favicon.ico" alt="Amazon" />
+      amazon.co.jp
+    </span>
+  </div>
+</div>

@@ -36,6 +36,8 @@ GL.iNetのWi-Fiルーターは[OpenWrt](https://openwrt.org/)ベースで作ら�
 
 
 
+
+{{< amazon asin="B07GBXMBQF" title="GL.iNet Slate GL-AR750S-Ext" >}}
 |  | [Beryl (GL-MT1300)](https://www.gl-inet.com/products/gl-mt1300/) | [Opal (GL-SFT1200)](https://www.gl-inet.com/products/gl-sft1200/) | [Slate (GL-AR750S-Ext)](https://www.gl-inet.com/products/gl-ar750s/) |
 | --- | --- | --- | --- |
 | 対応規格 | Wi-Fi 5 | Wi-Fi 5 | Wi-Fi 5 |

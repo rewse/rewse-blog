@@ -32,6 +32,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0D5GNCF8Q" title="SILENT HILL 2" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [Konami Digital Entertainment](https://www.konami.com/games/jp/ja/) |

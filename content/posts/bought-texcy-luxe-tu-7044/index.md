@@ -35,6 +35,8 @@ TU-7044のヒール高は3.0cmですが、やや物足りないので、1cmの�
 
 
 
+
+{{< amazon asin="B0DGL66T7Y" title="texcy luxe TU-7044" >}}
 |  |  |
 | --- | --- |
 | ブランド | [texcy luxe](https://www.asics-trading.co.jp/brand/texcy_luxe/) |

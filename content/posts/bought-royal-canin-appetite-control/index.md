@@ -31,6 +31,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0CW1946NY" title="Royal Canin アペタイト コントロール ウェット" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Royal Canin](https://www.royalcanin.com/jp) |

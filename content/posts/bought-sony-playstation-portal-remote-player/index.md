@@ -40,6 +40,8 @@ Nintendo Switch のDockのようなものがないので置き場所に困りま
 
 
 
+
+{{< amazon asin="B0CJT1NHWD" title="Sony PlayStation Portal Remote Player" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Sony](https://www.sony.jp/) |

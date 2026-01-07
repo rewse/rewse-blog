@@ -40,6 +40,8 @@ AliExpressで見つけたのが 3 In 1 Foldable Magnetic Wireless Charger Stand 
 
 
 
+
+{{< amazon asin="B0C73PBNZ8" title="3 In 1 Foldable Magnetic Wireless Charger Stand" >}}
 |  |  |
 | --- | --- |
 | 製品名 | 3 In 1 Foldable Magnetic Wireless Charger Stand |

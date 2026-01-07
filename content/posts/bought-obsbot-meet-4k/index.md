@@ -53,6 +53,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0CBJT3D9J" title="OBSBOT Meet 4K" >}}
 |  |  |
 | --- | --- |
 | ブランド | [OBSBOT](https://www.obsbot.com/jp) |
