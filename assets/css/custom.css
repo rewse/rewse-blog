@@ -1,5 +1,5 @@
 /* ========================================
-   Header Menu
+   Site Header
    ======================================== */
 
 /* Hide text title */
@@ -19,6 +19,11 @@ article .prose {
     margin-bottom: 40px !important;
     text-align: justify !important;
 }
+@media (max-width: 1023px) {
+    .article-content {
+        text-align: left !important;
+    }
+}
 
 /* ========================================
    Article Header
@@ -27,7 +32,6 @@ article .prose {
 #single_header {
     max-width: none !important;
     width: 100% !important;
-    text-align: justify !important;
 }
 
 #single_header h1 {
@@ -38,19 +42,52 @@ article .prose {
 #single_header .author {
     width: calc(100% - 260px) !important;
     max-width: 655px !important;
+    text-align: justify !important;
 }
 @media (max-width: 1023px) {
     #single_header .author {
         width: 100% !important;
+        text-align: left !important;
     }
 }
+
+#single_header > div.flex.author > div > div {
+    line-height: 1.6 !important;
+}
+
+/* ========================================
+   Table
+   ======================================== */
+
+/* Fix: Dark mode table borders are invisible */
+.article-content table {
+    border-collapse: collapse !important;
+}
+.article-content th,
+.article-content td {
+    border-bottom-width: 1px !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: rgb(var(--color-neutral-200)) !important;
+}
+.dark .article-content th,
+.dark .article-content td {
+    border-bottom-color: rgb(var(--color-neutral-600)) !important;
+}
+
 
 /* ========================================
    Article Shortcode
    ======================================== */
 
-article section article {
-    margin-bottom: 40px !important;
+.article-content section article {
+    margin-bottom: 20px !important;
+}
+
+.article-content section article div.overflow-hidden.pt-1,
+.article-content section article div.overflow-hidden.pt-1 .prose {
+    margin-top: 5px !important;
+    font-size: 0.825rem !important;
+    line-height: 1.5 !important;
 }
 
 
@@ -58,14 +95,32 @@ article section article {
    Social Icons
    ======================================== */
 
-/* Left align social share buttons above Related section */
+/* Right align social share buttons above Related section */
 article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
     margin-bottom: 80px !important;
     justify-content: flex-start !important;
 }
 
+/* Add "Shared by" label before social share buttons */
+article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
+    content: "Share with";
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    color: rgb(var(--color-neutral-500));
+}
+.dark article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
+    color: rgb(var(--color-neutral-400));
+}
+
 /* Make social icons background transparent */
 article section.flex.flex-row.flex-wrap a.m-1.rounded {
+    color: rgb(var(--color-neutral-500));
+    background-color: transparent !important;
+}
+.dark article section.flex.flex-row.flex-wrap a.m-1.rounded {
+    color: rgb(var(--color-neutral-400));
     background-color: transparent !important;
 }
 article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
@@ -97,6 +152,29 @@ article footer {
 /* Hide navigadation date */
 article footer time {
     display: none !important;
+}
+
+article footer > div > div> span:nth-child(1) {
+    padding-right: 1rem;
+}
+article footer > div > div> span:nth-child(2) {
+    padding-left: 1rem;
+}
+
+/* ========================================
+   Site Footer
+   ======================================== */
+
+/* Keep footer nav items horizontal with consistent spacing */
+#site-footer > nav > ul {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+}
+#site-footer > nav > ul > li {
+    margin-inline-end: 1rem !important;
+}
+#site-footer > nav > ul > li:last-child {
+    margin-inline-end: 0 !important;
 }
 
 /* ========================================
