@@ -1,0 +1,118 @@
+# -- Main Menu --
+# The main menu is displayed in the header at the top of the page.
+
+main:
+  - name: "Posts"
+    pageRef: "posts"
+    weight: 10
+
+  - name: "About"
+    url: "/blog/about-tats-shibata/"
+    weight: 20
+
+  - name: "Uses"
+    url: "/blog/uses"
+    weight: 30
+
+  - name: "External"
+    weight: 40
+  - name: "Note"
+    parent: "External"
+    url: "https://note.com/rewse"
+    weight: 10
+  - name: "Zenn"
+    parent: "External"
+    url: "https://zenn.dev/rewse"
+    weight: 20
+
+  - name: "Social"
+    weight: 50
+  - identifier: "bluesky"
+    pre: "bluesky"
+    parent: "Social"
+    url: "https://bsky.app/profile/rewse.jp"
+  - identifier: "facebook"
+    pre: "facebook"
+    parent: "Social"
+    url: "https://www.facebook.com/rewse"
+  - identifier: "github"
+    pre: "github"
+    parent: "Social"
+    url: "https://github.com/rewse"
+  - identifier: "instagram"
+    pre: "instagram"
+    parent: "Social"
+    url: "https://www.instagram.com/rewse/"
+  - identifier: "linkedin"
+    pre: "linkedin"
+    parent: "Social"
+    url: "https://www.linkedin.com/in/rewse/"
+  - identifier: "reddit"
+    pre: "reddit"
+    parent: "Social"
+    url: "https://www.reddit.com/user/rewselab/"
+  - identifier: "threads"
+    pre: "threads"
+    parent: "Social"
+    url: "https://www.threads.net/@rewse"
+  - identifier: "x-twitter"
+    pre: "x-twitter"
+    parent: "Social"
+    url: "https://x.com/rewse"
+
+subnavigation:
+  - name: "Computer"
+    pageRef: "categories/computer"
+    weight: 10
+
+  - name: "Photo"
+    pageRef: "categories/photo"
+    weight: 10
+
+  - name: "Travel"
+    pageRef: "categories/travel"
+    weight: 10
+
+  - name: "What I Bought"
+    pageRef: "categories/what-i-bought"
+    weight: 10
+
+  - name: "Tags"
+    pageRef: "tags"
+    weight: 20
+
+# -- Footer Menu --
+# The footer menu is displayed at the bottom of the page
+
+footer:
+  - name: "Note"
+    url: "https://note.com/rewse"
+    weight: 10
+  - name: "Zenn"
+    url: "https://zenn.dev/rewse"
+    weight: 20
+
+  - identifier: "bluesky"
+    pre: "bluesky"
+    url: "https://bsky.app/profile/rewse.jp"
+  - identifier: "facebook"
+    pre: "facebook"
+    url: "https://www.facebook.com/rewse"
+  - identifier: "github"
+    pre: "github"
+    url: "https://github.com/rewse"
+  - identifier: "instagram"
+    pre: "instagram"
+    url: "https://www.instagram.com/rewse/"
+  - identifier: "linkedin"
+    pre: "linkedin"
+    url: "https://www.linkedin.com/in/rewse/"
+  - identifier: "reddit"
+    pre: "reddit"
+    url: "https://www.reddit.com/user/rewselab/"
+  - identifier: "threads"
+    pre: "threads"
+    url: "https://www.threads.net/@rewse"
+  - identifier: "x-twitter"
+    pre: "x-twitter"
+    url: "https://x.com/rewse"

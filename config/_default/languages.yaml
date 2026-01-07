@@ -1,0 +1,27 @@
+ja:
+  languageCode: "ja"
+  languageName: "日本語"
+  weight: 1
+  title: "Tats Shibata | 柴田竜典 | シバタツ"
+
+  params:
+    displayName: "日本語"
+    isoCode: "ja"
+    rtl: false
+    dateFormat: "2006-01-02"
+    logo: "/img/rewse-lab-logo-clear.png"
+    description: "Database Technical Expert Blog"
+
+    author:
+      name: "Tats Shibata"
+      image: "/img/tats-bw-1x1.jpg"
+      bio: "シバタツ（柴田竜典）はデータベーステクノロジー、パフォーマンスエンジニアリング、プリセールスにおいて20年以上の経験を持ちます。アマゾンウェブサービスジャパンの本部長 / Head of Japan Data Solutions Architecture として、彼はデータベースとアナリティクスの技術エキスパートからなるチームを率い、様々な業界のAWSカスタマーにソリューションを提供しています。発言は個人の見解です"
+      links:
+        - bluesky: "https://bsky.app/profile/rewse.jp"
+        - facebook: "https://www.facebook.com/rewse"
+        - github: "https://github.com/rewse"
+        - instagram: "https://www.instagram.com/rewse/"
+        - linkedin: "https://www.linkedin.com/in/rewse/"
+        - reddit: "https://www.reddit.com/user/rewselab/"
+        - threads: "https://www.threads.net/@rewse"
+        - x-twitter: "https://x.com/rewse"
