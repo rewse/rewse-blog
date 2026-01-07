@@ -80,7 +80,7 @@ article .prose {
    ======================================== */
 
 .article-content section article {
-    margin-bottom: 20px !important;
+    margin: 2rem 0 !important;
 }
 
 .article-content section article div.overflow-hidden.pt-1,
