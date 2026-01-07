@@ -1,11 +1,11 @@
 ---
-date: 2022-10-07 19:07:39+09:00
+date: "2022-10-07 19:07:39+09:00"
 tags:
-  - shotonnikon
-  - hardware
-  - review
-  - affiliate
-title: XREAL Air を購入
+  - "shotonnikon"
+  - "hardware"
+  - "review"
+  - "affiliate"
+title: "XREAL Air を購入"
 description: "Nreal Air は現実世界の空中に大画面のスクリーンを表示することができるARグラスです。Nreal Adapter と Apple Lightning - Digital AVアダプタを使うことでiPhoneとつなぐことができます"
 summary: "Nreal Air は現実世界の空中に大画面のスクリーンを表示することができるARグラスです。Nreal Adapter と Apple Lightning - Digital AVアダプタを使うことでiPhoneとつなぐことができます"
 categories:

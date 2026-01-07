@@ -1,9 +1,9 @@
 ---
-date: 2022-05-03 11:45:52+09:00
+date: "2022-05-03 11:45:52+09:00"
 tags:
-  - shotoniphone
-  - usa
-title: Olive Way & 8th Avenue, Seattle, WA, USA
+  - "shotoniphone"
+  - "usa"
+title: "Olive Way & 8th Avenue, Seattle, WA, USA"
 description: "Hyatt at Olive 8 の立っている Olive Way と 8th Avenue の交差点"
 summary: "Hyatt at Olive 8 の立っている Olive Way と 8th Avenue の交差点"
 categories:

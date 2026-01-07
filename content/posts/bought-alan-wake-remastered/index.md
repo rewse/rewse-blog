@@ -1,9 +1,9 @@
 ---
-date: 2023-12-15 17:29:53+09:00
+date: "2023-12-15 17:29:53+09:00"
 tags:
-  - game
-  - review
-title: Alan Wake Remastered を購入
+  - "game"
+  - "review"
+title: "Alan Wake Remastered を購入"
 description: "Alan Wake Remastered をプレイしました。圧倒的な脚本力のミステリー風恐怖アドベンチャーで、続編の Alan Wake 2 の前にプレイしておくことを勧めます"
 summary: "Alan Wake Remastered をプレイしました。圧倒的な脚本力のミステリー風恐怖アドベンチャーで、続編の Alan Wake 2 の前にプレイしておくことを勧めます"
 categories:

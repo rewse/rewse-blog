@@ -1,12 +1,12 @@
 ---
-date: 2022-02-21 19:26:47+09:00
+date: "2022-02-21 19:26:47+09:00"
 tags:
-  - hardware
-  - review
-  - itemonamazon
-  - shotoniphone
-  - affiliate
-title: Lexar JumpDrive Dual Drive E32c 64GB を購入
+  - "hardware"
+  - "review"
+  - "itemonamazon"
+  - "shotoniphone"
+  - "affiliate"
+title: "Lexar JumpDrive Dual Drive E32c 64GB を購入"
 description: "Type-AとType-Cが両端にある回転式キャップのUSBメモリーが好きなので、Lexar JumpDrive Dual Drive E32c USB 3.2 Gen1 Type-C 64GB を買ってみました"
 summary: "Type-AとType-Cが両端にある回転式キャップのUSBメモリーが好きなので、Lexar JumpDrive Dual Drive E32c USB 3.2 Gen1 Type-C 64GB を買ってみました"
 categories:

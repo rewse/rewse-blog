@@ -1,9 +1,9 @@
 ---
-date: 2022-10-27 21:13:14+09:00
+date: "2022-10-27 21:13:14+09:00"
 tags:
-  - shotoniphone
-  - cat
-title: Cat in a Bed
+  - "shotoniphone"
+  - "cat"
+title: "Cat in a Bed"
 categories:
   - "Photo"
 ---

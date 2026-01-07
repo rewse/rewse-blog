@@ -1,10 +1,10 @@
 ---
-date: 2022-08-25 21:25:02+09:00
+date: "2022-08-25 21:25:02+09:00"
 tags:
-  - itemonamazon
-  - game
-  - review
-  - affiliate
+  - "itemonamazon"
+  - "game"
+  - "review"
+  - "affiliate"
 title: 'Disco Elysium: The Final Cut を購入'
 description: "シンガポール出張中に PS Remote Play でできる、レイテンシが関係なさそうな Disco Elysium: The Final Cut を購入しました"
 summary: "シンガポール出張中に PS Remote Play でできる、レイテンシが関係なさそうな Disco Elysium: The Final Cut を購入しました"

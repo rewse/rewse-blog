@@ -1,11 +1,11 @@
 ---
-date: 2024-03-20 17:45:28+09:00
+date: "2024-03-20 17:45:28+09:00"
 tags:
-  - shotonnikon
-  - review
-  - usa
-  - hotel
-title: Grand Hyatt Seattle に宿泊
+  - "shotonnikon"
+  - "review"
+  - "usa"
+  - "hotel"
+title: "Grand Hyatt Seattle に宿泊"
 description: "Grand Hyatt Seattle の客室は35m2と広く、ラグジュアリーな雰囲気があります。浴室は大理石張りでバスタブとシャワールームが別々に設けられた高級仕様になっています"
 summary: "Grand Hyatt Seattle の客室は35m2と広く、ラグジュアリーな雰囲気があります。浴室は大理石張りでバスタブとシャワールームが別々に設けられた高級仕様になっています"
 categories:

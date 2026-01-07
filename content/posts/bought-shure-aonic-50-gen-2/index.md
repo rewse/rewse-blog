@@ -1,11 +1,11 @@
 ---
-date: 2024-01-03 17:40:48+09:00
+date: "2024-01-03 17:40:48+09:00"
 tags:
-  - audio
-  - shotonnikon
-  - review
-  - affiliate
-title: Shure AONIC 50 Gen 2 を購入
+  - "audio"
+  - "shotonnikon"
+  - "review"
+  - "affiliate"
+title: "Shure AONIC 50 Gen 2 を購入"
 description: "Bluetoothヘッドホン Shure AONIC 50 Gen 2 を購入しました。ギターやピアノの表現力が素晴らしく、自宅での音楽鑑賞に最適です"
 summary: "Bluetoothヘッドホン Shure AONIC 50 Gen 2 を購入しました。ギターやピアノの表現力が素晴らしく、自宅での音楽鑑賞に最適です"
 categories:

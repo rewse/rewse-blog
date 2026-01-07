@@ -1,9 +1,9 @@
 ---
-date: 2024-10-08 22:59:41+09:00
+date: "2024-10-08 22:59:41+09:00"
 tags:
-  - review
-  - money
-title: SBI新生銀行を開設
+  - "review"
+  - "money"
+title: "SBI新生銀行を開設"
 description: "Luxury Card でSBI証券のクレカ積立をするために、SBI新生銀行の口座を開設しました。SBI新生コネクトを設定することで普通預金金利が年0.3%になり、コンビニATMが無料で何度でも使えるため使い勝手が良いです"
 summary: "Luxury Card でSBI証券のクレカ積立をするために、SBI新生銀行の口座を開設しました。SBI新生コネクトを設定することで普通預金金利が年0.3%になり、コンビニATMが無料で何度でも使えるため使い勝手が良いです"
 categories:

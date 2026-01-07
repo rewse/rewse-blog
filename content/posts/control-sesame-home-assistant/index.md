@@ -1,10 +1,10 @@
 ---
-date: 2022-01-19 19:13:51+09:00
+date: "2022-01-19 19:13:51+09:00"
 tags:
-  - software
-  - linux
-  - homeautomation
-title: SESAMEスマートロックを Home Assistant から制御する方法
+  - "software"
+  - "linux"
+  - "homeautomation"
+title: "SESAMEスマートロックを Home Assistant から制御する方法"
 description: "Template Lock Integration を使うことで、Sesame OS2 を搭載した SESAME 3 や SESAME 4 スマートロックを Home Assistant に対応させることができます"
 summary: "Template Lock Integration を使うことで、Sesame OS2 を搭載した SESAME 3 や SESAME 4 スマートロックを Home Assistant に対応させることができます"
 categories:

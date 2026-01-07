@@ -1,12 +1,12 @@
 ---
-date: 2024-01-18 10:38:21+09:00
+date: "2024-01-18 10:38:21+09:00"
 tags:
-  - hardware
-  - review
-  - affiliate
-  - itemonaliexpress
-  - shotonnikon
-title: 3 In 1 Foldable Magnetic Wireless Charger Stand を購入
+  - "hardware"
+  - "review"
+  - "affiliate"
+  - "itemonaliexpress"
+  - "shotonnikon"
+title: "3 In 1 Foldable Magnetic Wireless Charger Stand を購入"
 description: "3 in 1 の折り畳みMagSafe充電スタンドをAliExpressで購入しました。iPhoneとAppleWatch / AirPodsを同時に充電できて出張に便利です"
 summary: "3 in 1 の折り畳みMagSafe充電スタンドをAliExpressで購入しました。iPhoneとAppleWatch / AirPodsを同時に充電できて出張に便利です"
 categories:

@@ -1,8 +1,8 @@
 ---
-date: 2024-12-27 13:16:03+09:00
+date: "2024-12-27 13:16:03+09:00"
 tags:
-  - game
-  - review
+  - "game"
+  - "review"
 title: 'Merge Cooking: Theme Restaurant をプレイ'
 description: "マージ系ゲームの中でも Merge Cooking: Theme Restaurant は調理の手順が複雑で面白く、盤面の狭さによる試行錯誤のために飽きずに遊べます"
 summary: "マージ系ゲームの中でも Merge Cooking: Theme Restaurant は調理の手順が複雑で面白く、盤面の狭さによる試行錯誤のために飽きずに遊べます"

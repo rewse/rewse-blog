@@ -1,10 +1,10 @@
 ---
-date: 2022-04-06 19:50:31+09:00
+date: "2022-04-06 19:50:31+09:00"
 tags:
-  - shotoniphone
-  - review
-  - hotel
-title: Kimpton Shinjuku Tokyo に宿泊
+  - "shotoniphone"
+  - "review"
+  - "hotel"
+title: "Kimpton Shinjuku Tokyo に宿泊"
 description: "Kimpton Shinjuku Tokyo で印象に残ったのはスタッフの接客で、カジュアルだけど気が利きます"
 summary: "Kimpton Shinjuku Tokyo で印象に残ったのはスタッフの接客で、カジュアルだけど気が利きます"
 categories:

@@ -1,11 +1,11 @@
 ---
-date: 2024-12-23 21:50:50+09:00
+date: "2024-12-23 21:50:50+09:00"
 tags:
-  - itemonamazon
-  - shotonnikon
-  - review
-  - affiliate
-title: Anker USB-C Hub (14-in-1, Triple display) を購入
+  - "itemonamazon"
+  - "shotonnikon"
+  - "review"
+  - "affiliate"
+title: "Anker USB-C Hub (14-in-1, Triple display) を購入"
 description: "モニターやUSB機器をつなぐために Anker USB-C Hub (14-in-1, Triple display) を購入しました。4K 60Hz出力とLANに対応しています"
 summary: "モニターやUSB機器をつなぐために Anker USB-C Hub (14-in-1, Triple display) を購入しました。4K 60Hz出力とLANに対応しています"
 categories:

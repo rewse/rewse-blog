@@ -1,13 +1,13 @@
 ---
-date: 2024-12-31 14:17:49+09:00
+date: "2024-12-31 14:17:49+09:00"
 tags:
-  - itemonaliexpress
-  - hardware
-  - review
-  - itemonamazon
-  - affiliate
-  - shotonnikon
-title: 2024年のデスクレシピ
+  - "itemonaliexpress"
+  - "hardware"
+  - "review"
+  - "itemonamazon"
+  - "affiliate"
+  - "shotonnikon"
+title: "2024年のデスクレシピ"
 description: "美しいタモ材の天板を組み合わせた FlexiSpot E7H 昇降デスクを中心に、4Kカラーマネジメントモニターや高品質なオーディオシステムで機能性を確保しつつ、複数の Philips Hue 間接照明とアート作品で空間の質を高めた書斎に仕上がりました"
 summary: "美しいタモ材の天板を組み合わせた FlexiSpot E7H 昇降デスクを中心に、4Kカラーマネジメントモニターや高品質なオーディオシステムで機能性を確保しつつ、複数の Philips Hue 間接照明とアート作品で空間の質を高めた書斎に仕上がりました"
 categories:

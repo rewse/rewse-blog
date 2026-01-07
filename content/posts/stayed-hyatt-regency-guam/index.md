@@ -1,11 +1,11 @@
 ---
-date: 2022-08-15 20:20:53+09:00
+date: "2022-08-15 20:20:53+09:00"
 tags:
-  - shotoniphone
-  - review
-  - usa
-  - hotel
-title: Hyatt Regency Guam に宿泊
+  - "shotoniphone"
+  - "review"
+  - "usa"
+  - "hotel"
+title: "Hyatt Regency Guam に宿泊"
 description: "Hyatt Regency Guam はところどころ古さを感じる点はありますが、グアムの中心地にあり、充実したプールと良いビーチがあります"
 summary: "Hyatt Regency Guam はところどころ古さを感じる点はありますが、グアムの中心地にあり、充実したプールと良いビーチがあります"
 categories:

@@ -1,8 +1,8 @@
 ---
-date: 2022-02-08 20:11:02+09:00
+date: "2022-02-08 20:11:02+09:00"
 tags:
-  - shotoniphone
-title: Third Vaccination
+  - "shotoniphone"
+title: "Third Vaccination"
 description: "3回目のワクチンを接種しました。モデルナで全然良かったのですが、家の近くですぐ打てることを優先したらファイザーになりました"
 summary: "3回目のワクチンを接種しました。モデルナで全然良かったのですが、家の近くですぐ打てることを優先したらファイザーになりました"
 categories:

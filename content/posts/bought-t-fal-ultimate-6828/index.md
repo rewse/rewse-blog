@@ -1,10 +1,10 @@
 ---
-date: 2024-12-27 16:45:19+09:00
+date: "2024-12-27 16:45:19+09:00"
 tags:
-  - shotonnikon
-  - review
-  - affiliate
-title: T-fal Ultimate 6828 を購入
+  - "shotonnikon"
+  - "review"
+  - "affiliate"
+title: "T-fal Ultimate 6828 を購入"
 description: "T-fal Ultimate 6828 コード付きスチームアイロンに買い替えました。コードレスよりもスチーム量が多く、加熱状態が維持できるコード付きのほうがシワ伸ばしに適しています"
 summary: "T-fal Ultimate 6828 コード付きスチームアイロンに買い替えました。コードレスよりもスチーム量が多く、加熱状態が維持できるコード付きのほうがシワ伸ばしに適しています"
 categories:

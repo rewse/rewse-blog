@@ -1,11 +1,11 @@
 ---
-date: 2022-07-11 16:34:44+09:00
+date: "2022-07-11 16:34:44+09:00"
 tags:
-  - singapore
-  - phone
-  - troubleshooting
-  - affiliate
-title: AiraloのeSIMが使えないときに確認すべきポイント
+  - "singapore"
+  - "phone"
+  - "troubleshooting"
+  - "affiliate"
+title: "AiraloのeSIMが使えないときに確認すべきポイント"
 description: "シンガポールで iPhone 12 Pro を使ってAiraloをアクティベートすると圏外のままだったので、Airaloから以下のポイントを確認してほしいとの回答をもらいました"
 summary: "シンガポールで iPhone 12 Pro を使ってAiraloをアクティベートすると圏外のままだったので、Airaloから以下のポイントを確認してほしいとの回答をもらいました"
 categories:

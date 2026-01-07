@@ -1,12 +1,12 @@
 ---
-date: 2024-09-03 20:11:23+09:00
+date: "2024-09-03 20:11:23+09:00"
 tags:
-  - review
-  - game
-  - affiliate
-  - itemonaliexpress
-  - shotonnikon
-title: Charging Stand for PS Portal を購入
+  - "review"
+  - "game"
+  - "affiliate"
+  - "itemonaliexpress"
+  - "shotonnikon"
+title: "Charging Stand for PS Portal を購入"
 description: "最近AliExpressで良いマグネット式の充電スタンドを見つけました。PlayStation Portal 自体の仕様に合わせて入出力共に5V/3A (15W) まで対応しています"
 summary: "最近AliExpressで良いマグネット式の充電スタンドを見つけました。PlayStation Portal 自体の仕様に合わせて入出力共に5V/3A (15W) まで対応しています"
 categories:

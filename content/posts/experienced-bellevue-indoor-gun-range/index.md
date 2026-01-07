@@ -1,10 +1,10 @@
 ---
-date: 2022-05-12 18:17:05+09:00
+date: "2022-05-12 18:17:05+09:00"
 tags:
-  - shotoniphone
-  - review
-  - usa
-title: Bellevue Indoor Gun Range を体験
+  - "shotoniphone"
+  - "review"
+  - "usa"
+title: "Bellevue Indoor Gun Range を体験"
 description: "シアトル出張が土日を挟んでいたので、週末に Bellevue Indoor Range に行って、銃を撃ってきました。米国では旅行者であっても銃を撃つことができます"
 summary: "シアトル出張が土日を挟んでいたので、週末に Bellevue Indoor Range に行って、銃を撃ってきました。米国では旅行者であっても銃を撃つことができます"
 categories:

@@ -1,11 +1,11 @@
 ---
-date: 2024-01-17 20:31:28+09:00
+date: "2024-01-17 20:31:28+09:00"
 tags:
-  - shotonnikon
-  - fashion
-  - review
-  - affiliate
-title: Nike Air Max 97 購入
+  - "shotonnikon"
+  - "fashion"
+  - "review"
+  - "affiliate"
+title: "Nike Air Max 97 購入"
 description: "BEAMSで特価だったので Nike Air Max 97 を購入しました。13,960円と安く、使いやすいカラーです"
 summary: "BEAMSで特価だったので Nike Air Max 97 を購入しました。13,960円と安く、使いやすいカラーです"
 categories:

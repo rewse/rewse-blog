@@ -1,9 +1,9 @@
 ---
-date: 2022-05-21 15:43:40+09:00
+date: "2022-05-21 15:43:40+09:00"
 tags:
-  - shotoniphone
-  - usa
-title: California Street, San Francisco, CA, USA
+  - "shotoniphone"
+  - "usa"
+title: "California Street, San Francisco, CA, USA"
 description: "サンフランシスコ出張が初めての同僚には、撮影スポットとして California Street と Powell Street の交差点を薦めています"
 summary: "サンフランシスコ出張が初めての同僚には、撮影スポットとして California Street と Powell Street の交差点を薦めています"
 categories:

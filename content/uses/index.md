@@ -1,8 +1,8 @@
 ---
-date: 2022-01-02 17:28:24+09:00
-title: What I Use
-type: page
-url: /blog/uses/
+date: "2022-01-02 17:28:24+09:00"
+title: "What I Use"
+type: "page"
+url: "/blog/uses/"
 ---
 
 ## Computers

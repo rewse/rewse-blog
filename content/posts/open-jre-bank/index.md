@@ -1,10 +1,10 @@
 ---
-date: 2024-05-18 22:15:38+09:00
+date: "2024-05-18 22:15:38+09:00"
 tags:
-  - shotonnikon
-  - review
-  - money
-title: JRE BANK を開設
+  - "shotonnikon"
+  - "review"
+  - "money"
+title: "JRE BANK を開設"
 description: "JRE BANK を開設し、JR東日本の片道運賃が4割引になる優待割引券などの様々な特典が受けられるようになりました。給与受取口座にすると、さらに多くの特典がもらえるため、メインバンクは変えずに給与振込先のみ JRE BANK に変更することにしました"
 summary: "JRE BANK を開設し、JR東日本の片道運賃が4割引になる優待割引券などの様々な特典が受けられるようになりました。給与受取口座にすると、さらに多くの特典がもらえるため、メインバンクは変えずに給与振込先のみ JRE BANK に変更することにしました"
 categories:

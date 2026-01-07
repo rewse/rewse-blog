@@ -1,10 +1,10 @@
 ---
-date: 2022-02-15 20:34:42+09:00
+date: "2022-02-15 20:34:42+09:00"
 tags:
-  - shotoniphone
-  - review
-  - money
-title: ヤフーカードを解約してPayPayカードを作成
+  - "shotoniphone"
+  - "review"
+  - "money"
+title: "ヤフーカードを解約してPayPayカードを作成"
 description: "ヤフーカードを解約してからハピタス経由でPayPayカードを申し込むと、3,800円相当のポイントをもらえます"
 summary: "ヤフーカードを解約してからハピタス経由でPayPayカードを申し込むと、3,800円相当のポイントをもらえます"
 categories:

@@ -1,7 +1,7 @@
 ---
-date: 2023-03-21 11:26:22+09:00
+date: "2023-03-21 11:26:22+09:00"
 tags:
-  - troubleshooting
+  - "troubleshooting"
 title: '[解決済み] BenQ SW271 が「BenQディスプレイのUSBケーブルがコンピュータに接続されていることを確認してください」エラー'
 description: "BenQ SW271 が認識されなくなった問題を解決しました。USB-CとUSB-Bの両方にケーブルを差した状態だとUSB-Bが動作しないという制限が原因でした"
 summary: "BenQ SW271 が認識されなくなった問題を解決しました。USB-CとUSB-Bの両方にケーブルを差した状態だとUSB-Bが動作しないという制限が原因でした"

@@ -1,11 +1,11 @@
 ---
-date: 2024-05-04 13:49:52+09:00
+date: "2024-05-04 13:49:52+09:00"
 tags:
-  - itemonamazon
-  - game
-  - review
-  - affiliate
-title: Unicorn Overlord を購入
+  - "itemonamazon"
+  - "game"
+  - "review"
+  - "affiliate"
+title: "Unicorn Overlord を購入"
 description: "ユニコーンオーバーロードを購入したが、JRPG的な作風に耐えがたく、戦闘前に結果が分かる点が緊張感に欠け、デモ版をもっとプレイすべきでした"
 summary: "ユニコーンオーバーロードを購入したが、JRPG的な作風に耐えがたく、戦闘前に結果が分かる点が緊張感に欠け、デモ版をもっとプレイすべきでした"
 categories:

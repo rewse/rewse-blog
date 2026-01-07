@@ -1,11 +1,11 @@
 ---
-date: 2024-01-06 13:00:51+09:00
+date: "2024-01-06 13:00:51+09:00"
 tags:
-  - shotonnikon
-  - fashion
-  - review
-  - affiliate
-title: UGG CA805 を購入
+  - "shotonnikon"
+  - "fashion"
+  - "review"
+  - "affiliate"
+title: "UGG CA805 を購入"
 description: "UGG CA805 を購入しました。チャンキーソールですが軽く履き心地がとても良いです。ワイドパンツとの相性も良く、今一番手が伸びる一足です"
 summary: "UGG CA805 を購入しました。チャンキーソールですが軽く履き心地がとても良いです。ワイドパンツとの相性も良く、今一番手が伸びる一足です"
 categories:

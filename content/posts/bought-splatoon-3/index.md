@@ -1,11 +1,11 @@
 ---
-date: 2022-09-14 15:17:19+09:00
+date: "2022-09-14 15:17:19+09:00"
 tags:
-  - itemonamazon
-  - game
-  - review
-  - affiliate
-title: Splatoon 3 を購入
+  - "itemonamazon"
+  - "game"
+  - "review"
+  - "affiliate"
+title: "Splatoon 3 を購入"
 description: "かなり久しぶりのスプラトゥーンです。「リスポーンした後、どうやって味方のところにすっ飛ぶんだっけ」とかすっかり忘れていてリハビリ中です"
 summary: "かなり久しぶりのスプラトゥーンです。「リスポーンした後、どうやって味方のところにすっ飛ぶんだっけ」とかすっかり忘れていてリハビリ中です"
 categories:

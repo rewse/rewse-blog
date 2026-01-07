@@ -1,9 +1,9 @@
 ---
-date: 2024-01-06 18:53:24+09:00
+date: "2024-01-06 18:53:24+09:00"
 tags:
-  - review
-  - phone
-title: UQ mobile に乗り換え
+  - "review"
+  - "phone"
+title: "UQ mobile に乗り換え"
 description: "ahamoから UQ mobile に変更しました。自宅のau光回線とのセット割が魅力的な UQ mobile を選択しました"
 summary: "ahamoから UQ mobile に変更しました。自宅のau光回線とのセット割が魅力的な UQ mobile を選択しました"
 categories:

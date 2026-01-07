@@ -1,10 +1,10 @@
 ---
-date: 2024-12-23 21:53:36+09:00
+date: "2024-12-23 21:53:36+09:00"
 tags:
-  - crowdfunding
-  - review
-  - shotonnikon
-title: Peak Design Outdoor Backpack 25L を購入
+  - "crowdfunding"
+  - "review"
+  - "shotonnikon"
+title: "Peak Design Outdoor Backpack 25L を購入"
 description: "Peak Design Outdoor Backpack 25L を購入しました。Kickstarterで割安な価格で入手できたこのバックパックは、Ultra Cinch Cord によるメイン収納の開閉構造が特徴的で安全性が高く、ノートPCを入れられるポケットなど機能面でも優れています"
 summary: "Peak Design Outdoor Backpack 25L を購入しました。Kickstarterで割安な価格で入手できたこのバックパックは、Ultra Cinch Cord によるメイン収納の開閉構造が特徴的で安全性が高く、ノートPCを入れられるポケットなど機能面でも優れています"
 categories:

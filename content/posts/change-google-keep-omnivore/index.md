@@ -1,9 +1,9 @@
 ---
-date: 2024-03-31 18:01:29+09:00
+date: "2024-03-31 18:01:29+09:00"
 tags:
-  - software
-  - review
-title: Google Keep からOmnivoreに乗り換え
+  - "software"
+  - "review"
+title: "Google Keep からOmnivoreに乗り換え"
 description: "OmnivoreはOSSのRead-it-Laterアプリで、洗練されたUIと高速なクリップ機能を備えています。ハイライト、ノート付け、全文検索が可能で、Obsidian / Logseqインテグレーションも搭載されています"
 summary: "OmnivoreはOSSのRead-it-Laterアプリで、洗練されたUIと高速なクリップ機能を備えています。ハイライト、ノート付け、全文検索が可能で、Obsidian / Logseqインテグレーションも搭載されています"
 categories:
@@ -166,14 +166,14 @@ ObsidanなのでOmnivoreで直接見るよりも地味ですが、自分のメ�
 
 ```
 id: {{{id}}}
-title: >
+title: ">"
   {{{title}}}
-date: {{#formatDate}}{{dateSaved}},"yyyy-MM-dd"{{/formatDate}}
+date: "{{#formatDate}}{{dateSaved}},"yyyy-MM-dd"{{/formatDate}}"
 {{#datePublished}}
 date_published: {{#formatDate}}{{datePublished}},"yyyy-MM-dd"{{/formatDate}}
 {{/datePublished}}
 tags:
-  - omnivore
+  - "omnivore"
 {{#labels.length}}
 {{#labels}}  - {{{name}}}
 {{/labels}}

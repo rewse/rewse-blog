@@ -1,10 +1,10 @@
 ---
-date: 2022-11-16 16:20:03+09:00
+date: "2022-11-16 16:20:03+09:00"
 tags:
-  - shotoniphone
-  - review
-  - hotel
-title: Kamakura Prince Hotel に宿泊
+  - "shotoniphone"
+  - "review"
+  - "hotel"
+title: "Kamakura Prince Hotel に宿泊"
 description: "Kamakura Prince Hotel の Twin Room B は一面の壁全体ガラスになっており、目の前に相模湾だけが見える眺望の良い部屋です"
 summary: "Kamakura Prince Hotel の Twin Room B は一面の壁全体ガラスになっており、目の前に相模湾だけが見える眺望の良い部屋です"
 categories:

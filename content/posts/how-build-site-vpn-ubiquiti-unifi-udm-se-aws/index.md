@@ -1,10 +1,10 @@
 ---
-date: 2022-11-21 17:37:06+09:00
+date: "2022-11-21 17:37:06+09:00"
 tags:
-  - hardware
-  - software
-  - ubiquiti
-title: Ubiquiti UniFi UDM-SE とAWS間で Site-to-Site VPN を構築する方法
+  - "hardware"
+  - "software"
+  - "ubiquiti"
+title: "Ubiquiti UniFi UDM-SE とAWS間で Site-to-Site VPN を構築する方法"
 description: "静的ルーティングを使って Ubiquiti UniFi Dream Machine Special Edition とAWS間で Site-to-Site VPN を構築します"
 summary: "静的ルーティングを使って Ubiquiti UniFi Dream Machine Special Edition とAWS間で Site-to-Site VPN を構築します"
 categories:
