@@ -1,12 +1,12 @@
 ---
-date: 2022-04-04 19:55:21+09:00
+date: "2022-04-04 19:55:21+09:00"
 tags:
-  - hardware
-  - apple
-  - review
-  - shotonnikon
-  - mac
-title: Apple Mac Studio (2022) を購入
+  - "hardware"
+  - "apple"
+  - "review"
+  - "shotonnikon"
+  - "mac"
+title: "Apple Mac Studio (2022) を購入"
 description: "2022年3月に Apple M1 Max / Ultra を搭載した Apple Mac Studio (2022) が発表されました。Mac mini と比べると厚みは違いますが、欲しいのはモニターなしのデスクトップ機なので、もちろん購入です。"
 summary: "2022年3月に Apple M1 Max / Ultra を搭載した Apple Mac Studio (2022) が発表されました。Mac mini と比べると厚みは違いますが、欲しいのはモニターなしのデスクトップ機なので、もちろん購入です。"
 categories:

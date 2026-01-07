@@ -1,12 +1,12 @@
 ---
-date: 2022-10-23 20:21:00+09:00
+date: "2022-10-23 20:21:00+09:00"
 tags:
-  - hardware
-  - apple
-  - review
-  - shotonnikon
-  - mac
-title: Apple MacBook Air (M2, 2022) を購入
+  - "hardware"
+  - "apple"
+  - "review"
+  - "shotonnikon"
+  - "mac"
+title: "Apple MacBook Air (M2, 2022) を購入"
 description: "MacBook Pro (13-inch, 2018) から MacBook Air (M2, 2022) に買い替えました。用途に合わせてメモリは8GB、ストレージは256GBで十分と判断しました"
 summary: "MacBook Pro (13-inch, 2018) から MacBook Air (M2, 2022) に買い替えました。用途に合わせてメモリは8GB、ストレージは256GBで十分と判断しました"
 categories:

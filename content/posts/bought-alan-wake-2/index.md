@@ -1,9 +1,9 @@
 ---
-date: 2023-12-24 17:36:48+09:00
+date: "2023-12-24 17:36:48+09:00"
 tags:
-  - game
-  - review
-title: Alan Wake 2 を購入
+  - "game"
+  - "review"
+title: "Alan Wake 2 を購入"
 description: "The Game Awards 2023 で3冠を受賞した Alan Wake 2 をプレイし始めました。バイオハザード的なシステムを取り入れつつ、ストーリー性が高められた良作です。前作を事前にプレイしておくことをおすすめします"
 summary: "The Game Awards 2023 で3冠を受賞した Alan Wake 2 をプレイし始めました。バイオハザード的なシステムを取り入れつつ、ストーリー性が高められた良作です。前作を事前にプレイしておくことをおすすめします"
 categories:

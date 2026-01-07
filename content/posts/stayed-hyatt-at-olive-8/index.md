@@ -1,11 +1,11 @@
 ---
-date: 2022-05-09 18:38:03+09:00
+date: "2022-05-09 18:38:03+09:00"
 tags:
-  - shotoniphone
-  - review
-  - usa
-  - hotel
-title: Hyatt at Olive 8 に宿泊
+  - "shotoniphone"
+  - "review"
+  - "usa"
+  - "hotel"
+title: "Hyatt at Olive 8 に宿泊"
 description: "シアトル出張に伴い、今回は Hyatt at Olive 8 に4泊したので、宿泊記を残しておきます。Hyatt at Olive 8 はコロナ禍前にも何度か泊まったことがあり、良い印象を持っていました"
 summary: "シアトル出張に伴い、今回は Hyatt at Olive 8 に4泊したので、宿泊記を残しておきます。Hyatt at Olive 8 はコロナ禍前にも何度か泊まったことがあり、良い印象を持っていました"
 categories:

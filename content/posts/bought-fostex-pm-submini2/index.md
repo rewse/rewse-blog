@@ -1,11 +1,11 @@
 ---
-date: 2024-08-28 18:43:44+09:00
+date: "2024-08-28 18:43:44+09:00"
 tags:
-  - audio
-  - shotonnikon
-  - review
-  - affiliate
-title: FOSTEX PM-SUBmini2 を購入
+  - "audio"
+  - "shotonnikon"
+  - "review"
+  - "affiliate"
+title: "FOSTEX PM-SUBmini2 を購入"
 description: "FOSTEX PM-SUBmini2アクティブサブウーファーを購入して Audioengine A2+ の低域を補いました。コンパクトで設置しやすいPM-SUBmini2は低域の情報量を増やし、よりバランスの取れた高音質な再生が可能になりました"
 summary: "FOSTEX PM-SUBmini2アクティブサブウーファーを購入して Audioengine A2+ の低域を補いました。コンパクトで設置しやすいPM-SUBmini2は低域の情報量を増やし、よりバランスの取れた高音質な再生が可能になりました"
 categories:

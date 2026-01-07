@@ -1,10 +1,10 @@
 ---
-date: 2024-12-23 00:10:21+09:00
+date: "2024-12-23 00:10:21+09:00"
 tags:
-  - game
-  - review
-  - affiliate
-title: SILENT HILL 2 を購入
+  - "game"
+  - "review"
+  - "affiliate"
+title: "SILENT HILL 2 を購入"
 description: "オリジナルの PlayStation 2 版は未プレイの SILIENT HILL 2 を購入しました。クリーチャーの気持ち悪さや街並みの汚さが魅力的で、弾数や回復薬の少なさのバランスが良いです"
 summary: "オリジナルの PlayStation 2 版は未プレイの SILIENT HILL 2 を購入しました。クリーチャーの気持ち悪さや街並みの汚さが魅力的で、弾数や回復薬の少なさのバランスが良いです"
 categories:

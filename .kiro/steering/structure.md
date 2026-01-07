@@ -18,6 +18,7 @@ rewse-blog/
 │   └── about-tats-shibata/ # プロフィールページ
 ├── i18n/               # 多言語対応ファイル
 ├── layouts/            # カスタムレイアウト（必要に応じて）
+├── scripts/            # コンテンツ一括修正用スクリプト
 ├── static/             # 静的ファイル（favicon等）
 └── themes/             # Hugoテーマ
     └── blowfish/       # Blowfishテーマ

@@ -1,12 +1,12 @@
 ---
-date: 2024-08-15 23:18:42+09:00
+date: "2024-08-15 23:18:42+09:00"
 tags:
-  - hardware
-  - review
-  - itemonamazon
-  - affiliate
-  - shotonnikon
-title: Silicon Power Ace A58 SP004TBSS3A58A25 を購入
+  - "hardware"
+  - "review"
+  - "itemonamazon"
+  - "affiliate"
+  - "shotonnikon"
+title: "Silicon Power Ace A58 SP004TBSS3A58A25 を購入"
 description: "NASのメインハードディスクを4TBの Silicon Power Ace A58 SP004TBSS3A58A25 に交換しました。読取りスループットはSATA3の限界近くの522MB/s出ています"
 summary: "NASのメインハードディスクを4TBの Silicon Power Ace A58 SP004TBSS3A58A25 に交換しました。読取りスループットはSATA3の限界近くの522MB/s出ています"
 categories:

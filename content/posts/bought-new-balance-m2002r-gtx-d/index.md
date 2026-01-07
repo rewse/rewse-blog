@@ -1,11 +1,11 @@
 ---
-date: 2024-08-13 20:38:54+09:00
+date: "2024-08-13 20:38:54+09:00"
 tags:
-  - shotonnikon
-  - fashion
-  - review
-  - affiliate
-title: New Balance M2002R GTX D を購入
+  - "shotonnikon"
+  - "fashion"
+  - "review"
+  - "affiliate"
+title: "New Balance M2002R GTX D を購入"
 description: "GORE-TEXを使った New Balance M2002R GTX D を購入しました。見た目はGORE-TEX感が全くないにも関わらず、どんな土砂降りでも靴から染みてくることはありません"
 summary: "GORE-TEXを使った New Balance M2002R GTX D を購入しました。見た目はGORE-TEX感が全くないにも関わらず、どんな土砂降りでも靴から染みてくることはありません"
 categories:

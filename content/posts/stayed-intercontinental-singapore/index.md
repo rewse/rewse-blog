@@ -1,11 +1,11 @@
 ---
-date: 2022-06-30 18:50:57+09:00
+date: "2022-06-30 18:50:57+09:00"
 tags:
-  - shotoniphone
-  - review
-  - singapore
-  - hotel
-title: InterContinental Singapore に宿泊
+  - "shotoniphone"
+  - "review"
+  - "singapore"
+  - "hotel"
+title: "InterContinental Singapore に宿泊"
 description: "InterContinental Singapore はクラシックさとモダンさ、プラナカン文化が絶妙に混じり合っており、ここにしかない雰囲気があります"
 summary: "InterContinental Singapore はクラシックさとモダンさ、プラナカン文化が絶妙に混じり合っており、ここにしかない雰囲気があります"
 categories:

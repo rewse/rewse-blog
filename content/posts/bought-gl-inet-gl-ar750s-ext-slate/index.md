@@ -1,12 +1,12 @@
 ---
-date: 2022-04-28 17:37:10+09:00
+date: "2022-04-28 17:37:10+09:00"
 tags:
-  - hardware
-  - review
-  - itemonamazon
-  - affiliate
-  - shotonnikon
-title: GL.iNet Slate GL-AR750S-Ext を購入
+  - "hardware"
+  - "review"
+  - "itemonamazon"
+  - "affiliate"
+  - "shotonnikon"
+title: "GL.iNet Slate GL-AR750S-Ext を購入"
 description: "GL.iNet Slate (GL-AR750S-Ext) は Site-to-Site VPN を構築できるトラベルルーターです。自宅にVPNすることで、海外にいても日本からのみにアクセス制限されているコンテンツも見られるようになります"
 summary: "GL.iNet Slate (GL-AR750S-Ext) は Site-to-Site VPN を構築できるトラベルルーターです。自宅にVPNすることで、海外にいても日本からのみにアクセス制限されているコンテンツも見られるようになります"
 categories:

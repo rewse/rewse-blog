@@ -1,11 +1,11 @@
 ---
-date: 2024-03-10 17:35:56+09:00
+date: "2024-03-10 17:35:56+09:00"
 tags:
-  - australia
-  - shotoniphone
-  - review
-  - hotel
-title: Hyatt Regency Sydney に宿泊
+  - "australia"
+  - "shotoniphone"
+  - "review"
+  - "hotel"
+title: "Hyatt Regency Sydney に宿泊"
 description: "Hyatt Regency Sydney に宿泊し、ハーバービューのタワールームにアップグレードされました。部屋は広く、インターネットも高速です"
 summary: "Hyatt Regency Sydney に宿泊し、ハーバービューのタワールームにアップグレードされました。部屋は広く、インターネットも高速です"
 categories:

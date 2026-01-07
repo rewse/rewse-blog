@@ -1,11 +1,11 @@
 ---
-date: 2022-05-30 17:52:38+09:00
+date: "2022-05-30 17:52:38+09:00"
 tags:
-  - shotonnikon
-  - ubiquiti
-  - hardware
-  - review
-title: Ubiquiti UniFi Access Point U6 Lite を購入
+  - "shotonnikon"
+  - "ubiquiti"
+  - "hardware"
+  - "review"
+title: "Ubiquiti UniFi Access Point U6 Lite を購入"
 description: "我が家ではWi-Fi接続している端末が50台ほどあるため、同時接続数300以上に対応している Ubiquiti UniFi Access Point WiFi 6 Lite (U6-Lite) に変更しました"
 summary: "我が家ではWi-Fi接続している端末が50台ほどあるため、同時接続数300以上に対応している Ubiquiti UniFi Access Point WiFi 6 Lite (U6-Lite) に変更しました"
 categories:

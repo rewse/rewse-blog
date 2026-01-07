@@ -1,12 +1,12 @@
 ---
-date: 2022-03-15 18:34:40+09:00
+date: "2022-03-15 18:34:40+09:00"
 tags:
-  - hardware
-  - review
-  - itemonamazon
-  - affiliate
-  - shotonnikon
-title: Brother HL-L3230CDW を購入
+  - "hardware"
+  - "review"
+  - "itemonamazon"
+  - "affiliate"
+  - "shotonnikon"
+title: "Brother HL-L3230CDW を購入"
 description: "A4カラーレーザープリンターの Brother HL-L3230CDW が23,439円だったため、A4モノクロレーザープリンターから本体ごと買い替えることにしました"
 summary: "A4カラーレーザープリンターの Brother HL-L3230CDW が23,439円だったため、A4モノクロレーザープリンターから本体ごと買い替えることにしました"
 categories:

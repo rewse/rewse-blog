@@ -1,10 +1,10 @@
 ---
-date: 2022-08-24 19:03:57+09:00
+date: "2022-08-24 19:03:57+09:00"
 tags:
-  - shotoniphone
-  - review
-  - phone
-title: ahamoに乗り換え
+  - "shotoniphone"
+  - "review"
+  - "phone"
+title: "ahamoに乗り換え"
 description: "7年11カ月使っていたauから基本料金内で海外データ通信が20GBできるahamoに乗り換えました。これで国内か海外か気にせずにデータ通信できるようになりました"
 summary: "7年11カ月使っていたauから基本料金内で海外データ通信が20GBできるahamoに乗り換えました。これで国内か海外か気にせずにデータ通信できるようになりました"
 categories:

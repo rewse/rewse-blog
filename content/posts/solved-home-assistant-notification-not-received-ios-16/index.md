@@ -1,8 +1,8 @@
 ---
-date: 2022-09-18 17:39:00+09:00
+date: "2022-09-18 17:39:00+09:00"
 tags:
-  - software
-  - homeautomation
+  - "software"
+  - "homeautomation"
 title: '[解決済み] Home Assistant の通知が iOS 16 に届かない'
 description: "iPhone 12 Pro を iOS 16 にアップグレードしたら Home Assistant からの通知が届かなくなりました"
 summary: "iPhone 12 Pro を iOS 16 にアップグレードしたら Home Assistant からの通知が届かなくなりました"

@@ -1,8 +1,8 @@
 ---
-date: 2024-03-30 17:36:38+09:00
+date: "2024-03-30 17:36:38+09:00"
 tags:
-  - software
-  - troubleshooting
+  - "software"
+  - "troubleshooting"
 title: '[解決済み] WordPressで#で始まる文字列がハッシュタグとして自動リンクされる'
 description: "WordPressが#で始まる文字列をハッシュタグとして間違えて認識する事象に遭遇しましたが、AIのClaudeとの対話により、その問題を回避するフィルター関数を作成することができました"
 summary: "WordPressが#で始まる文字列をハッシュタグとして間違えて認識する事象に遭遇しましたが、AIのClaudeとの対話により、その問題を回避するフィルター関数を作成することができました"

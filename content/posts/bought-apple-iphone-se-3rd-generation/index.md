@@ -1,13 +1,13 @@
 ---
-date: 2022-11-23 11:43:35+09:00
+date: "2022-11-23 11:43:35+09:00"
 tags:
-  - hardware
-  - apple
-  - review
-  - shotoniphone
-  - affiliate
-  - phone
-title: Apple iPhone SE (3rd generation) を購入
+  - "hardware"
+  - "apple"
+  - "review"
+  - "shotoniphone"
+  - "affiliate"
+  - "phone"
+title: "Apple iPhone SE (3rd generation) を購入"
 description: "Apple iPhone SE（第3世代）を購入しました。ヨドバシカメラ 新宿西口本店 で、ドコモは128GBがMNP一括14,800円でした"
 summary: "Apple iPhone SE（第3世代）を購入しました。ヨドバシカメラ 新宿西口本店 で、ドコモは128GBがMNP一括14,800円でした"
 categories:

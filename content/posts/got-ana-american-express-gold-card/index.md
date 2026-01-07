@@ -1,10 +1,10 @@
 ---
-date: 2022-09-17 16:37:22+09:00
+date: "2022-09-17 16:37:22+09:00"
 tags:
-  - shotoniphone
-  - review
-  - money
-title: ANA American Express Gold Card を作成
+  - "shotoniphone"
+  - "review"
+  - "money"
+title: "ANA American Express Gold Card を作成"
 description: "ANA American Express Gold Card は現在特大キャンペーン中で、誰かの紹介で2022年9月27日までに申し込んで4カ月以内に合計150万円以上利用すると132,000マイルがもらえます"
 summary: "ANA American Express Gold Card は現在特大キャンペーン中で、誰かの紹介で2022年9月27日までに申し込んで4カ月以内に合計150万円以上利用すると132,000マイルがもらえます"
 categories:

@@ -1,10 +1,10 @@
 ---
-date: 2023-12-30 13:23:06+09:00
+date: "2023-12-30 13:23:06+09:00"
 tags:
-  - game
-  - review
-  - affiliate
-title: Baldur’s Gate 3 を購入
+  - "game"
+  - "review"
+  - "affiliate"
+title: "Baldur’s Gate 3 を購入"
 description: "TRPGの原点であるD&Dをベースにした Baldur’s Gate 3 をプレイ開始しました。情報量が膨大で奥が深いです。戦略性が求められるRPGで、D&Dの理解がプレイを楽しむ鍵になります"
 summary: "TRPGの原点であるD&Dをベースにした Baldur’s Gate 3 をプレイ開始しました。情報量が膨大で奥が深いです。戦略性が求められるRPGで、D&Dの理解がプレイを楽しむ鍵になります"
 categories:

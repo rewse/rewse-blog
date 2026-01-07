@@ -1,10 +1,10 @@
 ---
-date: 2022-02-19 15:08:06+09:00
+date: "2022-02-19 15:08:06+09:00"
 tags:
-  - game
-  - review
-  - affiliate
-title: Horizon Forbidden West を購入
+  - "game"
+  - "review"
+  - "affiliate"
+title: "Horizon Forbidden West を購入"
 description: "2022年2月は大型タイトルラッシュですが、まずはオープンワールドアクションRPG、Horizon Forbidden West を購入しました"
 summary: "2022年2月は大型タイトルラッシュですが、まずはオープンワールドアクションRPG、Horizon Forbidden West を購入しました"
 categories:

@@ -1,10 +1,10 @@
 ---
-date: 2024-12-22 22:08:35+09:00
+date: "2024-12-22 22:08:35+09:00"
 tags:
-  - shotonnikon
-  - review
-  - affiliate
-title: Dainichi HD-RX324 を入手
+  - "shotonnikon"
+  - "review"
+  - "affiliate"
+title: "Dainichi HD-RX324 を入手"
 description: "模様替えに伴って5畳用の加湿器が追加で必要になったので、ふるさと納税で Dainichi HD-RX324 を入手しました。静音性と十分な加湿能力、電気代の面でバランスが取れた製品で、部屋の温度を下げずに加湿できます"
 summary: "模様替えに伴って5畳用の加湿器が追加で必要になったので、ふるさと納税で Dainichi HD-RX324 を入手しました。静音性と十分な加湿能力、電気代の面でバランスが取れた製品で、部屋の温度を下げずに加湿できます"
 categories:

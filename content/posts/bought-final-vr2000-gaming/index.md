@@ -1,13 +1,13 @@
 ---
-date: 2024-01-04 15:16:15+09:00
+date: "2024-01-04 15:16:15+09:00"
 tags:
-  - audio
-  - review
-  - itemonamazon
-  - game
-  - affiliate
-  - shotonnikon
-title: final VR2000 for Gaming を購入
+  - "audio"
+  - "review"
+  - "itemonamazon"
+  - "game"
+  - "affiliate"
+  - "shotonnikon"
+title: "final VR2000 for Gaming を購入"
 description: "PlayStation Portal 用のゲーミングイヤホンとして、評判の良い final VR2000 for Gaming を購入しました。音源の位置や距離感が分かりやすく、サラウンド感もあり満足しています"
 summary: "PlayStation Portal 用のゲーミングイヤホンとして、評判の良い final VR2000 for Gaming を購入しました。音源の位置や距離感が分かりやすく、サラウンド感もあり満足しています"
 categories:

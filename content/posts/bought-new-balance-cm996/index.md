@@ -1,11 +1,11 @@
 ---
-date: 2022-07-20 22:15:09+09:00
+date: "2022-07-20 22:15:09+09:00"
 tags:
-  - shotoniphone
-  - fashion
-  - review
-  - affiliate
-title: New Balance CM996 を購入
+  - "shotoniphone"
+  - "fashion"
+  - "review"
+  - "affiliate"
+title: "New Balance CM996 を購入"
 description: "New Balance CM996 HB2 は定番の996のオールレザーアッパーモデルで、ベースもNロゴもブラックなのでNロゴが目立たず、大人な雰囲気になっています"
 summary: "New Balance CM996 HB2 は定番の996のオールレザーアッパーモデルで、ベースもNロゴもブラックなのでNロゴが目立たず、大人な雰囲気になっています"
 categories:

@@ -1,11 +1,11 @@
 ---
-date: 2024-08-12 22:38:33+09:00
+date: "2024-08-12 22:38:33+09:00"
 tags:
-  - shotonnikon
-  - review
-  - homeautomation
-  - homeappliance
-title: DAIKIN S224ATES を購入
+  - "shotonnikon"
+  - "review"
+  - "homeautomation"
+  - "homeappliance"
+title: "DAIKIN S224ATES を購入"
 description: "DAIKIN S224ATES エアコンを設置しました。BRP087A42を取り付けることで、ローカルAPIから制御できるようになり、Home Assistantから細かい制御が可能になりました"
 summary: "DAIKIN S224ATES エアコンを設置しました。BRP087A42を取り付けることで、ローカルAPIから制御できるようになり、Home Assistantから細かい制御が可能になりました"
 categories:

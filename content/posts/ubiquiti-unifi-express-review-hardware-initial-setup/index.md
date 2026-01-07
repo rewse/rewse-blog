@@ -1,10 +1,10 @@
 ---
-date: 2024-02-12 18:02:26+09:00
+date: "2024-02-12 18:02:26+09:00"
 tags:
-  - shotonnikon
-  - ubiquiti
-  - hardware
-  - review
+  - "shotonnikon"
+  - "ubiquiti"
+  - "hardware"
+  - "review"
 title: 'Ubiquiti UniFi Express レビュー: ハードウェア & 初期セットアップ編'
 description: "Ubiquiti UniFi Express はVPNとDPIを備えたWi-Fiメッシュルーターです。UniFiの中では最小のゲートウェイとなっており、簡単な初期設定の後、スマートフォンやPCから設定変更できます"
 summary: "Ubiquiti UniFi Express はVPNとDPIを備えたWi-Fiメッシュルーターです。UniFiの中では最小のゲートウェイとなっており、簡単な初期設定の後、スマートフォンやPCから設定変更できます"

@@ -1,10 +1,10 @@
 ---
-date: 2022-03-03 19:35:23+09:00
+date: "2022-03-03 19:35:23+09:00"
 tags:
-  - software
-  - linux
-  - homeautomation
-title: Bluetoothで特定の人物が在宅しているかどうかを検知する方法
+  - "software"
+  - "linux"
+  - "homeautomation"
+title: "Bluetoothで特定の人物が在宅しているかどうかを検知する方法"
 description: "「ある特定の人物が在宅しているかどうか」を知りたい場合、monitorを使ってBluetooth通信の可否を確認すことで実現できます"
 summary: "「ある特定の人物が在宅しているかどうか」を知りたい場合、monitorを使ってBluetooth通信の可否を確認すことで実現できます"
 categories:

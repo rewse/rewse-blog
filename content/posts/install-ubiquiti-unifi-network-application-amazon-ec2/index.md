@@ -1,10 +1,10 @@
 ---
-date: 2022-10-05 20:31:33+09:00
+date: "2022-10-05 20:31:33+09:00"
 tags:
-  - software
-  - ubiquiti
-  - linux
-title: Ubiquiti UniFi Network Application を Amazon EC2 にインストール
+  - "software"
+  - "ubiquiti"
+  - "linux"
+title: "Ubiquiti UniFi Network Application を Amazon EC2 にインストール"
 description: "この記事では UniFi Network Application を Amazon EC2 上にインストールし、インターネット経由で自宅のUniFiデバイスをコントロールする環境を構築します"
 summary: "この記事では UniFi Network Application を Amazon EC2 上にインストールし、インターネット経由で自宅のUniFiデバイスをコントロールする環境を構築します"
 categories:

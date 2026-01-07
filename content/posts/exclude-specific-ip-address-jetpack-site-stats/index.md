@@ -1,9 +1,9 @@
 ---
-date: 2022-02-01 23:57:38+09:00
+date: "2022-02-01 23:57:38+09:00"
 tags:
-  - software
-  - linux
-title: Jetpackのサイト統計情報から特定のIPアドレスを除外する方法
+  - "software"
+  - "linux"
+title: "Jetpackのサイト統計情報から特定のIPアドレスを除外する方法"
 description: "Jetpack 10.6 で特定のIPアドレスからのアクセスをサイト統計でカウントしないようにするフィルターが追加されました"
 summary: "Jetpack 10.6 で特定のIPアドレスからのアクセスをサイト統計でカウントしないようにするフィルターが追加されました"
 categories:

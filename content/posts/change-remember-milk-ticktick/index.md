@@ -1,9 +1,9 @@
 ---
-date: 2024-03-25 21:35:23+09:00
+date: "2024-03-25 21:35:23+09:00"
 tags:
-  - software
-  - review
-title: Remember The Milk からTickTickに乗り換え
+  - "software"
+  - "review"
+title: "Remember The Milk からTickTickに乗り換え"
 description: "必要な機能を全て備えていたことと、UIがRTMに近かったため、ToDo管理をソフトをTickTickに乗り換えました。TickTickはポモドーロタイマー / チェックリスト項目 / テンプレート / 連続リマインダー / セクション機能などを備えています"
 summary: "必要な機能を全て備えていたことと、UIがRTMに近かったため、ToDo管理をソフトをTickTickに乗り換えました。TickTickはポモドーロタイマー / チェックリスト項目 / テンプレート / 連続リマインダー / セクション機能などを備えています"
 categories:

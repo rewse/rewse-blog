@@ -1,12 +1,12 @@
 ---
-date: 2022-11-28 14:52:31+09:00
+date: "2022-11-28 14:52:31+09:00"
 tags:
-  - hardware
-  - apple
-  - review
-  - affiliate
-  - shotonnikon
-title: Apple iPad Air (5th generation) を購入
+  - "hardware"
+  - "apple"
+  - "review"
+  - "affiliate"
+  - "shotonnikon"
+title: "Apple iPad Air (5th generation) を購入"
 description: "iPad Air（第5世代）と Smart Keyboard Folio を購入しました。CPU性能は2.5倍に高速化し、キーボードの使い勝手も悪くありません。3Dゲームのベンチマーク結果からも十分なゲーム性能が確認できました"
 summary: "iPad Air（第5世代）と Smart Keyboard Folio を購入しました。CPU性能は2.5倍に高速化し、キーボードの使い勝手も悪くありません。3Dゲームのベンチマーク結果からも十分なゲーム性能が確認できました"
 categories:

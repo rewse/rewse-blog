@@ -1,10 +1,10 @@
 ---
-date: 2023-04-25 20:50:27+09:00
+date: "2023-04-25 20:50:27+09:00"
 tags:
-  - shotonnikon
-  - review
-  - money
-title: Luxury Card Mastercard Titanium Card を作成
+  - "shotonnikon"
+  - "review"
+  - "money"
+title: "Luxury Card Mastercard Titanium Card を作成"
 description: "コンシェルジュサービスが魅力的なクレジットカード、Luxury Card Mastercard Titanium Card を作成しました。重厚な金属製カードで、ホテル優待や国際線手荷物宅配など、ラグジュアリー志向の特徴があります"
 summary: "コンシェルジュサービスが魅力的なクレジットカード、Luxury Card Mastercard Titanium Card を作成しました。重厚な金属製カードで、ホテル優待や国際線手荷物宅配など、ラグジュアリー志向の特徴があります"
 categories:

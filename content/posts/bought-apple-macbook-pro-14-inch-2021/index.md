@@ -1,13 +1,13 @@
 ---
-date: 2022-07-07 20:00:19+09:00
+date: "2022-07-07 20:00:19+09:00"
 tags:
-  - hardware
-  - apple
-  - review
-  - affiliate
-  - shotonnikon
-  - mac
-title: Apple MacBook Pro (14-inch, 2021) を購入
+  - "hardware"
+  - "apple"
+  - "review"
+  - "affiliate"
+  - "shotonnikon"
+  - "mac"
+title: "Apple MacBook Pro (14-inch, 2021) を購入"
 description: "急激な円安進行によってAppleがいつ値上げするか分からないと考え、Apple MacBook Pro (14-inch, 2021) を Bring Your Own Device (BYOD) することにしました"
 summary: "急激な円安進行によってAppleがいつ値上げするか分からないと考え、Apple MacBook Pro (14-inch, 2021) を Bring Your Own Device (BYOD) することにしました"
 categories:

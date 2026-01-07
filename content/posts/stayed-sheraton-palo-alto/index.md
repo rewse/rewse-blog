@@ -1,11 +1,11 @@
 ---
-date: 2022-05-18 12:26:49+09:00
+date: "2022-05-18 12:26:49+09:00"
 tags:
-  - shotoniphone
-  - review
-  - usa
-  - hotel
-title: Sheraton Palo Alto に宿泊
+  - "shotoniphone"
+  - "review"
+  - "usa"
+  - "hotel"
+title: "Sheraton Palo Alto に宿泊"
 description: "パロアルト出張に伴い、今回は Sheraton Palo Alto に4泊しました。イベント主催者の推奨ホテルがここで、同僚全員がここに泊まることにしたので、私も合わせることにしました"
 summary: "パロアルト出張に伴い、今回は Sheraton Palo Alto に4泊しました。イベント主催者の推奨ホテルがここで、同僚全員がここに泊まることにしたので、私も合わせることにしました"
 categories:

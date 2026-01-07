@@ -1,10 +1,10 @@
 ---
-date: 2022-11-14 13:44:49+09:00
+date: "2022-11-14 13:44:49+09:00"
 tags:
-  - shotonnikon
-  - ubiquiti
-  - hardware
-  - review
+  - "shotonnikon"
+  - "ubiquiti"
+  - "hardware"
+  - "review"
 title: 'Ubiquiti UniFi UDM-SE レビュー: ソフトウェア編'
 description: "UDM-SEはVPN, DPI, IDS/IPSをそなえた10Gbps対応エンタープライズグレードのルーターです。すべての設定がGUIから行えます"
 summary: "UDM-SEはVPN, DPI, IDS/IPSをそなえた10Gbps対応エンタープライズグレードのルーターです。すべての設定がGUIから行えます"

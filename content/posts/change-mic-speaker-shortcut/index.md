@@ -1,8 +1,8 @@
 ---
-date: 2022-01-13 00:08:08+09:00
+date: "2022-01-13 00:08:08+09:00"
 tags:
-  - mac
-title: Macのマイクとスピーカーをまとめてショートカットで変更する方法
+  - "mac"
+title: "Macのマイクとスピーカーをまとめてショートカットで変更する方法"
 description: "switchaudio-osxを使えばコマンドラインからMacのオーディオデバイスを変更することができます。switchaudio-osxを呼び出すShellスクリプトを Automator Quick Action や Alfred Workflow から呼び出すことで、簡単にオーディオデバイスを変更することができます"
 summary: "switchaudio-osxを使えばコマンドラインからMacのオーディオデバイスを変更することができます。switchaudio-osxを呼び出すShellスクリプトを Automator Quick Action や Alfred Workflow から呼び出すことで、簡単にオーディオデバイスを変更することができます"
 categories:

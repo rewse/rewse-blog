@@ -1,12 +1,12 @@
 ---
-date: 2024-12-23 11:43:37+09:00
+date: "2024-12-23 11:43:37+09:00"
 tags:
-  - hardware
-  - review
-  - itemonamazon
-  - affiliate
-  - shotonnikon
-title: Crucial P3 Plus Gen4 NVMe SSD を購入
+  - "hardware"
+  - "review"
+  - "itemonamazon"
+  - "affiliate"
+  - "shotonnikon"
+title: "Crucial P3 Plus Gen4 NVMe SSD を購入"
 description: "このブログをRaspberry Pi 5に移行する際、microSDカードよりも高速な Crucial P3 Plus SSD と Geekworm X1001 アダプターを使ってSSD化しました"
 summary: "このブログをRaspberry Pi 5に移行する際、microSDカードよりも高速な Crucial P3 Plus SSD と Geekworm X1001 アダプターを使ってSSD化しました"
 categories:

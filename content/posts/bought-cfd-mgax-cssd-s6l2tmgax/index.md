@@ -1,12 +1,12 @@
 ---
-date: 2024-08-15 22:52:30+09:00
+date: "2024-08-15 22:52:30+09:00"
 tags:
-  - hardware
-  - review
-  - itemonamazon
-  - affiliate
-  - shotonnikon
-title: CFD MGAX CSSD-S6L2TMGAX を購入
+  - "hardware"
+  - "review"
+  - "itemonamazon"
+  - "affiliate"
+  - "shotonnikon"
+title: "CFD MGAX CSSD-S6L2TMGAX を購入"
 description: "Macのバックアップ用に2TBのSSD、CFD MGAX CSSD-S6L2TMGAX を購入しました。NASには 裸族のインナー V2 で3.5インチに変換して取り付けました"
 summary: "Macのバックアップ用に2TBのSSD、CFD MGAX CSSD-S6L2TMGAX を購入しました。NASには 裸族のインナー V2 で3.5インチに変換して取り付けました"
 categories:
