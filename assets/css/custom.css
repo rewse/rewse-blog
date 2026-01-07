@@ -11,28 +11,36 @@
    Article
    ======================================== */
 
-.article-content {
-    margin-bottom: 40px !important;
-}
-
 article .prose {
     line-height: 1.8 !important;
+}
+
+.article-content {
+    margin-bottom: 40px !important;
+    text-align: justify !important;
 }
 
 /* ========================================
    Article Header
    ======================================== */
 
-article header {
+#single_header {
     max-width: none !important;
     width: 100% !important;
+    text-align: justify !important;
 }
 
-article header .author {
-    width: 70% !important;
+#single_header h1 {
+    line-height: 1.5 !important;
+    word-break: auto-phrase !important;
+}
+
+#single_header .author {
+    width: calc(100% - 260px) !important;
+    max-width: 655px !important;
 }
 @media (max-width: 1023px) {
-    article header .author {
+    #single_header .author {
         width: 100% !important;
     }
 }
