@@ -174,6 +174,4 @@ JALの場合、VeriFLYという渡航書類事前確認アプリがあるよう�
 米国出国から日本帰国に必要な書類と手続きについては以下の記事を参照してください。
 
 
-
-
-[TEMP DISABLED]
+https://rewse.jp/blog/required-documents-procedures-business-trip-usa-return-japan/
