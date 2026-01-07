@@ -6,7 +6,7 @@
 {{- $title := .Get "title" -}}
 
 <div class="amazon-widget">
-  <a href="https://www.amazon.co.jp/gp/product/{{ $asin }}/?tag={{ $tag }}" target="_blank" rel="noopener noreferrer sponsored"></a>
+  <a href="https://www.amazon.co.jp/gp/product/{{ $asin }}/?tag={{ $tag }}" target="_blank" rel="noopener noreferrer sponsored">
   <div class="amazon-widget-img">
     <img src="https://images.amazon.com/images/P/{{ $asin }}.09._SL160_.jpg" 
          alt="{{ $title }}" 
@@ -21,14 +21,17 @@
       <div class="amazon-widget-fallback-text">{{ $title }}</div>
     </div>
   </div>
+  </a>
   
+  <a href="https://www.amazon.co.jp/gp/product/{{ $asin }}/?tag={{ $tag }}" target="_blank" rel="noopener noreferrer sponsored">
   <div class="amazon-widget-info">
     <span class="amazon-widget-title">
       {{ $title }}
     </span>
     <span class="amazon-widget-via">
       <img src="https://www.amazon.co.jp/favicon.ico" alt="Amazon" />
-      amazon.co.jp
+      Amazonで価格を見る
     </span>
   </div>
+  </a>
 </div>
