@@ -78,7 +78,7 @@ InterContinental Tokyo Bay を運営している TSUKADA GLOBAL HOLDINGS の主�
 
 
 
-[TEMP DISABLED]
+関連記事: [Kimpton Shinjuku Tokyo に宿泊](https://rewse.jp/blog/stayed-kimpton-shinjuku-tokyo/)
 
 
 

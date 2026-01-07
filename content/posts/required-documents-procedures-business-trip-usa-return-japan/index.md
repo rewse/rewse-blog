@@ -166,7 +166,4 @@ categories:
 
 日本出国から米国入国に必要な書類と手続きについては以下の記事を参照してください。
 
-
-
-
-[TEMP DISABLED]
+https://rewse.jp/blog/required-documents-procedures-departure-japan-entry-usa/
