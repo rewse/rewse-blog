@@ -2,13 +2,15 @@
 date: "2022-01-02 17:28:24+09:00"
 title: "What I Use"
 type: "page"
-url: "/blog/uses/"
+showDate: false
+showPagination: false
+showRelatedContent: false
 ---
+
 ## Computers
 
 
-
-私の初めてのコンピューターは25年以上前の [Apple Macintosh LC 630](https://support.apple.com/kb/SP247?locale=ja_JP) でした。そこからずっとMacをメインとして使っており、[Apple Mac Studio (2025)](https://www.apple.com/jp/mac-studio/) を私用、[Apple MacBook Pro (14-inch, M3 Pro, Nov 2023)](https://support.apple.com/ja-jp/117736) を仕事用に使っています。モニターは 99% Adobe RGB 対応の4Kカラーマネジメントモニターである [BenQ SW271](https://www.benq.com/ja-jp/business/monitor/sw271.html) を使用しています。Adobe RGB 対応とハードウェアキャリブレーションはもはや欠かせません。
+私の初めてのコンピューターは25年以上前の [Apple Macintosh LC 630](https://support.apple.com/kb/SP247?locale=ja_JP) でした。そこからずっとMacをメインとして使っており、[Apple Mac Studio (2025)](https://www.apple.com/jp/mac-studio/) を私用、[Apple MacBook Pro (14-inch, M3 Pro, Nov 2023)](https://support.apple.com/ja-jp/117736) を仕事用に使っています。モニターは 98% DCI-P3 対応の6Kモニターである [ASUS ProArt Display 6K PA32QCV](https://www.asus.com/jp/displays-desktops/monitors/proart/proart-display-6k-pa32qcv/) を使用しています。
 
 
 
@@ -22,7 +24,7 @@ url: "/blog/uses/"
   * [Apple MacBook Pro (14-inch, M3 Pro, Nov 2023)](https://support.apple.com/ja-jp/117736)
   * [Intel NUC 10 Performance kit NUC10i5FNH](https://www.intel.co.jp/content/www/jp/ja/products/sku/189239/intel-nuc-10-performance-kit-nuc10i5fnh/specifications.html)
   * [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) x2
-- Monitor: [BenQ SW271](https://www.benq.com/ja-jp/business/monitor/sw271.html)
+- Monitor: [ASUS ProArt Display 6K PA32QCV](https://www.asus.com/jp/displays-desktops/monitors/proart/proart-display-6k-pa32qcv/)
 - Monitor Arm: [Ergotron MX Desk Monitor Arm 45-214](https://www.ergotron.com/ja-jp/%E8%A3%BD%E5%93%81/%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0/45-214#?%E8%89%B2=%E3%82%A2%E3%83%AB%E3%83%9F%E8%89%B2)
 - Color Calibrator: 
   * [X-Rite ColorMunki Photo](https://xritephoto.com/ph_product_overview.aspx?lang=ja&ID=1115)
@@ -63,12 +65,7 @@ url: "/blog/uses/"
 ## Home Theater
 
 
-![](/blog/images/2022/01/IMG_0832.jpg)
-
-My home theater in Jul 2021
-
-
-
+{{< figure src="IMG_0832-1536x2048.jpg" alt="My home theater in Jul 2021" caption="My home theater in Jul 2021" >}}
 
 私のピュアオーディオ経験は20年以上前に [Bowers & Wilkins](https://www.bowerswilkins.com/ja-jp/) (B&W) DM601 S2 スピーカーと [DENON](https://www.denon.com/ja-jp/) PMA-390IV プリメインアンプ、[DENON](https://www.denon.com/ja-jp/) DCD-755 CDプレーヤーで始まりました。その後、結婚を機に [Linn Majik 140](https://www.linn.co.uk/speakers/majik-140) スピーカーを購入し、今でもそれをメインの機材としています。[YAMAHA AVENTAGE RX-A6A](https://jp.yamaha.com/products/audio_visual/av_receivers_amps/rx-a6a/) AVレシーバーに ONKYO M-5000R パワーアンプを追加して、Majik 140 に割り当てています。サラウンドスピーカーとフロントハイトスピーカーに使っている [KEF](https://jp.kef.com/) HTS3001SE は、米国出張時に購入した KEF KHT3005SE 5.1chサラウンドスピーカーシステムの一部です。サブウーファーの KEF HTB2SE は売却してしまいましたが、センタースピーカーの KEF HTC3001SE は納戸にしまってあります。HTC3001SE では Majik 140 とバランスが取れないため、5.1.2ch構成ではなく、センタースピーカーレスの4.1.2ch構成にしています。HTC3001SE はサラウンドバックスピーカーとして使おうと考えつつ、面倒でインストールできていません。[Cambridge Audio](https://www.cambridgeaudio.com/) CXUHD ディスクプレーヤーは、[OPPO UDP-203](https://oppodigital.com/blu-ray-udp-203/blu-ray-udp-203-Features.aspx) をプラットフォームとして使用した製品です。OPPOのディスクプレーヤー撤退後に駆け込みで購入しましたが、こちらも早々に販売終了していまい、今となっては貴重な製品となってしまいました。
 
@@ -103,11 +100,7 @@ My home theater in Jul 2021
 ## Photos & Videos
 
 
-![](/blog/images/2022/01/APC_2637.jpg)
-
-My Nikon Z 6
-
-
+{{< figure src="APC_2637-2048x1366.jpg" caption="My Nikon Z 6" >}}
 
 
 私が初めて買ったデジタル一眼レフは [Nikon D90](https://www.nikon-image.com/products/slr/lineup/d90/) でした。Nikonが気に入っており、ミラーレスに移行する際も迷わず [Nikon Z 6](https://www.nikon-image.com/products/mirrorless/lineup/z_6/) を選びました。その後、[Nikon Z6III](https://www.nikon-image.com/products/mirrorless/lineup/z6_3/) に買い替えています。レンズはあまり増やさず、本当に必要なものだけを何本か持っています。動画については、いまだ答えが見つかっていません。[Sony XDCAM PXW-Z90](https://www.sony.jp/xdcam/products/PXW-Z90/) をレンタルしたり、Nikon Z6III に [RØDE VideoMic Pro+](https://rode.com/ja/microphones/on-camera/videomic-pro-plus) マイクを装着したり、Apple iPhone を [DJI OM-5](https://www.dji.com/jp/om-5) ジンバルに装着してHDR撮影したりしていますが、今は [RØDE Vlogger Kit USB-C](https://rode.com/ja/microphones/mobile/vlogger-kit-usb-c) で試行錯誤中です。ソフトウェアは、写真には [Adobe Photoshop Lightroom](https://www.adobe.com/jp/products/photoshop-lightroom.html)、動画には [DaVinci Resolve](https://www.blackmagicdesign.com/jp/products/davinciresolve/) を使用しています。DaVinci Resolve は400ページを超える[ビギナーズガイド](https://www.blackmagicdesign.com/jp/products/davinciresolve/training)が良くできており、これを読むと動画編集を一から学べます。
@@ -137,10 +130,7 @@ My Nikon Z 6
 ## Home Automation & IoT
 
 
-![](/blog/images/2022/01/my-home-assistant-in-jan-2022.png)
-
-My Home Assistant in Jan 2022
-
+{{< figure src="home-assistant.png" caption="My Home Assistant in Jan 2026" >}}
 
 
 
@@ -160,6 +150,8 @@ My Home Assistant in Jan 2022
 - Air Conditioner: 
   * [DAIKIN](https://www.daikin.co.jp/) S36NCV + BRP087A42
   * [DAIKIN S224ATES](https://www.ac.daikin.co.jp/roomaircon/products/e_series) + KRP067A41 + BRP087A42 x2
+- Air Purfier:
+  * [Levoit Vital 100S Pet](https://vesync.jp/products/levoit-vital-100s-pet)
 - Bridge
   * [Aqara Hub M2](https://www.aqara.com/en/product/hub-m2/)
   * [Candy House Sesame Hub 3](https://jp.candyhouse.co/products/hub3)
@@ -178,28 +170,30 @@ My Home Assistant in Jan 2022
   * [Philips Hue Full-Color Single Lamp E26 1100lm (Gen 2) LCT007](https://www.philips-hue.com/ja-jp/p/hue-white-and-color-ambiance-a60---e26-smart-bulb---1100/8719514457478)
   * [Philips Hue Gradation Light Ribbon LCX004](https://www.philips-hue.com/ja-jp/p/hue-white-and-color-ambiance-gradient-lightstrip-extension-1-meter/046677582562)
   * [Philips Hue PC Light Ribbon for 24-27 inch PC Monitor LCX005](https://www.philips-hue.com/ja-jp/p/lightstrips-play-gradient-lightstrip-for-pc/8719514434790)
+  * [Philips Hue White Ambiance Lamp E26 1100lm](https://www.philips-hue.com/en-us/p/hue-white-ambiance-a60-e26-smart-bulb-1100/046677591106) LTA010 ×3
   * [Philips Hue White Single Lamp](https://www.philips-hue.com/ja-jp/products/all-products?filters=BULBS_SU&page=1) E26 LWA002
-  * [Philips Hue White Single Lamp](https://www.philips-hue.com/ja-jp/products/all-products?filters=BULBS_SU&page=1) E26 LWB014 ×4
+  * [Philips Hue White Single Lamp](https://www.philips-hue.com/ja-jp/products/all-products?filters=BULBS_SU&page=1) E26 LWB014
 - Lock: [Candy House Sesame 5 Pro](https://jp.candyhouse.co/products/sesame5-pro) ×2
 - Pet
   * [Catlog Pendant](https://rabo.cat/catlog/)
   * [Catlog Home](https://rabo.cat/product/catlog/home/) ×3
   * [Catlog Board](https://rabo.cat/catlog/board/) ×2
 - Plugs
-  * [Gosund Smart Plug WP6](https://us.gosund.com/collections/smart-electrician/products/gosund-smart-plug-wp6-2-pack?cfb=2515d702-5f4f-4dc1-b171-60dbe42ae5fe&scm=collection.v29.177.202.203.204&score=0.07142857142857142&ssp=-) ×12
-  * [IKEA INSPELNING](https://www.ikea.com/jp/ja/p/inspelning-plug-smart-energy-monitor-40569844/)
+  * [IKEA INSPELNING](https://www.ikea.com/jp/ja/p/inspelning-plug-smart-energy-monitor-40569844/) ×23
 - Sensors
   * CO2: [Winsen MH-Z19C NDIR CO2 Sensor](https://www.winsen-sensor.com/sensors/co2-sensor/mh-z19c.html) ×2
   * Door and Window: [Aqara Door and Window Sensor](https://www.aqara.com/en/product/door-and-window-sensor/) ×6
   * Light Level, Motion
-    + [Philips Hue Motion Sensor](https://www.philips-hue.com/ja-jp/p/hue-motion-sensor/8719514342149) SML001 ×3
     + [Philips Hue Motion Sensor](https://www.philips-hue.com/ja-jp/p/hue-motion-sensor/8719514342149) SML003
+    + [Aqara Motion Sensor](https://www.aqara.com/jp/product/motion-sensor-p1/) ×3
   * Presence
-    + [Aqara Presence Sensor FP1E](https://www.aqara.com/jp/product/presence-sensor-fp1e/) ×3
+    + [Aqara Presence Sensor FP1E](https://www.aqara.com/jp/product/presence-sensor-fp1e/) ×4
   * Temperature, Humidity
     + [Aqara Temperature and Humidity Sensor](https://www.aqara.com/en/product/temperature-humidity-sensor/) ×4
     + [SwitchBot Indoor Outdoor Meter](https://www.switchbot.jp/products/switchbot-indoor-outdoor-meter)
 - Switches
   * Curtains: [SwitchBot Remote Button](https://www.switchbot.jp/products/switchbot-remote)
   * Floor Heating, Humidifier: [SwitchBot Bot](https://www.switchbot.jp/products/switchbot-bot) ×5
-  * Lights: [Philips Hue Dimmer Switch](https://www.philips-hue.com/ja-jp/p/hue-dimmer-switch--latest-model-/8719514274655) RWL021 ×2
+  * Lights: 
+    - [Aqara Wireless Mini Switch](https://www.aqara.com/jp/product/wireless-mini-switch/) ×5
+    - [Philips Hue Dimmer Switch](https://www.philips-hue.com/ja-jp/p/hue-dimmer-switch--latest-model-/8719514274655) RWL021 ×2
