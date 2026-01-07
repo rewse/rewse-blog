@@ -11,7 +11,7 @@ main:
     weight: 20
 
   - name: "Uses"
-    url: "/blog/uses"
+    pageRef: "pages/uses"
     weight: 30
 
   - name: "External"
