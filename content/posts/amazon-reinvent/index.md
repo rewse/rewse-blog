@@ -1,0 +1,16 @@
+---
+date: 2022-04-26 20:23:59+09:00
+tags:
+  - shotoniphone
+  - usa
+title: Amazon re:Invent
+description: "AWS re:Invent はイベント名だけど、Amazon re:Invent はビル名"
+summary: "AWS re:Invent はイベント名だけど、Amazon re:Invent はビル名"
+categories:
+  - "Photo"
+  - "Travel"
+---
+
+![](featured.jpg)
+
+AWS re:Invent はイベント名だけど、Amazon re:Invent はビル名。

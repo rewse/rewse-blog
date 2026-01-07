@@ -1,0 +1,23 @@
+/* Fix: Arc shows "Skip to main content" */
+a[href="#main-content"] {
+    position: absolute !important;
+    left: -10000px !important;
+    top: auto !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
+/* Fix: Arc doesn’t enable "backdrop-filter" */
+.backdrop-blur-2xl {
+    -webkit-backdrop-filter: blur(24px) !important;
+    backdrop-filter: blur(24px) !important;
+}
+
+/* Fix: one-light color scheme background isn’t enabled */
+.bg-neutral {
+    background-color: rgb(var(--color-neutral-50)) !important;
+}
+.dark .bg-neutral {
+    background-color: rgb(var(--color-neutral-700)) !important;
+}
