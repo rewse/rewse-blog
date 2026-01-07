@@ -85,13 +85,6 @@ subnavigation:
 # The footer menu is displayed at the bottom of the page
 
 footer:
-  - name: "Note"
-    url: "https://note.com/rewse"
-    weight: 10
-  - name: "Zenn"
-    url: "https://zenn.dev/rewse"
-    weight: 20
-
   - identifier: "bluesky"
     pre: "bluesky"
     url: "https://bsky.app/profile/rewse.jp"
@@ -107,6 +100,9 @@ footer:
   - identifier: "linkedin"
     pre: "linkedin"
     url: "https://www.linkedin.com/in/rewse/"
+  - identifier: "note"
+    pre: "note"
+    url: "https://note.com/rewse"
   - identifier: "reddit"
     pre: "reddit"
     url: "https://www.reddit.com/user/rewselab/"
@@ -116,3 +112,6 @@ footer:
   - identifier: "x-twitter"
     pre: "x-twitter"
     url: "https://x.com/rewse"
+  - identifier: "zenn"
+    pre: "zenn"
+    url: "https://zenn.dev/rewse"

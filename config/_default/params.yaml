@@ -90,6 +90,8 @@ article:
     - "bluesky"
     - "facebook"
     - "line"
+    - "linkedin"
+    - "mastodon"
     - "twitter"
   showZenMode: true
 
