@@ -1,0 +1,45 @@
+{{ $link := .Get "link" }}
+{{ $showSummary := .Get "showSummary" }}
+{{ $compactSummary := .Get "compactSummary" | default false }}
+
+{{/* Circular reference prevention using page context */}}
+{{ $refStack := .Page.Scratch.Get "articleRefStack" | default slice }}
+{{ $currentPath := .Page.RelPermalink }}
+
+{{/* Check for circular reference */}}
+{{ $isCircular := false }}
+{{ range $refStack }}
+  {{ if eq . $link }}
+    {{ $isCircular = true }}
+    {{ break }}
+  {{ end }}
+{{ end }}
+
+{{ if $isCircular }}
+  {{/* Fallback to simple link with similar styling */}}
+  {{ $target := index (first 1 (where .Site.AllPages "RelPermalink" $link)) 0 }}
+  {{ if $target }}
+    <section class="space-y-10 w-full">
+      {{ $context := dict "target" $target "showSummary" $showSummary "compactSummary" $compactSummary }}
+      {{ partial "article-link/_shortcode.html" $context }}
+    </section>
+  {{ end }}
+{{ else }}
+  {{/* Add current page to reference stack */}}
+  {{ .Page.Scratch.Set "articleRefStack" ($refStack | append $link) }}
+  
+  {{/* Use normal article shortcode */}}
+  {{ $target := .Page }}
+  {{ if ne $link .Page.RelPermalink }}
+    {{ $target = index (first 1 (where .Site.AllPages "RelPermalink" $link)) 0 }}
+  {{ end }}
+  {{ if $target }}
+    <section class="space-y-10 w-full">
+      {{ $context := dict "target" $target "showSummary" $showSummary "compactSummary" $compactSummary }}
+      {{ partial "article-link/_shortcode.html" $context }}
+    </section>
+  {{ end }}
+  
+  {{/* Remove from reference stack */}}
+  {{ .Page.Scratch.Set "articleRefStack" $refStack }}
+{{ end }}

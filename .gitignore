@@ -1,0 +1,51 @@
+# Hugo build output
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+
+# Temporary lock file which is used to track Hugo dependency information
+.hugo_build.lock
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js (if using npm/yarn for theme development)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Log files
+*.log
+
+# Cache directories
+.cache/
+.hugo_build.lock
+
+# Local development
+.netlify/
