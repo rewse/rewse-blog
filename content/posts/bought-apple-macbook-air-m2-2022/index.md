@@ -25,6 +25,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0B3BYVPLY" title="Apple MacBook Air (M2, 2022) [M2 8-Core CPU 8-Core GPU, 8 GB Memroy, 256 GB SSD Storage] Starlight" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Apple](https://www.apple.com/jp/) |

@@ -36,6 +36,8 @@ microLEDは単独販売されていないのですが、最大300ルーメンで
 
 
 
+
+{{< amazon asin="B08P4C1KLH" title="RØDE Vlogger Kit USB-C" >}}
 |  |  |
 | --- | --- |
 | ブランド | [RØDE](https://rode.com/ja) |

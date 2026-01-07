@@ -77,6 +77,8 @@ Geekbench 5 での Apple MacBook Pro (14-inch, 2021) / Apple M1 Pro (10-Core CPU
 
 
 
+
+{{< amazon asin="B09JQQQ7WF" title="Apple MacBook Pro (14-inch, 2021) [Apple M1 Pro 8-Core CPU 14-Core GPU, 16 GB Memory, 512 GB SSD Storage] Silver" >}}
 |  | Apple M2 | MacBook Pro (14-inch, 2021) | MacBook Pro (13-inch, 2020, Two Thunderbolt 3 Ports) |
 | --- | --- | --- | --- |
 | CPU: Single-Core | 1,919 | 1,741 | 1,021 |

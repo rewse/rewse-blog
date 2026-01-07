@@ -130,6 +130,10 @@ Audioengine A2+ のデスクトップスピーカーに低域を補強するた�
 
 
 
+
+{{< amazon asin="B0160TTZYQ" title="FOSTEX PM-SUBmini2 Active Subwoofer" >}}
+
+{{< amazon asin="B003UXCZI4" title="Audio-Technica ATL464A/3.0 Line Cable" >}}
 |  |  |
 | --- | --- |
 | ブランド | [FOSTEX](https://www.fostex.jp/) |

@@ -33,6 +33,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0CJ4BF2GL" title="ユニコーンオーバーロード" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [ATLUS](https://www.atlus.co.jp/) |

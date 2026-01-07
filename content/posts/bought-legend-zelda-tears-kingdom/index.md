@@ -19,6 +19,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0BV94KXFR" title="ゼルダの伝説 ティアーズ オブ ザ キングダム" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [Nintendo](https://www.nintendo.co.jp/) |

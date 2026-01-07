@@ -66,6 +66,8 @@ Apple TV などの Matter Controller になれる製品 [2](#5162510d-4ddb-43cb-
 
 
 
+
+{{< amazon asin="B0CGX7YVTL" title="SwitchBot Hub Mini Matter Enabled" >}}
 |  |  |
 | --- | --- |
 | ブランド | [SwitchBot](https://www.switchbot.jp/) |

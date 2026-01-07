@@ -34,6 +34,8 @@ categories:
 
 
 
+
+{{< amazon asin="B0BQG7VS4T" title="Nike Air Max 97 Black Anthracite White" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Nike](https://www.nike.com/jp/) |

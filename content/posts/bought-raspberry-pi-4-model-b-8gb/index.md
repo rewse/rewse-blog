@@ -43,6 +43,10 @@ iPhoneがあれば入荷通知が届いたタイミングで簡単にアラー�
 
 
 
+
+{{< amazon asin="B0891RC99L" title="Raspberry Pi 4 Model B (8 GB)" >}}
+
+{{< amazon asin="B07H2WKYBF" title="Miuzei 最新 Raspberry Pi 4 ケース" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Raspberry Pi](https://www.raspberrypi.com/) |

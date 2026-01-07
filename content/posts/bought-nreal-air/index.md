@@ -117,6 +117,14 @@ XREAL Air は現実世界の空中に大画面のスクリーンを表示する�
 
 
 
+
+{{< amazon asin="B0C4KJ28GB" title="XREAL Air" >}}
+
+{{< amazon asin="B0B2QYM5QM" title="XREAL Air 度付きインサートレンズ 単焦点・薄型" >}}
+
+{{< amazon asin="B0C4KJP6VB" title="XREAL Adapter" >}}
+
+{{< amazon asin="B00XP5KLLK" title="Apple Lightning - Digital AVアダプタ" >}}
 |  |  |
 | --- | --- |
 | ブランド | [XREAL](https://www.xreal.com/jp/) |

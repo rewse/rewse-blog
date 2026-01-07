@@ -126,6 +126,8 @@ Raspberry Pi 5 にSSDを付けた後、内蔵Bluetoothの通信品質が落ち�
 
 
 
+
+{{< amazon asin="B0071TE1G2" title="PLANEX BT-Micro4" >}}
 |  |  |
 | --- | --- |
 | ブランド | [PLANEX](https://www.planex.co.jp/) |

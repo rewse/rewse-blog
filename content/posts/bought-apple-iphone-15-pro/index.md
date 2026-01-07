@@ -76,6 +76,8 @@ Compute (GPU) の[計測結果](https://browser.geekbench.com/ios_devices/iphone
 
 
 
+
+{{< amazon asin="B0CHXNZWBL" title="Apple iPhone 15 Pro 256 GB Blue Titanium" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Apple](https://www.apple.com/jp/) |

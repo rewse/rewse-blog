@@ -64,6 +64,8 @@ flowchart Mac---Anker1[Anker USB-C Hub 14-in-1, Triple display]
 
 
 
+
+{{< amazon asin="B0CG5CF9GF" title="Anker USB-C Hub (14-in-1, Triple display)" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Anker](https://www.ankerjapan.com/) |

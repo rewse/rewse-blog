@@ -41,6 +41,8 @@ D&D未経験だと、防御力のように見えるアーマークラス (AC) �
 
 
 
+
+{{< amazon asin="B0CKBNFMVL" title="バルダーズ・ゲート3" >}}
 |  |  |
 | --- | --- |
 | 配給会社 | [Spike Chunsoft](https://www.spike-chunsoft.co.jp/) |

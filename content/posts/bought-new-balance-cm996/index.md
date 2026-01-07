@@ -32,6 +32,10 @@ categories:
 
 
 
+
+{{< amazon asin="B01G0M0QM8" title="Nike Internationalist 828041-001" >}}
+
+{{< amazon asin="B093YCWBJF" title="New Balance CM996 HB2" >}}
 |  |  |
 | --- | --- |
 | ブランド | [New Balance](https://shop.newbalance.jp/) |

@@ -37,6 +37,14 @@ Lacoste x Netflix というコラボをやっているのですが、[ストレ�
 
 
 
+
+{{< amazon asin="B07QLQ7HYY" title="Nike Air Max 720" >}}
+
+{{< amazon asin="B0B5265KP3" title="Lacoste Carnaby Piquee" >}}
+
+{{< amazon asin="B0BWJB2YMR" title="Lacoste L003 Neo" >}}
+
+{{< amazon asin="B0BQHK43WP" title="Lacoste Men’s Odyssa" >}}
 |  |  |
 | --- | --- |
 | ブランド | [Lacoste](https://www.lacoste.jp/) |

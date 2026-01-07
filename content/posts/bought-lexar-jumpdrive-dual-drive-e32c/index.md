@@ -20,6 +20,8 @@ Type-AとType-Cが両端にある回転式キャップのUSBメモリーが好�
 
 
 
+
+{{< amazon asin="B08XYX23DJ" title="Lexar JumpDrive Dual Drive E32c USB 3.2 Gen1 Type-C 64 GB" >}}
 |  | PNY x500m | Lexar E32c | SanDisk SDDDC3-064G-G46 |
 | --- | --- | --- | --- |
 | サイズ | 33mm x 13.2mm x 6.6mm | 40.5mm x 12.2mm x 7.2mm | 44.4mm x 12.1mm x 8.6mm |
