@@ -187,6 +187,11 @@
     font-size: 36px !important;
 }
 
+/* Center social icons when they wrap on small screens */
+#main-content > article h1 + div > div {
+    justify-content: center !important;
+    row-gap: 0.5rem !important;
+}
 
 /* ========================================
    List
