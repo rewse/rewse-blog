@@ -7,6 +7,8 @@ baseURL: "https://rewse.jp/blog/"
 defaultContentLanguage: "ja"
 disableLanguages: [] # to allow translation work requiring shipping to production
 
+timeout: "5m"
+
 # pluralizeListTitles: true # hugo function useful for non-english languages
 
 enableRobotsTXT: true
