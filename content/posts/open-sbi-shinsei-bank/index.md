@@ -1,5 +1,7 @@
 ---
 date: "2024-10-08 22:59:41+09:00"
+aliases:
+  - /blog/open-sbi-shinsei-bank/
 tags:
   - "review"
   - "money"

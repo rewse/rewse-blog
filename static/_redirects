@@ -1,8 +1,0 @@
-# Redirects for migrated content from WordPress to Hugo
-
-# Static pages redirects
-/blog/about-tats-shibata/ /blog/pages/about-tats-shibata/ 301
-/blog/uses/ /blog/pages/uses/ 301
-
-# Blog posts redirects - catch all other blog content
-/blog/* /blog/posts/:splat 301

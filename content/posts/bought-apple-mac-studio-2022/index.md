@@ -1,5 +1,7 @@
 ---
 date: "2022-04-04 19:55:21+09:00"
+aliases:
+  - /blog/bought-apple-mac-studio-2022/
 tags:
   - "hardware"
   - "apple"

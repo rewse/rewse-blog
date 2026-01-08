@@ -1,5 +1,7 @@
 ---
 date: "2024-04-14 13:52:33+09:00"
+aliases:
+  - /blog/change-google-chrome-arc/
 tags:
   - "software"
   - "review"

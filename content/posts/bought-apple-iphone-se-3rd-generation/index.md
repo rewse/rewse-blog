@@ -1,5 +1,7 @@
 ---
 date: "2022-11-23 11:43:35+09:00"
+aliases:
+  - /blog/bought-apple-iphone-se-3rd-generation/
 tags:
   - "hardware"
   - "apple"

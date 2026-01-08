@@ -1,5 +1,7 @@
 ---
 date: "2024-12-23 21:53:36+09:00"
+aliases:
+  - /blog/bought-peak-design-outdoor-backpack-25l/
 tags:
   - "crowdfunding"
   - "review"

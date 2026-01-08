@@ -1,5 +1,7 @@
 ---
 date: "2024-08-25 17:55:25+09:00"
+aliases:
+  - /blog/stayed-bangkok-marriott-marquis-queens-park/
 tags:
   - "hotel"
   - "shotoniphone"

@@ -1,5 +1,7 @@
 ---
 date: "2022-03-22 18:56:19+09:00"
+aliases:
+  - /blog/bought-inaba-kin-no-dashi-pouch/
 tags:
   - "shotoniphone"
   - "review"

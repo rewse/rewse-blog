@@ -1,5 +1,7 @@
 ---
 date: "2023-11-19 20:21:28+09:00"
+aliases:
+  - /blog/bought-sony-playstation-portal-remote-player/
 tags:
   - "hardware"
   - "review"

@@ -1,5 +1,7 @@
 ---
 date: "2022-03-03 19:35:23+09:00"
+aliases:
+  - /blog/detect-specific-person-home-bluetooth/
 tags:
   - "software"
   - "linux"

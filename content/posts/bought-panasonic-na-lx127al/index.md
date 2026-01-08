@@ -1,5 +1,7 @@
 ---
 date: "2022-06-08 21:18:13+09:00"
+aliases:
+  - /blog/bought-panasonic-na-lx127al/
 tags:
   - "shotonnikon"
   - "review"

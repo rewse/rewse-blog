@@ -1,5 +1,7 @@
 ---
 date: "2025-05-03 16:31:56+09:00"
+aliases:
+  - /blog/five-year-old-cat/
 tags:
   - "shotonnikon"
   - "cat"

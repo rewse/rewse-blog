@@ -1,5 +1,7 @@
 ---
 date: "2024-04-21 18:38:17+09:00"
+aliases:
+  - /blog/bought-portal/
 tags:
   - "software"
   - "review"

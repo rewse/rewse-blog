@@ -1,5 +1,7 @@
 ---
 date: "2024-01-17 20:31:28+09:00"
+aliases:
+  - /blog/bought-nike-air-max-97/
 tags:
   - "shotonnikon"
   - "fashion"

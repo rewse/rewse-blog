@@ -1,5 +1,7 @@
 ---
 date: "2022-05-03 11:45:52+09:00"
+aliases:
+  - /blog/olive-way-8th-avenue-seattle-wa-usa/
 tags:
   - "shotoniphone"
   - "usa"

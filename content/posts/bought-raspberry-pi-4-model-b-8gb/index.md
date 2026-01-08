@@ -1,5 +1,7 @@
 ---
 date: "2022-11-09 18:50:19+09:00"
+aliases:
+  - /blog/bought-raspberry-pi-4-model-b-8gb/
 tags:
   - "shotonnikon"
   - "hardware"

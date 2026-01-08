@@ -1,5 +1,7 @@
 ---
 date: "2024-03-20 17:45:28+09:00"
+aliases:
+  - /blog/stayed-grand-hyatt-seattle/
 tags:
   - "shotonnikon"
   - "review"

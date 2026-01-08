@@ -1,6 +1,8 @@
 ---
 title: "Kiroを使ってZennの執筆効率と品質を改善する"
 date: "2025-11-06T02:51:00+09:00"
+aliases:
+  - /blog/kiro-zenn-writing-efficiency-improvement/
 tags:
   - "software"
   - "kiro"

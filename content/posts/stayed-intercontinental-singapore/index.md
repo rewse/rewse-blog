@@ -1,5 +1,7 @@
 ---
 date: "2022-06-30 18:50:57+09:00"
+aliases:
+  - /blog/stayed-intercontinental-singapore/
 tags:
   - "shotoniphone"
   - "review"

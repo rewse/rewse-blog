@@ -1,5 +1,7 @@
 ---
 date: "2024-03-10 17:35:56+09:00"
+aliases:
+  - /blog/stayed-hyatt-regency-sydney/
 tags:
   - "australia"
   - "shotoniphone"

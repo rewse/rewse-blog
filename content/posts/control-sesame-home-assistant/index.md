@@ -1,5 +1,7 @@
 ---
 date: "2022-01-19 19:13:51+09:00"
+aliases:
+  - /blog/control-sesame-home-assistant/
 tags:
   - "software"
   - "linux"

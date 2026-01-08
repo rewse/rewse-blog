@@ -1,5 +1,7 @@
 ---
 date: "2022-05-09 18:38:03+09:00"
+aliases:
+  - /blog/stayed-hyatt-at-olive-8/
 tags:
   - "shotoniphone"
   - "review"

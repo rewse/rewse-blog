@@ -1,5 +1,7 @@
 ---
 date: "2022-10-05 20:31:33+09:00"
+aliases:
+  - /blog/install-ubiquiti-unifi-network-application-amazon-ec2/
 tags:
   - "software"
   - "ubiquiti"

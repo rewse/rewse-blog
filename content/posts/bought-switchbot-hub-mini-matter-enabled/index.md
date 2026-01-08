@@ -1,5 +1,7 @@
 ---
 date: "2024-12-27 22:02:44+09:00"
+aliases:
+  - /blog/bought-switchbot-hub-mini-matter-enabled/
 tags:
   - "shotonnikon"
   - "hardware"

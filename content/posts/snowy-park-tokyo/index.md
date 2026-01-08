@@ -1,5 +1,7 @@
 ---
 date: "2022-01-07 00:01:06+09:00"
+aliases:
+  - /blog/snowy-park-tokyo/
 tags:
   - "shotoniphone"
 title: "Snowy Park in Tokyo"

@@ -1,5 +1,7 @@
 ---
 date: "2022-08-29 19:15:00+09:00"
+aliases:
+  - /blog/required-documents-procedures-departure-japan-entry-singapore/
 tags:
   - "flight"
   - "singapore"

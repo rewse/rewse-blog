@@ -1,5 +1,7 @@
 ---
 date: "2024-12-31 14:17:49+09:00"
+aliases:
+  - /blog/desk-recipe-2024/
 tags:
   - "itemonaliexpress"
   - "hardware"

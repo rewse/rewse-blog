@@ -1,5 +1,7 @@
 ---
 date: "2022-05-21 15:43:40+09:00"
+aliases:
+  - /blog/california-street-san-francisco-ca-usa/
 tags:
   - "shotoniphone"
   - "usa"

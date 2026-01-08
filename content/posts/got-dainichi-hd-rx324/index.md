@@ -1,5 +1,7 @@
 ---
 date: "2024-12-22 22:08:35+09:00"
+aliases:
+  - /blog/got-dainichi-hd-rx324/
 tags:
   - "shotonnikon"
   - "review"

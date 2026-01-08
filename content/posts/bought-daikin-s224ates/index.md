@@ -1,5 +1,7 @@
 ---
 date: "2024-08-12 22:38:33+09:00"
+aliases:
+  - /blog/bought-daikin-s224ates/
 tags:
   - "shotonnikon"
   - "review"

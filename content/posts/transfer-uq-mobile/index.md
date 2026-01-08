@@ -1,5 +1,7 @@
 ---
 date: "2024-01-06 18:53:24+09:00"
+aliases:
+  - /blog/transfer-uq-mobile/
 tags:
   - "review"
   - "phone"

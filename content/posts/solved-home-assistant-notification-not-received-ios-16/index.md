@@ -1,5 +1,7 @@
 ---
 date: "2022-09-18 17:39:00+09:00"
+aliases:
+  - /blog/solved-home-assistant-notification-not-received-ios-16/
 tags:
   - "software"
   - "homeautomation"

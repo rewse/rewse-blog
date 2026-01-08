@@ -1,5 +1,7 @@
 ---
 date: "2024-08-15 23:18:42+09:00"
+aliases:
+  - /blog/bought-silicon-power-ace-a58-sp004tbss3a58a25/
 tags:
   - "hardware"
   - "review"

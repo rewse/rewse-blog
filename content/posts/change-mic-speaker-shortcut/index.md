@@ -1,5 +1,7 @@
 ---
 date: "2022-01-13 00:08:08+09:00"
+aliases:
+  - /blog/change-mic-speaker-shortcut/
 tags:
   - "mac"
 title: "Macのマイクとスピーカーをまとめてショートカットで変更する方法"

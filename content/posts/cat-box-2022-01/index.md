@@ -1,5 +1,7 @@
 ---
 date: "2022-01-24 11:14:07+09:00"
+aliases:
+  - /blog/cat-box-2022-01/
 tags:
   - "shotoniphone"
   - "cat"

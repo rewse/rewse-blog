@@ -1,5 +1,7 @@
 ---
 date: "2024-12-25 18:50:34+09:00"
+aliases:
+  - /blog/solved-bluetooth-communication-raspberry-pi-not-reaching-interrupted/
 tags:
   - "hardware"
   - "troubleshooting"

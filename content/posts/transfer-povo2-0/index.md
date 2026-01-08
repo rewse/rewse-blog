@@ -1,5 +1,7 @@
 ---
 date: "2022-09-16 08:40:00+09:00"
+aliases:
+  - /blog/transfer-povo2-0/
 tags:
   - "review"
   - "phone"

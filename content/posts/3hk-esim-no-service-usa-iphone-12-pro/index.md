@@ -1,5 +1,7 @@
 ---
 date: "2022-04-25 20:58:47+09:00"
+aliases:
+  - /blog/3hk-esim-no-service-usa-iphone-12-pro/
 tags:
   - "usa"
   - "phone"

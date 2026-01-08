@@ -1,5 +1,7 @@
 ---
 date: "2022-05-18 12:26:49+09:00"
+aliases:
+  - /blog/stayed-sheraton-palo-alto/
 tags:
   - "shotoniphone"
   - "review"

@@ -1,5 +1,7 @@
 ---
 date: "2022-10-25 20:05:38+09:00"
+aliases:
+  - /blog/bought-new-balance-90-60/
 tags:
   - "shotonnikon"
   - "fashion"

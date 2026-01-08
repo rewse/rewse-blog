@@ -1,5 +1,7 @@
 ---
 date: "2022-11-14 13:44:49+09:00"
+aliases:
+  - /blog/ubiquiti-unifi-udm-se-review-software/
 tags:
   - "shotonnikon"
   - "ubiquiti"

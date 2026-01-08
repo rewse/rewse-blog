@@ -1,5 +1,7 @@
 ---
 date: "2022-05-12 18:17:05+09:00"
+aliases:
+  - /blog/experienced-bellevue-indoor-gun-range/
 tags:
   - "shotoniphone"
   - "review"

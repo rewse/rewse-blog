@@ -1,5 +1,7 @@
 ---
 date: "2022-02-15 20:34:42+09:00"
+aliases:
+  - /blog/got-paypay-card-canceled-yahoo-card/
 tags:
   - "shotoniphone"
   - "review"

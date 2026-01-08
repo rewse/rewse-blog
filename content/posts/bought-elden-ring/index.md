@@ -1,5 +1,7 @@
 ---
 date: "2022-08-18 09:47:20+09:00"
+aliases:
+  - /blog/bought-elden-ring/
 tags:
   - "itemonamazon"
   - "game"

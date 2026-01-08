@@ -1,5 +1,7 @@
 ---
 date: "2024-01-15 21:18:37+09:00"
+aliases:
+  - /blog/bought-padrone-bl-backzip-boots/
 tags:
   - "shotonnikon"
   - "fashion"
