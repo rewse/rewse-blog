@@ -1,5 +1,7 @@
 ---
 date: "2022-01-28 17:29:54+09:00"
+aliases:
+  - /blog/bought-petwant-6-meal-pet-feeder/
 tags:
   - "review"
   - "cat"

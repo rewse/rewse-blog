@@ -1,5 +1,7 @@
 ---
 date: "2024-01-08 22:57:23+09:00"
+aliases:
+  - /blog/bought-apple-iphone-15-pro/
 tags:
   - "hardware"
   - "apple"

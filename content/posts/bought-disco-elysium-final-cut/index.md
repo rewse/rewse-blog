@@ -1,5 +1,7 @@
 ---
 date: "2022-08-25 21:25:02+09:00"
+aliases:
+  - /blog/bought-disco-elysium-final-cut/
 tags:
   - "itemonamazon"
   - "game"

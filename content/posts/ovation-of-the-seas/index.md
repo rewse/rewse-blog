@@ -1,5 +1,7 @@
 ---
 date: "2024-03-20 21:15:02+09:00"
+aliases:
+  - /blog/ovation-of-the-seas/
 tags:
   - "australia"
   - "shotoniphone"

@@ -1,5 +1,7 @@
 ---
 date: "2022-09-14 15:17:19+09:00"
+aliases:
+  - /blog/bought-splatoon-3/
 tags:
   - "itemonamazon"
   - "game"

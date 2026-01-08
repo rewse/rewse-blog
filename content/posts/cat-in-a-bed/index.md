@@ -1,5 +1,7 @@
 ---
 date: "2022-10-27 21:13:14+09:00"
+aliases:
+  - /blog/cat-in-a-bed/
 tags:
   - "shotoniphone"
   - "cat"

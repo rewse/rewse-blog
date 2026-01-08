@@ -1,5 +1,7 @@
 ---
 date: "2024-01-04 14:35:22+09:00"
+aliases:
+  - /blog/bought-p-31-oversole-black-edition-7cm/
 tags:
   - "shotonnikon"
   - "fashion"

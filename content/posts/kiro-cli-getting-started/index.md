@@ -1,6 +1,8 @@
 ---
 title: "はじめての Kiro CLI: インストールから基本操作まで"
 date: "2025-11-19T10:59:00+09:00"
+aliases:
+  - /blog/kiro-cli-getting-started/
 tags:
   - "software"
   - "kiro"

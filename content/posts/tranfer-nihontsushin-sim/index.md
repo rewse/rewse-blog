@@ -1,5 +1,7 @@
 ---
 date: "2024-01-06 19:31:15+09:00"
+aliases:
+  - /blog/tranfer-nihontsushin-sim/
 tags:
   - "review"
   - "phone"

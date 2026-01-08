@@ -1,5 +1,7 @@
 ---
 date: "2022-09-10 16:55:00+09:00"
+aliases:
+  - /blog/required-documents-procedures-business-trip-singapore-return-japan/
 tags:
   - "flight"
   - "singapore"

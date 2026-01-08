@@ -1,5 +1,7 @@
 ---
 date: "2022-05-15 03:10:51+09:00"
+aliases:
+  - /blog/alaska-airlines-b737-900er/
 tags:
   - "flight"
   - "shotoniphone"

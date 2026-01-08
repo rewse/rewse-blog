@@ -1,5 +1,7 @@
 ---
 date: "2024-12-23 21:50:50+09:00"
+aliases:
+  - /blog/bought-anker-usb-c-hub-14-in-1-triple-display/
 tags:
   - "itemonamazon"
   - "shotonnikon"

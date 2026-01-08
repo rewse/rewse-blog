@@ -1,5 +1,7 @@
 ---
 date: "2022-05-30 17:52:38+09:00"
+aliases:
+  - /blog/bought-ubiquiti-unifi-access-point-wifi-u6-lite/
 tags:
   - "shotonnikon"
   - "ubiquiti"

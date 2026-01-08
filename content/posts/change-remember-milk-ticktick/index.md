@@ -1,5 +1,7 @@
 ---
 date: "2024-03-25 21:35:23+09:00"
+aliases:
+  - /blog/change-remember-milk-ticktick/
 tags:
   - "software"
   - "review"

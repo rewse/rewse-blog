@@ -1,5 +1,7 @@
 ---
 date: "2024-05-12 23:50:15+09:00"
+aliases:
+  - /blog/bought-raspberry-pi-5/
 tags:
   - "shotonnikon"
   - "hardware"

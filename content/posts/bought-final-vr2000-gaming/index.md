@@ -1,5 +1,7 @@
 ---
 date: "2024-01-04 15:16:15+09:00"
+aliases:
+  - /blog/bought-final-vr2000-gaming/
 tags:
   - "audio"
   - "review"

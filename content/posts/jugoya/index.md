@@ -1,5 +1,7 @@
 ---
 date: "2022-09-10 19:53:40+09:00"
+aliases:
+  - /blog/jugoya/
 tags:
   - "shotonnikon"
 title: "十五夜"

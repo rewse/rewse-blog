@@ -1,5 +1,7 @@
 ---
 date: "2022-04-28 17:37:10+09:00"
+aliases:
+  - /blog/bought-gl-inet-gl-ar750s-ext-slate/
 tags:
   - "hardware"
   - "review"

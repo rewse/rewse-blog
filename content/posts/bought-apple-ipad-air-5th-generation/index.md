@@ -1,5 +1,7 @@
 ---
 date: "2022-11-28 14:52:31+09:00"
+aliases:
+  - /blog/bought-apple-ipad-air-5th-generation/
 tags:
   - "hardware"
   - "apple"

@@ -1,5 +1,7 @@
 ---
 date: "2024-01-03 17:40:48+09:00"
+aliases:
+  - /blog/bought-shure-aonic-50-gen-2/
 tags:
   - "audio"
   - "shotonnikon"

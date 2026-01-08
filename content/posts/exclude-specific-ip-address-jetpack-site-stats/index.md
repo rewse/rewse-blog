@@ -1,5 +1,7 @@
 ---
 date: "2022-02-01 23:57:38+09:00"
+aliases:
+  - /blog/exclude-specific-ip-address-jetpack-site-stats/
 tags:
   - "software"
   - "linux"

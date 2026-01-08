@@ -1,5 +1,7 @@
 ---
 date: "2022-07-11 16:34:44+09:00"
+aliases:
+  - /blog/check-points-airalo-esim-no-service/
 tags:
   - "singapore"
   - "phone"

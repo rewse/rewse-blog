@@ -1,5 +1,7 @@
 ---
 date: "2022-06-02 21:05:51+09:00"
+aliases:
+  - /blog/cat-ps5/
 tags:
   - "game"
   - "shotoniphone"

@@ -1,5 +1,7 @@
 ---
 date: "2024-12-22 17:55:15+09:00"
+aliases:
+  - /blog/bought-texcy-luxe-tu-7044/
 tags:
   - "shotonnikon"
   - "fashion"

@@ -1,5 +1,7 @@
 ---
 date: "2022-05-23 18:10:00+09:00"
+aliases:
+  - /blog/contracted-house-cleaning-service-casy/
 tags:
   - "review"
 title: "掃除代行サービスのCaSyを契約"

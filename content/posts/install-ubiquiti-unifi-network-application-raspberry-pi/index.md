@@ -1,5 +1,7 @@
 ---
 date: "2022-07-27 20:42:10+09:00"
+aliases:
+  - /blog/install-ubiquiti-unifi-network-application-raspberry-pi/
 tags:
   - "software"
   - "ubiquiti"

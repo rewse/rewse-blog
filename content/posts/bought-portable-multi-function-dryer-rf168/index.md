@@ -1,5 +1,7 @@
 ---
 date: "2022-08-22 18:22:04+09:00"
+aliases:
+  - /blog/bought-portable-multi-function-dryer-rf168/
 tags:
   - "review"
   - "shotoniphone"

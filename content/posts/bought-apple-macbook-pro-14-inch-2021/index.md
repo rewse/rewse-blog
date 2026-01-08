@@ -1,5 +1,7 @@
 ---
 date: "2022-07-07 20:00:19+09:00"
+aliases:
+  - /blog/bought-apple-macbook-pro-14-inch-2021/
 tags:
   - "hardware"
   - "apple"

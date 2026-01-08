@@ -1,5 +1,7 @@
 ---
 date: "2024-12-28 17:16:05+09:00"
+aliases:
+  - /blog/resolved-facebook-only-shows-unrelated-pages-groups/
 tags:
   - "troubleshooting"
 title: '[解決済み] Facebookで関係のないページやグループばかり出てくる'

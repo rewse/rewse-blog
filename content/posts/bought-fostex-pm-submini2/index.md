@@ -1,5 +1,7 @@
 ---
 date: "2024-08-28 18:43:44+09:00"
+aliases:
+  - /blog/bought-fostex-pm-submini2/
 tags:
   - "audio"
   - "shotonnikon"

@@ -1,5 +1,7 @@
 ---
 date: "2023-12-24 17:36:48+09:00"
+aliases:
+  - /blog/bought-alan-wake-2/
 tags:
   - "game"
   - "review"

@@ -1,5 +1,7 @@
 ---
 date: "2024-05-18 22:15:38+09:00"
+aliases:
+  - /blog/open-jre-bank/
 tags:
   - "shotonnikon"
   - "review"

@@ -1,5 +1,7 @@
 ---
 date: "2024-12-27 13:16:03+09:00"
+aliases:
+  - /blog/play-merge-cooking-theme-restaurant/
 tags:
   - "game"
   - "review"

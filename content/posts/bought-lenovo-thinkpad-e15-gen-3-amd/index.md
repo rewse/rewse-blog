@@ -1,5 +1,7 @@
 ---
 date: "2022-01-22 16:09:56+09:00"
+aliases:
+  - /blog/bought-lenovo-thinkpad-e15-gen-3-amd/
 tags:
   - "hardware"
   - "review"

@@ -1,5 +1,7 @@
 ---
 date: "2023-12-15 17:29:53+09:00"
+aliases:
+  - /blog/bought-alan-wake-remastered/
 tags:
   - "game"
   - "review"

@@ -1,5 +1,7 @@
 ---
 date: "2022-04-17 20:18:17+09:00"
+aliases:
+  - /blog/required-documents-procedures-departure-japan-entry-usa/
 tags:
   - "flight"
   - "shotoniphone"

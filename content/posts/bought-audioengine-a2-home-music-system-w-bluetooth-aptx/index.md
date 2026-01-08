@@ -1,5 +1,7 @@
 ---
 date: "2024-08-15 18:03:26+09:00"
+aliases:
+  - /blog/bought-audioengine-a2-home-music-system-w-bluetooth-aptx/
 tags:
   - "audio"
   - "review"

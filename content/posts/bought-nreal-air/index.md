@@ -1,5 +1,7 @@
 ---
 date: "2022-10-07 19:07:39+09:00"
+aliases:
+  - /blog/bought-nreal-air/
 tags:
   - "shotonnikon"
   - "hardware"

@@ -1,5 +1,7 @@
 ---
 date: "2022-09-14 19:38:37+09:00"
+aliases:
+  - /blog/bought-obsbot-meet-4k/
 tags:
   - "hardware"
   - "review"

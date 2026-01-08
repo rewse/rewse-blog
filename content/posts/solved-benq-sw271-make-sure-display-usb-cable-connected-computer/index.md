@@ -1,5 +1,7 @@
 ---
 date: "2023-03-21 11:26:22+09:00"
+aliases:
+  - /blog/solved-benq-sw271-make-sure-display-usb-cable-connected-computer/
 tags:
   - "troubleshooting"
 title: '[解決済み] BenQ SW271 が「BenQディスプレイのUSBケーブルがコンピュータに接続されていることを確認してください」エラー'

@@ -1,5 +1,7 @@
 ---
 date: "2023-04-25 20:50:27+09:00"
+aliases:
+  - /blog/got-luxury-card-mastercard-titanium-card/
 tags:
   - "shotonnikon"
   - "review"

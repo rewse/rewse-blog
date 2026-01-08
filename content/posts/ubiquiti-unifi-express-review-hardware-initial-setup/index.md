@@ -1,5 +1,7 @@
 ---
 date: "2024-02-12 18:02:26+09:00"
+aliases:
+  - /blog/ubiquiti-unifi-express-review-hardware-initial-setup/
 tags:
   - "shotonnikon"
   - "ubiquiti"

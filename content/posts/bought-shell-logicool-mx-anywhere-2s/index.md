@@ -1,5 +1,7 @@
 ---
 date: "2022-06-15 22:06:06+09:00"
+aliases:
+  - /blog/bought-shell-logicool-mx-anywhere-2s/
 tags:
   - "hardware"
   - "review"

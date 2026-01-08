@@ -1,5 +1,7 @@
 ---
 date: "2024-03-15 22:58:23+09:00"
+aliases:
+  - /blog/stayed-hyatt-place-san-carlos/
 tags:
   - "shotoniphone"
   - "review"

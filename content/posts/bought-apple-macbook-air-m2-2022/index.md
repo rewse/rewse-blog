@@ -1,5 +1,7 @@
 ---
 date: "2022-10-23 20:21:00+09:00"
+aliases:
+  - /blog/bought-apple-macbook-air-m2-2022/
 tags:
   - "hardware"
   - "apple"

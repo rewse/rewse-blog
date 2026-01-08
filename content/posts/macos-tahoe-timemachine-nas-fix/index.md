@@ -1,6 +1,8 @@
 ---
 title: "[解決済み] macOS Tahoe でNASへの Time Machine 新規バックアップができない"
 date: "2025-12-15T18:14:00+09:00"
+aliases:
+  - /blog/macos-tahoe-timemachine-nas-fix/
 tags:
   - mac
   - troubleshooting

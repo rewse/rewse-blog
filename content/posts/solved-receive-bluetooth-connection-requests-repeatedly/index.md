@@ -1,5 +1,7 @@
 ---
 date: "2022-01-25 20:36:56+09:00"
+aliases:
+  - /blog/solved-receive-bluetooth-connection-requests-repeatedly/
 tags:
   - "troubleshooting"
   - "mac"

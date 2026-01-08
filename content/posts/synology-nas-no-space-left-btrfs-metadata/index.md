@@ -1,6 +1,8 @@
 ---
 title: "[解決済み] Synology NAS で容量に余裕があるのに「No space left on device」エラーが発生"
 date: "2025-11-02T01:18:00+09:00"
+aliases:
+  - /blog/synology-nas-no-space-left-btrfs-metadata/
 tags:
   - "troubleshooting"
 categories:

@@ -1,5 +1,7 @@
 ---
 date: "2022-04-06 19:50:31+09:00"
+aliases:
+  - /blog/stayed-kimpton-shinjuku-tokyo/
 tags:
   - "shotoniphone"
   - "review"

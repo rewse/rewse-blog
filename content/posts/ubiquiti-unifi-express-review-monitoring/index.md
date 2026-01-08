@@ -1,5 +1,7 @@
 ---
 date: "2024-03-17 17:26:57+09:00"
+aliases:
+  - /blog/ubiquiti-unifi-express-review-monitoring/
 tags:
   - "ubiquiti"
   - "hardware"

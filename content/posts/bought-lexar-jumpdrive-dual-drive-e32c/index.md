@@ -1,5 +1,7 @@
 ---
 date: "2022-02-21 19:26:47+09:00"
+aliases:
+  - /blog/bought-lexar-jumpdrive-dual-drive-e32c/
 tags:
   - "hardware"
   - "review"

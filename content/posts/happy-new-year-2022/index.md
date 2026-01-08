@@ -1,5 +1,7 @@
 ---
 date: "2022-01-01 17:17:02+09:00"
+aliases:
+  - /blog/happy-new-year-2022/
 tags:
   - "shotonnikon"
 title: "Happy New Year"

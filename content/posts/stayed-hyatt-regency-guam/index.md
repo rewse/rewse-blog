@@ -1,5 +1,7 @@
 ---
 date: "2022-08-15 20:20:53+09:00"
+aliases:
+  - /blog/stayed-hyatt-regency-guam/
 tags:
   - "shotoniphone"
   - "review"

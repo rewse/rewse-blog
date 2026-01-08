@@ -1,5 +1,7 @@
 ---
 date: "2024-08-15 21:01:24+09:00"
+aliases:
+  - /blog/bought-zara-vibram-leather-sandal/
 tags:
   - "shotonnikon"
   - "fashion"

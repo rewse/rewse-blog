@@ -1,5 +1,7 @@
 ---
 date: "2022-02-22 21:22:00+09:00"
+aliases:
+  - /blog/super-cat-day/
 tags:
   - "shotonnikon"
   - "cat"

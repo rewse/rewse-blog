@@ -1,5 +1,7 @@
 ---
 date: "2022-11-21 17:37:06+09:00"
+aliases:
+  - /blog/how-build-site-vpn-ubiquiti-unifi-udm-se-aws/
 tags:
   - "hardware"
   - "software"
