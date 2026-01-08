@@ -1,5 +1,6 @@
 {{/* Amazon Product Shortcode - Simple and Clean Design with Fallback */}}
-<link rel="stylesheet" href="{{ .Site.BaseURL }}css/amazon.css">
+{{ $amazonCSS := resources.Get "css/amazon.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $amazonCSS.RelPermalink }}">
 
 {{- $tag := .Site.Params.amazonJpAffiliate -}}
 {{- $asin := .Get "asin" -}}
