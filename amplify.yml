@@ -1,22 +1,33 @@
 version: 1
+env:
+  variables:
+    HUGO_VERSION: 0.154.2
+    TZ: Asia/Tokyo
+    HUGO_CACHEDIR: ${PWD}/.hugo
 frontend:
   phases:
     preBuild:
       commands:
-        - git submodule update --init --recursive
-        - curl -L -o hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v0.154.2/hugo_extended_0.154.2_Linux-64bit.tar.gz
-        - tar -xf hugo.tar.gz hugo
-        - chmod +x hugo
-        - export PATH=$PWD:$PATH
-        - ./hugo version
+        - echo "Creating directory for user-specific executable files."
+        - mkdir -p "${HOME}/.local"
+        - echo "Installing Hugo ${HUGO_VERSION}."
+        - curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+        - mkdir "${HOME}/.local/hugo"
+        - tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+        - rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+        - export PATH="${HOME}/.local/hugo:${PATH}"
+        - echo "Hugo:" $(hugo version)
     build:
       commands:
-        - export PATH=$PWD:$PATH
-        - ./hugo --gc --minify
+        - echo "Building site."
+        - hugo --gc --minify
   artifacts:
     baseDirectory: public
     files:
       - '**/*'
+  cache:
+    paths:
+      - ${HUGO_CACHEDIR}/**/*
   cache:
     paths:
       - node_modules/**/*
