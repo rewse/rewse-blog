@@ -113,13 +113,13 @@
    ======================================== */
 
 /* Right align social share buttons above Related section */
-#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
+#main-content > article .article-content + section {
     margin-bottom: 80px !important;
     justify-content: flex-start !important;
 }
 
 /* Add "Shared by" label before social share buttons */
-#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
+#main-content > article .article-content + section:before {
     content: "Share with";
     display: flex;
     align-items: center;
@@ -127,23 +127,23 @@
     font-size: 1rem;
     color: rgb(var(--color-neutral-500));
 }
-.dark #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl::before {
+.dark #main-content > article .article-content + section:before {
     color: rgb(var(--color-neutral-400));
 }
 
 /* Make social icons background transparent */
-#main-content > article section.flex.flex-row.flex-wrap a.m-1.rounded {
+#main-content > article .article-content + section a {
     color: rgb(var(--color-neutral-500));
     background-color: transparent !important;
 }
-.dark #main-content > article section.flex.flex-row.flex-wrap a.m-1.rounded {
+.dark #main-content > article .article-content + section a {
     color: rgb(var(--color-neutral-400));
     background-color: transparent !important;
 }
-#main-content > article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
+#main-content > article .article-content + section a:hover {
     background-color: rgb(var(--color-primary-500)) !important;
 }
-.dark #main-content > article section.flex.flex-row.flex-wrap a.m-1.rounded:hover {
+.dark #main-content > article .article-content + section a:hover {
     background-color: rgb(var(--color-primary-400)) !important;
 }
 
