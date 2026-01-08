@@ -2,7 +2,6 @@ version: 1
 env:
   variables:
     HUGO_VERSION: 0.154.2
-    HUGO_NUMWORKERMULTIPLIER: 8
     TZ: Asia/Tokyo
     HUGO_CACHEDIR: ${PWD}/.hugo
 frontend:
