@@ -2,7 +2,8 @@
 title: "はじめての Kiro CLI: インストールから基本操作まで"
 date: "2025-11-19T10:59:00+09:00"
 tags:
-  - software
+  - "software"
+  - "kiro"
 categories:
   - "Computer"
 description: "Kiro CLI のインストール方法、初回セットアップ、MCPサーバーとSteeringの設定、OSトラブルシューティングや Custom Agent 作成などの基本操作について"
