@@ -45,14 +45,14 @@ code:
   copied: "Copied"
 
 error:
-  404_title: "ページが見つかりませんでした。 :confused:"
-  404_error: "404エラー"
-  404_description: "ご要望のページは存在しないようです。"
+  404_title: "Page Not Found :pleading_face:"
+  404_error: "Error 404"
+  404_description: "リクエストされたページは存在しないようです。"
 
 footer:
   dark_appearance: "Switch to dark appearance"
   light_appearance: "Switch to light appearance"
-  powered_by: "Powered by {{ .Hugo }} &amp; {{ .Theme }}"
+  powered_by: 'Powered by {{ .Hugo }}, {{ .Theme }} & <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://aws.amazon.com/jp/amplify/" target="_blank" rel="noopener noreferrer">AWS Amplify</a>'
 
 list:
   externalurl_title: "Link to external site"
