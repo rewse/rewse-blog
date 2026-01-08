@@ -73,7 +73,7 @@ article:
   layoutBackgroundHeaderSpace: true # only used when heroStyle equals background
   showBreadcrumbs: false
   showDraftLabel: true
-  showEdit: true
+  showEdit: false
   editURL: "https://github.com/rewse/rewse-blog/tree/main/content"
   editAppendPath: true
   seriesOpened: false
@@ -87,7 +87,7 @@ article:
   showTaxonomies: true
   showAuthorsBadges: true
   showWordCount: false
-  showZenMode: true
+  showZenMode: false
 
 list:
   showHero: false
