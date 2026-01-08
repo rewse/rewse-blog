@@ -1,6 +1,5 @@
 ---
 date: "2024-03-11 00:27:47+09:00"
-draft: true
 tags:
   - "ubiquiti"
   - "hardware"
