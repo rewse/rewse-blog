@@ -96,15 +96,19 @@
    Author
    ======================================== */
 
+/* Fix author width when TOC is present */
+.min-w-0.min-h-0.max-w-fit {
+    max-width: none !important;
+}
+
 .author {
     margin: 4rem 0 !important;
-    width: calc(100% - 260px) !important;
+    width: 100% !important;
     max-width: 655px !important;
     text-align: justify !important;
 }
 @media (max-width: 1023px) {
     .author {
-        width: 100% !important;
         text-align: left !important;
     }
 }
