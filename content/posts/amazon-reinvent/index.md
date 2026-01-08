@@ -1,5 +1,7 @@
 ---
 date: "2022-04-26 20:23:59+09:00"
+aliases:
+  - /blog/amazon-reinvent/
 tags:
   - "shotoniphone"
   - "usa"

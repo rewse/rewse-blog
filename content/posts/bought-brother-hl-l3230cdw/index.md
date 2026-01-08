@@ -1,5 +1,7 @@
 ---
 date: "2022-03-15 18:34:40+09:00"
+aliases:
+  - /blog/bought-brother-hl-l3230cdw/
 tags:
   - "hardware"
   - "review"

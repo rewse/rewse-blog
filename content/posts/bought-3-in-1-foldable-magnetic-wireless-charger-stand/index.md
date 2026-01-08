@@ -1,5 +1,7 @@
 ---
 date: "2024-01-18 10:38:21+09:00"
+aliases:
+  - /blog/bought-3-in-1-foldable-magnetic-wireless-charger-stand/
 tags:
   - "hardware"
   - "review"

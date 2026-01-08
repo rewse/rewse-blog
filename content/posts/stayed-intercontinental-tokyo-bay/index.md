@@ -1,5 +1,7 @@
 ---
 date: "2022-10-18 20:40:49+09:00"
+aliases:
+  - /blog/stayed-intercontinental-tokyo-bay/
 tags:
   - "shotoniphone"
   - "review"

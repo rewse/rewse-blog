@@ -1,5 +1,7 @@
 ---
 date: "2024-12-27 16:45:19+09:00"
+aliases:
+  - /blog/bought-t-fal-ultimate-6828/
 tags:
   - "shotonnikon"
   - "review"

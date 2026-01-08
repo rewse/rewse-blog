@@ -1,5 +1,7 @@
 ---
 date: "2024-08-15 22:52:30+09:00"
+aliases:
+  - /blog/bought-cfd-mgax-cssd-s6l2tmgax/
 tags:
   - "hardware"
   - "review"

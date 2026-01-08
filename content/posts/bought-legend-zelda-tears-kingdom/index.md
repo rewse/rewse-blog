@@ -1,5 +1,7 @@
 ---
 date: "2023-05-13 19:45:39+09:00"
+aliases:
+  - /blog/bought-legend-zelda-tears-kingdom/
 tags:
   - "itemonamazon"
   - "game"

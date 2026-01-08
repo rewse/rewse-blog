@@ -1,5 +1,7 @@
 ---
 date: "2024-12-23 11:43:37+09:00"
+aliases:
+  - /blog/bought-crucial-p3-plus-gen4-nvme-ssd/
 tags:
   - "hardware"
   - "review"

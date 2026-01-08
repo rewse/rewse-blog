@@ -1,5 +1,7 @@
 ---
 date: "2022-02-09 20:39:25+09:00"
+aliases:
+  - /blog/got-ana-to-me-card-pasmo-jcb-sorachika/
 tags:
   - "shotoniphone"
   - "review"

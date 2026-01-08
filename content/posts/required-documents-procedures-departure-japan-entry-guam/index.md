@@ -1,5 +1,7 @@
 ---
 date: "2022-08-10 20:32:25+09:00"
+aliases:
+  - /blog/required-documents-procedures-departure-japan-entry-guam/
 tags:
   - "flight"
   - "shotoniphone"

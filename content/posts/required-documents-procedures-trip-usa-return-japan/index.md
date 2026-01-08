@@ -1,5 +1,7 @@
 ---
 date: "2022-08-17 12:43:30+09:00"
+aliases:
+  - /blog/required-documents-procedures-trip-usa-return-japan/
 tags:
   - "flight"
   - "shotoniphone"

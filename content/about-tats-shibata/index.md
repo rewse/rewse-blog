@@ -1,5 +1,7 @@
 ---
 date: "2021-12-24 03:07:49+09:00"
+aliases:
+  - /blog/about-tats-shibata/
 title: "About Tats Shibata"
 type: "page"
 showAuthor: false

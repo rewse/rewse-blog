@@ -1,5 +1,7 @@
 ---
 date: "2024-03-30 17:36:38+09:00"
+aliases:
+  - /blog/resolved-wordpress-auto-links-strings-beginning-pound-hashtag/
 tags:
   - "software"
   - "troubleshooting"

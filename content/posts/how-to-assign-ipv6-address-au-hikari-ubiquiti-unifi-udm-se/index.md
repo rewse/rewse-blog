@@ -1,5 +1,7 @@
 ---
 date: "2023-06-19 16:37:54+09:00"
+aliases:
+  - /blog/how-to-assign-ipv6-address-au-hikari-ubiquiti-unifi-udm-se/
 tags:
   - "hardware"
   - "ubiquiti"

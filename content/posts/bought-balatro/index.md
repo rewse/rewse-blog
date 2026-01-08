@@ -1,5 +1,7 @@
 ---
 date: "2024-04-21 21:18:29+09:00"
+aliases:
+  - /blog/bought-balatro/
 tags:
   - "game"
   - "review"

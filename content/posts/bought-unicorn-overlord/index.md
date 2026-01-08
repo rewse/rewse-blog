@@ -1,5 +1,7 @@
 ---
 date: "2024-05-04 13:49:52+09:00"
+aliases:
+  - /blog/bought-unicorn-overlord/
 tags:
   - "itemonamazon"
   - "game"

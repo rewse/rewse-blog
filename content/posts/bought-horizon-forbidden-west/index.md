@@ -1,5 +1,7 @@
 ---
 date: "2022-02-19 15:08:06+09:00"
+aliases:
+  - /blog/bought-horizon-forbidden-west/
 tags:
   - "game"
   - "review"

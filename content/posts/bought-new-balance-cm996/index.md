@@ -1,5 +1,7 @@
 ---
 date: "2022-07-20 22:15:09+09:00"
+aliases:
+  - /blog/bought-new-balance-cm996/
 tags:
   - "shotoniphone"
   - "fashion"

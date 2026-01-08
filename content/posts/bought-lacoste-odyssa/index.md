@@ -1,5 +1,7 @@
 ---
 date: "2023-04-28 19:53:00+09:00"
+aliases:
+  - /blog/bought-lacoste-odyssa/
 tags:
   - "shotonnikon"
   - "fashion"

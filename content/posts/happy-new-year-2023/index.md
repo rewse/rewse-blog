@@ -1,5 +1,7 @@
 ---
 date: "2023-01-01 13:03:00+09:00"
+aliases:
+  - /blog/happy-new-year-2023/
 tags:
   - "shotonnikon"
 title: "Happy New Year"

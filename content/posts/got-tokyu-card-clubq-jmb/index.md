@@ -1,5 +1,7 @@
 ---
 date: "2024-08-23 16:53:42+09:00"
+aliases:
+  - /blog/got-tokyu-card-clubq-jmb/
 tags:
   - "shotonnikon"
   - "review"

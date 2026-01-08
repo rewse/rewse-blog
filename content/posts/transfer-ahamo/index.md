@@ -1,5 +1,7 @@
 ---
 date: "2022-08-24 19:03:57+09:00"
+aliases:
+  - /blog/transfer-ahamo/
 tags:
   - "shotoniphone"
   - "review"

@@ -1,5 +1,7 @@
 ---
 date: "2022-09-12 21:33:51+09:00"
+aliases:
+  - /blog/stayed-village-hotel-sentosa/
 tags:
   - "shotoniphone"
   - "review"

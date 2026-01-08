@@ -1,5 +1,7 @@
 ---
 date: "2022-01-07 17:55:26+09:00"
+aliases:
+  - /blog/change-copied-image-format-tiff/
 tags:
   - "troubleshooting"
   - "mac"

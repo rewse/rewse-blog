@@ -1,5 +1,7 @@
 ---
 date: "2024-08-25 22:07:43+09:00"
+aliases:
+  - /blog/cat-bangkok/
 tags:
   - "shotoniphone"
   - "cat"

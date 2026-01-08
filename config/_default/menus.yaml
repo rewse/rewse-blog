@@ -7,11 +7,11 @@ main:
     weight: 10
 
   - name: "About"
-    pageRef: "pages/about-tats-shibata/"
+    pageRef: "about-tats-shibata/"
     weight: 20
 
   - name: "Uses"
-    pageRef: "pages/uses"
+    pageRef: "uses"
     weight: 30
 
   - name: "External"

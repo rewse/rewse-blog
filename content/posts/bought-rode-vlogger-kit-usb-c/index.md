@@ -1,5 +1,7 @@
 ---
 date: "2023-12-16 17:38:06+09:00"
+aliases:
+  - /blog/bought-rode-vlogger-kit-usb-c/
 tags:
   - "shotonnikon"
   - "review"

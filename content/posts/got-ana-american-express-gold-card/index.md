@@ -1,5 +1,7 @@
 ---
 date: "2022-09-17 16:37:22+09:00"
+aliases:
+  - /blog/got-ana-american-express-gold-card/
 tags:
   - "shotoniphone"
   - "review"

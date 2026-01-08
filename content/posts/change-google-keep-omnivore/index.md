@@ -1,5 +1,7 @@
 ---
 date: "2024-03-31 18:01:29+09:00"
+aliases:
+  - /blog/change-google-keep-omnivore/
 tags:
   - "software"
   - "review"
@@ -168,6 +170,8 @@ id: {{{id}}}
 title: ">"
   {{{title}}}
 date: "{{#formatDate}}{{dateSaved}},"yyyy-MM-dd"{{/formatDate}}"
+aliases:
+  - /blog/change-google-keep-omnivore/
 {{#datePublished}}
 date_published: {{#formatDate}}{{datePublished}},"yyyy-MM-dd"{{/formatDate}}
 {{/datePublished}}

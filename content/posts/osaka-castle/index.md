@@ -1,5 +1,7 @@
 ---
 date: "2023-01-08 12:27:45+09:00"
+aliases:
+  - /blog/osaka-castle/
 tags:
   - "shotoniphone"
 title: "大阪城"

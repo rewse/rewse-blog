@@ -1,5 +1,7 @@
 ---
 date: "2024-08-13 20:38:54+09:00"
+aliases:
+  - /blog/bought-new-balance-m2002r-gtx-d/
 tags:
   - "shotonnikon"
   - "fashion"

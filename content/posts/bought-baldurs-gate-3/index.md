@@ -1,5 +1,7 @@
 ---
 date: "2023-12-30 13:23:06+09:00"
+aliases:
+  - /blog/bought-baldurs-gate-3/
 tags:
   - "game"
   - "review"

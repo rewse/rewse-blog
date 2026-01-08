@@ -1,5 +1,7 @@
 ---
 date: "2022-01-02 17:28:24+09:00"
+aliases:
+  - /blog/uses/
 title: "What I Use"
 type: "page"
 showDate: false

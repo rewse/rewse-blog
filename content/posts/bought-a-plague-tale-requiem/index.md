@@ -1,5 +1,7 @@
 ---
 date: "2023-07-17 18:01:53+09:00"
+aliases:
+  - /blog/bought-a-plague-tale-requiem/
 tags:
   - "itemonamazon"
   - "game"

@@ -1,5 +1,7 @@
 ---
 date: "2024-12-23 21:53:02+09:00"
+aliases:
+  - /blog/bought-royal-canin-appetite-control/
 tags:
   - "shotonnikon"
   - "review"

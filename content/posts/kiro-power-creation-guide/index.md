@@ -1,6 +1,8 @@
 ---
 title: "Home Assistant Power for Kiro を作った経験から学ぶ Kiro Power の作り方"
 date: "2025-12-10T02:12:00+09:00"
+aliases:
+  - /blog/kiro-power-creation-guide/
 tags:
   - "software"
   - "kiro"

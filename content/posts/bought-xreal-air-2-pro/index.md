@@ -1,5 +1,7 @@
 ---
 date: "2024-09-11 18:37:09+09:00"
+aliases:
+  - /blog/bought-xreal-air-2-pro/
 tags:
   - "shotonnikon"
   - "hardware"

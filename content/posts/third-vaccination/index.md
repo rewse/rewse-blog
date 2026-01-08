@@ -1,5 +1,7 @@
 ---
 date: "2022-02-08 20:11:02+09:00"
+aliases:
+  - /blog/third-vaccination/
 tags:
   - "shotoniphone"
 title: "Third Vaccination"

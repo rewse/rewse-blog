@@ -1,5 +1,7 @@
 ---
 date: "2022-11-07 17:23:02+09:00"
+aliases:
+  - /blog/ubiquiti-unifi-udm-se-review-hardware-initial-setup/
 tags:
   - "shotonnikon"
   - "ubiquiti"

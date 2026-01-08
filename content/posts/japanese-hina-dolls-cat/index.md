@@ -1,5 +1,7 @@
 ---
 date: "2022-02-13 19:05:51+09:00"
+aliases:
+  - /blog/japanese-hina-dolls-cat/
 tags:
   - "shotoniphone"
   - "cat"

@@ -1,5 +1,7 @@
 ---
 date: "2024-09-03 20:11:23+09:00"
+aliases:
+  - /blog/bought-charging-stand-ps-portal/
 tags:
   - "review"
   - "game"

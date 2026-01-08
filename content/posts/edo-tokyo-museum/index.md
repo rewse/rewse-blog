@@ -1,5 +1,7 @@
 ---
 date: "2022-03-26 22:06:07+09:00"
+aliases:
+  - /blog/edo-tokyo-museum/
 tags:
   - "shotoniphone"
 title: "江戸東京博物館"

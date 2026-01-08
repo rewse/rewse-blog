@@ -1,5 +1,7 @@
 ---
 date: "2022-09-15 18:16:57+09:00"
+aliases:
+  - /blog/tokai-kisen-tachibana-maru/
 tags:
   - "shotoniphone"
 title: "東海汽船 橘丸"

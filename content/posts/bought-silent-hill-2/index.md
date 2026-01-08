@@ -1,5 +1,7 @@
 ---
 date: "2024-12-23 00:10:21+09:00"
+aliases:
+  - /blog/bought-silent-hill-2/
 tags:
   - "game"
   - "review"
