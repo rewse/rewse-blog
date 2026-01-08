@@ -8,18 +8,21 @@ frontend:
   phases:
     preBuild:
       commands:
-        - echo "Creating directory for user-specific executable files."
+        - echo "Creating directory for user-specific executable files..."
         - mkdir -p "${HOME}/.local"
-        - echo "Installing Hugo ${HUGO_VERSION}."
+
+        - echo "Installing Hugo ${HUGO_VERSION}..."
         - curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
         - mkdir "${HOME}/.local/hugo"
         - tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
         - rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
         - export PATH="${HOME}/.local/hugo:${PATH}"
+
+        - echo "Verifying installations..."
         - echo "Hugo:" $(hugo version)
     build:
       commands:
-        - echo "Building site."
+        - echo "Building site..."
         - hugo --gc --minify
   artifacts:
     baseDirectory: public
@@ -28,6 +31,3 @@ frontend:
   cache:
     paths:
       - ${HUGO_CACHEDIR}/**/*
-  cache:
-    paths:
-      - node_modules/**/*
