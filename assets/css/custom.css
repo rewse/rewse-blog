@@ -56,22 +56,6 @@
     word-break: auto-phrase !important;
 }
 
-#single_header .author {
-    width: calc(100% - 260px) !important;
-    max-width: 655px !important;
-    text-align: justify !important;
-}
-@media (max-width: 1023px) {
-    #single_header .author {
-        width: 100% !important;
-        text-align: left !important;
-    }
-}
-
-#single_header > div.flex.author > div > div {
-    line-height: 1.6 !important;
-}
-
 /* ========================================
    Table
    ======================================== */
@@ -109,17 +93,48 @@
 
 
 /* ========================================
+   Author
+   ======================================== */
+
+.author {
+    margin: 4rem 0 !important;
+    width: calc(100% - 260px) !important;
+    max-width: 655px !important;
+    text-align: justify !important;
+}
+@media (max-width: 1023px) {
+    .author {
+        width: 100% !important;
+        text-align: left !important;
+    }
+}
+
+.author > div > div {
+    line-height: 1.6 !important;
+}
+
+/* ========================================
    Social Icons
    ======================================== */
 
 /* Right align social share buttons above Related section */
-#main-content > article .article-content + section {
+#main-content > article .article-content + section,
+#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
+    width: calc(100% - 260px) !important;
+    max-width: 655px !important;
     margin-bottom: 80px !important;
-    justify-content: flex-start !important;
+    justify-content: flex-end !important;
+}
+@media (max-width: 1023px) {
+    #main-content > article .article-content + section,
+    #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
+        width: 100% !important;
+    }
 }
 
 /* Add "Shared by" label before social share buttons */
-#main-content > article .article-content + section:before {
+#main-content > article .article-content + section:before,
+#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl:before {
     content: "Share with";
     display: flex;
     align-items: center;
@@ -127,23 +142,28 @@
     font-size: 1rem;
     color: rgb(var(--color-neutral-500));
 }
-.dark #main-content > article .article-content + section:before {
+.dark #main-content > article .article-content + section:before,
+.dark #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl:before {
     color: rgb(var(--color-neutral-400));
 }
 
 /* Make social icons background transparent */
-#main-content > article .article-content + section a {
+#main-content > article .article-content + section a,
+#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl a {
     color: rgb(var(--color-neutral-500));
     background-color: transparent !important;
 }
-.dark #main-content > article .article-content + section a {
+.dark #main-content > article .article-content + section a,
+.dark #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl a {
     color: rgb(var(--color-neutral-400));
     background-color: transparent !important;
 }
-#main-content > article .article-content + section a:hover {
+#main-content > article .article-content + section a:hover,
+#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl a:hover {
     background-color: rgb(var(--color-primary-500)) !important;
 }
-.dark #main-content > article .article-content + section a:hover {
+.dark #main-content > article .article-content + section a:hover,
+.dark #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl a:hover {
     background-color: rgb(var(--color-primary-400)) !important;
 }
 
