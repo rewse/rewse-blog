@@ -3,6 +3,7 @@ title: "Kiroを使ってZennの執筆効率と品質を改善する"
 date: "2025-11-06T02:51:00+09:00"
 tags:
   - "software"
+  - "kiro"
 categories:
   - "Computer"
 description: "Kiroの Agent Stering とMCPサーバー設定を活用して、Zennの記事執筆における効率化と品質向上を実現する方法について"

@@ -2,7 +2,8 @@
 title: "Home Assistant Power for Kiro を作った経験から学ぶ Kiro Power の作り方"
 date: "2025-12-10T02:12:00+09:00"
 tags:
-  - software
+  - "software"
+  - "kiro"
 categories:
   - "Computer"
 description: "Kiro Power のMCPサーバー設定とステアリング作成、動的読み込み機能を活用したコンテキスト消費量削減とプラグイン配布の実装方法について"
