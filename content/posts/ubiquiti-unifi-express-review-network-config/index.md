@@ -16,7 +16,7 @@ categories:
 
 
 
-{{< article link="/blog/posts/ubiquiti-unifi-express-review-hardware-initial-setup/" showSummary=true compactSummary=true >}}
+[Ubiquiti Unifi Express Review Hardware Initial Setup](/blog/posts/ubiquiti-unifi-express-review-hardware-initial-setup/)
 
 
 
