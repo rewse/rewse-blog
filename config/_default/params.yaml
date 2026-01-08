@@ -66,6 +66,7 @@ article:
   showDateOnlyInArticle: false
   showDateUpdated: false
   showAuthor: true
+  showAuthorBottom: true
   showHero: true
   heroStyle: "big" # valid options: basic, big, background, thumbAndBackground
   layoutBackgroundBlur: true # only used when heroStyle equals background
@@ -86,13 +87,6 @@ article:
   showTaxonomies: true
   showAuthorsBadges: true
   showWordCount: false
-  sharingLinks:
-    - "bluesky"
-    - "facebook"
-    - "line"
-    - "linkedin"
-    - "mastodon"
-    - "twitter"
   showZenMode: true
 
 list:
