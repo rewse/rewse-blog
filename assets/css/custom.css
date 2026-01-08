@@ -188,7 +188,7 @@
 }
 
 /* Center social icons when they wrap on small screens */
-#main-content > article h1 + div > div {
+#main-content > article h1 + div.mt-3.mb-10.text-2xl > div.flex.flex-wrap {
     justify-content: center !important;
     row-gap: 0.5rem !important;
 }
