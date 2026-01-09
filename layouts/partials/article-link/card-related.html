@@ -6,7 +6,12 @@
 {{ $page := .Page }}
 {{ $featured := "" }}
 {{ $featuredURL := "" }}
-{{ $featuredURLWebp := "" }}
+{{ $featuredURLSmall := "" }}
+{{ $featuredURLLarge := "" }}
+{{ $featuredURLWebpSmall := "" }}
+{{ $featuredURLWebpLarge := "" }}
+{{ $widthSmall := 0 }}
+{{ $widthLarge := 0 }}
 {{/* frontmatter */}}
 {{ with $page }}
   {{ with .Params.featureimage }}
@@ -39,13 +44,36 @@
     {{ end }}
   {{ end }}
 
-  {{/* generate image URL if not hotlink */}}
+  {{/* generate image URLs for srcset with w descriptor (400w, 800w) */}}
   {{ if not $featuredURL }}
     {{ with $featured }}
-      {{ $featuredURL = .RelPermalink }}
       {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
-        {{ $featuredURL = (.Resize "600x").RelPermalink }}
-        {{ $featuredURLWebp = (.Resize "600x webp").RelPermalink }}
+        {{ $targetWidthSmall := 400 }}
+        {{ $targetWidthLarge := 800 }}
+        {{ $actualWidth := .Width }}
+
+        {{/* Generate small version */}}
+        {{ if ge $actualWidth $targetWidthSmall }}
+          {{ $widthSmall = $targetWidthSmall }}
+          {{ $featuredURLSmall = (.Resize (printf "%dx" $targetWidthSmall)).RelPermalink }}
+          {{ $featuredURLWebpSmall = (.Resize (printf "%dx webp" $targetWidthSmall)).RelPermalink }}
+        {{ else }}
+          {{ $widthSmall = $actualWidth }}
+          {{ $featuredURLSmall = .RelPermalink }}
+        {{ end }}
+
+        {{/* Generate large version */}}
+        {{ if ge $actualWidth $targetWidthLarge }}
+          {{ $widthLarge = $targetWidthLarge }}
+          {{ $featuredURLLarge = (.Resize (printf "%dx" $targetWidthLarge)).RelPermalink }}
+          {{ $featuredURLWebpLarge = (.Resize (printf "%dx webp" $targetWidthLarge)).RelPermalink }}
+        {{ else if gt $actualWidth $targetWidthSmall }}
+          {{ $widthLarge = $actualWidth }}
+          {{ $featuredURLLarge = .RelPermalink }}
+          {{ $featuredURLWebpLarge = (.Resize (printf "%dx webp" $actualWidth)).RelPermalink }}
+        {{ end }}
+      {{ else }}
+        {{ $featuredURL = .RelPermalink }}
       {{ end }}
     {{ end }}
   {{ end }}
@@ -54,13 +82,33 @@
 
 <article
   class="relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
-  {{ with $featuredURL }}
+  {{ if or $featuredURL $featuredURLSmall }}
     <div class="flex-none relative overflow-hidden thumbnail_card_related">
-      {{ if $featuredURLWebp }}
+      {{ if $featuredURL }}
+        {{/* Hotlinked image */}}
+        <img
+          src="{{ $featuredURL }}"
+          role="presentation"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+          class="not-prose absolute inset-0 w-full h-full object-cover">
+      {{ else if or $featuredURLWebpSmall $featuredURLWebpLarge }}
         <picture class="not-prose">
-          <source srcset="{{ $featuredURLWebp }}" type="image/webp">
+          {{ if and $featuredURLWebpSmall $featuredURLWebpLarge }}
+            <source
+              srcset="{{ $featuredURLWebpSmall }} {{ $widthSmall }}w, {{ $featuredURLWebpLarge }} {{ $widthLarge }}w"
+              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
+              type="image/webp">
+          {{ else if $featuredURLWebpSmall }}
+            <source srcset="{{ $featuredURLWebpSmall }}" type="image/webp">
+          {{ end }}
           <img
-            src="{{ $featuredURL }}"
+            {{ if and $featuredURLSmall $featuredURLLarge }}
+              srcset="{{ $featuredURLSmall }} {{ $widthSmall }}w, {{ $featuredURLLarge }} {{ $widthLarge }}w"
+              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
+            {{ end }}
+            src="{{ $featuredURLSmall }}"
             role="presentation"
             loading="lazy"
             decoding="async"
@@ -69,7 +117,11 @@
         </picture>
       {{ else }}
         <img
-          src="{{ $featuredURL }}"
+          {{ if and $featuredURLSmall $featuredURLLarge }}
+            srcset="{{ $featuredURLSmall }} {{ $widthSmall }}w, {{ $featuredURLLarge }} {{ $widthLarge }}w"
+            sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
+          {{ end }}
+          src="{{ $featuredURLSmall }}"
           role="presentation"
           loading="lazy"
           decoding="async"

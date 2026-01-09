@@ -1,0 +1,11 @@
+{{/* 
+  Background layout template override
+  Disabled image processing to avoid duplicate generation
+  Only hero layout is used in this site
+*/}}
+{{ if eq .Site.Params.homepage.layout "background" }}
+  {{/* Only process image if background layout is actually used */}}
+  {{ partial "home/background-original.html" . }}
+{{ else }}
+  {{/* Background layout not in use - skip image processing */}}
+{{ end }}

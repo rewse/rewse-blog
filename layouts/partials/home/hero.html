@@ -8,7 +8,13 @@
         <div class="absolute inset-0">
           {{ $useDefault := true }}
           {{ $homepageImage := "" }}
-          {{ $homepageImageWebp := "" }}
+          {{ $homepageImageURL := "" }}
+          {{ $homepageImageURLSmall := "" }}
+          {{ $homepageImageURLLarge := "" }}
+          {{ $homepageImageURLWebpSmall := "" }}
+          {{ $homepageImageURLWebpLarge := "" }}
+          {{ $widthSmall := 0 }}
+          {{ $widthLarge := 0 }}
           {{ with .Site.Params.defaultBackgroundImage }}
             {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
               {{ $homepageImage = resources.GetRemote . }}
@@ -31,22 +37,71 @@
             {{ with $.Params.imagePosition | default $defaultPosition }}
               {{ $style = printf "object-position: %s;" . }}
             {{ end }}
-            {{ $homepageImageURL := $homepageImage.RelPermalink }}
             {{ if not (or $disableImageOptimization (eq $homepageImage.MediaType.SubType "svg")) }}
-              {{ $homepageImageWebp = ($homepageImage.Process "webp").RelPermalink }}
+              {{ $targetWidthLarge := 2400 }}
+              {{ $targetWidthSmall := 1200 }}
+              {{ if site.Params.backgroundImageWidth }}
+                {{ $targetWidthLarge = site.Params.backgroundImageWidth }}
+                {{ $targetWidthSmall = div $targetWidthLarge 2 }}
+              {{ end }}
+              {{ $actualWidth := $homepageImage.Width }}
+
+              {{/* Generate small version */}}
+              {{ if ge $actualWidth $targetWidthSmall }}
+                {{ $widthSmall = $targetWidthSmall }}
+                {{ $homepageImageURLSmall = ($homepageImage.Resize (printf "%dx" $targetWidthSmall)).RelPermalink }}
+                {{ $homepageImageURLWebpSmall = ($homepageImage.Resize (printf "%dx webp" $targetWidthSmall)).RelPermalink }}
+              {{ else }}
+                {{ $widthSmall = $actualWidth }}
+                {{ $homepageImageURLSmall = $homepageImage.RelPermalink }}
+              {{ end }}
+
+              {{/* Generate large version */}}
+              {{ if ge $actualWidth $targetWidthLarge }}
+                {{ $widthLarge = $targetWidthLarge }}
+                {{ $homepageImageURLLarge = ($homepageImage.Resize (printf "%dx" $targetWidthLarge)).RelPermalink }}
+                {{ $homepageImageURLWebpLarge = ($homepageImage.Resize (printf "%dx webp" $targetWidthLarge)).RelPermalink }}
+              {{ else if gt $actualWidth $targetWidthSmall }}
+                {{ $widthLarge = $actualWidth }}
+                {{ $homepageImageURLLarge = $homepageImage.RelPermalink }}
+                {{ $homepageImageURLWebpLarge = ($homepageImage.Resize (printf "%dx webp" $actualWidth)).RelPermalink }}
+              {{ end }}
+            {{ else }}
+              {{ $homepageImageURL = $homepageImage.RelPermalink }}
             {{ end }}
-            {{ if $homepageImageWebp }}
+            {{ if $homepageImageURL }}
+              {{/* SVG or optimization disabled */}}
+              <img
+                class="h-full w-full object-cover nozoom mt-0 mr-0 mb-0 ml-0"
+                src="{{ $homepageImageURL }}"
+                {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
+            {{ else if or $homepageImageURLWebpSmall $homepageImageURLWebpLarge }}
               <picture class="not-prose block h-full w-full m-0 p-0">
-                <source srcset="{{ $homepageImageWebp }}" type="image/webp">
+                {{ if and $homepageImageURLWebpSmall $homepageImageURLWebpLarge }}
+                  <source
+                    srcset="{{ $homepageImageURLWebpSmall }} {{ $widthSmall }}w, {{ $homepageImageURLWebpLarge }} {{ $widthLarge }}w"
+                    sizes="100vw"
+                    type="image/webp">
+                {{ else if $homepageImageURLWebpSmall }}
+                  <source srcset="{{ $homepageImageURLWebpSmall }}" type="image/webp">
+                {{ end }}
                 <img
+                  {{ if and $homepageImageURLSmall $homepageImageURLLarge }}
+                    srcset="{{ $homepageImageURLSmall }} {{ $widthSmall }}w, {{ $homepageImageURLLarge }} {{ $widthLarge }}w"
+                    sizes="100vw"
+                  {{ end }}
+                  src="{{ $homepageImageURLSmall }}"
                   class="h-full w-full object-cover nozoom mt-0 mr-0 mb-0 ml-0"
-                  src="{{ $homepageImageURL }}"
                   {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
               </picture>
             {{ else }}
               <img
+                {{ if and $homepageImageURLSmall $homepageImageURLLarge }}
+                  srcset="{{ $homepageImageURLSmall }} {{ $widthSmall }}w, {{ $homepageImageURLLarge }} {{ $widthLarge }}w"
+                  sizes="100vw"
+                {{ end }}
+                src="{{ $homepageImageURLSmall }}"
                 class="h-full w-full object-cover nozoom mt-0 mr-0 mb-0 ml-0"
-                src="{{ $homepageImageURL }}"
                 {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
             {{ end }}
             {{ if not $disableHeroImageFilter }}
