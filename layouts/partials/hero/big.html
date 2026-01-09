@@ -3,7 +3,12 @@
 {{ $useDefault := false }}
 {{ $featured := "" }}
 {{ $featuredURL := "" }}
-{{ $featuredURLWebp := "" }}
+{{ $featuredURLSmall := "" }}
+{{ $featuredURLLarge := "" }}
+{{ $featuredURLWebpSmall := "" }}
+{{ $featuredURLWebpLarge := "" }}
+{{ $widthSmall := 0 }}
+{{ $widthLarge := 0 }}
 {{ with .Params.featureimage }}
   {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
     {{ if site.Params.hotlinkFeatureImage }}
@@ -34,14 +39,41 @@
   {{ end }}
 {{ end }}
 
-{{/* generate image URL if not hotlink */}}
+{{/* generate image URLs for srcset with w descriptor */}}
 {{ if not $featuredURL }}
   {{ with $featured }}
-    {{ $featuredURL = .RelPermalink }}
     {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
-      {{ $size := site.Store.Get "backgroundImageWidth" }}
-      {{ $featuredURL = (.Resize $size).RelPermalink }}
-      {{ $featuredURLWebp = (.Resize (printf "%s webp" $size)).RelPermalink }}
+      {{ $targetWidthLarge := 2400 }}
+      {{ $targetWidthSmall := 1200 }}
+      {{ if site.Params.backgroundImageWidth }}
+        {{ $targetWidthLarge = site.Params.backgroundImageWidth }}
+        {{ $targetWidthSmall = div $targetWidthLarge 2 }}
+      {{ end }}
+      {{ $actualWidth := .Width }}
+      
+      {{/* Generate small version */}}
+      {{ if ge $actualWidth $targetWidthSmall }}
+        {{ $widthSmall = $targetWidthSmall }}
+        {{ $featuredURLSmall = (.Resize (printf "%dx" $targetWidthSmall)).RelPermalink }}
+        {{ $featuredURLWebpSmall = (.Resize (printf "%dx webp" $targetWidthSmall)).RelPermalink }}
+      {{ else }}
+        {{ $widthSmall = $actualWidth }}
+        {{ $featuredURLSmall = .RelPermalink }}
+      {{ end }}
+      
+      {{/* Generate large version */}}
+      {{ if ge $actualWidth $targetWidthLarge }}
+        {{ $widthLarge = $targetWidthLarge }}
+        {{ $featuredURLLarge = (.Resize (printf "%dx" $targetWidthLarge)).RelPermalink }}
+        {{ $featuredURLWebpLarge = (.Resize (printf "%dx webp" $targetWidthLarge)).RelPermalink }}
+      {{ else if gt $actualWidth $targetWidthSmall }}
+        {{ $widthLarge = $actualWidth }}
+        {{ $featuredURLLarge = .RelPermalink }}
+        {{ $featuredURLWebpLarge = (.Resize (printf "%dx webp" $actualWidth)).RelPermalink }}
+      {{ end }}
+    {{ else }}
+      {{/* SVG or optimization disabled - use original */}}
+      {{ $featuredURL = .RelPermalink }}
     {{ end }}
   {{ end }}
 {{ end }}
@@ -54,18 +86,40 @@
 {{- $alt := .Page.Title -}}
 {{- with .Page.Params.alt }}{{ $alt = . }}{{ end -}}
 
-{{ with $featuredURL }}
+{{ if or $featuredURL $featuredURLSmall }}
   {{ $style := "" }}
   {{ $defaultPosition := cond $useDefault site.Params.imagePosition false }}
   {{ with $.Params.imagePosition | default $defaultPosition }}
     {{ $style = printf "object-position: %s;" . }}
   {{ end }}
   <figure>
-    {{ if $featuredURLWebp }}
+    {{ if $featuredURL }}
+      {{/* Hotlinked image - no srcset */}}
+      <img
+        src="{{ $featuredURL }}"
+        alt="{{ $alt }}"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="w-full rounded-lg single_hero_round nozoom"
+        {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
+    {{ else if or $featuredURLWebpSmall $featuredURLWebpLarge }}
+      {{/* WebP available - use picture with srcset */}}
       <picture>
-        <source srcset="{{ $featuredURLWebp }}" type="image/webp">
+        {{ if and $featuredURLWebpSmall $featuredURLWebpLarge }}
+          <source
+            srcset="{{ $featuredURLWebpSmall }} {{ $widthSmall }}w, {{ $featuredURLWebpLarge }} {{ $widthLarge }}w"
+            sizes="100vw"
+            type="image/webp">
+        {{ else if $featuredURLWebpSmall }}
+          <source srcset="{{ $featuredURLWebpSmall }}" type="image/webp">
+        {{ end }}
         <img
-          src="{{ $featuredURL }}"
+          {{ if and $featuredURLSmall $featuredURLLarge }}
+            srcset="{{ $featuredURLSmall }} {{ $widthSmall }}w, {{ $featuredURLLarge }} {{ $widthLarge }}w"
+            sizes="100vw"
+          {{ end }}
+          src="{{ $featuredURLSmall }}"
           alt="{{ $alt }}"
           loading="eager"
           decoding="async"
@@ -74,8 +128,13 @@
           {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
       </picture>
     {{ else }}
+      {{/* No WebP - use img with srcset */}}
       <img
-        src="{{ $featuredURL }}"
+        {{ if and $featuredURLSmall $featuredURLLarge }}
+          srcset="{{ $featuredURLSmall }} {{ $widthSmall }}w, {{ $featuredURLLarge }} {{ $widthLarge }}w"
+          sizes="100vw"
+        {{ end }}
+        src="{{ $featuredURLSmall }}"
         alt="{{ $alt }}"
         loading="eager"
         decoding="async"

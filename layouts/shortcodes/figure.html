@@ -29,15 +29,46 @@
           alt="{{ $altText }}"
         />
       {{- else }}
-        {{- $img800 := .Resize "800x" -}}
-        {{- $img1280 := .Resize "1280x" -}}
-        {{- $img800webp := .Resize "800x webp" -}}
-        {{- $img1280webp := .Resize "1280x webp" -}}
+        {{- $targetWidthSmall := 800 -}}
+        {{- $targetWidthLarge := 1600 -}}
+        {{- $actualWidth := .Width -}}
+        {{- $widthSmall := 0 -}}
+        {{- $widthLarge := 0 -}}
+        {{- $imgSmall := "" -}}
+        {{- $imgLarge := "" -}}
+        {{- $imgSmallWebp := "" -}}
+        {{- $imgLargeWebp := "" -}}
+
+        {{/* Generate small version */}}
+        {{- if ge $actualWidth $targetWidthSmall -}}
+          {{- $widthSmall = $targetWidthSmall -}}
+          {{- $imgSmall = .Resize (printf "%dx" $targetWidthSmall) -}}
+          {{- $imgSmallWebp = .Resize (printf "%dx webp" $targetWidthSmall) -}}
+        {{- else -}}
+          {{- $widthSmall = $actualWidth -}}
+          {{- $imgSmall = . -}}
+        {{- end -}}
+
+        {{/* Generate large version */}}
+        {{- if ge $actualWidth $targetWidthLarge -}}
+          {{- $widthLarge = $targetWidthLarge -}}
+          {{- $imgLarge = .Resize (printf "%dx" $targetWidthLarge) -}}
+          {{- $imgLargeWebp = .Resize (printf "%dx webp" $targetWidthLarge) -}}
+        {{- else if gt $actualWidth $targetWidthSmall -}}
+          {{- $widthLarge = $actualWidth -}}
+          {{- $imgLarge = . -}}
+          {{- $imgLargeWebp = .Resize (printf "%dx webp" $actualWidth) -}}
+        {{- end -}}
+
         <picture>
+          {{- if and $imgSmallWebp $imgLargeWebp }}
           <source
-            srcset="{{ $img800webp.RelPermalink }} 800w, {{ $img1280webp.RelPermalink }} 1280w"
-            sizes="(min-width: 768px) 50vw, 65vw"
+            srcset="{{ $imgSmallWebp.RelPermalink }} {{ $widthSmall }}w, {{ $imgLargeWebp.RelPermalink }} {{ $widthLarge }}w"
+            sizes="(min-width: 768px) 700px, 100vw"
             type="image/webp">
+          {{- else if $imgSmallWebp }}
+          <source srcset="{{ $imgSmallWebp.RelPermalink }}" type="image/webp">
+          {{- end }}
           <img
             class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}"
             loading="lazy"
@@ -46,9 +77,11 @@
             alt="{{ $altText }}"
             {{ with .Width }}width="{{ . }}"{{ end }}
             {{ with .Height }}height="{{ . }}"{{ end }}
-            src="{{ $img800.RelPermalink }}"
-            srcset="{{ $img800.RelPermalink }} 800w, {{ $img1280.RelPermalink }} 1280w"
-            sizes="(min-width: 768px) 50vw, 65vw"
+            src="{{ $imgSmall.RelPermalink }}"
+            {{- if and $imgSmall $imgLarge }}
+            srcset="{{ $imgSmall.RelPermalink }} {{ $widthSmall }}w, {{ $imgLarge.RelPermalink }} {{ $widthLarge }}w"
+            sizes="(min-width: 768px) 700px, 100vw"
+            {{- end }}
             data-zoom-src="{{ .RelPermalink }}"
           />
         </picture>

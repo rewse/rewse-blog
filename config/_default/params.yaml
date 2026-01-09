@@ -26,6 +26,8 @@ disableImageOptimization: false
 disableImageOptimizationMD: false
 disableTextInHeader: false
 
+backgroundImageWidth: 2400
+
 defaultBackgroundImage: "/img/background.svg"
 defaultFeaturedImage: "/img/featured.svg"
 defaultSocialImage: "/img/rewse-lab-featured-image.png"
