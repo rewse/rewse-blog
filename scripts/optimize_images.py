@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Image optimization script using ShortPixel API.
+Image optimization script using pyvips for local processing.
 
 Usage:
     python scripts/optimize_images.py              # Process unprocessed images
@@ -12,18 +12,11 @@ Usage:
 import argparse
 import hashlib
 import json
-import os
-import sys
 import time
+import pyvips
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Optional
-
-import requests
-
-# API Configuration
-SHORTPIXEL_API_KEY = os.environ.get("SHORTPIXEL_API_KEY", "")
-SHORTPIXEL_API_URL = "https://api.shortpixel.com/v2/post-reducer.php"
 
 # Target widths for responsive images (in pixels)
 IMAGE_SIZES = [400, 800, 1200, 1600, 2400]
@@ -39,6 +32,15 @@ MANIFEST_FILE = OUTPUT_DIR / ".manifest.json"
 
 # Source directories
 SOURCE_DIRS = [Path("content"), Path("assets/img")]
+
+# Compression quality settings
+JPEG_QUALITY = 85
+PNG_COMPRESSION = 9
+WEBP_QUALITY = 85
+AVIF_QUALITY = 65
+
+# Parallel processing (Recommend: # of logical CPU / 3)
+MAX_WORKERS = 4
 
 
 def log(message: str) -> None:
@@ -88,12 +90,10 @@ def find_images(base_path: Optional[Path] = None) -> list[Path]:
 
 def get_output_path(source_path: Path, width: int, fmt: str) -> Path:
     """Generate output path for optimized image."""
-    # Convert source path to output path
-    # content/posts/my-post/image.jpg -> posts/my-post/image-800w.webp
     rel_path = source_path
     for prefix in ["content/", "assets/img/", "assets/"]:
         if str(source_path).startswith(prefix):
-            rel_path = Path(str(source_path)[len(prefix) :])
+            rel_path = Path(str(source_path)[len(prefix):])
             break
 
     stem = rel_path.stem
@@ -122,7 +122,7 @@ def needs_processing(source_path: Path, manifest: dict, force: bool) -> bool:
 
 def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
     """
-    Optimize a single image using ShortPixel API.
+    Optimize a single image using pyvips.
 
     Returns dict with processing results.
     """
@@ -135,155 +135,50 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
                 results["outputs"].append(str(output_path))
         return results
 
-    # Process all sizes in parallel
-    with ThreadPoolExecutor(max_workers=len(IMAGE_SIZES)) as executor:
-        futures = {
-            executor.submit(process_single_size, source_path, width): width
-            for width in IMAGE_SIZES
-        }
+    try:
+        # Load image into memory to avoid sequential access issues
+        image = pyvips.Image.new_from_file(str(source_path))
+        original_width = image.width
 
-        for future in as_completed(futures):
-            width = futures[future]
+        for width in IMAGE_SIZES:
             try:
-                output_files = future.result()
-                results["outputs"].extend(output_files)
+                # Skip resize if target width is larger than original
+                if width > original_width:
+                    resized = image
+                else:
+                    scale = width / original_width
+                    resized = image.resize(scale)
+
+                # Determine original format
+                source_ext = source_path.suffix.lower()
+                is_png = source_ext == ".png"
+
+                # Save in each format
+                for fmt in ["original", "webp", "avif"]:
+                    output_path = get_output_path(source_path, width, fmt)
+                    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+                    if fmt == "original":
+                        if is_png:
+                            resized.pngsave(str(output_path), compression=PNG_COMPRESSION, strip=True)
+                        else:
+                            resized.jpegsave(str(output_path), Q=JPEG_QUALITY, strip=True)
+                    elif fmt == "webp":
+                        resized.webpsave(str(output_path), Q=WEBP_QUALITY, strip=True)
+                    elif fmt == "avif":
+                        resized.heifsave(str(output_path), Q=AVIF_QUALITY, compression="av1", strip=True)
+
+                    results["outputs"].append(str(output_path))
+
             except Exception as e:
-                results["errors"].append(f"Width {width}: {str(e)}")
+                import traceback
+                results["errors"].append(f"Width {width}: {str(e)}\n{traceback.format_exc()}")
+
+    except Exception as e:
+        import traceback
+        results["errors"].append(f"Load error: {str(e)}\n{traceback.format_exc()}")
 
     return results
-
-
-def process_single_size(source_path: Path, width: int) -> list[str]:
-    """Process image at a specific width, returning list of output paths."""
-    output_files = []
-
-    with open(source_path, "rb") as f:
-        file_content = f.read()
-
-    file_key = f"file1"
-    file_paths = {file_key: str(source_path)}
-
-    # API request with resize and format conversion
-    response = requests.post(
-        SHORTPIXEL_API_URL,
-        files={file_key: (source_path.name, file_content, "application/octet-stream")},
-        data={
-            "key": SHORTPIXEL_API_KEY,
-            "plugin_version": "HUGO1",
-            "lossy": 2,  # Glossy compression
-            "wait": 30,
-            "resize": 3,  # Inner resize (fit within dimensions)
-            "resize_width": width,
-            "resize_height": 100000,  # Large value to constrain by width only
-            "convertto": "+webp|+avif",
-            "file_paths": json.dumps(file_paths),
-        },
-    )
-
-    if response.status_code != 200:
-        raise Exception(f"API error: {response.status_code}")
-
-    result = response.json()
-    if not result or len(result) == 0:
-        raise Exception("Empty API response")
-
-    item = result[0]
-    status_code = int(item.get("Status", {}).get("Code", -1))
-
-    # Handle pending status (Code 1) - image still processing
-    if status_code == 1:
-        # Wait and retry with OriginalURL
-        time.sleep(5)
-        return retry_optimization(source_path, item.get("OriginalURL", ""), width)
-
-    if status_code != 2:
-        msg = item.get("Status", {}).get("Message", "Unknown error")
-        raise Exception(f"API error: {msg}")
-
-    # Download and save optimized images
-    output_files.extend(download_optimized_images(source_path, item, width))
-
-    return output_files
-
-
-def retry_optimization(
-    source_path: Path, original_url: str, width: int, max_retries: int = 10
-) -> list[str]:
-    """Retry getting optimization results for pending image with exponential backoff."""
-    base_delay = 1.0
-    max_delay = 60.0
-
-    for attempt in range(max_retries):
-        delay = min(base_delay * (2**attempt), max_delay)
-
-        response = requests.post(
-            SHORTPIXEL_API_URL,
-            data={
-                "key": SHORTPIXEL_API_KEY,
-                "plugin_version": "HUGO1",
-                "lossy": 1,
-                "wait": 30,
-                "resize": 3,
-                "resize_width": width,
-                "resize_height": 9999,
-                "convertto": "+webp|+avif",
-                "file_urls": json.dumps([original_url]),
-            },
-        )
-
-        if response.status_code != 200:
-            time.sleep(delay)
-            continue
-
-        result = response.json()
-        if not result:
-            time.sleep(delay)
-            continue
-
-        item = result[0]
-        status_code = int(item.get("Status", {}).get("Code", -1))
-
-        if status_code == 2:
-            return download_optimized_images(source_path, item, width)
-        elif status_code == 1:
-            time.sleep(delay)
-            continue
-        else:
-            msg = item.get("Status", {}).get("Message", "Unknown error")
-            raise Exception(f"API error after retry: {msg}")
-
-    raise Exception(f"Timeout waiting for optimization after {max_retries} retries")
-
-
-def download_optimized_images(source_path: Path, api_result: dict, width: int) -> list[str]:
-    """Download optimized images from API result."""
-    output_files = []
-
-    # Format-to-URL mapping from API response
-    format_urls = {
-        "original": api_result.get("LossyURL"),
-        "webp": api_result.get("WebPLossyURL"),
-        "avif": api_result.get("AVIFLossyURL"),
-    }
-
-    for fmt, url in format_urls.items():
-        if not url or url == "NA":
-            continue
-
-        output_path = get_output_path(source_path, width, fmt)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-
-        # Download the file
-        img_response = requests.get(url)
-        if img_response.status_code == 200:
-            with open(output_path, "wb") as f:
-                f.write(img_response.content)
-            output_files.append(str(output_path))
-            log(f"  ✓ {output_path}")
-        else:
-            log(f"  ✗ Failed to download {fmt} for width {width}")
-
-    return output_files
 
 
 def process_images(
@@ -300,46 +195,55 @@ def process_images(
         log("No images need processing.")
         return
 
-    log(f"Found {len(to_process)} images to process")
+    log(f"Found {len(to_process)} images to process (workers: {MAX_WORKERS})")
     if dry_run:
         log("[DRY RUN] Would process:")
+        for img_path in to_process:
+            result = optimize_image(img_path, dry_run)
+            log(f"  {img_path}")
+            for output in result["outputs"]:
+                log(f"    → {output}")
+        return
 
     processed_count = 0
     error_count = 0
 
-    for i, img_path in enumerate(to_process, 1):
-        log(f"[{i}/{len(to_process)}] {img_path}")
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_to_path = {
+            executor.submit(optimize_image, img_path, False): img_path
+            for img_path in to_process
+        }
 
         try:
-            result = optimize_image(img_path, dry_run)
+            for future in as_completed(future_to_path):
+                img_path = future_to_path[future]
+                try:
+                    result = future.result()
 
-            if dry_run:
-                for output in result["outputs"]:
-                    log(f"  → {output}")
-            else:
-                if result["errors"]:
-                    for err in result["errors"]:
-                        log(f"  ✗ {err}")
+                    if result["errors"]:
+                        log(f"✗ {img_path}")
+                        for err in result["errors"]:
+                            log(f"  {err}")
+                        error_count += 1
+                    else:
+                        log(f"✓ {img_path} ({len(result['outputs'])} files)")
+                        manifest["processed"][str(img_path)] = {
+                            "hash": get_file_hash(img_path),
+                            "outputs": result["outputs"],
+                            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                        }
+                        save_manifest(manifest)
+                        processed_count += 1
+
+                except Exception as e:
+                    log(f"✗ {img_path}: {e}")
                     error_count += 1
-                else:
-                    # Update manifest on success
-                    manifest["processed"][str(img_path)] = {
-                        "hash": get_file_hash(img_path),
-                        "outputs": result["outputs"],
-                        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                    }
-                    save_manifest(manifest)
-                    processed_count += 1
+        except KeyboardInterrupt:
+            log("Interrupted. Cancelling remaining tasks...")
+            executor.shutdown(wait=False, cancel_futures=True)
+            return
 
-        except Exception as e:
-            log(f"  ✗ Error: {e}")
-            error_count += 1
-
-        # Rate limiting between API calls
-        if not dry_run:
-            time.sleep(1)
-
-    log(f"{'[DRY RUN] ' if dry_run else ''}Summary:")
+    log(f"Summary:")
     log(f"  Processed: {processed_count}")
     log(f"  Errors: {error_count}")
     log(f"  Skipped: {len(images) - len(to_process)}")
@@ -347,7 +251,7 @@ def process_images(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Optimize images using ShortPixel API"
+        description="Optimize images using pyvips"
     )
     parser.add_argument(
         "--path",
@@ -366,11 +270,6 @@ def main():
     )
 
     args = parser.parse_args()
-
-    if not SHORTPIXEL_API_KEY and not args.dry_run:
-        log("Error: SHORTPIXEL_API_KEY environment variable is not set")
-        log("Set it with: export SHORTPIXEL_API_KEY='your-api-key'")
-        sys.exit(1)
 
     process_images(path=args.path, force=args.force, dry_run=args.dry_run)
 
