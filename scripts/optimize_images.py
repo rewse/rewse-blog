@@ -172,7 +172,12 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
 
             except Exception as e:
                 import traceback
-                results["errors"].append(f"Width {width}: {str(e)}\n{traceback.format_exc()}")
+                error_msg = str(e)
+                results["errors"].append(f"Width {width}: {error_msg}\n{traceback.format_exc()}")
+                # Fatal error: AVIF encoder not available
+                if "Unsupported compression" in error_msg:
+                    results["fatal"] = True
+                    return results
 
     except Exception as e:
         import traceback
@@ -219,6 +224,14 @@ def process_images(
                 img_path = future_to_path[future]
                 try:
                     result = future.result()
+
+                    if result.get("fatal"):
+                        log(f"✗ {img_path}")
+                        for err in result["errors"]:
+                            log(f"  {err}")
+                        log("FATAL: AVIF encoder not available. Stopping immediately.")
+                        executor.shutdown(wait=False, cancel_futures=True)
+                        return 1
 
                     if result["errors"]:
                         log(f"✗ {img_path}")
