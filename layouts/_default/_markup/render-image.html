@@ -1,68 +1,8 @@
-{{- define "RenderImageSimple" -}}
-  {{- $imgObj := .imgObj -}}
-  {{- $src := .src -}}
-  {{- $alt := .alt -}}
-  <img
-    class="my-0 rounded-md"
-    loading="lazy"
-    decoding="async"
-    fetchpriority="low"
-    alt="{{ $alt }}"
-    src="{{ $src }}"
-    {{ with $imgObj -}}
-      {{ with $imgObj.Width }}width="{{ . }}"{{ end }}
-      {{ with $imgObj.Height }}height="{{ . }}"{{ end }}
-    {{- end }}>
-{{- end -}}
-
-{{- define "RenderImageResponsive" -}}
-  {{- $imgObj := .imgObj -}}
-  {{- $alt := .alt -}}
-  {{- $originalWidth := $imgObj.Width -}}
-
-  {{/* Generate resized and WebP versions */}}
-  {{- $img800 := $imgObj -}}
-  {{- $img1280 := $imgObj -}}
-  {{- $img800webp := $imgObj.Process "webp" -}}
-  {{- $img1280webp := $imgObj.Process "webp" -}}
-  
-  {{- if gt $originalWidth 800 -}}
-    {{- $img800 = $imgObj.Resize "800x" -}}
-    {{- $img800webp = $imgObj.Resize "800x webp" -}}
-  {{- end -}}
-  {{- if gt $originalWidth 1280 -}}
-    {{- $img1280 = $imgObj.Resize "1280x" -}}
-    {{- $img1280webp = $imgObj.Resize "1280x webp" -}}
-  {{- end -}}
-
-  {{- $srcset := printf "%s 800w, %s 1280w" $img800.RelPermalink $img1280.RelPermalink -}}
-  {{- $srcsetWebp := printf "%s 800w, %s 1280w" $img800webp.RelPermalink $img1280webp.RelPermalink -}}
-
-  <picture>
-    <source
-      srcset="{{ $srcsetWebp }}"
-      sizes="(min-width: 768px) 50vw, 65vw"
-      type="image/webp">
-    <img
-      class="my-0 rounded-md"
-      loading="lazy"
-      decoding="async"
-      fetchpriority="auto"
-      alt="{{ $alt }}"
-      {{ with $imgObj.Width }}width="{{ . }}"{{ end }}
-      {{ with $imgObj.Height }}height="{{ . }}"{{ end }}
-      src="{{ $img800.RelPermalink }}"
-      srcset="{{ $srcset }}"
-      sizes="(min-width: 768px) 50vw, 65vw"
-      data-zoom-src="{{ $imgObj.RelPermalink }}">
-  </picture>
-{{- end -}}
-
-{{- define "RenderImageCaption" -}}
-  {{- with .caption -}}
-    <figcaption>{{ . | markdownify }}</figcaption>
-  {{- end -}}
-{{- end -}}
+{{/*
+  Render hook for Markdown images.
+  Uses pre-optimized images from static/img/optimized/ when available,
+  falls back to Hugo's image processing otherwise.
+*/}}
 
 {{- $disableImageOptimizationMD := .Page.Site.Params.disableImageOptimizationMD | default false -}}
 {{- $urlStr := .Destination | safeURL -}}
@@ -82,23 +22,79 @@
       {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
     {{- end -}}
   {{- end -}}>
+
   {{- if $isRemote -}}
-    {{- template "RenderImageSimple" (dict "imgObj" "" "src" $urlStr "alt" $altText) -}}
+    {{/* Remote image - no processing */}}
+    <img
+      class="my-0 rounded-md"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
+      alt="{{ $altText }}"
+      src="{{ $urlStr }}">
+
   {{- else if $resource -}}
     {{- $isSVG := eq $resource.MediaType.SubType "svg" -}}
     {{- $shouldOptimize := and (not $disableImageOptimizationMD) (not $isSVG) -}}
+
     {{- if $shouldOptimize -}}
-      {{- template "RenderImageResponsive" (dict "imgObj" $resource "alt" $altText) -}}
-    {{- else -}}
-      {{- if $isSVG -}}
-        {{- template "RenderImageSimple" (dict "imgObj" "" "src" $resource.RelPermalink "alt" $altText) -}}
-      {{- else -}}
-        {{- template "RenderImageSimple" (dict "imgObj" $resource "src" $resource.RelPermalink "alt" $altText) -}}
+      {{/* Build source path for optimized image lookup */}}
+      {{- $sourcePath := "" -}}
+      {{- with $.Page.File -}}
+        {{- $sourcePath = printf "%s/%s" (path.Dir .Path) $urlStr -}}
       {{- end -}}
+
+      {{- $optimizedExists := false -}}
+      {{- if $sourcePath -}}
+        {{- $optimizedExists = partial "image/exists.html" $sourcePath -}}
+      {{- end -}}
+
+      {{- if $optimizedExists -}}
+        {{- partial "image/optimized.html" (dict
+          "source" $sourcePath
+          "widths" (slice 800 1600)
+          "sizes" "(min-width: 768px) 50vw, 65vw"
+          "alt" $altText
+          "class" "my-0 rounded-md"
+          "imgObj" $resource
+        ) -}}
+      {{- else -}}
+        {{- partial "image/fallback.html" (dict
+          "imgObj" $resource
+          "widths" (slice 800 1600)
+          "sizes" "(min-width: 768px) 50vw, 65vw"
+          "alt" $altText
+          "class" "my-0 rounded-md"
+        ) -}}
+      {{- end -}}
+
+    {{- else -}}
+      {{/* SVG or optimization disabled */}}
+      <img
+        class="my-0 rounded-md"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        alt="{{ $altText }}"
+        src="{{ $resource.RelPermalink }}"
+        {{- if not $isSVG }}
+        {{ with $resource.Width }}width="{{ . }}"{{ end }}
+        {{ with $resource.Height }}height="{{ . }}"{{ end }}
+        {{- end }}>
     {{- end -}}
+
   {{- else -}}
-    {{- template "RenderImageSimple" (dict "imgObj" "" "src" $urlStr "alt" $altText) -}}
+    {{/* Resource not found - use URL as-is */}}
+    <img
+      class="my-0 rounded-md"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
+      alt="{{ $altText }}"
+      src="{{ $urlStr }}">
   {{- end -}}
 
-  {{- template "RenderImageCaption" (dict "caption" $caption) -}}
+  {{- with $caption }}
+  <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end -}}
 </figure>
