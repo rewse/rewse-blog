@@ -20,7 +20,7 @@ frontend:
         - export PATH="${HOME}/.local/hugo:${PATH}"
 
         - echo "Installing libvips for image optimization..."
-        - yum install -y vips vips-devel
+        - sudo yum install -y vips vips-devel
 
         - echo "Installing uv..."
         - curl -LsSf https://astral.sh/uv/install.sh | sh
