@@ -38,7 +38,8 @@
    Article Hero
    ======================================== */
 
-#main-content > article > figure > img {
+#main-content > article > figure > img,
+#main-content > article > figure > picture > img {
     max-height: none;
 }
 
@@ -226,12 +227,8 @@
 }
 
 /* ========================================
-   List
+   Card
    ======================================== */
-
-#main-content > header > h1 {
-    margin-bottom: 1rem !important;
-}
 
 /* Add margin after tags in card list */
 #main-content > section > section div.text-sm.text-neutral-500.dark\:text-neutral-400 {
