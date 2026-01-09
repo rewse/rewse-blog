@@ -39,8 +39,8 @@ PNG_COMPRESSION = 9
 WEBP_QUALITY = 85
 AVIF_QUALITY = 65
 
-# Parallel processing (Recommend: # of logical CPU / 3)
-MAX_WORKERS = 4
+# Parallel processing (Recommend: # of phisical CPU / 3)
+MAX_WORKERS = 6
 
 
 def log(message: str) -> None:
