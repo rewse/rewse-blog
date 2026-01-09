@@ -4,6 +4,7 @@ env:
     HUGO_VERSION: 0.154.2
     TZ: Asia/Tokyo
     HUGO_CACHEDIR: ${PWD}/.hugo
+    OPTIMIZED_IMAGES_DIR: ${PWD}/static/img/optimized
 frontend:
   phases:
     preBuild:
@@ -18,8 +19,24 @@ frontend:
         - rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
         - export PATH="${HOME}/.local/hugo:${PATH}"
 
+        - echo "Installing libvips for image optimization..."
+        - yum install -y vips vips-devel
+
+        - echo "Installing uv..."
+        - curl -LsSf https://astral.sh/uv/install.sh | sh
+        - export PATH="${HOME}/.local/bin:${PATH}"
+
         - echo "Verifying installations..."
         - echo "Hugo:" $(hugo version)
+        - echo "vips:" $(vips --version)
+        - echo "uv:" $(uv --version)
+
+        - echo "Running image optimization (incremental with retry)..."
+        - |
+          for i in 1 2 3; do
+            uv run --with pyvips scripts/optimize_images.py && break
+            echo "Retry $i..."
+          done
     build:
       commands:
         - echo "Building site..."
@@ -31,3 +48,4 @@ frontend:
   cache:
     paths:
       - ${HUGO_CACHEDIR}/**/*
+      - ${OPTIMIZED_IMAGES_DIR}/**/*

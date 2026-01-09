@@ -193,7 +193,7 @@ def process_images(
 
     if not to_process:
         log("No images need processing.")
-        return
+        return 0
 
     log(f"Found {len(to_process)} images to process (workers: {MAX_WORKERS})")
     if dry_run:
@@ -241,12 +241,14 @@ def process_images(
         except KeyboardInterrupt:
             log("Interrupted. Cancelling remaining tasks...")
             executor.shutdown(wait=False, cancel_futures=True)
-            return
+            return 1
 
     log(f"Summary:")
     log(f"  Processed: {processed_count}")
     log(f"  Errors: {error_count}")
     log(f"  Skipped: {len(images) - len(to_process)}")
+
+    return 1 if error_count > 0 else 0
 
 
 def main():
@@ -271,7 +273,8 @@ def main():
 
     args = parser.parse_args()
 
-    process_images(path=args.path, force=args.force, dry_run=args.dry_run)
+    exit_code = process_images(path=args.path, force=args.force, dry_run=args.dry_run)
+    raise SystemExit(exit_code)
 
 
 if __name__ == "__main__":
