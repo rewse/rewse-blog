@@ -4,24 +4,28 @@
 
 ```
 rewse-blog/
-├── archetypes/          # コンテンツテンプレート
-│   └── default.md       # デフォルトのフロントマター
-├── assets/              # 静的アセット
-│   ├── css/            # カスタムCSS
-│   ├── icons/          # アイコンファイル
-│   └── img/            # 画像ファイル
-├── config/              # Hugo設定ファイル
-│   └── _default/       # デフォルト設定
-├── content/             # コンテンツファイル
-│   ├── posts/          # ブログ投稿
-│   ├── uses/           # 使用機材ページ
+├── archetypes/              # コンテンツテンプレート
+├── assets/                  # 静的アセット
+│   ├── css/                # カスタムCSS
+│   ├── icons/              # アイコンファイル
+│   └── img/                # 画像ファイル
+├── config/                  # Hugo設定ファイル
+│   └── _default/           # デフォルト設定
+├── content/                 # コンテンツファイル
+│   ├── posts/              # ブログ投稿
+│   ├── uses/               # 使用機材ページ
 │   └── about-tats-shibata/ # プロフィールページ
-├── i18n/               # 多言語対応ファイル
-├── layouts/            # カスタムレイアウト（必要に応じて）
-├── scripts/            # コンテンツ一括修正用スクリプト
-├── static/             # 静的ファイル（favicon等）
-└── themes/             # Hugoテーマ
-    └── blowfish/       # Blowfishテーマ
+├── i18n/                   # 多言語対応ファイル
+├── layouts/                # カスタムレイアウト
+├── scripts/                # コンテンツ一括修正用スクリプト
+│   └── optimize_images.py  # 画像最適化スクリプト
+├── static/                 # 静的ファイル（favicon等）
+│   └── img/
+│       └── optimized/      # 最適化済み画像出力先
+├── themes/                 # Hugoテーマ
+    └── blowfish/           # Blowfishテーマ
+├── amplify.yml              # AWS Amplify ビルド設定
+└── Dockerfile               # AWS Amplify カスタムビルドイメージ
 ```
 
 ## コンテンツ構造
@@ -81,7 +85,6 @@ categories:
 - **アイキャッチ画像**: 各投稿ディレクトリの `featured.jpg`
 - **記事内画像**: 同じディレクトリに配置
 - **共通画像**: `assets/img/` または `static/` に配置
-- **画像最適化**: Hugo が自動でWebP変換
 
 ## 設定ファイルの役割
 

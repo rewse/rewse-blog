@@ -11,7 +11,7 @@
 
 - **フロントエンド**: Hugo + Blowfish テーマ
 - **スタイリング**: Tailwind CSS (テーマに内包)
-- **画像最適化**: ShortPixel API (WebP/AVIF対応)
+- **画像最適化**: pyvips
 - **検索機能**: 有効化済み
 - **多言語対応**: 日本語がデフォルト、英語も設定済み
 - **SEO**: 構造化データ、サイトマップ、robots.txt対応
@@ -48,16 +48,16 @@ hugo new [page-name]/index.md
 
 ```bash
 # 未処理の画像を処理
-./scripts/optimize_images.sh
+uv run scripts/optimize_images.py
 
 # 特定のパスのみ処理
-./scripts/optimize_images.sh --path content/posts/new-article/
+uv run scripts/optimize_images.py --path content/posts/new-article/
 
 # 強制的に再処理
-./scripts/optimize_images.sh --force
+uv run scripts/optimize_images.py --force
 
 # 実行せずに対象を確認（ドライラン）
-./scripts/optimize_images.sh --dry-run
+uv run scripts/optimize_images.py --dry-run
 ```
 
 ## 設定ファイル
