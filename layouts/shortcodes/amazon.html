@@ -2,7 +2,7 @@
 {{ $amazonCSS := resources.Get "css/amazon.css" | resources.Minify }}
 <link rel="stylesheet" href="{{ $amazonCSS.RelPermalink }}">
 
-{{- $tag := .Site.Params.amazonJpAffiliate -}}
+{{- $tag := .Site.Params.amazonJPAffiliate -}}
 {{- $asin := .Get "asin" -}}
 {{- $title := .Get "title" -}}
 
