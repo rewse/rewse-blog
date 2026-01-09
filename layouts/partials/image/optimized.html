@@ -1,0 +1,84 @@
+{{/*
+  Generate <picture> element using pre-optimized images from static/img/optimized/.
+  
+  Input: dict with:
+    - source: content-relative image path (e.g., "posts/my-post/image.jpg")
+    - widths: slice of widths to use (e.g., slice 800 1600)
+    - sizes: sizes attribute value (e.g., "(min-width: 768px) 50vw, 100vw")
+    - alt: alt text
+    - class: CSS classes (optional)
+    - imgObj: Hugo image resource for width/height (optional)
+    - loading: loading attribute (default: "lazy")
+    - fetchpriority: fetchpriority attribute (default: "auto")
+    - zoomSrc: data-zoom-src path (optional, uses largest width if not specified)
+*/}}
+
+{{- $source := .source -}}
+{{- $widths := .widths -}}
+{{- $sizes := .sizes -}}
+{{- $alt := .alt | default "" -}}
+{{- $class := .class | default "" -}}
+{{- $imgObj := .imgObj -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $fetchpriority := .fetchpriority | default "auto" -}}
+{{- $zoomSrc := .zoomSrc -}}
+
+{{- $dir := path.Dir $source -}}
+{{- $base := path.BaseName $source -}}
+{{- $ext := path.Ext $source -}}
+{{- $basePath := printf "/img/optimized/%s/%s" $dir $base -}}
+
+{{/* Build srcset strings */}}
+{{- $srcsetAvif := slice -}}
+{{- $srcsetWebp := slice -}}
+{{- $srcsetOrig := slice -}}
+{{- $smallestSrc := "" -}}
+{{- $largestSrc := "" -}}
+
+{{- range $widths -}}
+  {{- $w := . -}}
+  {{- $avif := printf "%s-%dw.avif %dw" $basePath $w $w -}}
+  {{- $webp := printf "%s-%dw.webp %dw" $basePath $w $w -}}
+  {{- $orig := printf "%s-%dw%s %dw" $basePath $w $ext $w -}}
+  {{- $srcsetAvif = $srcsetAvif | append $avif -}}
+  {{- $srcsetWebp = $srcsetWebp | append $webp -}}
+  {{- $srcsetOrig = $srcsetOrig | append $orig -}}
+  {{- if not $smallestSrc -}}
+    {{- $smallestSrc = printf "%s-%dw%s" $basePath $w $ext -}}
+  {{- end -}}
+  {{- $largestSrc = printf "%s-%dw%s" $basePath $w $ext -}}
+{{- end -}}
+
+{{- if not $zoomSrc -}}
+  {{- $zoomSrc = $largestSrc -}}
+{{- end -}}
+
+<picture{{ with .pictureClass }} class="{{ . }}"{{ end }}>
+  <source
+    srcset="{{ delimit $srcsetAvif ", " }}"
+    sizes="{{ $sizes }}"
+    type="image/avif">
+  <source
+    srcset="{{ delimit $srcsetWebp ", " }}"
+    sizes="{{ $sizes }}"
+    type="image/webp">
+  <img
+    {{- if $class }}
+    class="{{ $class }}"
+    {{- end }}
+    loading="{{ $loading }}"
+    decoding="async"
+    fetchpriority="{{ $fetchpriority }}"
+    alt="{{ $alt }}"
+    {{- with $imgObj }}
+    {{ with .Width }}width="{{ . }}"{{ end }}
+    {{ with .Height }}height="{{ . }}"{{ end }}
+    {{- end }}
+    src="{{ $smallestSrc }}"
+    srcset="{{ delimit $srcsetOrig ", " }}"
+    sizes="{{ $sizes }}"
+    {{- with .style }}
+    style="{{ . | safeCSS }}"
+    {{- end }}
+    data-zoom-src="{{ $zoomSrc }}">
+</picture>

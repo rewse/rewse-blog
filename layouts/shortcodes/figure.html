@@ -1,96 +1,82 @@
-{{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
+{{/*
+  Figure shortcode with optimized image support.
+  Uses pre-optimized images from static/img/optimized/ when available,
+  falls back to Hugo's image processing otherwise.
+*/}}
+
+{{- $disableImageOptimization := .Site.Params.disableImageOptimization | default false -}}
+
 {{ if .Get "default" }}
   {{ partial "hugo-embedded/shortcodes/figure-default.html" . }}
 {{ else }}
-  {{- $url := urls.Parse (.Get "src") }}
-  {{- $altText := .Get "alt" }}
-  {{- $caption := .Get "caption" }}
-  {{- $href := .Get "href" }}
-  {{- $class := .Get "class" }}
-  {{- $target := .Get "target" | default "_blank" }}
+  {{- $url := urls.Parse (.Get "src") -}}
+  {{- $altText := .Get "alt" -}}
+  {{- $caption := .Get "caption" -}}
+  {{- $href := .Get "href" -}}
+  {{- $class := .Get "class" -}}
+  {{- $target := .Get "target" | default "_blank" -}}
   {{- $nozoom := .Get "nozoom" | default false -}}
+  {{- $imgClass := printf "my-0 rounded-md%s%s" (cond $nozoom " nozoom" "") (cond (ne $class "") (printf " %s" $class) "") -}}
 
   <figure>
   {{- with $href }}<a href="{{ . }}" {{ with $target }}target="{{ . }}"{{ end }} class="inline-block">{{ end -}}
-  {{- if findRE "^https?" $url.Scheme }}
-      <img class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}" src="{{ $url.String }}" alt="{{ $altText }}" />
-  {{- else }}
-    {{- $resource := "" }}
-    {{- if $.Page.Resources.GetMatch ($url.String) }}
-      {{- $resource = $.Page.Resources.GetMatch ($url.String) }}
-    {{- else if resources.GetMatch ($url.String) }}
-      {{- $resource = resources.Get ($url.String) }}
-    {{- end }}
-    {{- with $resource }}
-      {{- if or $disableImageOptimization (eq .MediaType.SubType "svg")}}
-        <img
-          class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}"
-          src="{{ .RelPermalink }}"
-          alt="{{ $altText }}"
-        />
-      {{- else }}
-        {{- $targetWidthSmall := 800 -}}
-        {{- $targetWidthLarge := 1600 -}}
-        {{- $actualWidth := .Width -}}
-        {{- $widthSmall := 0 -}}
-        {{- $widthLarge := 0 -}}
-        {{- $imgSmall := "" -}}
-        {{- $imgLarge := "" -}}
-        {{- $imgSmallWebp := "" -}}
-        {{- $imgLargeWebp := "" -}}
 
-        {{/* Generate small version */}}
-        {{- if ge $actualWidth $targetWidthSmall -}}
-          {{- $widthSmall = $targetWidthSmall -}}
-          {{- $imgSmall = .Resize (printf "%dx" $targetWidthSmall) -}}
-          {{- $imgSmallWebp = .Resize (printf "%dx webp" $targetWidthSmall) -}}
+  {{- if findRE "^https?" $url.Scheme -}}
+    {{/* Remote image */}}
+    <img class="{{ $imgClass }}" src="{{ $url.String }}" alt="{{ $altText }}" />
+
+  {{- else -}}
+    {{- $resource := "" -}}
+    {{- if $.Page.Resources.GetMatch ($url.String) -}}
+      {{- $resource = $.Page.Resources.GetMatch ($url.String) -}}
+    {{- else if resources.GetMatch ($url.String) -}}
+      {{- $resource = resources.Get ($url.String) -}}
+    {{- end -}}
+
+    {{- with $resource -}}
+      {{- if or $disableImageOptimization (eq .MediaType.SubType "svg") -}}
+        {{/* SVG or optimization disabled */}}
+        <img class="{{ $imgClass }}" src="{{ .RelPermalink }}" alt="{{ $altText }}" />
+
+      {{- else -}}
+        {{/* Build source path for optimized image lookup */}}
+        {{- $sourcePath := "" -}}
+        {{- with $.Page.File -}}
+          {{- $sourcePath = printf "%s/%s" (path.Dir .Path) ($url.String) -}}
+        {{- end -}}
+
+        {{- $optimizedExists := false -}}
+        {{- if $sourcePath -}}
+          {{- $optimizedExists = partial "image/exists.html" $sourcePath -}}
+        {{- end -}}
+
+        {{- if $optimizedExists -}}
+          {{- partial "image/optimized.html" (dict
+            "source" $sourcePath
+            "widths" (slice 800 1600)
+            "sizes" "(min-width: 768px) 700px, 100vw"
+            "alt" $altText
+            "class" $imgClass
+            "imgObj" .
+          ) -}}
         {{- else -}}
-          {{- $widthSmall = $actualWidth -}}
-          {{- $imgSmall = . -}}
+          {{- partial "image/fallback.html" (dict
+            "imgObj" .
+            "widths" (slice 800 1600)
+            "sizes" "(min-width: 768px) 700px, 100vw"
+            "alt" $altText
+            "class" $imgClass
+          ) -}}
         {{- end -}}
+      {{- end -}}
 
-        {{/* Generate large version */}}
-        {{- if ge $actualWidth $targetWidthLarge -}}
-          {{- $widthLarge = $targetWidthLarge -}}
-          {{- $imgLarge = .Resize (printf "%dx" $targetWidthLarge) -}}
-          {{- $imgLargeWebp = .Resize (printf "%dx webp" $targetWidthLarge) -}}
-        {{- else if gt $actualWidth $targetWidthSmall -}}
-          {{- $widthLarge = $actualWidth -}}
-          {{- $imgLarge = . -}}
-          {{- $imgLargeWebp = .Resize (printf "%dx webp" $actualWidth) -}}
-        {{- end -}}
+    {{- else -}}
+      {{/* Resource not found */}}
+      <img class="{{ $imgClass }}" src="{{ $url.String }}" alt="{{ $altText }}" />
+    {{- end -}}
+  {{- end -}}
 
-        <picture>
-          {{- if and $imgSmallWebp $imgLargeWebp }}
-          <source
-            srcset="{{ $imgSmallWebp.RelPermalink }} {{ $widthSmall }}w, {{ $imgLargeWebp.RelPermalink }} {{ $widthLarge }}w"
-            sizes="(min-width: 768px) 700px, 100vw"
-            type="image/webp">
-          {{- else if $imgSmallWebp }}
-          <source srcset="{{ $imgSmallWebp.RelPermalink }}" type="image/webp">
-          {{- end }}
-          <img
-            class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="auto"
-            alt="{{ $altText }}"
-            {{ with .Width }}width="{{ . }}"{{ end }}
-            {{ with .Height }}height="{{ . }}"{{ end }}
-            src="{{ $imgSmall.RelPermalink }}"
-            {{- if and $imgSmall $imgLarge }}
-            srcset="{{ $imgSmall.RelPermalink }} {{ $widthSmall }}w, {{ $imgLarge.RelPermalink }} {{ $widthLarge }}w"
-            sizes="(min-width: 768px) 700px, 100vw"
-            {{- end }}
-            data-zoom-src="{{ .RelPermalink }}"
-          />
-        </picture>
-      {{- end }}
-    {{- else }}
-      <img class="my-0 rounded-md{{ with $nozoom }} nozoom{{ end }}{{ with $class }} {{ . }}{{ end }}" src="{{ $url.String }}" alt="{{ $altText }}" />
-    {{- end }}
-  {{- end }}
-  {{ if $href }}</a>{{ end }}
-  {{ with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+  {{- if $href }}</a>{{ end -}}
+  {{- with $caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end -}}
   </figure>
 {{- end -}}

@@ -1,14 +1,16 @@
+{{/*
+  Big hero image partial.
+  Uses pre-optimized images when available, falls back to Hugo processing.
+*/}}
+
 {{ $disableImageOptimization := site.Store.Get "disableImageOptimization" }}
 
 {{ $useDefault := false }}
 {{ $featured := "" }}
 {{ $featuredURL := "" }}
-{{ $featuredURLSmall := "" }}
-{{ $featuredURLLarge := "" }}
-{{ $featuredURLWebpSmall := "" }}
-{{ $featuredURLWebpLarge := "" }}
-{{ $widthSmall := 0 }}
-{{ $widthLarge := 0 }}
+{{ $filename := "" }}
+
+{{/* Get featured image from frontmatter */}}
 {{ with .Params.featureimage }}
   {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
     {{ if site.Params.hotlinkFeatureImage }}
@@ -18,16 +20,25 @@
     {{ end }}
   {{ else }}
     {{ $featured = resources.Get . }}
+    {{ $filename = . }}
   {{ end }}
 {{ end }}
 
+{{/* Fallback to page resources */}}
 {{ if not (or $featured $featuredURL) }}
   {{ $images := .Resources.ByType "image" }}
   {{ range slice "*background*" "*feature*" "*cover*" "*thumbnail*" }}
-    {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
+    {{ if not $featured }}
+      {{ $match := $images.GetMatch . }}
+      {{ if $match }}
+        {{ $featured = $match }}
+        {{ $filename = path.Base $match.Name }}
+      {{ end }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
+{{/* Fallback to default background image */}}
 {{ if not (or $featured $featuredURL) }}
   {{ $default := site.Store.Get "defaultBackgroundImage" }}
   {{ if $default.url }}
@@ -39,113 +50,102 @@
   {{ end }}
 {{ end }}
 
-{{/* generate image URLs for srcset with w descriptor */}}
-{{ if not $featuredURL }}
-  {{ with $featured }}
-    {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
-      {{ $targetWidthLarge := 2400 }}
-      {{ $targetWidthSmall := 1200 }}
-      {{ if site.Params.backgroundImageWidth }}
-        {{ $targetWidthLarge = site.Params.backgroundImageWidth }}
-        {{ $targetWidthSmall = div $targetWidthLarge 2 }}
-      {{ end }}
-      {{ $actualWidth := .Width }}
-      
-      {{/* Generate small version */}}
-      {{ if ge $actualWidth $targetWidthSmall }}
-        {{ $widthSmall = $targetWidthSmall }}
-        {{ $featuredURLSmall = (.Resize (printf "%dx" $targetWidthSmall)).RelPermalink }}
-        {{ $featuredURLWebpSmall = (.Resize (printf "%dx webp" $targetWidthSmall)).RelPermalink }}
-      {{ else }}
-        {{ $widthSmall = $actualWidth }}
-        {{ $featuredURLSmall = .RelPermalink }}
-      {{ end }}
-      
-      {{/* Generate large version */}}
-      {{ if ge $actualWidth $targetWidthLarge }}
-        {{ $widthLarge = $targetWidthLarge }}
-        {{ $featuredURLLarge = (.Resize (printf "%dx" $targetWidthLarge)).RelPermalink }}
-        {{ $featuredURLWebpLarge = (.Resize (printf "%dx webp" $targetWidthLarge)).RelPermalink }}
-      {{ else if gt $actualWidth $targetWidthSmall }}
-        {{ $widthLarge = $actualWidth }}
-        {{ $featuredURLLarge = .RelPermalink }}
-        {{ $featuredURLWebpLarge = (.Resize (printf "%dx webp" $actualWidth)).RelPermalink }}
-      {{ end }}
-    {{ else }}
-      {{/* SVG or optimization disabled - use original */}}
-      {{ $featuredURL = .RelPermalink }}
-    {{ end }}
-  {{ end }}
-{{ end }}
-
 {{ $caption := "" }}
-{{ if .Params.featureimagecaption }}
-  {{- $caption = .Params.featureimagecaption -}}
+{{ with .Params.featureimagecaption }}
+  {{ $caption = . }}
 {{ end }}
 
-{{- $alt := .Page.Title -}}
-{{- with .Page.Params.alt }}{{ $alt = . }}{{ end -}}
+{{ $alt := .Page.Title }}
+{{ with .Page.Params.alt }}{{ $alt = . }}{{ end }}
 
-{{ if or $featuredURL $featuredURLSmall }}
-  {{ $style := "" }}
-  {{ $defaultPosition := cond $useDefault site.Params.imagePosition false }}
-  {{ with $.Params.imagePosition | default $defaultPosition }}
-    {{ $style = printf "object-position: %s;" . }}
-  {{ end }}
+{{ $style := "" }}
+{{ $defaultPosition := cond $useDefault site.Params.imagePosition false }}
+{{ with $.Params.imagePosition | default $defaultPosition }}
+  {{ $style = printf "object-position: %s;" . }}
+{{ end }}
+
+{{ $imgClass := "w-full rounded-lg single_hero_round nozoom" }}
+
+{{ if $featuredURL }}
+  {{/* Hotlinked image - no processing */}}
   <figure>
-    {{ if $featuredURL }}
-      {{/* Hotlinked image - no srcset */}}
-      <img
-        src="{{ $featuredURL }}"
-        alt="{{ $alt }}"
-        loading="eager"
-        decoding="async"
-        fetchpriority="high"
-        class="w-full rounded-lg single_hero_round nozoom"
-        {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
-    {{ else if or $featuredURLWebpSmall $featuredURLWebpLarge }}
-      {{/* WebP available - use picture with srcset */}}
-      <picture>
-        {{ if and $featuredURLWebpSmall $featuredURLWebpLarge }}
-          <source
-            srcset="{{ $featuredURLWebpSmall }} {{ $widthSmall }}w, {{ $featuredURLWebpLarge }} {{ $widthLarge }}w"
-            sizes="100vw"
-            type="image/webp">
-        {{ else if $featuredURLWebpSmall }}
-          <source srcset="{{ $featuredURLWebpSmall }}" type="image/webp">
-        {{ end }}
-        <img
-          {{ if and $featuredURLSmall $featuredURLLarge }}
-            srcset="{{ $featuredURLSmall }} {{ $widthSmall }}w, {{ $featuredURLLarge }} {{ $widthLarge }}w"
-            sizes="100vw"
-          {{ end }}
-          src="{{ $featuredURLSmall }}"
-          alt="{{ $alt }}"
-          loading="eager"
-          decoding="async"
-          fetchpriority="high"
-          class="w-full rounded-lg single_hero_round nozoom"
-          {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
-      </picture>
-    {{ else }}
-      {{/* No WebP - use img with srcset */}}
-      <img
-        {{ if and $featuredURLSmall $featuredURLLarge }}
-          srcset="{{ $featuredURLSmall }} {{ $widthSmall }}w, {{ $featuredURLLarge }} {{ $widthLarge }}w"
-          sizes="100vw"
-        {{ end }}
-        src="{{ $featuredURLSmall }}"
-        alt="{{ $alt }}"
-        loading="eager"
-        decoding="async"
-        fetchpriority="high"
-        class="w-full rounded-lg single_hero_round nozoom"
-        {{ if $style }}style="{{ $style | safeCSS }}"{{ end }}>
-    {{ end }}
-    {{ if $caption }}
+    <img
+      src="{{ $featuredURL }}"
+      alt="{{ $alt }}"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="{{ $imgClass }}"
+      {{ with $style }}style="{{ . | safeCSS }}"{{ end }}>
+    {{ with $caption }}
       <figcaption class="text-sm text-neutral-700 dark:text-neutral-400 hover:underline text-center">
-        {{ $caption | markdownify }}
+        {{ . | markdownify }}
       </figcaption>
     {{ end }}
   </figure>
+
+{{ else if $featured }}
+  {{ $isSVG := eq $featured.MediaType.SubType "svg" }}
+  
+  {{ if or $disableImageOptimization $isSVG }}
+    {{/* SVG or optimization disabled */}}
+    <figure>
+      <img
+        src="{{ $featured.RelPermalink }}"
+        alt="{{ $alt }}"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="{{ $imgClass }}"
+        {{ with $style }}style="{{ . | safeCSS }}"{{ end }}>
+      {{ with $caption }}
+        <figcaption class="text-sm text-neutral-700 dark:text-neutral-400 hover:underline text-center">
+          {{ . | markdownify }}
+        </figcaption>
+      {{ end }}
+    </figure>
+
+  {{ else }}
+    {{/* Check for optimized image */}}
+    {{ $sourcePath := "" }}
+    {{ if and $.Page.File $filename }}
+      {{ $sourcePath = printf "%s/%s" (path.Dir $.Page.File.Path) $filename }}
+    {{ end }}
+    
+    {{ $optimizedExists := false }}
+    {{ if $sourcePath }}
+      {{ $optimizedExists = partial "image/exists.html" (dict "source" $sourcePath "width" 1200) }}
+    {{ end }}
+
+    <figure>
+      {{ if $optimizedExists }}
+        {{ partial "image/optimized.html" (dict
+          "source" $sourcePath
+          "widths" (slice 1200 2400)
+          "sizes" "100vw"
+          "alt" $alt
+          "class" $imgClass
+          "imgObj" $featured
+          "loading" "eager"
+          "fetchpriority" "high"
+        ) }}
+      {{ else }}
+        {{/* Fallback to Hugo processing */}}
+        {{ partial "image/fallback.html" (dict
+          "imgObj" $featured
+          "widths" (slice 1200 2400)
+          "sizes" "100vw"
+          "alt" $alt
+          "class" $imgClass
+          "loading" "eager"
+          "fetchpriority" "high"
+        ) }}
+      {{ end }}
+      {{ with $caption }}
+        <figcaption class="text-sm text-neutral-700 dark:text-neutral-400 hover:underline text-center">
+          {{ . | markdownify }}
+        </figcaption>
+      {{ end }}
+    </figure>
+  {{ end }}
 {{ end }}
