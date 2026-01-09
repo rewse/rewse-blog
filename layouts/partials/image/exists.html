@@ -1,0 +1,24 @@
+{{/*
+  Check if optimized image exists for a given source path.
+  
+  Input: dict with:
+    - source: source path (e.g., "posts/my-post/image.jpg")
+    - width: (optional) width to check, default 800
+  OR just a string for backward compatibility
+  
+  Output: true if optimized images exist, false otherwise
+*/}}
+
+{{- $source := "" -}}
+{{- $width := 800 -}}
+
+{{- if reflect.IsMap . -}}
+  {{- $source = .source -}}
+  {{- with .width }}{{ $width = . }}{{ end -}}
+{{- else -}}
+  {{- $source = . -}}
+{{- end -}}
+
+{{- $testPath := printf "static/img/optimized/%s/%s-%dw%s" (path.Dir $source) (path.BaseName $source) $width (path.Ext $source) -}}
+{{- $exists := fileExists $testPath -}}
+{{- return $exists -}}

@@ -1,120 +1,115 @@
+{{/*
+  Term (category/tag) card partial.
+  Uses pre-optimized images when available, falls back to Hugo processing.
+*/}}
+
 {{ $disableImageOptimization := .Page.Site.Params.disableImageOptimization | default false }}
 
 {{ $featured := "" }}
 {{ $featuredURL := "" }}
-{{ $featuredURLSmall := "" }}
-{{ $featuredURLLarge := "" }}
-{{ $featuredURLWebpSmall := "" }}
-{{ $featuredURLWebpLarge := "" }}
-{{ $widthSmall := 0 }}
-{{ $widthLarge := 0 }}
+{{ $filename := "" }}
+
+{{/* Get from frontmatter */}}
 {{ with .Page.Params.featureimage }}
   {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
     {{ $featured = resources.GetRemote . }}
   {{ else }}
     {{ $featured = resources.Get . }}
+    {{ $filename = . }}
   {{ end }}
 {{ end }}
 
+{{/* Fallback to page resources */}}
 {{ if not $featured }}
   {{ $images := .Page.Resources.ByType "image" }}
   {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
-    {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
+    {{ if not $featured }}
+      {{ $match := $images.GetMatch . }}
+      {{ if $match }}
+        {{ $featured = $match }}
+        {{ $filename = path.Base $match.Name }}
+      {{ end }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
-{{/* generate image URLs for srcset with w descriptor (400w, 800w) */}}
-{{ with $featured }}
-  {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
-    {{ $targetWidthSmall := 400 }}
-    {{ $targetWidthLarge := 800 }}
-    {{ $actualWidth := .Width }}
-
-    {{/* Generate small version */}}
-    {{ if ge $actualWidth $targetWidthSmall }}
-      {{ $widthSmall = $targetWidthSmall }}
-      {{ $featuredURLSmall = (.Resize (printf "%dx" $targetWidthSmall)).RelPermalink }}
-      {{ $featuredURLWebpSmall = (.Resize (printf "%dx webp" $targetWidthSmall)).RelPermalink }}
-    {{ else }}
-      {{ $widthSmall = $actualWidth }}
-      {{ $featuredURLSmall = .RelPermalink }}
-    {{ end }}
-
-    {{/* Generate large version */}}
-    {{ if ge $actualWidth $targetWidthLarge }}
-      {{ $widthLarge = $targetWidthLarge }}
-      {{ $featuredURLLarge = (.Resize (printf "%dx" $targetWidthLarge)).RelPermalink }}
-      {{ $featuredURLWebpLarge = (.Resize (printf "%dx webp" $targetWidthLarge)).RelPermalink }}
-    {{ else if gt $actualWidth $targetWidthSmall }}
-      {{ $widthLarge = $actualWidth }}
-      {{ $featuredURLLarge = .RelPermalink }}
-      {{ $featuredURLWebpLarge = (.Resize (printf "%dx webp" $actualWidth)).RelPermalink }}
-    {{ end }}
-  {{ else }}
-    {{ $featuredURL = .RelPermalink }}
-  {{ end }}
-{{ end }}
-
+{{ $imgClass := "not-prose absolute inset-0 w-full h-full object-cover" }}
 
 <div class="min-w-full">
   <div class="border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative">
-    {{ if or $featuredURL $featuredURLSmall }}
+    {{ if or $featuredURL $featured }}
       <figure class="not-prose flex-none relative overflow-hidden thumbnail_card">
         {{ if $featuredURL }}
+          {{/* Hotlinked image */}}
           <img
             src="{{ $featuredURL }}"
             alt="{{ $.Page.Title }}"
             loading="lazy"
             decoding="async"
             fetchpriority="low"
-            class="not-prose absolute inset-0 w-full h-full object-cover">
-        {{ else if or $featuredURLWebpSmall $featuredURLWebpLarge }}
-          <picture class="not-prose">
-            {{ if and $featuredURLWebpSmall $featuredURLWebpLarge }}
-              <source
-                srcset="{{ $featuredURLWebpSmall }} {{ $widthSmall }}w, {{ $featuredURLWebpLarge }} {{ $widthLarge }}w"
-                sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
-                type="image/webp">
-            {{ else if $featuredURLWebpSmall }}
-              <source srcset="{{ $featuredURLWebpSmall }}" type="image/webp">
-            {{ end }}
+            class="{{ $imgClass }}">
+
+        {{ else if $featured }}
+          {{ $isSVG := eq $featured.MediaType.SubType "svg" }}
+
+          {{ if or $disableImageOptimization $isSVG }}
+            {{/* SVG or optimization disabled */}}
             <img
-              {{ if and $featuredURLSmall $featuredURLLarge }}
-                srcset="{{ $featuredURLSmall }} {{ $widthSmall }}w, {{ $featuredURLLarge }} {{ $widthLarge }}w"
-                sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
-              {{ end }}
-              src="{{ $featuredURLSmall }}"
+              src="{{ $featured.RelPermalink }}"
               alt="{{ $.Page.Title }}"
               loading="lazy"
               decoding="async"
               fetchpriority="low"
-              class="not-prose absolute inset-0 w-full h-full object-cover">
-          </picture>
-        {{ else }}
-          <img
-            {{ if and $featuredURLSmall $featuredURLLarge }}
-              srcset="{{ $featuredURLSmall }} {{ $widthSmall }}w, {{ $featuredURLLarge }} {{ $widthLarge }}w"
-              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
+              class="{{ $imgClass }}">
+
+          {{ else }}
+            {{/* Check for optimized image */}}
+            {{ $sourcePath := "" }}
+            {{ if and $.Page.File $filename }}
+              {{ $sourcePath = printf "%s/%s" (path.Dir $.Page.File.Path) $filename }}
             {{ end }}
-            src="{{ $featuredURLSmall }}"
-            alt="{{ $.Page.Title }}"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            class="not-prose absolute inset-0 w-full h-full object-cover">
+
+            {{ $optimizedExists := false }}
+            {{ if $sourcePath }}
+              {{ $optimizedExists = partial "image/exists.html" (dict "source" $sourcePath "width" 400) }}
+            {{ end }}
+
+            {{ if $optimizedExists }}
+              {{ partial "image/optimized.html" (dict
+                "source" $sourcePath
+                "widths" (slice 400 800)
+                "sizes" "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
+                "alt" $.Page.Title
+                "class" $imgClass
+                "imgObj" $featured
+                "fetchpriority" "low"
+              ) }}
+            {{ else }}
+              {{/* Fallback to Hugo processing */}}
+              {{ partial "image/fallback.html" (dict
+                "imgObj" $featured
+                "widths" (slice 400 800)
+                "sizes" "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 100vw"
+                "alt" $.Page.Title
+                "class" $imgClass
+                "fetchpriority" "low"
+              ) }}
+            {{ end }}
+          {{ end }}
         {{ end }}
       </figure>
     {{ end }}
+
     {{ if site.Params.taxonomy.showTermCount | default true }}
       <span class="absolute bottom-0 right-0 m-2">
         <span class="flex">
-          <span
-            class="rounded-md border border-primary-400 px-1 py-[1px] text-xl font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+          <span class="rounded-md border border-primary-400 px-1 py-[1px] text-xl font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
             {{ .Count }}
           </span>
         </span>
       </span>
     {{ end }}
+
     <div class="px-6 py-4">
       <a
         {{ with .Page.Params.externalUrl }}
@@ -123,8 +118,7 @@
           href="{{ .Page.RelPermalink }}"
         {{ end }}
         class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
-        <div
-          class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral">
+        <div class="font-bold text-xl text-neutral-800 decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral">
           {{ .Page.Title | emojify }}
         </div>
       </a>

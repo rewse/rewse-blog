@@ -1,0 +1,77 @@
+{{/*
+  Generate <picture> element using Hugo's image processing.
+  Used as fallback when pre-optimized images don't exist.
+  
+  Input: dict with:
+    - imgObj: Hugo image resource (required)
+    - widths: slice of target widths (e.g., slice 800 1600)
+    - sizes: sizes attribute value (e.g., "(min-width: 768px) 50vw, 100vw")
+    - alt: alt text
+    - class: CSS classes (optional)
+    - loading: loading attribute (default: "lazy")
+    - fetchpriority: fetchpriority attribute (default: "auto")
+*/}}
+
+{{- $imgObj := .imgObj -}}
+{{- $widths := .widths -}}
+{{- $sizes := .sizes -}}
+{{- $alt := .alt | default "" -}}
+{{- $class := .class | default "" -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $fetchpriority := .fetchpriority | default "auto" -}}
+
+{{- $actualWidth := $imgObj.Width -}}
+
+{{/* Build processed images and srcsets */}}
+{{- $srcsetOrig := slice -}}
+{{- $srcsetWebp := slice -}}
+{{- $smallestImg := $imgObj -}}
+{{- $processedAny := false -}}
+
+{{- range $widths -}}
+  {{- $w := . -}}
+  {{- if ge $actualWidth $w -}}
+    {{- $resized := $imgObj.Resize (printf "%dx" $w) -}}
+    {{- $resizedWebp := $imgObj.Resize (printf "%dx webp" $w) -}}
+    {{- $srcsetOrig = $srcsetOrig | append (printf "%s %dw" $resized.RelPermalink $w) -}}
+    {{- $srcsetWebp = $srcsetWebp | append (printf "%s %dw" $resizedWebp.RelPermalink $w) -}}
+    {{- if not $processedAny -}}
+      {{- $smallestImg = $resized -}}
+      {{- $processedAny = true -}}
+    {{- end -}}
+  {{- else if not $processedAny -}}
+    {{/* Image is smaller than target width, use original */}}
+    {{- $srcsetOrig = $srcsetOrig | append (printf "%s %dw" $imgObj.RelPermalink $actualWidth) -}}
+    {{- $webp := $imgObj.Process "webp" -}}
+    {{- $srcsetWebp = $srcsetWebp | append (printf "%s %dw" $webp.RelPermalink $actualWidth) -}}
+    {{- $processedAny = true -}}
+  {{- end -}}
+{{- end -}}
+
+<picture{{ with .pictureClass }} class="{{ . }}"{{ end }}>
+  {{- if $srcsetWebp }}
+  <source
+    srcset="{{ delimit $srcsetWebp ", " }}"
+    sizes="{{ $sizes }}"
+    type="image/webp">
+  {{- end }}
+  <img
+    {{- if $class }}
+    class="{{ $class }}"
+    {{- end }}
+    loading="{{ $loading }}"
+    decoding="async"
+    fetchpriority="{{ $fetchpriority }}"
+    alt="{{ $alt }}"
+    {{ with $imgObj.Width }}width="{{ . }}"{{ end }}
+    {{ with $imgObj.Height }}height="{{ . }}"{{ end }}
+    src="{{ $smallestImg.RelPermalink }}"
+    {{- if gt (len $srcsetOrig) 1 }}
+    srcset="{{ delimit $srcsetOrig ", " }}"
+    sizes="{{ $sizes }}"
+    {{- end }}
+    {{- with .style }}
+    style="{{ . | safeCSS }}"
+    {{- end }}
+    data-zoom-src="{{ $imgObj.RelPermalink }}">
+</picture>
