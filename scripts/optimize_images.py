@@ -183,7 +183,7 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
 
 def process_images(
     path: Optional[Path] = None, force: bool = False, dry_run: bool = False
-) -> None:
+) -> int:
     """Main function to process images."""
     manifest = load_manifest()
     images = find_images(path)
@@ -203,7 +203,7 @@ def process_images(
             log(f"  {img_path}")
             for output in result["outputs"]:
                 log(f"    → {output}")
-        return
+        return 0
 
     processed_count = 0
     error_count = 0
