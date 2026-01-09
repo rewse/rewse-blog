@@ -127,3 +127,41 @@ description: "記事の説明文"
 summary: "記事の要約"
 ---
 ```
+
+
+## 画像最適化
+
+ShortPixel API を使用して画像を最適化し、WebP/AVIF 形式に変換するスクリプトを提供しています。
+
+### 必要な環境
+
+- Python 3.10+
+- uv (Python パッケージマネージャー)
+- 1Password CLI (`op`)
+
+### 使い方
+
+```bash
+# 未処理の画像を処理
+./scripts/optimize_images.sh
+
+# 特定のパスのみ処理
+./scripts/optimize_images.sh --path content/posts/new-article/
+
+# 強制的に再処理
+./scripts/optimize_images.sh --force
+
+# 実行せずに対象を確認（ドライラン）
+./scripts/optimize_images.sh --dry-run
+```
+
+### 生成されるファイル
+
+各画像に対して以下のサイズ・フォーマットが生成されます：
+
+- サイズ: 400w, 800w, 1200w, 1600w, 2400w
+- フォーマット: 元形式 (JPG/PNG), WebP, AVIF
+
+出力先: `static/img/optimized/`
+
+処理済み画像は `.manifest.json` で管理され、再実行時にスキップされます。
