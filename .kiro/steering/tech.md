@@ -11,7 +11,7 @@
 
 - **フロントエンド**: Hugo + Blowfish テーマ
 - **スタイリング**: Tailwind CSS (テーマに内包)
-- **画像最適化**: Hugo内蔵機能 (WebP対応)
+- **画像最適化**: ShortPixel API (WebP/AVIF対応)
 - **検索機能**: 有効化済み
 - **多言語対応**: 日本語がデフォルト、英語も設定済み
 - **SEO**: 構造化データ、サイトマップ、robots.txt対応
@@ -44,6 +44,22 @@ hugo new posts/[post-name]/index.md
 hugo new [page-name]/index.md
 ```
 
+### 画像最適化
+
+```bash
+# 未処理の画像を処理
+./scripts/optimize_images.sh
+
+# 特定のパスのみ処理
+./scripts/optimize_images.sh --path content/posts/new-article/
+
+# 強制的に再処理
+./scripts/optimize_images.sh --force
+
+# 実行せずに対象を確認（ドライラン）
+./scripts/optimize_images.sh --dry-run
+```
+
 ## 設定ファイル
 
 - `config/_default/hugo.yaml`: メイン設定
@@ -54,13 +70,11 @@ hugo new [page-name]/index.md
 
 ## デプロイメント
 
-- ベースURL: `http://localhost:1313/blog/` (開発用)
-- Google Analytics: 設定済み (G-TPRYLTLRFG)
-- サイトマップ: 自動生成
-- RSS: 自動生成
+- 開発用ベースURL: `http://localhost:1313/`
+- 本番用ベースURL: `https://blog.rewse.jp/`
 
 ## 旧ブログ
 
-- このプロジェクトはWordPressで動いている旧ブログからHugoへの移行を行っている
-- 旧ブログは https://rewse.jp/blog/ で公開されている
+- 旧ブログはWordPressで動いていたが、Hugoへ移行された
+- 旧ブログは https://rewse.jp/blog/ で公開されていた
 - 旧ブログの全ての記事は exported/ にXMLで出力されている
