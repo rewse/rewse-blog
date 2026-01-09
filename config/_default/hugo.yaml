@@ -27,6 +27,15 @@ pagination:
 
 imaging:
   anchor: "Center"
+  quality: 85
+  resampleFilter: "Lanczos"
+  formats:
+    - "jpg"
+    - "png"
+    - "webp"
+  exif:
+    includeFields: ""
+    excludeFields: "GPS|Exif"
 
 taxonomies:
   tag: "tags"
