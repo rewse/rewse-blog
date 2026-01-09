@@ -6,38 +6,14 @@ Hugoを使用した個人ブログサイトです。技術レビュー、購入�
 
 - **静的サイトジェネレーター**: Hugo
 - **テーマ**: Blowfish (Tailwind CSS ベース)
-
-## 主要コンテンツ
-
-- **技術記事**: ハードウェア・ソフトウェアのレビューと解説
-- **購入品レビュー**: Apple製品、PC周辺機器、家電製品などの詳細レビュー
-- **旅行記録**: 国内外の旅行体験記
-- **ライフスタイル**: デスク環境、ホームオートメーション、写真・動画機材の紹介
+- **デプロイ先**: AWS Amplify
 
 ## 開発環境のセットアップ
 
 ### 必要な環境
 
-- Hugo (extended版)
+- Hugo
 - Git
-
-### セットアップ手順
-
-1. リポジトリをクローン
-```bash
-git clone --recursive [repository-url]
-cd rewse-blog
-```
-
-2. 開発サーバーを起動
-```bash
-hugo server
-```
-
-3. ドラフト記事も含めて確認する場合
-```bash
-hugo server -D
-```
 
 ## よく使うコマンド
 
@@ -71,22 +47,28 @@ hugo new [page-name]/index.md
 
 ```
 rewse-blog/
-├── archetypes/          # コンテンツテンプレート
-├── assets/              # 静的アセット
-│   ├── css/            # カスタムCSS
-│   ├── icons/          # アイコンファイル
-│   └── img/            # 画像ファイル
-├── config/              # Hugo設定ファイル
-│   └── _default/       # デフォルト設定
-├── content/             # コンテンツファイル
-│   ├── posts/          # ブログ投稿
-│   ├── uses/           # 使用機材ページ
+├── archetypes/              # コンテンツテンプレート
+├── assets/                  # 静的アセット
+│   ├── css/                # カスタムCSS
+│   ├── icons/              # アイコンファイル
+│   └── img/                # 画像ファイル
+├── config/                  # Hugo設定ファイル
+│   └── _default/           # デフォルト設定
+├── content/                 # コンテンツファイル
+│   ├── posts/              # ブログ投稿
+│   ├── uses/               # 使用機材ページ
 │   └── about-tats-shibata/ # プロフィールページ
-├── i18n/               # 多言語対応ファイル
-├── layouts/            # カスタムレイアウト
-├── static/             # 静的ファイル（favicon等）
-└── themes/             # Hugoテーマ
-    └── blowfish/       # Blowfishテーマ
+├── i18n/                   # 多言語対応ファイル
+├── layouts/                # カスタムレイアウト
+├── scripts/                # コンテンツ一括修正用スクリプト
+│   └── optimize_images.py  # 画像最適化スクリプト
+├── static/                 # 静的ファイル（favicon等）
+│   └── img/
+│       └── optimized/      # 最適化済み画像出力先
+├── themes/                 # Hugoテーマ
+    └── blowfish/           # Blowfishテーマ
+├── amplify.yml              # AWS Amplify ビルド設定
+└── Dockerfile               # AWS Amplify カスタムビルドイメージ
 ```
 
 ## 設定ファイル
@@ -128,31 +110,30 @@ summary: "記事の要約"
 ---
 ```
 
-
 ## 画像最適化
 
-ShortPixel API を使用して画像を最適化し、WebP/AVIF 形式に変換するスクリプトを提供しています。
+pyvipsを使用して画像のリサイズとWebP/AVIF形式への変換変換を行うスクリプトを提供しています。
 
 ### 必要な環境
 
 - Python 3.10+
 - uv (Python パッケージマネージャー)
-- 1Password CLI (`op`)
+- libvips (画像処理ライブラリ)
 
 ### 使い方
 
 ```bash
 # 未処理の画像を処理
-./scripts/optimize_images.sh
+uv run scripts/optimize_images.py
 
 # 特定のパスのみ処理
-./scripts/optimize_images.sh --path content/posts/new-article/
+uv run scripts/optimize_images.py --path content/posts/new-article/
 
 # 強制的に再処理
-./scripts/optimize_images.sh --force
+uv run scripts/optimize_images.py --force
 
 # 実行せずに対象を確認（ドライラン）
-./scripts/optimize_images.sh --dry-run
+uv run scripts/optimize_images.py --dry-run
 ```
 
 ### 生成されるファイル
@@ -165,3 +146,35 @@ ShortPixel API を使用して画像を最適化し、WebP/AVIF 形式に変換�
 出力先: `static/img/optimized/`
 
 処理済み画像は `.manifest.json` で管理され、再実行時にスキップされます。
+
+## AWS Amplify カスタムビルドイメージ
+
+このプロジェクトでは、libvipsとAVIFサポートを含むカスタムDockerイメージを使用して AWS Amplify でビルドしています。
+
+### Docker イメージの構成
+
+- **ベースイメージ**: Ubuntu 24.04
+- **主要パッケージ**:
+  - Hugo (動的インストール)
+  - libvips-dev, libvips-tools (画像処理)
+  - libheif-dev, libheif-plugin-* (AVIF サポート)
+  - rav1e, librav1e0 (AV1 エンコーダー)
+  - Python 3.12, uv (画像最適化スクリプト用)
+  - Amplify 必須パッケージ (curl, git, openssh-client, bash)
+
+### Docker イメージのビルド
+
+```bash
+# イメージをビルド
+podman build -t public.ecr.aws/v5r5z4u0/amplify-hugo-vips:v2 .
+```
+
+### ECR Public へのプッシュ
+
+```bash
+# ECR Public にログイン
+aws ecr-public get-login-password --region us-east-1 | podman login --username AWS --password-stdin public.ecr.aws
+
+# イメージをプッシュ
+podman push public.ecr.aws/v5r5z4u0/amplify-hugo-vips:v2
+```
