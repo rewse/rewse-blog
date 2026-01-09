@@ -117,6 +117,10 @@
     line-height: 1.6 !important;
 }
 
+.author a {
+    margin-right: 0.5rem !important;
+}
+
 /* ========================================
    Social Icons
    ======================================== */
@@ -214,7 +218,11 @@
 /* Center social icons when they wrap on small screens */
 #main-content > article h1 + div.mt-3.mb-10.text-2xl > div.flex.flex-wrap {
     justify-content: center !important;
-    row-gap: 0.5rem !important;
+    row-gap: 1rem !important;
+}
+
+#main-content > article h1 + div.mt-3.mb-10.text-2xl a {
+    margin: 0 0.25rem !important;
 }
 
 /* ========================================
