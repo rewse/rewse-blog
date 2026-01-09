@@ -9,18 +9,18 @@ frontend:
   phases:
     preBuild:
       commands:
+        - echo "Installing dependencies..."
+        - apt-get update
+        - apt-get install -y curl git libvips-dev libvips-tools python3 python3-pip
+
         - echo "Creating directory for user-specific executable files..."
-        - mkdir -p "${HOME}/.local"
+        - mkdir -p "${HOME}/.local/hugo"
 
         - echo "Installing Hugo ${HUGO_VERSION}..."
         - curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
-        - mkdir "${HOME}/.local/hugo"
         - tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
         - rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
         - export PATH="${HOME}/.local/hugo:${PATH}"
-
-        - echo "Installing libvips for image optimization..."
-        - sudo yum install -y vips vips-devel
 
         - echo "Installing uv..."
         - curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -28,8 +28,8 @@ frontend:
 
         - echo "Verifying installations..."
         - echo "Hugo:" $(hugo version)
-        - echo "vips:" $(vips --version)
         - echo "uv:" $(uv --version)
+        - echo "vips:" $(vips --version)
 
         - echo "Running image optimization (incremental with retry)..."
         - |
