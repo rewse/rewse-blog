@@ -22,6 +22,12 @@ frontend:
         - echo "Hugo:" $(hugo version)
         - echo "uv:" $(uv --version)
         - echo "vips:" $(vips --version)
+        
+        - echo "Checking AVIF support..."
+        - echo "libheif version:" $(pkg-config --modversion libheif 2>/dev/null || echo "not found")
+        - echo "rav1e available:" $(which rav1e || echo "not found")
+        - echo "librav1e0 installed:" $(dpkg -l | grep librav1e0 || echo "not found")
+        - echo "vips formats:" $(vips -l | grep -E "(heif|avif)" || echo "no HEIF/AVIF support found")
 
         - echo "Running image optimization (incremental with retry)..."
         - |
