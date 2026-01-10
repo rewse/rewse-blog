@@ -5,7 +5,8 @@
 hugo_stats.json
 
 # Optimized images (generated at build time)
-/static/img/optimized/
+/static/img/optimized/*
+!/static/img/optimized/.manifest.json
 
 # Temporary lock file which is used to track Hugo dependency information
 .hugo_build.lock
