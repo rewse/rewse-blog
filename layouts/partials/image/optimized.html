@@ -30,7 +30,6 @@
 
 {{/* Build srcset strings */}}
 {{- $srcsetAvif := slice -}}
-{{- $srcsetWebp := slice -}}
 {{- $srcsetOrig := slice -}}
 {{- $smallestSrc := "" -}}
 {{- $largestSrc := "" -}}
@@ -38,10 +37,8 @@
 {{- range $widths -}}
   {{- $w := . -}}
   {{- $avif := printf "%s-%dw.avif %dw" $basePath $w $w -}}
-  {{- $webp := printf "%s-%dw.webp %dw" $basePath $w $w -}}
   {{- $orig := printf "%s-%dw%s %dw" $basePath $w $ext $w -}}
   {{- $srcsetAvif = $srcsetAvif | append $avif -}}
-  {{- $srcsetWebp = $srcsetWebp | append $webp -}}
   {{- $srcsetOrig = $srcsetOrig | append $orig -}}
   {{- if not $smallestSrc -}}
     {{- $smallestSrc = printf "%s-%dw%s" $basePath $w $ext -}}
@@ -58,10 +55,6 @@
     srcset="{{ delimit $srcsetAvif ", " }}"
     sizes="{{ $sizes }}"
     type="image/avif">
-  <source
-    srcset="{{ delimit $srcsetWebp ", " }}"
-    sizes="{{ $sizes }}"
-    type="image/webp">
   <img
     {{- if $class }}
     class="{{ $class }}"
