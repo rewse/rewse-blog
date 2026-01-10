@@ -152,7 +152,7 @@
           {{/* Social links */}}
           <div class="mt-3 mb-10 text-2xl">
             {{ with .Site.Params.Author.links }}
-              <div class="flex flex-wrap">
+              <div id="hero-social" class="flex flex-wrap">
                 {{ range $links := . }}
                   {{ range $name, $url := $links }}
                     {{ if not $disableHeroImageFilter }}
