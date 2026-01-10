@@ -72,6 +72,19 @@ uv run scripts/optimize_images.py --dry-run
 
 - 開発用ベースURL: `http://localhost:1313/`
 - 本番用ベースURL: `https://blog.rewse.jp/`
+- AWS Amplify App ID: `d8gzy6xdskncg`
+
+### Amplifyビルドログの取得
+
+Amplifyのビルドログは署名付きURLで提供されるため、`webFetch`ツールではアクセスできない。代わりに`curl`コマンドを使用する必要がある。
+
+```bash
+# 1. ジョブ情報からログURLを取得
+aws amplify get-job --app-id d8gzy6xdskncg --branch-name main --job-id <JOB_ID> --query "job.steps[0].logUrl" --output text
+
+# 2. curlでログを取得
+curl -s "<LOG_URL>"
+```
 
 ## 旧ブログ
 
