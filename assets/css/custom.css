@@ -3,43 +3,27 @@
    ======================================== */
 
 /* Hide text title */
-.main-menu > a {
+#site-title {
     display: none !important;
 }
 
-.main-menu img.logo {
-    margin: 0 0 20px -10px !important;
-    height: 120px !important;
-    width: 120px !important;
-    max-height: 120px !important;
-    max-width: 120px !important;
+#site-logo {
+    margin: 0 0 1.25rem -0.75rem !important;
+    width: 7.5rem !important;
+    max-width: 7.5rem !important;
+    height: 7.5rem !important;
+    max-height: 7.5rem !important;
 }
 
-.main-menu.flex.pb-3 {
-    margin-top: -40px !important;
-}
-
-/* ========================================
-   Article
-   ======================================== */
-
-#main-content > article .article-content {
-    margin-bottom: 40px !important;
-    line-height: 1.8 !important;
-    text-align: justify !important;
-}
-@media (max-width: 1023px) {
-    #main-content > article .article-content {
-        text-align: left !important;
-    }
+#subnavigation {
+    margin-top: -2.5rem !important;
 }
 
 /* ========================================
    Article Hero
    ======================================== */
 
-#main-content > article > figure > img,
-#main-content > article > figure > picture > img {
+#page-single #article-hero img {
     max-height: none;
 }
 
@@ -47,14 +31,29 @@
    Article Header
    ======================================== */
 
-#single_header {
-    max-width: none !important;
+#page-single #single_header {
     width: 100% !important;
+    max-width: none !important;
 }
 
-#single_header h1 {
-    line-height: 1.5 !important;
+#page-single #single_header h1 {
+    line-height: 1.4 !important;
     word-break: auto-phrase !important;
+}
+
+/* ========================================
+   Article Content
+   ======================================== */
+
+#page-single .article-content {
+    margin-bottom: 2rem !important;
+    text-align: justify !important;
+    line-height: 1.8 !important;
+}
+@media (max-width: 1023px) {
+    #page-single .article-content {
+        text-align: left !important;
+    }
 }
 
 /* ========================================
@@ -62,126 +61,61 @@
    ======================================== */
 
 /* Fix: Dark mode table borders are invisible */
-#main-content > article .article-content table {
-    border-collapse: collapse !important;
-}
-#main-content > article .article-content th,
-#main-content > article .article-content td {
+#page-single .article-content th,
+#page-single .article-content td {
     border-bottom-width: 1px !important;
     border-bottom-style: solid !important;
     border-bottom-color: rgb(var(--color-neutral-200)) !important;
 }
-.dark #main-content > article .article-content th,
-.dark #main-content > article .article-content td {
+.dark #page-single .article-content th,
+.dark #page-single .article-content td {
     border-bottom-color: rgb(var(--color-neutral-600)) !important;
 }
 
-
 /* ========================================
-   Article Shortcode
+   Article Card
    ======================================== */
 
-#main-content > article .article-content section article {
+#page-single .article-card {
     margin: 2rem 0 !important;
 }
 
-#main-content > article .article-content section article div.overflow-hidden.pt-1,
-#main-content > article .article-content section article div.overflow-hidden.pt-1 .prose {
-    margin-top: 5px !important;
-    font-size: 0.825rem !important;
+#page-single .article-card-summary {
+    margin-top: 0.5rem !important;
+    font-size: 0.875rem !important;
     line-height: 1.5 !important;
 }
-
 
 /* ========================================
    Author
    ======================================== */
 
-/* Fix author width when TOC is present */
-.min-w-0.min-h-0.max-w-fit {
-    max-width: none !important;
-}
-
-.author {
+#page-single .author {
     margin: 4rem 0 !important;
     width: 100% !important;
     max-width: 655px !important;
     text-align: justify !important;
 }
 @media (max-width: 1023px) {
-    .author {
+    #page-single .author {
         text-align: left !important;
     }
 }
 
-.author > div > div {
+#page-single #author-bio {
     line-height: 1.6 !important;
 }
 
-.author a {
-    margin-right: 0.5rem !important;
+#page-single .author-link {
+    margin-right: 0.75rem !important;
 }
 
 /* ========================================
-   Social Icons
+   Related Card
    ======================================== */
 
-/* Right align social share buttons above Related section */
-#main-content > article .article-content + section,
-#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
-    width: calc(100% - 260px) !important;
-    max-width: 655px !important;
-    margin-bottom: 80px !important;
-    justify-content: flex-end !important;
-}
-@media (max-width: 1023px) {
-    #main-content > article .article-content + section,
-    #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl {
-        width: 100% !important;
-    }
-}
-
-/* Add "Shared by" label before social share buttons */
-#main-content > article .article-content + section:before,
-#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl:before {
-    content: "Share with";
-    display: flex;
-    align-items: center;
-    margin-right: 0.5rem;
-    font-size: 1rem;
-    color: rgb(var(--color-neutral-500));
-}
-.dark #main-content > article .article-content + section:before,
-.dark #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl:before {
-    color: rgb(var(--color-neutral-400));
-}
-
-/* Make social icons background transparent */
-#main-content > article .article-content + section a,
-#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl a {
-    color: rgb(var(--color-neutral-500));
-    background-color: transparent !important;
-}
-.dark #main-content > article .article-content + section a,
-.dark #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl a {
-    color: rgb(var(--color-neutral-400));
-    background-color: transparent !important;
-}
-#main-content > article .article-content + section a:hover,
-#main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl a:hover {
-    background-color: rgb(var(--color-primary-500)) !important;
-}
-.dark #main-content > article .article-content + section a:hover,
-.dark #main-content > article section.flex.flex-row.flex-wrap.justify-center.pt-4.text-xl a:hover {
-    background-color: rgb(var(--color-primary-400)) !important;
-}
-
-/* ========================================
-   Related
-   ======================================== */
-
-/* Hide excerpts in Related section only (not in posts list) */
-#main-content > article .prose.dark\:prose-invert.py-1 {
+#page-single .related-summary,
+#page-single .related-footer {
     display: none !important;
 }
 
@@ -189,50 +123,59 @@
    Article Footer Navigation
    ======================================== */
 
-/* Make navigation links same width as Related cards */
-#main-content > article footer {
-    max-width: none !important;
+#page-single footer {
     width: 100% !important;
+    max-width: none !important;
 }
 
-/* Hide navigadation date */
-#main-content > article footer time {
+#page-single footer time {
     display: none !important;
 }
 
-#main-content > article footer > div > div> span:nth-child(1) {
-    padding-right: 1rem;
+#page-single #nav-prev {
+    margin-right: 2rem;
 }
-#main-content > article footer > div > div> span:nth-child(2) {
-    padding-left: 1rem;
+
+#page-single #nav-next {
+    margin-left: 2rem;
 }
 
 /* ========================================
    Homepage
    ======================================== */
 
-#main-content section > h2 {
+#page-home #recent-title {
     margin: 2rem 0 1rem !important;
-    font-size: 36px !important;
+    font-size: 2rem !important;
 }
 
-/* Center social icons when they wrap on small screens */
-#main-content > article h1 + div.mt-3.mb-10.text-2xl > div.flex.flex-wrap {
+#page-home #hero-social {
     justify-content: center !important;
     row-gap: 1rem !important;
 }
 
-#main-content > article h1 + div.mt-3.mb-10.text-2xl a {
-    margin: 0 0.25rem !important;
+#page-home #hero-social a {
+    margin: 0 0.5rem !important;
+}
+
+/* ========================================
+   List
+   ======================================== */
+
+#page-list h1 {
+    margin-bottom: 1rem !important;
 }
 
 /* ========================================
    Card
    ======================================== */
 
-/* Add margin after tags in card list */
-#main-content > section > section div.text-sm.text-neutral-500.dark\:text-neutral-400 {
-    margin-bottom: 6px !important;
+.card-meta {
+    margin-bottom: 0.25rem !important;
+}
+
+.card-footer {
+    display: none !important;
 }
 
 /* ========================================
@@ -240,15 +183,20 @@
    ======================================== */
 
 /* Keep footer nav items horizontal with consistent spacing */
-#site-footer > nav > ul {
+#site-footer nav ul {
     flex-direction: row !important;
     flex-wrap: wrap !important;
+    row-gap: 1rem !important;
 }
-#site-footer > nav > ul > li {
+#site-footer nav ul li {
     margin-inline-end: 1rem !important;
 }
-#site-footer > nav > ul > li:last-child {
+#site-footer nav ul li:last-child {
     margin-inline-end: 0 !important;
+}
+
+#site-footer #copyright {
+    margin-right: 2rem !important;
 }
 
 /* ========================================
@@ -256,13 +204,8 @@
    ======================================== */
 
 /* Fix: Arc shows "Skip to main content" */
-a[href="#main-content"] {
-    position: absolute !important;
-    left: -10000px !important;
-    top: auto !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
+#the-top {
+    display: none !important;
 }
 
 /* Fix: Arc doesn't enable "backdrop-filter" */
