@@ -36,7 +36,7 @@ Alan Wake 2 に出てくる人物の多くが Alan Wake 1 に出てくる人物�
 
 
 
-{{< article link="/blog/posts/bought-alan-wake-remastered/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/bought-alan-wake-remastered/" showSummary=true compactSummary=true >}}
 
 
 

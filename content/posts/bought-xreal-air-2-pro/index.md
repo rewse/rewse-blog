@@ -21,7 +21,7 @@ categories:
 
 
 
-{{< article link="/blog/posts/bought-nreal-air/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/bought-nreal-air/" showSummary=true compactSummary=true >}}
 
 
 

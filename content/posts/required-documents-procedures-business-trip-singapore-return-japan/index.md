@@ -127,4 +127,4 @@ categories:
 
 
 
-{{< article link="/blog/posts/required-documents-procedures-departure-japan-entry-singapore/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/required-documents-procedures-departure-japan-entry-singapore/" showSummary=true compactSummary=true >}}

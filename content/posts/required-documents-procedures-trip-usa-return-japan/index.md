@@ -149,4 +149,4 @@ United Club は臨時休業しています。oneworld Sapphire / Pirority Pass /
 
 
 
-{{< article link="/blog/posts/required-documents-procedures-departure-japan-entry-guam/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/required-documents-procedures-departure-japan-entry-guam/" showSummary=true compactSummary=true >}}

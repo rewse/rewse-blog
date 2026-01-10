@@ -22,7 +22,7 @@ categories:
 
 
 
-{{< article link="/blog/posts/bought-sony-playstation-portal-remote-player/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/bought-sony-playstation-portal-remote-player/" showSummary=true compactSummary=true >}}
 
 
 

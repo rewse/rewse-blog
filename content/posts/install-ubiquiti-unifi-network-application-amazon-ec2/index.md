@@ -165,7 +165,7 @@ UniFi Network Application はTCP/8443をリスンしています。また、Adop
 
 
 
-{{< article link="/blog/posts/wp-content/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/wp-content/" showSummary=true compactSummary=true >}}
 
 
 

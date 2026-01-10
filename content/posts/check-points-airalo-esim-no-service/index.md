@@ -25,7 +25,7 @@ categories:
 
 
 
-{{< article link="/blog/posts/3hk-esim-no-service-usa-iphone-12-pro/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/3hk-esim-no-service-usa-iphone-12-pro/" showSummary=true compactSummary=true >}}
 
 
 
