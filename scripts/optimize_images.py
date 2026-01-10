@@ -36,7 +36,6 @@ SOURCE_DIRS = [Path("content"), Path("assets/img")]
 # Compression quality settings
 JPEG_QUALITY = 85
 PNG_COMPRESSION = 9
-WEBP_QUALITY = 85
 AVIF_QUALITY = 65
 
 # Parallel processing (Recommend: # of phisical CPU / 3)
@@ -130,7 +129,7 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
 
     if dry_run:
         for width in IMAGE_SIZES:
-            for fmt in ["original", "webp", "avif"]:
+            for fmt in ["original", "avif"]:
                 output_path = get_output_path(source_path, width, fmt)
                 results["outputs"].append(str(output_path))
         return results
@@ -154,7 +153,7 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
                 is_png = source_ext == ".png"
 
                 # Save in each format
-                for fmt in ["original", "webp", "avif"]:
+                for fmt in ["original", "avif"]:
                     output_path = get_output_path(source_path, width, fmt)
                     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -163,8 +162,6 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
                             resized.pngsave(str(output_path), compression=PNG_COMPRESSION, strip=True)
                         else:
                             resized.jpegsave(str(output_path), Q=JPEG_QUALITY, strip=True)
-                    elif fmt == "webp":
-                        resized.webpsave(str(output_path), Q=WEBP_QUALITY, strip=True)
                     elif fmt == "avif":
                         resized.heifsave(str(output_path), Q=AVIF_QUALITY, compression="av1", strip=True)
 
