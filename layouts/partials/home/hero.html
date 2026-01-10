@@ -104,27 +104,52 @@
         <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex flex-col items-center justify-center text-center">
           {{/* Author image */}}
           {{ with .Site.Params.Author.image }}
+            {{ $authorImagePath := . }}
             {{ $authorImage := "" }}
             {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
               {{ $authorImage = resources.GetRemote . }}
+              {{ $authorImagePath = "" }}
             {{ else }}
               {{ $authorImage = resources.Get . }}
             {{ end }}
             {{ if $authorImage }}
-              {{ $final := $authorImage }}
-              {{ $squareImage := $authorImage }}
-              {{ if not (or $disableImageOptimization (eq $authorImage.MediaType.SubType "svg")) }}
-                {{ $final = $authorImage.Fill (print "288x288 q" ($.Site.Params.Author.imagequality | default "96")) }}
-                {{ $shortSide := int (math.Min $authorImage.Width $authorImage.Height) }}
-                {{ $squareImage = $authorImage.Crop (printf "%dx%d" $shortSide $shortSide) }}
+              {{ $isSVG := eq $authorImage.MediaType.SubType "svg" }}
+
+              {{/* Check for optimized image */}}
+              {{ $authorOptimizedExists := false }}
+              {{ if and $authorImagePath (not $disableImageOptimization) (not $isSVG) }}
+                {{ $authorOptimizedExists = partial "image/exists.html" (dict "source" $authorImagePath "width" 400) }}
               {{ end }}
-              <img
-                class="mb-2 h-36 w-36 rounded-full"
-                width="144"
-                height="144"
-                alt="{{ $.Site.Params.Author.name | default "Author" }}"
-                src="{{ $final.RelPermalink }}"
-                data-zoom-src="{{ $squareImage.RelPermalink }}">
+
+              {{ if $authorOptimizedExists }}
+                {{/* Use pre-optimized image */}}
+                {{ partial "image/optimized.html" (dict
+                  "source" $authorImagePath
+                  "widths" (slice 400 800)
+                  "sizes" "144px"
+                  "alt" ($.Site.Params.Author.name | default "Author")
+                  "class" "mb-2 h-36 w-36 rounded-full"
+                  "imgObj" $authorImage
+                  "loading" "eager"
+                  "fetchpriority" "high"
+                ) }}
+              {{ else }}
+                {{/* Fallback to Hugo processing */}}
+                {{ $final := $authorImage }}
+                {{ $squareImage := $authorImage }}
+                {{ if not (or $disableImageOptimization $isSVG) }}
+                  {{ $final = $authorImage.Fill (print "288x288 q" ($.Site.Params.Author.imagequality | default "96")) }}
+                  {{ $shortSide := int (math.Min $authorImage.Width $authorImage.Height) }}
+                  {{ $squareImage = $authorImage.Crop (printf "%dx%d" $shortSide $shortSide) }}
+                {{ end }}
+                <img
+                  class="mb-2 h-36 w-36 rounded-full"
+                  width="144"
+                  height="144"
+                  alt="{{ $.Site.Params.Author.name | default "Author" }}"
+                  src="{{ $final.RelPermalink }}"
+                  data-zoom-src="{{ $squareImage.RelPermalink }}">
+              {{ end }}
             {{ end }}
           {{ end }}
 

@@ -19,6 +19,19 @@
   {{- $source = . -}}
 {{- end -}}
 
-{{- $testPath := printf "static/img/optimized/%s/%s-%dw%s" (path.Dir $source) (path.BaseName $source) $width (path.Ext $source) -}}
+{{/* Handle /img/ prefix - these are stored directly in optimized root */}}
+{{- $cleanSource := $source -}}
+{{- if strings.HasPrefix $source "/img/" -}}
+  {{- $cleanSource = strings.TrimPrefix "/img/" $source -}}
+{{- end -}}
+
+{{- $dir := path.Dir $cleanSource -}}
+{{- $testPath := "" -}}
+{{- if eq $dir "." -}}
+  {{/* File is in root (e.g., /img/_DSC0572.jpg) */}}
+  {{- $testPath = printf "static/img/optimized/%s-%dw%s" (path.BaseName $cleanSource) $width (path.Ext $cleanSource) -}}
+{{- else -}}
+  {{- $testPath = printf "static/img/optimized/%s/%s-%dw%s" $dir (path.BaseName $cleanSource) $width (path.Ext $cleanSource) -}}
+{{- end -}}
 {{- $exists := fileExists $testPath -}}
 {{- return $exists -}}
