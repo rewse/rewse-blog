@@ -21,7 +21,7 @@ categories:
 
 
 
-{{< article link="/blog/posts/bought-cfd-mgax-cssd-s6l2tmgax/" >}}
+{{< article link="/posts/bought-cfd-mgax-cssd-s6l2tmgax/" >}}
 
 
 メインとはいえ、それほどアクセス頻度は高くないため、遅くても構わないので、できるだけ安く、信頼もそこそこレベルで構わないということで、こちらを選びました。DS916+はそのままでは2.5インチが取り付けられなかったので、[裸族のインナー V2 (CRIN2535V2)](https://www.century.co.jp/products/crin2535v2.html) で3.5インチに変換しました。裸族のインナー V2 は金属製で前後が大きく開いているのが放熱に有利そうです。

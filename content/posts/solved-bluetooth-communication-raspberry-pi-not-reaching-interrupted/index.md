@@ -20,7 +20,7 @@ categories:
 Raspberry Pi 5 に [Crucial P3 Plus Gen4 NVMe SSD](https://www.crucial.jp/products/ssd/crucial-p3-plus-ssd) を付けたところ、ラズパイ5から遠いところに設置してある [SwitchBot Meter](https://www.switchbot.jp/products/switchbot-meter) と Home Assistant 経由のBluetooth通信がつながらなくなってしまいました。また、近くの [SwitchBot Bot](https://www.switchbot.jp/products/switchbot-bot) を操作したときも、何度もリトライしていることがログに残っていました。おそらくSSDを付けたことでノイズが増えて、頼りないラズパイ5内蔵Bluetoothに悪影響が出ているようです。
 
 
-{{< article link="/blog/posts/bought-crucial-p3-plus-gen4-nvme-ssd/" >}}
+{{< article link="/posts/bought-crucial-p3-plus-gen4-nvme-ssd/" >}}
 
 
 
