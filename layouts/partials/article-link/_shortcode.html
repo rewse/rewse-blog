@@ -203,7 +203,7 @@
         {{ $compactSummary = $target.Params.compactSummary | default (site.Params.list.compactSummary | default false) }}
       {{ end }}
       <div class="overflow-hidden pt-1">
-        <div class="{{ if $compactSummary }}line-clamp-3{{ end }} prose dark:prose-invert max-w-fit">
+        <div class="article-card-summary {{ if $compactSummary }}line-clamp-3{{ end }} prose dark:prose-invert max-w-fit">
           {{ $target.Summary | plainify }}
         </div>
       </div>

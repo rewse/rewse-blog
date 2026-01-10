@@ -19,7 +19,7 @@
   {{/* Fallback to simple link with similar styling */}}
   {{ $target := index (first 1 (where .Site.AllPages "RelPermalink" $link)) 0 }}
   {{ if $target }}
-    <section class="space-y-10 w-full">
+    <section class="article-card space-y-10 w-full">
       {{ $context := dict "target" $target "showSummary" $showSummary "compactSummary" $compactSummary }}
       {{ partial "article-link/_shortcode.html" $context }}
     </section>
@@ -34,7 +34,7 @@
     {{ $target = index (first 1 (where .Site.AllPages "RelPermalink" $link)) 0 }}
   {{ end }}
   {{ if $target }}
-    <section class="space-y-10 w-full">
+    <section class="article-card space-y-10 w-full">
       {{ $context := dict "target" $target "showSummary" $showSummary "compactSummary" $compactSummary }}
       {{ partial "article-link/_shortcode.html" $context }}
     </section>

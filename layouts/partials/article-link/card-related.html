@@ -53,7 +53,7 @@
 
 {{ $imgClass := "not-prose absolute inset-0 w-full h-full object-cover" }}
 
-<article class="relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+<article class="related-card relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
   {{ if or $featuredURL $featured }}
     <div class="flex-none relative overflow-hidden thumbnail_card_related">
       {{ if $featuredURL }}
@@ -147,8 +147,8 @@
       {{ partial "article-meta/basic.html" . }}
     </div>
     {{ if .Params.showSummary | default (.Site.Params.list.showSummary | default false) }}
-      <div class="prose dark:prose-invert py-1">{{ .Summary | plainify }}</div>
+      <div class="related-summary prose dark:prose-invert py-1">{{ .Summary | plainify }}</div>
     {{ end }}
   </div>
-  <div class="px-6 pt-4 pb-2"></div>
+  <div class="related-footer px-6 pt-4 pb-2"></div>
 </article>

@@ -68,7 +68,7 @@
 
 {{ if $featuredURL }}
   {{/* Hotlinked image - no processing */}}
-  <figure>
+  <figure id="article-hero">
     <img
       src="{{ $featuredURL }}"
       alt="{{ $alt }}"
@@ -89,7 +89,7 @@
   
   {{ if or $disableImageOptimization $isSVG }}
     {{/* SVG or optimization disabled */}}
-    <figure>
+    <figure id="article-hero">
       <img
         src="{{ $featured.RelPermalink }}"
         alt="{{ $alt }}"
@@ -117,7 +117,7 @@
       {{ $optimizedExists = partial "image/exists.html" (dict "source" $sourcePath "width" 1200) }}
     {{ end }}
 
-    <figure>
+    <figure id="article-hero">
       {{ if $optimizedExists }}
         {{ partial "image/optimized.html" (dict
           "source" $sourcePath
