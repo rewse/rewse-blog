@@ -1,207 +1,168 @@
 /* Amazon Widget Styles */
-.amazon-widget {
-  margin: 32px 0;
-  max-width: none;
+.amazon-card {
   position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgb(203, 203, 203);
-  transition: border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  overflow: hidden;
+  margin: 2rem 0;
+  max-width: none;
+  border: 1px solid rgb(203, 203, 203);
+  border-radius: 0.5rem;
+  transition: border-color 0.3s ease;
 }
-
 @media (min-width: 853px) {
-  .amazon-widget {
+  .amazon-card {
     flex-direction: row;
     align-items: center;
+    max-width: 100%;
   }
 }
-
-.amazon-widget-img {
-  border-bottom: 1px solid rgb(203, 203, 203);
-  border-radius: 8px 8px 0 0;
-  text-align: center;
-  background-color: #fff;
-  padding: 16px;
-  min-height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-@media (min-width: 853px) {
-  .amazon-widget-img {
-    border-bottom: none;
-    border-right: 1px solid rgb(203, 203, 203);
-    border-radius: 8px 0 0 8px;
-    width: 300px;
-    min-height: 160px;
-  }
-}
-
-.amazon-widget-img img {
-  border: none;
-  margin: 0 auto;
-  max-height: 200px;
-  max-width: 100%;
-  object-fit: contain;
-}
-
-/* Fallback styles for when image fails to load */
-.amazon-widget-fallback {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: rgb(var(--color-neutral-500));
-  min-height: 160px;
-}
-
-.amazon-widget-fallback-icon {
-  opacity: 0.6;
-}
-
-.amazon-widget-fallback-text {
-  font-size: 14px;
-  line-height: 1.4;
-  font-weight: 500;
-  text-align: center;
-  word-break: auto-phrase;
-  max-width: 200px;
-}
-
-.amazon-widget-info {
-  padding: 15px;
-  border-radius: 0 0 8px 8px;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-@media (min-width: 853px) {
-  .amazon-widget-info {
-    border-radius: 0 8px 8px 0;
-    padding: 20px;
-  }
-}
-
-.amazon-widget-title {
-  text-align: left;
-  font-weight: 700;
-  display: block;
-  color: rgb(var(--color-neutral-800));
-  font-size: 20px;
-  line-height: 28px;
-  margin-bottom: 8px;
-}
-
-.amazon-widget-title:hover {
-  text-decoration: underline;
-  text-decoration-color: rgb(var(--color-primary-500));
-}
-
-.amazon-widget-via {
-  margin-top: 1rem;
-  color: rgb(var(--color-neutral-600));
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.amazon-widget-via img {
-  border: none;
-  width: 18px;
-  height: 18px;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* Dark mode support */
-
-html.dark .amazon-widget {
+.dark .amazon-card {
   border-color: rgb(71, 71, 71);
 }
 
-html.dark .amazon-widget-img {
+.amazon-card-img {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 12.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(203, 203, 203);
+  border-radius: 0.5rem 0.5rem 0 0;
   background-color: #fff;
-  border-bottom-color: rgb(71, 71, 71);
+  text-align: center;
 }
-
 @media (min-width: 853px) {
-  html.dark .amazon-widget-img {
+  .amazon-card-img {
+    width: 18.75rem;
+    min-height: 10rem;
+    padding: 0.75rem;
+    border-bottom: none;
+    border-right: 1px solid rgb(203, 203, 203);
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+}
+.dark .amazon-card-img {
+  border-bottom-color: rgb(71, 71, 71);
+  background-color: #fff;
+}
+@media (min-width: 853px) {
+  .dark .amazon-card-img {
     border-bottom: none;
     border-right-color: rgb(71, 71, 71);
   }
 }
 
-html.dark .amazon-widget-fallback {
+.amazon-card-img img {
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 12.5rem;
+  border: none;
+  object-fit: contain;
+}
+@media (min-width: 853px) {
+  .amazon-card-img img {
+    max-height: 9.375rem;
+  }
+}
+
+/* Fallback styles for when image fails to load */
+.amazon-card-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 10rem;
   color: rgb(var(--color-neutral-500));
 }
-
-html.dark .amazon-widget-info {
-  background-color: transparent;
+.dark .amazon-card-fallback {
+  color: rgb(var(--color-neutral-500));
+}
+@media (min-width: 853px) {
+  .amazon-card-fallback {
+    gap: 0.5rem;
+    min-height: 7.5rem;
+  }
 }
 
-html.dark .amazon-widget-title {
+.amazon-card-fallback-icon {
+  opacity: 0.6;
+}
+
+.amazon-card-fallback-text {
+  max-width: 12.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  word-break: auto-phrase;
+}
+@media (min-width: 853px) {
+  .amazon-card-fallback-text {
+    max-width: 12.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+.amazon-card-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+@media (min-width: 853px) {
+  .amazon-card-info {
+    padding: 0.75rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+}
+
+.amazon-card-title {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: left;
+  color: rgb(var(--color-neutral-800));
+}
+.dark .amazon-card-title {
   color: rgb(var(--color-neutral-100));
 }
 
-html.dark .amazon-widget-title:hover {
+.amazon-card-title:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-primary-500));
+}
+.dark .amazon-card-title:hover {
   text-decoration-color: rgb(var(--color-primary-400));
 }
 
-html.dark .amazon-widget-via {
+.amazon-card-via {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: rgb(var(--color-neutral-600));
+}
+.dark .amazon-card-via {
   color: rgb(var(--color-neutral-400));
 }
 
-/* Responsive design */
-@media (max-width: 852px) {
-  .amazon-widget {
-    max-width: 100%;
-    margin: 32px 0;
-  }
-  
-  .amazon-widget-img {
-    padding: 12px;
-    min-height: 150px;
-  }
-  
-  .amazon-widget-img img {
-    max-height: 150px;
-  }
-  
-  .amazon-widget-fallback {
-    min-height: 120px;
-    gap: 8px;
-  }
-  
-  .amazon-widget-fallback-text {
-    font-size: 13px;
-    max-width: 180px;
-  }
-  
-  .amazon-widget-info {
-    padding: 12px;
-  }
-  
-  .amazon-widget-title {
-    font-size: 18px;
-    line-height: 24px;
-  }
-  
-  .amazon-widget-via {
-    margin-top: 0.3rem;
-    font-size: 13px;
-  }
+.amazon-card-via img {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  border: none;
+  vertical-align: middle;
 }
