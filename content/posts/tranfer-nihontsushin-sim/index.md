@@ -14,10 +14,10 @@ categories:
 ---
 
 
-{{< article link="/blog/posts/transfer-uq-mobile/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/transfer-uq-mobile/" showSummary=true compactSummary=true >}}
 
 
-{{< article link="/blog/posts/transfer-povo2-0/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/transfer-povo2-0/" showSummary=true compactSummary=true >}}
 
 
 

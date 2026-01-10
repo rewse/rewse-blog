@@ -16,9 +16,9 @@ categories:
 
 [Ubiquiti UniFi Express](https://ui.com/us/ja/cloud-gateways/express) (UX) はVPNとDPI (Deep Packet Inspection) を備えたWi-Fiメッシュルーターです。UniFiの中では最小の[ゲートウェイ](https://ui.com/us/ja/cloud-gateways)となっており、通常の家庭利用には十分な性能となっています。UniFiは法人用Wi-Fiシステムとして有名ですが、UniFi Express によって小規模環境にもさらに気軽に導入できるようになりました。この記事ではネットワーク監視について紹介したいと思います。ハードウェアと初期セットアップ、ネットワーク設定については以下の記事を参照してください。
 
-{{< article link="/blog/posts/ubiquiti-unifi-express-review-hardware-initial-setup/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/ubiquiti-unifi-express-review-hardware-initial-setup/" showSummary=true compactSummary=true >}}
 
-{{< article link="/blog/posts/ubiquiti-unifi-express-review-network-config/" showSummary=true compactSummary=true >}}
+{{< article link="/posts/ubiquiti-unifi-express-review-network-config/" showSummary=true compactSummary=true >}}
 
 
 今回のレビューには UniFi OS 3.2.6 + UniFi Network 8.1.113 を使用しています。UniFi OS を3.2.5以上にアップデートすることでtransix回線 (DS-Lite) を利用した IPv4 over IPv6 IPoE（ネイティブ方式）に対応します。

@@ -199,7 +199,7 @@ Windows 11 の入った [Intel NUC 10 Performance kit NUC10i5FNH](https://www.in
 
 マウスは [Logicool MX Anywhere 3S](https://www.logicool.co.jp/ja-jp/products/mice/mx-anywhere-3s.html)、マウスパッドは [SteelSeries QcK](https://jp.steelseries.com/gaming-mousepads/qck-series) Small です。Webカメラはクラウドファンディングで購入した [OBSBOT Meet 4K](https://www.obsbot.com/jp/obsbot-meet-4k-pc-camera) です。Meet 4K のマイクはけっこう優秀なので、メインのマイクはこれです。
 
-{{< article link="/blog/posts/bought-obsbot-meet-4k/" >}}
+{{< article link="/posts/bought-obsbot-meet-4k/" >}}
 
 {{< amazon asin="B0DNDZ3JX3" title="PFU HHKB Professional HYBRID Type-S 英語配列 墨" >}}
 
@@ -316,9 +316,9 @@ Windows 11 の入った [Intel NUC 10 Performance kit NUC10i5FNH](https://www.in
 
 今年買い替えた [Shure AONIC 50 Gen 2](https://www.shure.com/ja-JP/products/headphones/aonic50) ヘッドホンは FlexiSpot E7H の脚にAliExpressで買った [Sticky ABS Headphone Bracket Wall Mounted](https://s.click.aliexpress.com/e/_opVcKX9) でぶら下げていますが、デスクで使うことはあまりなく、主にリビングで使っています。
 
-{{< article link="/blog/posts/bought-audioengine-a2-home-music-system-w-bluetooth-aptx/" >}}
-{{< article link="/blog/posts/bought-fostex-pm-submini2/" >}}
-{{< article link="/blog/posts/bought-shure-aonic-50-gen-2" >}}
+{{< article link="/posts/bought-audioengine-a2-home-music-system-w-bluetooth-aptx/" >}}
+{{< article link="/posts/bought-fostex-pm-submini2/" >}}
+{{< article link="/posts/bought-shure-aonic-50-gen-2/" >}}
 
 {{< amazon asin="B0785MRPQL" title="BenQ SW271" >}}
 
