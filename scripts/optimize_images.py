@@ -92,8 +92,8 @@ def find_images(base_path: Optional[Path] = None) -> list[Path]:
     return sorted(set(images))
 
 
-def get_output_path(source_path: Path, width: int, fmt: str) -> Path:
-    """Generate output path for optimized image."""
+def get_output_path(source_path: Path, width: int, fmt: str, file_hash: str) -> Path:
+    """Generate output path for optimized image with hash."""
     rel_path = source_path
     for prefix in ["content/", "assets/img/", "assets/"]:
         if str(source_path).startswith(prefix):
@@ -102,13 +102,15 @@ def get_output_path(source_path: Path, width: int, fmt: str) -> Path:
 
     stem = rel_path.stem
     parent = rel_path.parent
+    # Use first 8 characters of hash for filename
+    hash_short = file_hash[:8]
 
     if fmt == "original":
         ext = source_path.suffix.lower()
     else:
         ext = f".{fmt}"
 
-    return OUTPUT_DIR / parent / f"{stem}-{width}w{ext}"
+    return OUTPUT_DIR / parent / f"{stem}-{width}w-{hash_short}{ext}"
 
 
 def needs_processing(source_path: Path, manifest: dict, force: bool) -> bool:
@@ -121,7 +123,17 @@ def needs_processing(source_path: Path, manifest: dict, force: bool) -> bool:
         return True
 
     current_hash = get_file_hash(source_path)
-    return manifest["processed"][str_path]["hash"] != current_hash
+    if manifest["processed"][str_path]["hash"] != current_hash:
+        return True
+    
+    # Check if output files actually exist
+    outputs = manifest["processed"][str_path].get("outputs", [])
+    for output_path in outputs:
+        if not Path(output_path).exists():
+            log(f"Output file missing: {output_path}")
+            return True
+    
+    return False
 
 
 def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
@@ -131,11 +143,14 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
     Returns dict with processing results.
     """
     results = {"source": str(source_path), "outputs": [], "errors": []}
+    
+    # Calculate hash for filename
+    file_hash = get_file_hash(source_path)
 
     if dry_run:
         for width in IMAGE_SIZES:
             for fmt in ["original", "avif"]:
-                output_path = get_output_path(source_path, width, fmt)
+                output_path = get_output_path(source_path, width, fmt, file_hash)
                 results["outputs"].append(str(output_path))
         return results
 
@@ -159,7 +174,7 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
 
                 # Save in each format
                 for fmt in ["original", "avif"]:
-                    output_path = get_output_path(source_path, width, fmt)
+                    output_path = get_output_path(source_path, width, fmt, file_hash)
                     output_path.parent.mkdir(parents=True, exist_ok=True)
 
                     if fmt == "original":
@@ -188,6 +203,21 @@ def optimize_image(source_path: Path, dry_run: bool = False) -> dict:
     return results
 
 
+def cleanup_old_files(source_path: Path, manifest: dict) -> None:
+    """Remove old optimized files when hash changes."""
+    str_path = str(source_path)
+    if str_path in manifest["processed"]:
+        old_outputs = manifest["processed"][str_path].get("outputs", [])
+        for old_output in old_outputs:
+            old_path = Path(old_output)
+            if old_path.exists():
+                try:
+                    old_path.unlink()
+                    log(f"  Removed old file: {old_path}")
+                except Exception as e:
+                    log(f"  Failed to remove {old_path}: {e}")
+
+
 def process_images(
     path: Optional[Path] = None, force: bool = False, dry_run: bool = False
 ) -> int:
@@ -214,6 +244,10 @@ def process_images(
 
     processed_count = 0
     error_count = 0
+
+    # Clean up old files before processing (for files that need reprocessing)
+    for img_path in to_process:
+        cleanup_old_files(img_path, manifest)
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
         future_to_path = {
