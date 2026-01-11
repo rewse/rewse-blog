@@ -1,0 +1,86 @@
+customHeaders:
+  # Security headers for all files
+  - pattern: "**"
+    headers:
+      # Content Security Policy (CSP) - Prevents XSS attacks
+      - key: "Content-Security-Policy"
+        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://tagmanager.google.com https://connect.facebook.net https://www.facebook.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' https:; object-src 'none'; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; require-trusted-types-for 'script'"
+      
+      # HTTP Strict Transport Security (HSTS) - Enforces HTTPS connections
+      - key: "Strict-Transport-Security"
+        value: "max-age=604800; includeSubDomains; preload"
+      
+      # Cross-Origin-Opener-Policy (COOP) - Provides origin isolation
+      - key: "Cross-Origin-Opener-Policy"
+        value: "same-origin"
+      
+      # X-Frame-Options - Prevents clickjacking attacks
+      - key: "X-Frame-Options"
+        value: "DENY"
+      
+      # Additional security headers
+      - key: "X-Content-Type-Options"
+        value: "nosniff"
+      
+      - key: "X-XSS-Protection"
+        value: "1; mode=block"
+      
+      - key: "Referrer-Policy"
+        value: "strict-origin-when-cross-origin"
+      
+      - key: "Permissions-Policy"
+        value: "geolocation=(), microphone=(), camera=()"
+
+  # Cache settings for optimized images (hash in filename)
+  - pattern: "/img/optimized/*"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  # Cache settings for other images (no hash in filename)
+  - pattern: "*.jpg"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "*.jpeg"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "*.png"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "*.webp"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "*.avif"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  # Cache settings for CSS/JS files
+  - pattern: "*.css"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800, stale-while-revalidate=2592000"
+
+  - pattern: "*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800, stale-while-revalidate=2592000"
+
+  # Cache settings for font files (rarely change)
+  - pattern: "*.woff"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800, stale-while-revalidate=2592000"
+
+  - pattern: "*.woff2"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800, stale-while-revalidate=2592000"
