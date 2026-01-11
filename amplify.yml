@@ -36,7 +36,7 @@ frontend:
         - find ${OPTIMIZED_IMAGES_DIR}/ -type f | wc -l || echo "0"
 
         - echo "Running image optimization..."
-        - bash scripts/clean_optimized_images.sh
+        # - bash scripts/clean_optimized_images.sh
         - uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py
     build:
       commands:
