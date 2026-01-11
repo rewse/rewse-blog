@@ -5,8 +5,7 @@
       "args": [
         "mcp-proxy-for-aws@latest",
         "https://aws-mcp.us-east-1.api.aws/mcp",
-        "--metadata",
-        "AWS_REGION=ap-northeast-1"
+        "--metadata", "AWS_REGION=ap-northeast-1"
       ],
       "autoApprove": [
         "aws___retrieve_agent_sop",
@@ -19,8 +18,7 @@
       ],
       "env": {
         "AWS_PROFILE": "hugo"
-      },
-      "disabled": false
+      }
     },
     "chrome-devtools": {
       "command": "/opt/homebrew/bin/npx",
@@ -53,8 +51,7 @@
         "take_screenshot",
         "take_snapshot",
         "wait_for"
-      ],
-      "disabled": true
+      ]
     },
     "playwright": {
       "command": "/opt/homebrew/bin/npx",
