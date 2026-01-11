@@ -68,5 +68,5 @@ frontend:
       - '**/*'
   cache:
     paths:
-      - ${HUGO_CACHE_STORE}
-      - ${OPTIMIZED_IMAGES_DIR}
+      - .hugo-cache
+      - static/img/optimized
