@@ -1,0 +1,3 @@
+# This directory is required for Amplify cache to work.
+# Amplify only caches directories that exist in the repository.
+# Hugo cache is stored here during postBuild and restored during preBuild.
