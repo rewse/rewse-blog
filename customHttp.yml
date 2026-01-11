@@ -31,34 +31,81 @@ customHeaders:
       - key: "Permissions-Policy"
         value: "geolocation=(), microphone=(), camera=()"
 
-  # Cache settings for optimized images (hash in filename)
-  - pattern: "/img/optimized/*"
+  # Cache settings for optimized images (hash in filename) - highest priority
+  - pattern: "/img/optimized/**"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=604800"
 
-  # Cache settings for other images (no hash in filename)
-  - pattern: "*.jpg"
+  # Cache settings for other images in /img/ directory (no hash in filename)
+  - pattern: "/img/*.jpg"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  - pattern: "*.jpeg"
+  - pattern: "/img/*.jpeg"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  - pattern: "*.png"
+  - pattern: "/img/*.png"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  - pattern: "*.webp"
+  - pattern: "/img/*.webp"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  - pattern: "*.avif"
+  - pattern: "/img/*.avif"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  # Cache settings for images in post directories
+  - pattern: "/posts/**/*.jpg"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "/posts/**/*.jpeg"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "/posts/**/*.png"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "/posts/**/*.webp"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "/posts/**/*.avif"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  # Cache settings for favicon and root images
+  - pattern: "/favicon.ico"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "/favicon-*.png"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "/android-chrome-*.png"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  - pattern: "/apple-touch-icon.png"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
