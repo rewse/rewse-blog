@@ -74,6 +74,14 @@ uv run scripts/optimize_images.py --dry-run
 - 本番用ベースURL: `https://blog.rewse.jp/`
 - AWS Amplify App ID: `d8gzy6xdskncg`
 
+### AWS CLIプロファイル
+
+AWS CLIを使用する際は `hugo` プロファイルを使用しなければならない。
+
+```bash
+aws <command> --profile hugo | cat
+```
+
 ### Amplifyビルドログの取得
 
 Amplifyのビルドログは署名付きURLで提供されるため、`webFetch`ツールではアクセスできない。代わりに`curl`コマンドを使用する必要がある。
@@ -91,3 +99,16 @@ curl -s "<LOG_URL>"
 - 旧ブログはWordPressで動いていたが、Hugoへ移行された
 - 旧ブログは https://rewse.jp/blog/ で公開されていた
 - 旧ブログの全ての記事は exported/ にXMLで出力されている
+
+## Amplifyトラブルシューティング
+
+### amplify.yml の YAML 構文
+
+- コロン（`:`）を含むechoコマンドはYAMLパーサーがキーと値の区切りと誤認するため、`->` などに置き換える
+- 複数行コマンド（`|`）は避け、`||` でリトライする形式を使う
+
+### キャッシュパスの指定
+
+- キャッシュパスは相対パスで指定する（例: `static/img/optimized`）
+- `${PWD}` を含む絶対パスはビルドごとに変わるため使用しない
+- ワイルドカード（`**/*`）は不要で、ディレクトリ名だけで良い
