@@ -3,8 +3,6 @@ env:
   variables:
     HUGO_VERSION: 0.154.2
     TZ: Asia/Tokyo
-    HUGO_CACHEDIR: /tmp/.hugo
-    HUGO_CACHE_STORE: static/img/optimized/hugo-cache
     OPTIMIZED_IMAGES_DIR: static/img/optimized
 frontend:
   phases:
@@ -23,45 +21,25 @@ frontend:
         - echo "Hugo ->" $(hugo version)
         - echo "uv ->" $(uv --version)
         - echo "vips ->" $(vips --version)
-        
+
         - echo "Checking AVIF support..."
         - echo "libheif version ->" $(pkg-config --modversion libheif 2>/dev/null || echo "not found")
         - echo "rav1e available ->" $(which rav1e || echo "not found")
         - echo "librav1e0 installed ->" $(dpkg -l | grep librav1e0 || echo "not found")
         - echo "vips formats ->" $(vips -l | grep -E "(heif|avif)" || echo "no HEIF/AVIF support found")
 
-        - echo "Checking cache status before image optimization..."
-        - echo "PWD ->" ${PWD}
-        - echo "HUGO_CACHEDIR ->" ${HUGO_CACHEDIR}
-        - echo "HUGO_CACHE_STORE ->" ${HUGO_CACHE_STORE}
-        - echo "Contents of ${HUGO_CACHE_STORE}/ ->"
-        - ls -la ${HUGO_CACHE_STORE}/ || echo "Directory does not exist"
-        - echo "Restoring Hugo cache from store..."
-        - mkdir -p ${HUGO_CACHEDIR}
-        - cp -a ${HUGO_CACHE_STORE}/* ${HUGO_CACHEDIR}/ 2>/dev/null || echo "No cache to restore"
-        - echo "Contents of ${HUGO_CACHEDIR}/ after restore ->"
-        - ls -la ${HUGO_CACHEDIR}/ || echo "Directory is empty"
+        - echo "Checking image cache status..."
         - echo "OPTIMIZED_IMAGES_DIR ->" ${OPTIMIZED_IMAGES_DIR}
-        - echo "Contents of ${OPTIMIZED_IMAGES_DIR}/ ->"
-        - ls -la ${OPTIMIZED_IMAGES_DIR}/ || echo "Directory does not exist"
         - echo "Looking for manifest file ->"
         - ls -la ${OPTIMIZED_IMAGES_DIR}/.manifest.json || echo "Manifest file not found"
         - echo "Total files in optimized directory ->"
         - find ${OPTIMIZED_IMAGES_DIR}/ -type f | wc -l || echo "0"
 
-        - echo "Running image optimization (incremental with retry)..."
-        - uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py
+        - echo "Running image optimization..."
+        - uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py
     build:
       commands:
-        - echo "Building site..."
         - hugo --gc --minify
-        - echo "Contents of ${HUGO_CACHEDIR}/ after build ->"
-        - ls -la ${HUGO_CACHEDIR}/ || echo "Directory is empty"
-        - echo "Saving Hugo cache to store..."
-        - mkdir -p ${HUGO_CACHE_STORE}
-        - cp -a ${HUGO_CACHEDIR}/* ${HUGO_CACHE_STORE}/ 2>/dev/null || echo "No cache to save"
-        - echo "Contents of ${HUGO_CACHE_STORE}/ after save ->"
-        - ls -la ${HUGO_CACHE_STORE}/ || echo "Directory is empty"
   artifacts:
     baseDirectory: public
     files:
