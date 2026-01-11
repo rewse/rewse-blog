@@ -3,7 +3,8 @@ env:
   variables:
     HUGO_VERSION: 0.154.2
     TZ: Asia/Tokyo
-    HUGO_CACHEDIR: .hugo/cache
+    HUGO_CACHEDIR: /tmp/.hugo
+    HUGO_CACHE_STORE: .hugo-cache
     OPTIMIZED_IMAGES_DIR: static/img/optimized
 frontend:
   phases:
@@ -32,8 +33,14 @@ frontend:
         - echo "Checking cache status before image optimization..."
         - echo "PWD ->" ${PWD}
         - echo "HUGO_CACHEDIR ->" ${HUGO_CACHEDIR}
-        - echo "Contents of ${HUGO_CACHEDIR}/ ->"
-        - ls -la ${HUGO_CACHEDIR}/ || echo "Directory does not exist"
+        - echo "HUGO_CACHE_STORE ->" ${HUGO_CACHE_STORE}
+        - echo "Contents of ${HUGO_CACHE_STORE}/ ->"
+        - ls -la ${HUGO_CACHE_STORE}/ || echo "Directory does not exist"
+        - echo "Restoring Hugo cache from store..."
+        - mkdir -p ${HUGO_CACHEDIR}
+        - cp -a ${HUGO_CACHE_STORE}/* ${HUGO_CACHEDIR}/ 2>/dev/null || echo "No cache to restore"
+        - echo "Contents of ${HUGO_CACHEDIR}/ after restore ->"
+        - ls -la ${HUGO_CACHEDIR}/ || echo "Directory is empty"
         - echo "OPTIMIZED_IMAGES_DIR ->" ${OPTIMIZED_IMAGES_DIR}
         - echo "Contents of ${OPTIMIZED_IMAGES_DIR}/ ->"
         - ls -la ${OPTIMIZED_IMAGES_DIR}/ || echo "Directory does not exist"
@@ -48,11 +55,18 @@ frontend:
       commands:
         - echo "Building site..."
         - hugo --gc --minify
+    postBuild:
+      commands:
+        - echo "Saving Hugo cache to store..."
+        - mkdir -p ${HUGO_CACHE_STORE}
+        - cp -a ${HUGO_CACHEDIR}/* ${HUGO_CACHE_STORE}/ 2>/dev/null || echo "No cache to save"
+        - echo "Contents of ${HUGO_CACHE_STORE}/ after save ->"
+        - ls -la ${HUGO_CACHE_STORE}/ || echo "Directory is empty"
   artifacts:
     baseDirectory: public
     files:
       - '**/*'
   cache:
     paths:
-      - ${HUGO_CACHEDIR}
+      - ${HUGO_CACHE_STORE}
       - ${OPTIMIZED_IMAGES_DIR}
