@@ -41,10 +41,10 @@ frontend:
 
         - echo "Running image optimization (incremental with retry)..."
         - |
-          for i in 1 2 3; do
-            uv run --with pyvips scripts/optimize_images.py && break
-            echo "Retry $i..."
-          done
+            for i in 1 2 3; do
+              uv run --with pyvips scripts/optimize_images.py && break
+              echo "Retry $i..."
+            done
     build:
       commands:
         - echo "Building site..."
