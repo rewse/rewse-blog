@@ -121,7 +121,7 @@ customHeaders:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  - pattern: "/lib/*.js"
+  - pattern: "/lib/**/*.js"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
@@ -158,17 +158,17 @@ customHeaders:
       - key: "Cache-Control"
         value: "public, max-age=604800"
 
-  - pattern: "/lib/main.bundle.min.*.js"
+  - pattern: "/lib/**/main.bundle.min.*.js"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=604800"
 
-  - pattern: "/lib/*.bundle.*.js"
+  - pattern: "/lib/**/*.bundle.*.js"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=604800"
 
-  - pattern: "/lib/*.min.*.js"
+  - pattern: "/lib/**/*.min.*.js"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=604800"
