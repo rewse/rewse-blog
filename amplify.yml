@@ -29,6 +29,16 @@ frontend:
         - echo "librav1e0 installed:" $(dpkg -l | grep librav1e0 || echo "not found")
         - echo "vips formats:" $(vips -l | grep -E "(heif|avif)" || echo "no HEIF/AVIF support found")
 
+        - echo "Checking cache status before image optimization..."
+        - echo "PWD: ${PWD}"
+        - echo "OPTIMIZED_IMAGES_DIR: ${OPTIMIZED_IMAGES_DIR}"
+        - echo "Contents of static/img/optimized/:"
+        - ls -la static/img/optimized/ || echo "Directory does not exist"
+        - echo "Looking for manifest file:"
+        - ls -la static/img/optimized/.manifest.json || echo "Manifest file not found"
+        - echo "Total files in optimized directory:"
+        - find static/img/optimized/ -type f | wc -l || echo "0"
+
         - echo "Running image optimization (incremental with retry)..."
         - |
           for i in 1 2 3; do
