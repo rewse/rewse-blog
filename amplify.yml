@@ -3,7 +3,7 @@ env:
   variables:
     HUGO_VERSION: 0.154.2
     TZ: Asia/Tokyo
-    HUGO_CACHEDIR: .hugo
+    HUGO_CACHEDIR: /tmp/.hugo
     OPTIMIZED_IMAGES_DIR: static/img/optimized
 frontend:
   phases:
@@ -51,5 +51,4 @@ frontend:
       - '**/*'
   cache:
     paths:
-      - .hugo/**/*
-      - static/img/optimized/**/*
+      - static/img/optimized
