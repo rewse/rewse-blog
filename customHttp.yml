@@ -110,31 +110,45 @@ customHeaders:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  # Cache settings for CSS files with hash (long cache)
-  - pattern: "/css/*.bundle.min.*.css"
-    headers:
-      - key: "Cache-Control"
-        value: "public, max-age=604800, immutable"
-
-  # Cache settings for CSS files without hash (shorter cache)
+  # Cache settings for CSS/JS files without hash (shorter cache) - general patterns first
   - pattern: "/css/*.css"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  # Cache settings for JS files with hash (long cache)
-  - pattern: "/js/*.bundle.min.*.js"
-    headers:
-      - key: "Cache-Control"
-        value: "public, max-age=604800, immutable"
-
-  - pattern: "/js/*.min.*.js"
-    headers:
-      - key: "Cache-Control"
-        value: "public, max-age=604800, immutable"
-
-  # Cache settings for JS files without hash (shorter cache)
   - pattern: "/js/*.js"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
+
+  # Cache settings for CSS files with hash (long cache) - most specific patterns first
+  - pattern: "/css/main.bundle.min.*.css"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  - pattern: "/css/*.min.*.css"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  - pattern: "/css/*.bundle.*.css"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  # Cache settings for JS files with hash (long cache) - most specific patterns first
+  - pattern: "/js/main.bundle.min.*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  - pattern: "/js/*.bundle.*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  - pattern: "/js/*.min.*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
