@@ -40,11 +40,7 @@ frontend:
         - find static/img/optimized/ -type f | wc -l || echo "0"
 
         - echo "Running image optimization (incremental with retry)..."
-        - |
-            for i in 1 2 3; do
-              uv run --with pyvips scripts/optimize_images.py && break
-              echo "Retry $i..."
-            done
+        - uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py
     build:
       commands:
         - echo "Building site..."
