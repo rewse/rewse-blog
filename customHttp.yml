@@ -110,24 +110,31 @@ customHeaders:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  # Cache settings for CSS/JS files
-  - pattern: "*.css"
+  # Cache settings for CSS files with hash (long cache)
+  - pattern: "/css/*.bundle.min.*.css"
     headers:
       - key: "Cache-Control"
-        value: "public, max-age=604800, stale-while-revalidate=2592000"
+        value: "public, max-age=604800, immutable"
 
-  - pattern: "*.js"
+  # Cache settings for CSS files without hash (shorter cache)
+  - pattern: "/css/*.css"
     headers:
       - key: "Cache-Control"
-        value: "public, max-age=604800, stale-while-revalidate=2592000"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
 
-  # Cache settings for font files (rarely change)
-  - pattern: "*.woff"
+  # Cache settings for JS files with hash (long cache)
+  - pattern: "/js/*.bundle.min.*.js"
     headers:
       - key: "Cache-Control"
-        value: "public, max-age=604800, stale-while-revalidate=2592000"
+        value: "public, max-age=604800, immutable"
 
-  - pattern: "*.woff2"
+  - pattern: "/js/*.min.*.js"
     headers:
       - key: "Cache-Control"
-        value: "public, max-age=604800, stale-while-revalidate=2592000"
+        value: "public, max-age=604800, immutable"
+
+  # Cache settings for JS files without hash (shorter cache)
+  - pattern: "/js/*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
