@@ -1,0 +1,37 @@
+---
+date: "2022-09-14 15:17:19+09:00"
+aliases:
+  - /blog/bought-splatoon-3/
+tags:
+  - "itemonamazon"
+  - "game"
+  - "review"
+  - "affiliate"
+title: "Splatoon 3 を購入"
+description: "かなり久しぶりのスプラトゥーンです。「リスポーンした後、どうやって味方のところにすっ飛ぶんだっけ」とかすっかり忘れていてリハビリ中です"
+summary: "かなり久しぶりのスプラトゥーンです。「リスポーンした後、どうやって味方のところにすっ飛ぶんだっけ」とかすっかり忘れていてリハビリ中です"
+categories:
+  - "What I Bought"
+---
+
+
+「これはおもしろそう」と Wii U ごとスプラトゥーンを買ってだいぶプレイしたのですが、スプラトゥーン2はどのステージも同じ歯ごたえになぜか感じてしまって100時間行かずに飽きてしまいました。
+
+
+
+そんなわけでかなり久しぶりのスプラトゥーンです。「リスポーンした後、どうやって味方のところにすっ飛ぶんだっけ」とかすっかり忘れていてリハビリ中です。
+
+
+
+
+
+
+{{< amazon asin="B09Y1R9VG4" title="スプラトゥーン3" >}}
+|  |  |
+| --- | --- |
+| 配給会社 | [Nintendo](https://www.nintendo.co.jp/) |
+| 開発会社 | [Nintendo](https://www.nintendo.co.jp/) |
+| 商品名 | [スプラトゥーン3](https://www.nintendo.co.jp/switch/av5ja/) オンラインコード版 |
+| 販売店 | [Amazon](https://amzn.to/3xm4FTv) |
+| 支払金額 | 5,850円 |
+| 購入日 | 2022-09-11 |
