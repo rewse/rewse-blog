@@ -3,8 +3,8 @@ env:
   variables:
     HUGO_VERSION: 0.154.2
     TZ: Asia/Tokyo
-    HUGO_CACHEDIR: ${PWD}/.hugo
-    OPTIMIZED_IMAGES_DIR: ${PWD}/static/img/optimized
+    HUGO_CACHEDIR: .hugo
+    OPTIMIZED_IMAGES_DIR: static/img/optimized
 frontend:
   phases:
     preBuild:
@@ -51,5 +51,5 @@ frontend:
       - '**/*'
   cache:
     paths:
-      - ${HUGO_CACHEDIR}/**/*
-      - ${OPTIMIZED_IMAGES_DIR}/**/*
+      - .hugo/**/*
+      - static/img/optimized/**/*
