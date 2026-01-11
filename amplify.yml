@@ -4,7 +4,7 @@ env:
     HUGO_VERSION: 0.154.2
     TZ: Asia/Tokyo
     HUGO_CACHEDIR: /tmp/.hugo
-    HUGO_CACHE_STORE: hugo-cache
+    HUGO_CACHE_STORE: static/img/optimized/hugo-cache
     OPTIMIZED_IMAGES_DIR: static/img/optimized
 frontend:
   phases:
