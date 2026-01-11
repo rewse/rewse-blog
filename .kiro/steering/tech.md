@@ -100,6 +100,16 @@ curl -s "<LOG_URL>"
 - 旧ブログは https://rewse.jp/blog/ で公開されていた
 - 旧ブログの全ての記事は exported/ にXMLで出力されている
 
+## Hugoテンプレートのデバッグ
+
+HTMLコメント（`<!-- -->`）はHugoのminify設定で削除されるため、テンプレートのデバッグには `warnf` を使用する。
+
+```go
+{{ warnf "[DEBUG] variable=%v" $variable }}
+```
+
+ビルド時に `WARN` としてコンソールに出力される。
+
 ## Amplifyトラブルシューティング
 
 ### amplify.yml の YAML 構文

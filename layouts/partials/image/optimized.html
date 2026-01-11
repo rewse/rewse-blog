@@ -33,6 +33,25 @@
 {{- $base := path.BaseName $cleanSource -}}
 {{- $ext := path.Ext $cleanSource -}}
 
+{{/* Load manifest to get hash */}}
+{{- $manifestPath := "static/img/optimized/.manifest.json" -}}
+{{- $manifest := dict -}}
+{{- if fileExists $manifestPath -}}
+  {{- $manifestContent := readFile $manifestPath -}}
+  {{- $manifest = $manifestContent | unmarshal -}}
+{{- end -}}
+
+{{/* Find source path in manifest */}}
+{{- $sourceKey := "" -}}
+{{- $hash := "" -}}
+{{- $contentPath := printf "content/%s" $cleanSource -}}
+{{- range $key, $value := $manifest.processed -}}
+  {{- if or (eq $key $source) (eq $key $contentPath) (eq $key (printf "assets/img/%s" $cleanSource)) -}}
+    {{- $sourceKey = $key -}}
+    {{- $hash = substr $value.hash 0 8 -}}
+  {{- end -}}
+{{- end -}}
+
 {{/* Build base path depending on whether file is in root or subdirectory */}}
 {{- $basePath := "" -}}
 {{- if eq $dir "." -}}
@@ -41,22 +60,28 @@
   {{- $basePath = printf "/img/optimized/%s/%s" $dir $base -}}
 {{- end -}}
 
-{{/* Build srcset strings */}}
+{{/* Build srcset strings with hash */}}
 {{- $srcsetAvif := slice -}}
 {{- $srcsetOrig := slice -}}
 {{- $smallestSrc := "" -}}
 {{- $largestSrc := "" -}}
 
-{{- range $widths -}}
-  {{- $w := . -}}
-  {{- $avif := printf "%s-%dw.avif %dw" $basePath $w $w -}}
-  {{- $orig := printf "%s-%dw%s %dw" $basePath $w $ext $w -}}
-  {{- $srcsetAvif = $srcsetAvif | append $avif -}}
-  {{- $srcsetOrig = $srcsetOrig | append $orig -}}
-  {{- if not $smallestSrc -}}
-    {{- $smallestSrc = printf "%s-%dw%s" $basePath $w $ext -}}
+{{- if $hash -}}
+  {{- range $widths -}}
+    {{- $w := . -}}
+    {{- $avif := printf "%s-%dw-%s.avif %dw" $basePath $w $hash $w -}}
+    {{- $orig := printf "%s-%dw-%s%s %dw" $basePath $w $hash $ext $w -}}
+    {{- $srcsetAvif = $srcsetAvif | append $avif -}}
+    {{- $srcsetOrig = $srcsetOrig | append $orig -}}
+    {{- if not $smallestSrc -}}
+      {{- $smallestSrc = printf "%s-%dw-%s%s" $basePath $w $hash $ext -}}
+    {{- end -}}
+    {{- $largestSrc = printf "%s-%dw-%s%s" $basePath $w $hash $ext -}}
   {{- end -}}
-  {{- $largestSrc = printf "%s-%dw%s" $basePath $w $ext -}}
+{{- else -}}
+  {{/* Fallback to original source if hash not found */}}
+  {{- $smallestSrc = $source -}}
+  {{- $largestSrc = $source -}}
 {{- end -}}
 
 {{- if not $zoomSrc -}}
@@ -64,10 +89,12 @@
 {{- end -}}
 
 <picture{{ with .pictureClass }} class="{{ . }}"{{ end }}>
+  {{- if $hash -}}
   <source
     srcset="{{ delimit $srcsetAvif ", " }}"
     sizes="{{ $sizes }}"
     type="image/avif">
+  {{- end -}}
   <img
     {{- if $class }}
     class="{{ $class }}"
@@ -81,8 +108,10 @@
     {{ with .Height }}height="{{ . }}"{{ end }}
     {{- end }}
     src="{{ $smallestSrc }}"
+    {{- if $hash }}
     srcset="{{ delimit $srcsetOrig ", " }}"
     sizes="{{ $sizes }}"
+    {{- end }}
     {{- with .style }}
     style="{{ . | safeCSS }}"
     {{- end }}
