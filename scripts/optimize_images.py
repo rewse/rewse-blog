@@ -39,7 +39,7 @@ PNG_COMPRESSION = 9
 AVIF_QUALITY = 65
 
 # Parallel processing (Recommend: # of phisical CPU / 3)
-MAX_WORKERS = 6
+MAX_WORKERS = 3
 
 
 def log(message: str) -> None:
