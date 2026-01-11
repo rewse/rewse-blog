@@ -25,13 +25,35 @@
   {{- $cleanSource = strings.TrimPrefix "/img/" $source -}}
 {{- end -}}
 
-{{- $dir := path.Dir $cleanSource -}}
-{{- $testPath := "" -}}
-{{- if eq $dir "." -}}
-  {{/* File is in root (e.g., /img/_DSC0572.jpg) */}}
-  {{- $testPath = printf "static/img/optimized/%s-%dw%s" (path.BaseName $cleanSource) $width (path.Ext $cleanSource) -}}
-{{- else -}}
-  {{- $testPath = printf "static/img/optimized/%s/%s-%dw%s" $dir (path.BaseName $cleanSource) $width (path.Ext $cleanSource) -}}
+{{/* Load manifest to get hash */}}
+{{- $manifestPath := "static/img/optimized/.manifest.json" -}}
+{{- $manifest := dict -}}
+{{- if fileExists $manifestPath -}}
+  {{- $manifestContent := readFile $manifestPath -}}
+  {{- $manifest = $manifestContent | unmarshal -}}
 {{- end -}}
-{{- $exists := fileExists $testPath -}}
+
+{{/* Find source path in manifest */}}
+{{- $sourceKey := "" -}}
+{{- $hash := "" -}}
+{{- $contentPath := printf "content/%s" $cleanSource -}}
+{{- range $key, $value := $manifest.processed -}}
+  {{- if or (eq $key $source) (eq $key $contentPath) (eq $key (printf "assets/img/%s" $cleanSource)) -}}
+    {{- $sourceKey = $key -}}
+    {{- $hash = substr $value.hash 0 8 -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $exists := false -}}
+{{- if $hash -}}
+  {{- $dir := path.Dir $cleanSource -}}
+  {{- $testPath := "" -}}
+  {{- if eq $dir "." -}}
+    {{/* File is in root (e.g., /img/_DSC0572.jpg) */}}
+    {{- $testPath = printf "static/img/optimized/%s-%dw-%s%s" (path.BaseName $cleanSource) $width $hash (path.Ext $cleanSource) -}}
+  {{- else -}}
+    {{- $testPath = printf "static/img/optimized/%s/%s-%dw-%s%s" $dir (path.BaseName $cleanSource) $width $hash (path.Ext $cleanSource) -}}
+  {{- end -}}
+  {{- $exists = fileExists $testPath -}}
+{{- end -}}
 {{- return $exists -}}
