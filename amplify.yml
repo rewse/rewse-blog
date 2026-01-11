@@ -3,7 +3,7 @@ env:
   variables:
     HUGO_VERSION: 0.154.2
     TZ: Asia/Tokyo
-    HUGO_CACHEDIR: /tmp/.hugo
+    HUGO_CACHEDIR: .hugo/cache
     OPTIMIZED_IMAGES_DIR: static/img/optimized
 frontend:
   phases:
@@ -31,6 +31,9 @@ frontend:
 
         - echo "Checking cache status before image optimization..."
         - echo "PWD ->" ${PWD}
+        - echo "HUGO_CACHEDIR ->" ${HUGO_CACHEDIR}
+        - echo "Contents of ${HUGO_CACHEDIR}/ ->"
+        - ls -la ${HUGO_CACHEDIR}/ || echo "Directory does not exist"
         - echo "OPTIMIZED_IMAGES_DIR ->" ${OPTIMIZED_IMAGES_DIR}
         - echo "Contents of ${OPTIMIZED_IMAGES_DIR}/ ->"
         - ls -la ${OPTIMIZED_IMAGES_DIR}/ || echo "Directory does not exist"
@@ -51,4 +54,5 @@ frontend:
       - '**/*'
   cache:
     paths:
+      - ${HUGO_CACHEDIR}
       - ${OPTIMIZED_IMAGES_DIR}
