@@ -121,6 +121,11 @@ customHeaders:
       - key: "Cache-Control"
         value: "public, max-age=86400, stale-while-revalidate=604800"
 
+  - pattern: "/lib/*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=86400, stale-while-revalidate=604800"
+
   # Cache settings for CSS files with hash (long cache) - most specific patterns first
   - pattern: "/css/main.bundle.min.*.css"
     headers:
@@ -149,6 +154,21 @@ customHeaders:
         value: "public, max-age=604800"
 
   - pattern: "/js/*.min.*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  - pattern: "/lib/main.bundle.min.*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  - pattern: "/lib/*.bundle.*.js"
+    headers:
+      - key: "Cache-Control"
+        value: "public, max-age=604800"
+
+  - pattern: "/lib/*.min.*.js"
     headers:
       - key: "Cache-Control"
         value: "public, max-age=604800"
