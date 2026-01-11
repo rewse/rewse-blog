@@ -60,9 +60,14 @@ def get_file_hash(filepath: Path) -> str:
 def load_manifest() -> dict:
     """Load the manifest file tracking processed images."""
     if MANIFEST_FILE.exists():
+        log(f"Found existing manifest: {MANIFEST_FILE}")
         with open(MANIFEST_FILE, "r") as f:
-            return json.load(f)
-    return {"processed": {}}
+            manifest = json.load(f)
+            log(f"Loaded {len(manifest.get('processed', {}))} processed images from manifest")
+            return manifest
+    else:
+        log(f"No manifest found at {MANIFEST_FILE}, starting fresh")
+        return {"processed": {}}
 
 
 def save_manifest(manifest: dict) -> None:
