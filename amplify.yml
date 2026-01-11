@@ -55,10 +55,7 @@ frontend:
       commands:
         - echo "Building site..."
         - hugo --gc --minify
-    postBuild:
-      commands:
         - echo "Saving Hugo cache to store..."
-        - mkdir -p ${HUGO_CACHE_STORE}
         - cp -a ${HUGO_CACHEDIR}/* ${HUGO_CACHE_STORE}/ 2>/dev/null || echo "No cache to save"
         - echo "Contents of ${HUGO_CACHE_STORE}/ after save ->"
         - ls -la ${HUGO_CACHE_STORE}/ || echo "Directory is empty"
