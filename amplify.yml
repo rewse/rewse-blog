@@ -32,12 +32,12 @@ frontend:
         - echo "Checking cache status before image optimization..."
         - echo "PWD ->" ${PWD}
         - echo "OPTIMIZED_IMAGES_DIR ->" ${OPTIMIZED_IMAGES_DIR}
-        - echo "Contents of static/img/optimized/ ->"
-        - ls -la static/img/optimized/ || echo "Directory does not exist"
+        - echo "Contents of ${OPTIMIZED_IMAGES_DIR}/ ->"
+        - ls -la ${OPTIMIZED_IMAGES_DIR}/ || echo "Directory does not exist"
         - echo "Looking for manifest file ->"
-        - ls -la static/img/optimized/.manifest.json || echo "Manifest file not found"
+        - ls -la ${OPTIMIZED_IMAGES_DIR}/.manifest.json || echo "Manifest file not found"
         - echo "Total files in optimized directory ->"
-        - find static/img/optimized/ -type f | wc -l || echo "0"
+        - find ${OPTIMIZED_IMAGES_DIR}/ -type f | wc -l || echo "0"
 
         - echo "Running image optimization (incremental with retry)..."
         - uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py
@@ -51,4 +51,4 @@ frontend:
       - '**/*'
   cache:
     paths:
-      - static/img/optimized
+      - ${OPTIMIZED_IMAGES_DIR}
