@@ -9,11 +9,13 @@
 <div class="amazon-card">
   <a href="https://www.amazon.co.jp/gp/product/{{ $asin }}/?tag={{ $tag }}" target="_blank" rel="noopener noreferrer sponsored">
   <div class="amazon-card-img">
-    <img src="https://images.amazon.com/images/P/{{ $asin }}.09._SL160_.jpg" 
+    <img id="amazon-img-{{ $asin }}" 
+         src="https://images.amazon.com/images/P/{{ $asin }}.01._SL160_.jpg" 
          alt="{{ $title }}" 
-         onload="if(this.naturalWidth <= 1 || this.naturalHeight <= 1) { this.style.display='none'; this.nextElementSibling.style.display='flex'; }"
-         onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-    <div class="amazon-card-fallback" style="display: none;">
+         onload="handleImageLoad('{{ $asin }}')"
+         onerror="tryNextImage('{{ $asin }}', 1);" 
+         style="display: none;" />
+    <div class="amazon-card-fallback" id="fallback-{{ $asin }}" style="display: flex;">
       <div class="amazon-card-fallback-icon">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
           <path d="M19 7h-3V6a4 4 0 0 0-8 0v1H5a1 1 0 0 0-1 1v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-1-1zM10 6a2 2 0 0 1 4 0v1h-4V6zm8 13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9h2v1a1 1 0 0 0 2 0V9h4v1a1 1 0 0 0 2 0V9h2v10z"/>
@@ -22,6 +24,73 @@
       <div class="amazon-card-fallback-text">{{ $title }}</div>
     </div>
   </div>
+
+<script>
+function handleImageLoad(asin) {
+  const img = document.getElementById('amazon-img-' + asin);
+  const fallback = document.getElementById('fallback-' + asin);
+  
+  if (img.naturalWidth > 1 && img.naturalHeight > 1) {
+    // Valid image loaded
+    img.style.display = 'block';
+    fallback.style.display = 'none';
+  } else {
+    // Invalid image (1x1 placeholder), try next
+    tryNextImage(asin, 1);
+  }
+}
+
+function tryNextImage(asin, attempt) {
+  const img = document.getElementById('amazon-img-' + asin);
+  const fallback = document.getElementById('fallback-' + asin);
+  
+  const imageUrls = [
+    // Most common and reliable patterns first
+    'https://images.amazon.com/images/P/' + asin + '.01._SL160_.jpg',
+    'https://images.amazon.com/images/P/' + asin + '.01._SL200_.jpg',
+    'https://images.amazon.com/images/P/' + asin + '.01._SL300_.jpg',
+    
+    // Alternative country codes (often work when .01 doesn't)
+    'https://images.amazon.com/images/P/' + asin + '.09._SL160_.jpg',
+    'https://images.amazon.com/images/P/' + asin + '.02._SL160_.jpg',
+    'https://images.amazon.com/images/P/' + asin + '.03._SL160_.jpg',
+    
+    // Main image patterns
+    'https://images.amazon.com/images/P/' + asin + '.01.MAIN._SL160_.jpg',
+    'https://images.amazon.com/images/P/' + asin + '.MAIN._SL160_.jpg',
+    
+    // Higher quality options
+    'https://images.amazon.com/images/P/' + asin + '.01._SL500_.jpg',
+    
+    // Alternative domains (faster CDN)
+    'https://m.media-amazon.com/images/P/' + asin + '.01._SL160_.jpg',
+    'https://images-na.ssl-images-amazon.com/images/P/' + asin + '.01._SL160_.jpg',
+    
+    // Size code patterns (less reliable but sometimes work)
+    'https://images.amazon.com/images/P/' + asin + '.01._SCMZZZZZZZ_.jpg',
+    'https://images.amazon.com/images/P/' + asin + '.01._SCLZZZZZZZ_.jpg',
+    'https://images.amazon.com/images/P/' + asin + '.01._SCTZZZZZZZ_.jpg',
+    
+    // Smaller fallback sizes (last resort)
+    'https://images.amazon.com/images/P/' + asin + '.01._SL100_.jpg',
+    'https://images.amazon.com/images/P/' + asin + '.01._SL75_.jpg'
+  ];
+  
+  if (attempt < imageUrls.length) {
+    img.onload = function() {
+      handleImageLoad(asin);
+    };
+    img.onerror = function() {
+      tryNextImage(asin, attempt + 1);
+    };
+    img.src = imageUrls[attempt];
+  } else {
+    // All attempts failed, show fallback
+    img.style.display = 'none';
+    fallback.style.display = 'flex';
+  }
+}
+</script>
   </a>
   
   <a href="https://www.amazon.co.jp/gp/product/{{ $asin }}/?tag={{ $tag }}" target="_blank" rel="noopener noreferrer sponsored">
