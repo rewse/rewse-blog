@@ -45,7 +45,7 @@ frontend:
       commands:
         - echo "Checking resources/_gen directory contents..."
         - echo "Files in resources/_gen ->"
-        - find resources/_gen -type f 2>/dev/null | sort || echo "resources/_gen directory not found or empty"
+        - find resources/_gen -type f 2>/dev/null | sort | head -100 || echo "resources/_gen directory not found or empty"
         - echo "Total files in resources/_gen ->"
         - find resources/_gen -type f 2>/dev/null | wc -l || echo "0"
   artifacts:
