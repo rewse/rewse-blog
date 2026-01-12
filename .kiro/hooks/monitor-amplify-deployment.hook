@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "Monitor Amplify Deployment",
+  "description": "Check the latest Amplify deployment status, display logs only if deploying, display and save logs to logs directory if deployment is complete",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check the latest Amplify deployment status. If deployment is in progress, just display the logs. If deployment is complete, display the logs and then save them to the logs directory and then display the duration and your insights. Always use the hugo profile and piping to CAT for AWS CLI and use Amplify App ID d8gzy6xdskncg."
+  },
+  "workspaceFolderName": "rewse-blog",
+  "shortName": "monitor-amplify-deployment"
+}
