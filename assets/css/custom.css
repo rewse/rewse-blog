@@ -15,6 +15,15 @@
     max-height: 7.5rem !important;
 }
 
+.nested-menu .menuhide > div {
+    background-color: rgb(var(--color-neutral)) !important;
+    backdrop-filter: none !important;
+}
+.dark .nested-menu .menuhide > div {
+    background-color: rgb(var(--color-neutral-800)) !important;
+    backdrop-filter: none !important;
+}
+
 #subnavigation {
     margin-top: -2.5rem !important;
 }
