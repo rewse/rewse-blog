@@ -93,6 +93,9 @@ li code:first-child {
     border-bottom-width: 1px !important;
     border-bottom-style: solid !important;
     border-bottom-color: rgb(var(--color-neutral-200)) !important;
+    word-break: auto-phrase;
+    font-feature-settings: "palt";
+    font-kerning: normal;
 }
 .dark #page-single .article-content th,
 .dark #page-single .article-content td {
@@ -247,4 +250,133 @@ li code:first-child {
 }
 .dark .bg-neutral {
     background-color: rgb(var(--color-neutral-700)) !important;
+}
+
+/* ========================================
+   Typography CSS
+   https://gist.github.com/tak-dcxi/0f8b924d6dd81aaeb58dc2e287f2ab3a
+   ======================================== */
+
+:where(:root) {
+  text-spacing-trim: trim-start;
+  text-autospace: normal;
+  line-break: strict;
+  overflow-wrap: anywhere;
+  
+  &:lang(ja) {
+    font-kerning: none;
+  }
+
+  &:lang(en) {
+    font-kerning: normal;
+  }
+}
+
+:where(:is(h1, h2, h3, h4, h5, h6, p, caption):lang(en)) {
+  text-wrap: pretty;
+}
+
+:where(h1, h2, h3, h4, h5, h6, caption) {
+  font-kerning: normal;
+
+  &:lang(ja) {
+    font-feature-settings: "palt";
+    word-break: auto-phrase;
+  }
+}
+
+:where(pre) {
+  text-spacing-trim: space-all;
+}
+
+:where(pre, time, input:not([type="button" i], [type="submit" i], [type="reset" i]), textarea, [contenteditable]) {
+  text-autospace: no-autospace;
+}
+
+.-text-center {
+  text-align: center;
+  text-wrap: balance;
+}
+
+.-trim-both {
+  text-box-trim: trim-both;
+  
+  &:lang(en) {
+    text-box-edge: cap alphabetic;
+  }
+}
+
+.-hanging {
+  hanging-punctuation: last allow-end;
+  
+  &:lang(en) {
+    hanging-punctuation: first allow-end last;
+  }
+}
+
+.-uppercase {
+  text-transform: uppercase;
+}
+
+.-hyphens {
+  hyphens: auto;
+}
+
+.-tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.-br {
+  display: contents;
+
+  &:lang(ja) {
+    display: block flow;
+  }
+}
+
+.-wbr {
+  display: contents;
+
+  &:lang(ja) {
+    display: inline flow-root;
+  }
+}
+
+.-fluid-text {
+  --_u-min-width: var(--fluid-text--min-width, 375);
+  --_u-max-width: var(--fluid-text--max-width, 1280);
+  --_u-min-font-size: var(--fluid-text--min-font-size, 14);
+  --_u-max-font-size: var(--fluid-text--max-font-size, 16);
+  --_u-base-font-size: var(--fluid-text--base-font-size, 16);
+  --_u-relative-unit: var(
+    --fluid-text--relative-unit,
+    100svi
+  ); /* 100svi or 100cqi */
+
+  --_u-slope: calc(
+    (var(--_u-max-font-size) - var(--_u-min-font-size)) /
+      (var(--_u-max-width) - var(--_u-min-width))
+  );
+  --_u-intercept: calc(
+    var(--_u-min-font-size) - var(--_u-slope) * var(--_u-min-width)
+  );
+  --_u-font-size: clamp(
+    var(--_u-min-font-size) / var(--_u-base-font-size) * 1rem,
+    var(--_u-slope) * var(--_u-relative-unit) + var(--_u-intercept) /
+      var(--_u-base-font-size) * 1rem,
+    var(--_u-max-font-size) / var(--_u-base-font-size) * 1rem
+  );
+
+  font-size: var(--_u-font-size);
+}
+
+.composable-line-clamp {
+  display: -webkit-box;
+  overflow-block: clip;
+  -webkit-box-orient: block-axis;
+  -webkit-line-clamp: var(--composable-line-clamp--limit, 3);
+
+  @supports not (overflow-block: clip) {
+    overflow-y: clip;
+  }
 }
