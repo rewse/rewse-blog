@@ -69,6 +69,10 @@
    Code
    ======================================== */
 
+code {
+    background-color: transparent !important;
+}
+
 code:not(pre code) {
     padding-left: 0.125rem !important;
     padding-right: 0.125rem !important;
