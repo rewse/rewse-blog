@@ -221,10 +221,7 @@ flowchart TD
 UniFi Express のWi-Fiで設置場所のどれくらいをカバーできるのかどうかは [UniFi Design Center](https://design.ui.com/) からシミュレーションすることができます。左上の Use a template からOfficeを選んで、下に表示された View Project on Floor Plan を選びます。
 
 
-
-
-https://youtu.be/\_o0FsuCVlpg?feature=shared
-
+{{< youtubeLite id="_o0FsuCVlpg" >}}
 
 
 
