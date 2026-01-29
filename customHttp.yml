@@ -4,7 +4,7 @@ customHeaders:
     headers:
       # Content Security Policy (CSP) - Prevents XSS attacks
       - key: "Content-Security-Policy"
-        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://tagmanager.google.com https://connect.facebook.net https://www.facebook.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' https:; object-src 'none'; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; require-trusted-types-for 'script'"
+        value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://tagmanager.google.com https://connect.facebook.net https://www.facebook.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; media-src 'self' https:; object-src 'none'; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
       
       # HTTP Strict Transport Security (HSTS) - Enforces HTTPS connections
       - key: "Strict-Transport-Security"
