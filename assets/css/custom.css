@@ -112,6 +112,15 @@ li code:first-child {
 }
 
 /* ========================================
+   Tag Card
+   ======================================== */
+
+/* Fix: Dark mode tag card borders are invisible */
+.dark #term-list .card {
+    border-color: rgb(var(--color-neutral-600)) !important;
+}
+
+/* ========================================
    Article Card
    ======================================== */
 
@@ -198,14 +207,6 @@ li code:first-child {
 }
 
 /* ========================================
-   List
-   ======================================== */
-
-#page-list h1 {
-    margin-bottom: 1rem !important;
-}
-
-/* ========================================
    Card
    ======================================== */
 
@@ -216,6 +217,15 @@ li code:first-child {
 .card-footer {
     display: none !important;
 }
+
+/* ========================================
+   Term
+   ======================================== */
+
+#term-list h1 {
+    margin-bottom: 2rem !important;
+}
+
 
 /* ========================================
    Site Footer
