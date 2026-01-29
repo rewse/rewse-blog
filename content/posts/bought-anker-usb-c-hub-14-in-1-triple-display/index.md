@@ -43,7 +43,8 @@ USBチップは Genesys Logic (05e3:0626) で、USB 3.0 (5Gbps) で接続され�
 
 
 {{< mermaid >}}
-flowchart Mac---Anker1[Anker USB-C Hub 14-in-1, Triple display]
+flowchart
+  Mac---Anker1[Anker USB-C Hub 14-in-1, Triple display]
   Anker1---CM[Cable Matters 4-Port USB 3.0 Switch]
   CM---Anker2[Anker Ultra Slim 4-Port USB 3.0 Data Hub]
   Anker2---AE[Audioengine A2+]
@@ -56,7 +57,8 @@ flowchart Mac---Anker1[Anker USB-C Hub 14-in-1, Triple display]
 
 
 {{< mermaid >}}
-flowchart Mac---Anker1[Anker USB-C Hub 14-in-1, Triple display]
+flowchart
+  Mac---Anker1[Anker USB-C Hub 14-in-1, Triple display]
   Anker1---CM[Cable Matters 4-Port USB 3.0 Switch]
   CM---AE[Audioengine A2+]
   CM---Anker2[Anker Ultra Slim 4-Port USB 3.0 Data Hub]
