@@ -8,7 +8,7 @@
   },
   "then": {
     "type": "askAgent",
-    "prompt": "Review the staged changes with `git -P diff --cached` and commit them with an appropriate commit message following [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/). If the staging area is empty, let me know. Do not add other files yourself."
+    "prompt": "Review the staged changes with `git -P diff --cached` and commit them with an appropriate commit message following [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/).\n\n- You MUST NOT add other files yourself\n- If you found secret information, you MUST NOT commit it and MUST let me know\n- If the staging area is empty, you MUST let me know and do nothing else"
   },
   "shortName": "commit-staged-files"
 }
