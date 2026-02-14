@@ -1,23 +1,16 @@
-# プロダクト概要
+# Product Overview
 
-## 概要
+## Overview
 
-rewse-blogは、Hugoを使用した個人ブログサイトです。技術レビュー、購入品レビュー、旅行記録などの個人的なコンテンツを日本語で発信しています。
+rewse-blog is a personal blog site built with Hugo. It publishes personal content in Japanese, including technology reviews, product reviews, and travel logs.
 
-## 主要コンテンツ
+## Target Audience
 
-- **技術記事**: ハードウェア・ソフトウェアのレビューと解説
-- **購入品レビュー**: Apple製品、PC周辺機器、家電製品などの詳細レビュー
-- **旅行記録**: 国内外の旅行体験記
-- **ライフスタイル**: デスク環境、ホームオートメーション、写真・動画機材の紹介
+Japanese-speaking readers interested in technology, particularly those interested in Apple products, PC peripherals, and home automation.
 
-## ターゲット読者
+## Site Features
 
-技術に興味のある日本語読者、特にApple製品やPC周辺機器、ホームオートメーションに関心のあるユーザー。
-
-## サイト特徴
-
-- 日本語メインのコンテンツ
-- 詳細な製品レビューと技術解説
-- 豊富な画像とベンチマーク結果
-- アフィリエイトリンクを含む商品紹介
+- Primarily Japanese content
+- Detailed product reviews and technical explanations
+- Rich images and benchmark results
+- Product introductions including affiliate links
