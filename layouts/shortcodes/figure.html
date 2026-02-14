@@ -14,11 +14,12 @@
   {{- $caption := .Get "caption" -}}
   {{- $href := .Get "href" -}}
   {{- $class := .Get "class" -}}
+  {{- $figureClass := .Get "figureClass" -}}
   {{- $target := .Get "target" | default "_blank" -}}
   {{- $nozoom := .Get "nozoom" | default false -}}
   {{- $imgClass := printf "my-0 rounded-md%s%s" (cond $nozoom " nozoom" "") (cond (ne $class "") (printf " %s" $class) "") -}}
 
-  <figure>
+  <figure{{ with $figureClass }} class="{{ . }}"{{ end }}>
   {{- with $href }}<a href="{{ . }}" {{ with $target }}target="{{ . }}"{{ end }} class="inline-block">{{ end -}}
 
   {{- if findRE "^https?" $url.Scheme -}}
