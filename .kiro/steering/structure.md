@@ -1,47 +1,47 @@
-# プロジェクト構造
+# Project Structure
 
-## ディレクトリ構成
+## Directory Structure
 
 ```
 rewse-blog/
-├── archetypes/              # コンテンツテンプレート
-├── assets/                  # 静的アセット
-│   ├── css/                # カスタムCSS
-│   ├── icons/              # アイコンファイル
-│   └── img/                # 画像ファイル
-├── config/                  # Hugo設定ファイル
-│   └── _default/           # デフォルト設定
-├── content/                 # コンテンツファイル
-│   ├── posts/              # ブログ投稿
-│   ├── uses/               # 使用機材ページ
-│   └── about-tats-shibata/ # プロフィールページ
-├── i18n/                   # 多言語対応ファイル
-├── layouts/                # カスタムレイアウト
-├── scripts/                # コンテンツ一括修正用スクリプト
-│   └── optimize_images.py  # 画像最適化スクリプト
-├── static/                 # 静的ファイル（favicon等）
+├── archetypes/              # Content templates
+├── assets/                  # Static assets
+│   ├── css/                # Custom CSS
+│   ├── icons/              # Icon files
+│   └── img/                # Image files
+├── config/                  # Hugo configuration files
+│   └── _default/           # Default configuration
+├── content/                 # Content files
+│   ├── posts/              # Blog posts
+│   ├── uses/               # Equipment usage page
+│   └── about-tats-shibata/ # Profile page
+├── i18n/                   # Internationalization files
+├── layouts/                # Custom layouts
+├── scripts/                # Batch content modification scripts
+│   └── optimize_images.py  # Image optimization script
+├── static/                 # Static files (favicon, etc.)
 │   └── img/
-│       └── optimized/      # 最適化済み画像出力先
-├── themes/                 # Hugoテーマ
-    └── blowfish/           # Blowfishテーマ
-├── amplify.yml              # AWS Amplify ビルド設定
-└── Dockerfile               # AWS Amplify カスタムビルドイメージ
+│       └── optimized/      # Optimized image output directory
+├── themes/                 # Hugo themes
+    └── blowfish/           # Blowfish theme
+├── amplify.yml              # AWS Amplify build configuration
+└── Dockerfile               # AWS Amplify custom build image
 ```
 
-## コンテンツ構造
+## Content Structure
 
-### ブログ投稿 (`content/posts/`)
+### Blog Posts (`content/posts/`)
 
-各投稿は独自のディレクトリを持ち、以下の構造：
+Each post has its own directory with the following structure:
 
 ```
 content/posts/[post-slug]/
-├── index.md           # メインコンテンツ
-├── featured.jpg       # アイキャッチ画像
-└── [other-images]     # 記事内で使用する画像
+├── index.md           # Main content
+├── featured.jpg       # Featured image
+└── [other-images]     # Images used in the article
 ```
 
-### フロントマター構造
+### Front Matter Structure
 
 ```yaml
 ---
@@ -50,46 +50,46 @@ tags:
   - hardware
   - apple
   - review
-title: "記事タイトル"
-description: "記事の説明文"
-summary: "記事の要約"
+title: "Article Title"
+description: "Article description"
+summary: "Article summary"
 categories:
   - "Computer"
   - "What I Bought"
 ---
 ```
 
-## 命名規則
+## Naming Conventions
 
-### ディレクトリ・ファイル名
+### Directory and File Names
 
-- **投稿スラッグ**: ケバブケース（例：`bought-apple-iphone-15-pro`）
-- **画像ファイル**: 説明的な名前（例：`featured.jpg`, `iphone-15-pro-geekbench.png`）
-- **設定ファイル**: 小文字 + アンダースコア（例：`hugo.yaml`, `params.yaml`）
+- **Post Slugs**: Kebab case (e.g., `bought-apple-iphone-15-pro`)
+- **Image Files**: Descriptive names (e.g., `featured.jpg`, `iphone-15-pro-geekbench.png`)
+- **Configuration Files**: Lowercase + underscore (e.g., `hugo.yaml`, `params.yaml`)
 
-### カテゴリー
+### Categories
 
-- `Computer`: 技術関連記事
-- `What I Bought`: 購入品レビュー
-- `Photo`: 写真関連
-- `Travel`: 旅行記録
+- `Computer`: Technology-related articles
+- `What I Bought`: Product reviews
+- `Photo`: Photography-related
+- `Travel`: Travel logs
 
-### タグ
+### Tags
 
-- `hardware`, `software`, `apple`, `review`, `affiliate` など
-- 小文字で統一
-- 複数単語は必要に応じてハイフンで区切り
+- `hardware`, `software`, `apple`, `review`, `affiliate`, etc.
+- Unified in lowercase
+- Multiple words separated by hyphens as needed
 
-## 画像管理
+## Image Management
 
-- **アイキャッチ画像**: 各投稿ディレクトリの `featured.jpg`
-- **記事内画像**: 同じディレクトリに配置
-- **共通画像**: `assets/img/` または `static/` に配置
+- **Featured Images**: `featured.jpg` in each post directory
+- **Article Images**: Placed in the same directory
+- **Common Images**: Placed in `assets/img/` or `static/`
 
-## 設定ファイルの役割
+## Configuration File Roles
 
-- `hugo.yaml`: サイト基本設定、ビルド設定
-- `params.yaml`: テーマ固有の設定、レイアウト設定
-- `menus.yaml`: ナビゲーションメニュー構成
-- `languages.yaml`: 多言語設定
-- `markup.yaml`: マークダウン処理設定
+- `hugo.yaml`: Site basic configuration, build settings
+- `params.yaml`: Theme-specific settings, layout configuration
+- `menus.yaml`: Navigation menu structure
+- `languages.yaml`: Multilingual settings
+- `markup.yaml`: Markdown processing settings
