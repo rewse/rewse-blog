@@ -1,124 +1,122 @@
-# 技術スタック
+# Technology Stack
 
-## ビルドシステム
+## Build System
 
-- **静的サイトジェネレーター**: Hugo
-- **テーマ**: Blowfish (Tailwind CSS ベース)
-- **設定形式**: YAML
-- **コンテンツ形式**: Markdown
+- **Static Site Generator**: Hugo
+- **Theme**: Blowfish (Tailwind CSS based)
+- **Configuration Format**: YAML
+- **Content Format**: Markdown
 
-## 主要技術
+## Key Technologies
 
-- **フロントエンド**: Hugo + Blowfish テーマ
-- **スタイリング**: Tailwind CSS (テーマに内包)
-- **画像最適化**: pyvips
-- **検索機能**: 有効化済み
-- **多言語対応**: 日本語がデフォルト、英語も設定済み
-- **SEO**: 構造化データ、サイトマップ、robots.txt対応
+- **Frontend**: Hugo + Blowfish theme
+- **Styling**: Tailwind CSS (included in theme)
+- **Image Optimization**: pyvips
+- **Search Functionality**: Enabled
+- **Multilingual Support**: Japanese as default, English also configured
+- **SEO**: Structured data, sitemap, robots.txt support
 
-## よく使うコマンド
+## Commonly Used Commands
 
-### 開発・ビルド
+### Development and Build
 
 ```bash
-# 開発サーバー起動
+# Start development server
 hugo server
 
-# 開発サーバー起動（ドラフト含む）
+# Start development server (including drafts)
 hugo server -D
 
-# 本番ビルド
+# Production build
 hugo
 
-# 本番ビルド（ドラフト含む）
+# Production build (including drafts)
 hugo -D
 ```
 
-### コンテンツ作成
+### Content Creation
 
 ```bash
-# 新しい投稿作成
+# Create new post
 hugo new posts/[post-name]/index.md
 
-# 新しいページ作成
+# Create new page
 hugo new [page-name]/index.md
 ```
 
-### 画像最適化
+### Image Optimization
 
 ```bash
-# 未処理の画像を処理
+# Process unprocessed images
 uv run scripts/optimize_images.py
 
-# 特定のパスのみ処理
+# Process specific path only
 uv run scripts/optimize_images.py --path content/posts/new-article/
 
-# 強制的に再処理
+# Force reprocessing
 uv run scripts/optimize_images.py --force
 
-# 実行せずに対象を確認（ドライラン）
+# Dry run to check targets without execution
 uv run scripts/optimize_images.py --dry-run
 ```
 
-## 設定ファイル
+## Configuration Files
 
-- `config/_default/hugo.yaml`: メイン設定
-- `config/_default/params.yaml`: テーマパラメーター
-- `config/_default/menus.yaml`: ナビゲーション設定
-- `config/_default/languages.yaml`: 多言語設定
-- `config/_default/markup.yaml`: マークダウン設定
+- `config/_default/hugo.yaml`: Main configuration
+- `config/_default/params.yaml`: Theme parameters
+- `config/_default/menus.yaml`: Navigation settings
+- `config/_default/languages.yaml`: Multilingual settings
+- `config/_default/markup.yaml`: Markdown settings
 
-## デプロイメント
+## Deployment
 
-- 開発用ベースURL: `http://localhost:1313/`
-- 本番用ベースURL: `https://blog.rewse.jp/`
+- Development base URL: `http://localhost:1313/`
+- Production base URL: `https://blog.rewse.jp/`
 - AWS Amplify App ID: `d8gzy6xdskncg`
 
-### AWS CLIプロファイル
+### AWS CLI Profile
 
-AWS CLIを使用する際は `hugo` プロファイルを使用しなければならない。
+When using AWS CLI, you MUST use the `hugo` profile.
 
 ```bash
 aws <command> --profile hugo | cat
 ```
 
-### Amplifyビルドログの取得
+### Retrieving Amplify Build Logs
 
-Amplifyのビルドログは署名付きURLで提供されるため、`webFetch`ツールではアクセスできない。代わりに`curl`コマンドを使用する必要がある。
+When accessing Amplify build logs, you MUST to use `curl` command. `webFetch` tool does not support signed URLs.
 
 ```bash
-# 1. ジョブ情報からログURLを取得
+# 1. Get log URL from job information
 aws amplify get-job --app-id d8gzy6xdskncg --branch-name main --job-id <JOB_ID> --query "job.steps[0].logUrl" --output text
 
-# 2. curlでログを取得
+# 2. Retrieve logs with curl
 curl -s "<LOG_URL>"
 ```
 
-## 旧ブログ
+## Legacy Blog
 
-- 旧ブログはWordPressで動いていたが、Hugoへ移行された
-- 旧ブログは https://rewse.jp/blog/ で公開されていた
-- 旧ブログの全ての記事は exported/ にXMLで出力されている
+- The legacy blog was running on WordPress but has been migrated to Hugo
+- The legacy blog was published at https://rewse.jp/blog/
+- All articles from the legacy blog are exported as XML in the exported/ directory
 
-## Hugoテンプレートのデバッグ
+## Hugo Template Debugging
 
-HTMLコメント（`<!-- -->`）はHugoのminify設定で削除されるため、テンプレートのデバッグには `warnf` を使用する。
+You MUST use `warnf` for template debugging. HTML comments (`<!-- -->`) are removed by Hugo's minify settings. This will be output to the console as `WARN` during build.
 
 ```go
 {{ warnf "[DEBUG] variable=%v" $variable }}
 ```
 
-ビルド時に `WARN` としてコンソールに出力される。
+## Amplify Troubleshooting
 
-## Amplifyトラブルシューティング
+### amplify.yml YAML Syntax
 
-### amplify.yml の YAML 構文
+- Echo commands containing colons (`:`) are misinterpreted by the YAML parser as key-value separators, so replace them with `->` or similar
+- Avoid multi-line commands (`|`) and use retry format with `||` instead
 
-- コロン（`:`）を含むechoコマンドはYAMLパーサーがキーと値の区切りと誤認するため、`->` などに置き換える
-- 複数行コマンド（`|`）は避け、`||` でリトライする形式を使う
+### Cache Path Specification
 
-### キャッシュパスの指定
-
-- キャッシュパスは相対パスで指定する（例: `static/img/optimized`）
-- `${PWD}` を含む絶対パスはビルドごとに変わるため使用しない
-- ワイルドカード（`**/*`）は不要で、ディレクトリ名だけで良い
+- Specify cache paths as relative paths (e.g., `static/img/optimized`)
+- Do not use absolute paths containing `${PWD}` as they change with each build
+- Wildcards (`**/*`) are unnecessary; just the directory name is sufficient
