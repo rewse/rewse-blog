@@ -77,7 +77,14 @@
 
 
 <article class="{{ $cardClasses }}">
-  {{ if or $featuredURL $featured }}
+  {{ if $target.Params.emoji }}
+    {{/* Display emoji instead of feature image */}}
+    <div class="flex-none relative overflow-hidden {{ $imgWrapperClasses }} thumbnail bg-neutral-100 dark:bg-neutral-800">
+      <div class="absolute inset-0 flex items-center justify-center leading-none" style="font-size: 160px;">
+        {{ $target.Params.emoji }}
+      </div>
+    </div>
+  {{ else if or $featuredURL $featured }}
     <div class="flex-none relative overflow-hidden {{ $imgWrapperClasses }} thumbnail">
       {{ if $featuredURL }}
         {{/* Hotlinked image */}}
