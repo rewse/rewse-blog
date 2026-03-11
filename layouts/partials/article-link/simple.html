@@ -77,15 +77,24 @@
 
 
 <article class="{{ $cardClasses }}">
-  {{ with $featuredURL }}
-    <div class="flex-none relative overflow-hidden {{ $imgWrapperClasses }} thumbnail">
-      <img
-        src="{{ . }}"
-        role="presentation"
-        loading="lazy"
-        decoding="async"
-        class="not-prose absolute inset-0 w-full h-full object-cover">
+  {{ if $page.Params.emoji }}
+    {{/* Display emoji instead of feature image */}}
+    <div class="flex-none relative overflow-hidden {{ $imgWrapperClasses }} thumbnail bg-neutral-100 dark:bg-neutral-800">
+      <div class="absolute inset-0 flex items-center justify-center leading-none" style="font-size: 120px;">
+        {{ $page.Params.emoji }}
+      </div>
     </div>
+  {{ else }}
+    {{ with $featuredURL }}
+      <div class="flex-none relative overflow-hidden {{ $imgWrapperClasses }} thumbnail">
+        <img
+          src="{{ . }}"
+          role="presentation"
+          loading="lazy"
+          decoding="async"
+          class="not-prose absolute inset-0 w-full h-full object-cover">
+      </div>
+    {{ end }}
   {{ end }}
   <div class="{{ $cardContentClasses }}">
     <header class="items-center text-start text-xl font-semibold">
