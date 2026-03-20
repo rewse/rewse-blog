@@ -93,7 +93,6 @@ showRelatedContent: false
   * [Shure AONIC 50 Gen 2](https://www.shure.com/ja-JP/products/headphones/aonic50)
   * [Sony WF-1000XM5](https://www.sony.jp/headphone/products/WF-1000XM5/)
   * [HUAWEI FreeClip](https://consumer.huawei.com/jp/audio/freeclip/)
-  * [oladance OWS 1](https://www.oladanceshop.com/products/oladance-wearable-stereo)
   * [Steel Series Arctis 7P](https://jp.steelseries.com/gaming-headsets/arctis-7p)
   * [final VR2000 for Gaming](https://final-inc.com/products/vr2000-jp)
 
