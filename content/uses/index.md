@@ -151,7 +151,7 @@ showRelatedContent: false
 - Air Conditioner: 
   * [DAIKIN](https://www.daikin.co.jp/) S36NCV + BRP087A42
   * [DAIKIN S224ATES](https://www.ac.daikin.co.jp/roomaircon/products/e_series) + KRP067A41 + BRP087A42 x2
-- Air Purfier:
+- Air Purifier:
   * [Levoit Vital 100S Pet](https://vesync.jp/products/levoit-vital-100s-pet)
 - Bridge
   * [Aqara Hub M2](https://www.aqara.com/en/product/hub-m2/)
