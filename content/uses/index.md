@@ -74,7 +74,7 @@ showRelatedContent: false
 
 
 - TV:
-  * [Toshiba REGZA 55X910](https://archived.regza.com/regza/lineup/x910/index_j.html)
+  * [Toshiba REGZA 65X9900R](https://www.regza.com/tv/lineup/x9900r)
   * [FUNAI Fire TV FL-32HF170](https://funai.jp/firetv/f170/)
 - AV Receiver: [YAMAHA AVENTAGE RX-A6A](https://jp.yamaha.com/products/audio_visual/av_receivers_amps/rx-a6a/)
 - Power Amplifier: [ONKYO](https://www.onkyo-audio.jp/) M-5000R
