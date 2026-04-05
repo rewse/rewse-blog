@@ -120,3 +120,32 @@ You MUST use `warnf` for template debugging. HTML comments (`<!-- -->`) are remo
 - Specify cache paths as relative paths (e.g., `static/img/optimized`)
 - Do not use absolute paths containing `${PWD}` as they change with each build
 - Wildcards (`**/*`) are unnecessary; just the directory name is sufficient
+
+## Custom Build Image
+
+A custom Docker image with libvips and AVIF support is used for Amplify builds.
+
+- **ECR Public**: `public.ecr.aws/v5r5z4u0/amplify-hugo-vips`
+- **Base image**: Ubuntu 24.04
+- **Key packages**: libvips, libheif (AVIF), rav1e (AV1), Python 3.12, uv
+
+### Rebuilding the Image
+
+Amplify runs on x86_64, so you MUST specify `--platform linux/amd64` when building on Apple Silicon.
+
+```bash
+# Check current tag
+aws amplify get-app --app-id d8gzy6xdskncg --profile hugo --query "app.environmentVariables._CUSTOM_IMAGE" --output text
+
+# Build (increment tag from current)
+podman build --no-cache --platform linux/amd64 -t public.ecr.aws/v5r5z4u0/amplify-hugo-vips:<TAG> .
+
+# Login to ECR Public (us-east-1 required)
+aws ecr-public get-login-password --region us-east-1 --profile hugo | podman login --username AWS --password-stdin public.ecr.aws
+
+# Push
+podman push public.ecr.aws/v5r5z4u0/amplify-hugo-vips:<TAG>
+
+# Update Amplify environment variable
+aws amplify update-app --app-id d8gzy6xdskncg --profile hugo --environment-variables "_BUILD_TIMEOUT=60,_CUSTOM_IMAGE=public.ecr.aws/v5r5z4u0/amplify-hugo-vips:<TAG>"
+```
