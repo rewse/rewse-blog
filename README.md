@@ -147,34 +147,4 @@ uv run scripts/optimize_images.py --dry-run
 
 処理済み画像は `.manifest.json` で管理され、再実行時にスキップされます。
 
-## AWS Amplify カスタムビルドイメージ
 
-このプロジェクトでは、libvipsとAVIFサポートを含むカスタムDockerイメージを使用して AWS Amplify でビルドしています。
-
-### Docker イメージの構成
-
-- **ベースイメージ**: Ubuntu 24.04
-- **主要パッケージ**:
-  - Hugo (動的インストール)
-  - libvips-dev, libvips-tools (画像処理)
-  - libheif-dev, libheif-plugin-* (AVIF サポート)
-  - rav1e, librav1e0 (AV1 エンコーダー)
-  - Python 3.12, uv (画像最適化スクリプト用)
-  - Amplify 必須パッケージ (curl, git, openssh-client, bash)
-
-### Docker イメージのビルド
-
-```bash
-# イメージをビルド
-podman build -t public.ecr.aws/v5r5z4u0/amplify-hugo-vips:v2 .
-```
-
-### ECR Public へのプッシュ
-
-```bash
-# ECR Public にログイン
-aws ecr-public get-login-password --region us-east-1 | podman login --username AWS --password-stdin public.ecr.aws
-
-# イメージをプッシュ
-podman push public.ecr.aws/v5r5z4u0/amplify-hugo-vips:v2
-```
