@@ -10,6 +10,9 @@
 {{ $featured := "" }}
 {{ $featuredURL := "" }}
 {{ $filename := "" }}
+{{ $thumbnailAspectRatio := site.Params.thumbnailAspectRatio | default "1.5" }}
+{{ $thumbnailAspectRatio = replaceRE "[^0-9.]" "" $thumbnailAspectRatio }}
+{{ if eq $thumbnailAspectRatio "" }}{{ $thumbnailAspectRatio = "1.5" }}{{ end }}
 
 {{ if not .Params.hideFeatureImage }}
   {{ with $page }}
@@ -64,7 +67,7 @@
       </div>
     </div>
   {{ else if or $featuredURL $featured }}
-    <div class="flex-none relative overflow-hidden thumbnail_card">
+    <div class="flex-none relative overflow-hidden thumbnail_card" style="--thumbnail-aspect-ratio: {{ $thumbnailAspectRatio }}">
       {{ if $featuredURL }}
         {{/* Hotlinked image */}}
         <img
