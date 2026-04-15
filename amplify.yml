@@ -1,7 +1,7 @@
 version: 1
 env:
   variables:
-    HUGO_VERSION: 0.154.2
+    HUGO_VERSION: 0.160.0
     TZ: Asia/Tokyo
     OPTIMIZED_IMAGES_DIR: static/img/optimized
 frontend:
