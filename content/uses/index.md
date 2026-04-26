@@ -31,8 +31,7 @@ showRelatedContent: false
 - Color Calibrator: 
   * [X-Rite ColorMunki Photo](https://xritephoto.com/ph_product_overview.aspx?lang=ja&ID=1115)
   * [X-Rite i1Display Pro](https://www.xrite.com/ja-jp/categories/calibration-profiling/i1display-pro)
-- Keyboard: [PFU HHKB Professional HYBRID Type-S](https://happyhackingkb.com/jp/products/hybrid_types/)
-- Keyboard Caps: [DOMIKEY](https://domikey.com/) HHKB Orange Dolch
+- Keyboard: [JezailFunder Cornix LP](https://jezailfunder.com/products/cornix-lp-split-ergonomic-keyboard)
 - Left-Hand Device: [Xencelabs Quick Keys](https://www.xencelabs.com/us/store/accessories/xencelabs-quick-keys-remote)
 - Mouse: [Ligicool MX Anywhere 3S](https://www.logicool.co.jp/ja-jp/products/mice/mx-anywhere-3s-wireless-mouse.html)
 - Mouse Pad: [Steel Series QcK Small](https://jp.steelseries.com/gaming-mousepads/qck-series?size=s)
