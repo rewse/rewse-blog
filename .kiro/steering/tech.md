@@ -60,6 +60,39 @@ uv run scripts/optimize_images.py --force
 uv run scripts/optimize_images.py --dry-run
 ```
 
+## Updating the Blowfish Theme
+
+The Blowfish theme is managed as a git submodule. To update:
+
+1. Check the release notes at https://github.com/nunocoracao/blowfish/releases for breaking changes
+2. Update the submodule to the new version
+3. Diff custom layouts against the theme to check for conflicts
+4. Verify the build
+
+```bash
+# Update submodule to a specific version
+cd themes/blowfish
+git fetch --tags
+git checkout v<NEW_VERSION>
+cd ../..
+
+# Diff custom layouts against theme counterparts
+for f in $(find layouts -type f -name '*.html'); do
+  theme_file="themes/blowfish/$f"
+  if [ -f "$theme_file" ]; then
+    echo "=== $f ==="
+    diff "$f" "$theme_file"
+  fi
+done
+
+# Verify build
+hugo
+
+# Commit
+git add themes/blowfish
+git commit -m "chore: update blowfish theme to v<NEW_VERSION>"
+```
+
 ## Configuration Files
 
 - `config/_default/hugo.yaml`: Main configuration
