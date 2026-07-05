@@ -159,8 +159,8 @@ You MUST use `warnf` for template debugging. HTML comments (`<!-- -->`) are remo
 A custom Docker image with libvips and AVIF support is used for Amplify builds.
 
 - **ECR Public**: `public.ecr.aws/v5r5z4u0/amplify-hugo-vips`
-- **Base image**: Ubuntu 24.04
-- **Key packages**: libvips, libheif (AVIF), rav1e (AV1), Python 3.12, uv
+- **Base image**: Ubuntu 26.04
+- **Key packages**: libvips, libheif (AVIF), rav1e (AV1), Python 3.14, uv
 
 ### Rebuilding the Image
 
@@ -171,13 +171,13 @@ Amplify runs on x86_64, so you MUST specify `--platform linux/amd64` when buildi
 aws amplify get-app --app-id d8gzy6xdskncg --profile hugo --query "app.environmentVariables._CUSTOM_IMAGE" --output text
 
 # Build (increment tag from current)
-podman build --no-cache --platform linux/amd64 -t public.ecr.aws/v5r5z4u0/amplify-hugo-vips:<TAG> .
+container build --no-cache --platform linux/amd64 -t public.ecr.aws/v5r5z4u0/amplify-hugo-vips:<TAG> .
 
 # Login to ECR Public (us-east-1 required)
-aws ecr-public get-login-password --region us-east-1 --profile hugo | podman login --username AWS --password-stdin public.ecr.aws
+aws ecr-public get-login-password --region us-east-1 --profile hugo | container registry login --username AWS --password-stdin public.ecr.aws
 
 # Push
-podman push public.ecr.aws/v5r5z4u0/amplify-hugo-vips:<TAG>
+container image push public.ecr.aws/v5r5z4u0/amplify-hugo-vips:<TAG>
 
 # Update Amplify environment variable
 aws amplify update-app --app-id d8gzy6xdskncg --profile hugo --environment-variables "_BUILD_TIMEOUT=60,_CUSTOM_IMAGE=public.ecr.aws/v5r5z4u0/amplify-hugo-vips:<TAG>"

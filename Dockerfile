@@ -1,28 +1,27 @@
-FROM public.ecr.aws/ubuntu/ubuntu:24.04
+FROM public.ecr.aws/ubuntu/ubuntu:26.04
 
 # Amplify required packages: curl, git, openssh, bash
 # Plus: libvips for image optimization, python3 for uv
 # Plus: libffi-dev for cffi (required by pyvips)
 # Plus: libheif-dev and rav1e for AVIF support (AV1 compression)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    git \
-    openssh-client \
     bash \
     ca-certificates \
-    libvips-dev \
-    libvips-tools \
+    curl \
+    git \
+    libffi-dev \
     libheif-dev \
     libheif-plugin-aomdec \
     libheif-plugin-aomenc \
     libheif-plugin-rav1e \
-    rav1e \
-    librav1e0 \
+    librav1e0.8 \
+    libvips-dev \
+    libvips-tools \
+    openssh-client \
+    pkg-config \
     python3 \
     python3-dev \
-    python3-pip \
-    libffi-dev \
-    pkg-config \
+    rav1e \
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv
