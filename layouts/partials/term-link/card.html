@@ -11,13 +11,17 @@
 {{ $thumbnailAspectRatio := site.Params.thumbnailAspectRatio | default "1.5" }}
 {{ $thumbnailAspectRatio = replaceRE "[^0-9.]" "" $thumbnailAspectRatio }}
 {{ if eq $thumbnailAspectRatio "" }}{{ $thumbnailAspectRatio = "1.5" }}{{ end }}
+{{ $p := .Page }}
 
 {{/* Get from frontmatter */}}
 {{ with .Page.Params.featureimage }}
   {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
     {{ $featured = resources.GetRemote . }}
   {{ else }}
-    {{ $featured = resources.Get . }}
+    {{ $featured = $p.Resources.Get . }}
+    {{ if not $featured }}
+      {{ $featured = resources.Get . }}
+    {{ end }}
     {{ $filename = . }}
   {{ end }}
 {{ end }}
