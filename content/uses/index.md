@@ -45,7 +45,6 @@ showRelatedContent: false
 - Printers
   * [Brother HL-L3230CDW](https://www.brother.co.jp/product/printer/laserprinter/hll3230cdw/index.aspx)
   * [Canon PIXUS](https://personal.canon.jp/product/printer/pixus) TS8630
-- NAS: [Synology](https://www.synology.com/ja-jp) DiskStation DS916+
 - Phone: [Apple iPhone 15 Pro](https://www.apple.com/jp/iphone-15-pro/)
 - Tablet: [Apple iPad Air (5th generation)](https://www.apple.com/jp/ipad-air/)
 - Watch: [Apple Watch Series 10](https://www.apple.com/jp/apple-watch-series-10/)
