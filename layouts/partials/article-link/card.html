@@ -25,7 +25,10 @@
           {{ $featured = resources.GetRemote . }}
         {{ end }}
       {{ else }}
-        {{ $featured = resources.Get . }}
+        {{ $featured = $page.Resources.Get . }}
+        {{ if not $featured }}
+          {{ $featured = resources.Get . }}
+        {{ end }}
         {{ $filename = . }}
       {{ end }}
     {{ end }}
