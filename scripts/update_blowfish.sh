@@ -5,47 +5,95 @@ REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 THEME_DIR="$REPO_ROOT/themes/blowfish"
 LAYOUTS_DIR="$REPO_ROOT/layouts"
 
-# Step 1: Get current and latest version
+if [ "$#" -gt 1 ]; then
+  echo "Usage: $0 [target-ref]" >&2
+  exit 2
+fi
+
+# Step 1: Resolve the current and target revisions.
 cd "$THEME_DIR"
-CURRENT_TAG=$(git describe --tags --exact-match 2>/dev/null || git rev-parse --short HEAD)
-echo "Current Blowfish version: $CURRENT_TAG"
+CURRENT_COMMIT=$(git rev-parse HEAD)
+CURRENT_VERSION=$(git describe --tags --exact-match 2>/dev/null || git rev-parse --short HEAD)
+echo "Current Blowfish version: $CURRENT_VERSION"
 
 git fetch --tags
-LATEST_TAG=$(git tag --sort=-v:refname | head -1)
-echo "Latest Blowfish version: $LATEST_TAG"
+TARGET_EXPLICIT=false
+if [ "$#" -eq 1 ]; then
+  TARGET_REF=$1
+  TARGET_EXPLICIT=true
+else
+  TARGET_REF=$(git tag --list 'v[0-9]*' --sort=-v:refname | head -1)
+fi
 
-if [ "$CURRENT_TAG" = "$LATEST_TAG" ]; then
+if [ -z "$TARGET_REF" ] || ! TARGET_COMMIT=$(git rev-parse --verify "${TARGET_REF}^{commit}" 2>/dev/null); then
+  echo "Blowfish target ref not found: ${TARGET_REF:-<none>}" >&2
+  exit 1
+fi
+
+echo "Target Blowfish version: $TARGET_REF"
+
+if [ "$CURRENT_COMMIT" = "$TARGET_COMMIT" ]; then
   echo "Already up to date."
   exit 0
 fi
 
-# Step 2: Check which custom layouts were changed upstream
+if [ "$TARGET_EXPLICIT" = false ]; then
+  if git merge-base --is-ancestor "$TARGET_COMMIT" "$CURRENT_COMMIT"; then
+    echo "Current revision is newer than the latest version tag; no update performed."
+    exit 0
+  fi
+  if ! git merge-base --is-ancestor "$CURRENT_COMMIT" "$TARGET_COMMIT"; then
+    echo "Latest version tag is not a fast-forward from the current revision: $TARGET_REF" >&2
+    echo "Specify a target ref explicitly after reviewing the upstream history." >&2
+    exit 1
+  fi
+fi
+
+# Step 2: Check which custom layouts changed upstream.
 echo ""
 echo "=== Checking custom layouts for upstream changes ==="
 CHANGED_FILES=()
+CHANGE_TYPES=()
 
 while IFS= read -r file; do
-  # Get relative path from layouts/ (e.g., partials/footer.html)
   rel_path="${file#"$LAYOUTS_DIR/"}"
-  theme_file="$THEME_DIR/layouts/$rel_path"
+  old_path="$CURRENT_COMMIT:layouts/$rel_path"
+  new_path="$TARGET_COMMIT:layouts/$rel_path"
+  old_exists=false
+  new_exists=false
 
-  if [ ! -f "$theme_file" ]; then
-    continue
+  if git cat-file -e "$old_path" 2>/dev/null; then
+    old_exists=true
+  fi
+  if git cat-file -e "$new_path" 2>/dev/null; then
+    new_exists=true
   fi
 
-  # Check if this file changed between current and latest tag
-  if git diff --quiet "$CURRENT_TAG" "$LATEST_TAG" -- "layouts/$rel_path" 2>/dev/null; then
+  if [ "$old_exists" = false ] && [ "$new_exists" = false ]; then
+    continue
+  fi
+  if [ "$old_exists" = true ] && [ "$new_exists" = true ] && \
+      git diff --quiet "$CURRENT_COMMIT" "$TARGET_COMMIT" -- "layouts/$rel_path"; then
     continue
   fi
 
   CHANGED_FILES+=("$rel_path")
-  echo "CHANGED: layouts/$rel_path"
-done < <(find "$LAYOUTS_DIR" -type f -name "*.html")
+  if [ "$old_exists" = false ]; then
+    CHANGE_TYPES+=("added")
+    echo "ADDED UPSTREAM: layouts/$rel_path"
+  elif [ "$new_exists" = false ]; then
+    CHANGE_TYPES+=("removed")
+    echo "REMOVED UPSTREAM: layouts/$rel_path"
+  else
+    CHANGE_TYPES+=("changed")
+    echo "CHANGED: layouts/$rel_path"
+  fi
+done < <(find "$LAYOUTS_DIR" -type f -name "*.html" | sort)
 
-# Step 3: Update submodule to latest tag
+# Step 3: Update the submodule to the requested revision.
 echo ""
-echo "=== Updating submodule to $LATEST_TAG ==="
-git checkout "$LATEST_TAG"
+echo "=== Updating submodule to $TARGET_REF ==="
+git checkout --detach "$TARGET_COMMIT"
 cd "$REPO_ROOT"
 
 if [ ${#CHANGED_FILES[@]} -eq 0 ]; then
@@ -55,53 +103,65 @@ if [ ${#CHANGED_FILES[@]} -eq 0 ]; then
   exit 0
 fi
 
-# Step 4: Show diffs and offer to merge
+# Step 4: Show diffs and offer three-way merges where both upstream versions exist.
 echo ""
 echo "=== ${#CHANGED_FILES[@]} custom layout(s) have upstream changes ==="
 echo ""
 
-for rel_path in "${CHANGED_FILES[@]}"; do
+for index in "${!CHANGED_FILES[@]}"; do
+  rel_path=${CHANGED_FILES[$index]}
+  change_type=${CHANGE_TYPES[$index]}
+  custom_file="$LAYOUTS_DIR/$rel_path"
+
   echo "────────────────────────────────────────"
   echo "File: layouts/$rel_path"
   echo "────────────────────────────────────────"
-  echo "Upstream diff ($CURRENT_TAG → $LATEST_TAG):"
+  echo "Upstream diff ($CURRENT_VERSION → $TARGET_REF):"
   cd "$THEME_DIR"
-  git diff "$CURRENT_TAG" "$LATEST_TAG" -- "layouts/$rel_path"
+  git diff "$CURRENT_COMMIT" "$TARGET_COMMIT" -- "layouts/$rel_path"
   cd "$REPO_ROOT"
   echo ""
 
-  read -rp "Merge upstream changes into your custom file? [y/n/d(iff)] " choice
-  case "$choice" in
-    y|Y)
-      # Three-way merge using the old upstream as base
-      base_content=$(cd "$THEME_DIR" && git show "$CURRENT_TAG:layouts/$rel_path")
-      new_content=$(cd "$THEME_DIR" && git show "$LATEST_TAG:layouts/$rel_path")
-      custom_file="$LAYOUTS_DIR/$rel_path"
+  if [ "$change_type" != "changed" ]; then
+    echo "Automatic merge unavailable: the upstream file was $change_type. Review manually."
+    echo ""
+    continue
+  fi
 
-      base_tmp=$(mktemp)
-      new_tmp=$(mktemp)
-      echo "$base_content" > "$base_tmp"
-      echo "$new_content" > "$new_tmp"
+  while true; do
+    read -rp "Merge upstream changes into your custom file? [y/n/d(iff)] " choice
+    case "$choice" in
+      y|Y)
+        base_tmp=$(mktemp)
+        new_tmp=$(mktemp)
+        git -C "$THEME_DIR" show "$CURRENT_COMMIT:layouts/$rel_path" > "$base_tmp"
+        git -C "$THEME_DIR" show "$TARGET_COMMIT:layouts/$rel_path" > "$new_tmp"
 
-      if git merge-file "$custom_file" "$base_tmp" "$new_tmp"; then
-        echo "✓ Merged cleanly."
-      else
-        echo "⚠ Merge conflicts detected in $custom_file — resolve manually."
-      fi
-      rm -f "$base_tmp" "$new_tmp"
-      ;;
-    d|D)
-      echo "Diff between your custom file and new upstream:"
-      diff --color=auto "$LAYOUTS_DIR/$rel_path" <(cd "$THEME_DIR" && git show "$LATEST_TAG:layouts/$rel_path") || true
-      ;;
-    *)
-      echo "Skipped."
-      ;;
-  esac
+        if git merge-file "$custom_file" "$base_tmp" "$new_tmp"; then
+          echo "✓ Merged cleanly."
+        else
+          echo "⚠ Merge conflicts detected in $custom_file — resolve manually."
+        fi
+        rm -f "$base_tmp" "$new_tmp"
+        break
+        ;;
+      d|D)
+        new_tmp=$(mktemp)
+        git -C "$THEME_DIR" show "$TARGET_COMMIT:layouts/$rel_path" > "$new_tmp"
+        echo "Diff between your custom file and new upstream:"
+        git diff --no-index -- "$custom_file" "$new_tmp" || true
+        rm -f "$new_tmp"
+        ;;
+      *)
+        echo "Skipped."
+        break
+        ;;
+    esac
+  done
   echo ""
 done
 
 echo "=== Update complete ==="
 echo "Review changes, then run:"
 echo "  git add themes/blowfish layouts/"
-echo "  git commit -m 'chore: update Blowfish theme to $LATEST_TAG'"
+echo "  git commit -m 'chore: update Blowfish theme to $TARGET_REF'"
