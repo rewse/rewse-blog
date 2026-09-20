@@ -1,12 +1,17 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = [
+#   "pyvips==3.2.0",
+# ]
+# ///
 """
 Image optimization script using pyvips for local processing.
 
 Usage:
-    python scripts/optimize_images.py              # Process unprocessed images
-    python scripts/optimize_images.py --path content/posts/new-article/  # Specific path
-    python scripts/optimize_images.py --force      # Force reprocess all
-    python scripts/optimize_images.py --dry-run    # Preview without changes
+    uv run scripts/optimize_images.py              # Process unprocessed images
+    uv run scripts/optimize_images.py --path content/posts/new-article/  # Specific path
+    uv run scripts/optimize_images.py --force      # Force reprocess all
+    uv run scripts/optimize_images.py --dry-run    # Preview without changes
 """
 
 import argparse
