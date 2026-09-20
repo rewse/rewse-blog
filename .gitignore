@@ -32,6 +32,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Python generated files
+__pycache__/
+*.py[cod]
+
 # playwright-cli
 .playwright-cli
 
