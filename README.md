@@ -1,150 +1,92 @@
 # rewse-blog
 
-Hugoを使用した個人ブログサイトです。技術レビュー、購入品レビュー、旅行記録などの個人的なコンテンツを日本語で発信しています。
+This repository contains the source for [blog.rewse.jp](https://blog.rewse.jp/). The site is built with Hugo and Blowfish and deployed through AWS Amplify.
 
-## 概要
+## Setup
 
-- **静的サイトジェネレーター**: Hugo
-- **テーマ**: Blowfish (Tailwind CSS ベース)
-- **デプロイ先**: AWS Amplify
+Regular development requires the following tools:
 
-## 開発環境のセットアップ
-
-### 必要な環境
-
-- Hugo
 - Git
+- Hugo Extended 0.163.3
 
-## よく使うコマンド
+To add or modify images, also install [uv](https://docs.astral.sh/uv/) and a build of libvips with AVIF support.
 
-### 開発・ビルド
+After cloning the repository, initialize the Blowfish submodule:
 
 ```bash
-# 開発サーバー起動
+git submodule update --init --recursive
+```
+
+Start the local server with:
+
+```bash
 hugo server
-
-# 開発サーバー起動（ドラフト含む）
-hugo server -D
-
-# 本番ビルド
-hugo
-
-# 本番ビルド（ドラフト含む）
-hugo -D
 ```
 
-### コンテンツ作成
+Use `hugo server -D` to include drafts.
+
+## Creating a post
+
+Store each post as a page bundle under `content/posts/<slug>/`. Use kebab-case for the slug.
 
 ```bash
-# 新しい投稿作成
-hugo new posts/[post-name]/index.md
-
-# 新しいページ作成
-hugo new [page-name]/index.md
+hugo new posts/<slug>/index.md
 ```
 
-## プロジェクト構造
-
-```
-rewse-blog/
-├── archetypes/              # コンテンツテンプレート
-├── assets/                  # 静的アセット
-│   ├── css/                # カスタムCSS
-│   ├── icons/              # アイコンファイル
-│   └── img/                # 画像ファイル
-├── config/                  # Hugo設定ファイル
-│   └── _default/           # デフォルト設定
-├── content/                 # コンテンツファイル
-│   ├── posts/              # ブログ投稿
-│   ├── uses/               # 使用機材ページ
-│   └── about-tats-shibata/ # プロフィールページ
-├── i18n/                   # 多言語対応ファイル
-├── layouts/                # カスタムレイアウト
-├── scripts/                # コンテンツ一括修正用スクリプト
-│   └── optimize_images.py  # 画像最適化スクリプト
-├── static/                 # 静的ファイル（favicon等）
-│   └── img/
-│       └── optimized/      # 最適化済み画像出力先
-├── themes/                 # Hugoテーマ
-    └── blowfish/           # Blowfishテーマ
-├── amplify.yml              # AWS Amplify ビルド設定
-└── Dockerfile               # AWS Amplify カスタムビルドイメージ
+```text
+content/posts/<slug>/
+├── index.md
+├── featured.jpg
+└── <article-images>
 ```
 
-## 設定ファイル
-
-- `config/_default/hugo.yaml`: サイト基本設定、ビルド設定
-- `config/_default/params.yaml`: テーマ固有の設定、レイアウト設定
-- `config/_default/menus.yaml`: ナビゲーションメニュー構成
-- `config/_default/languages.yaml`: 多言語設定
-- `config/_default/markup.yaml`: マークダウン処理設定
-
-## コンテンツ作成ガイド
-
-### ブログ投稿
-
-各投稿は独自のディレクトリを持ち、以下の構造で作成します：
-
-```
-content/posts/[post-slug]/
-├── index.md           # メインコンテンツ
-├── featured.jpg       # アイキャッチ画像
-└── [other-images]     # 記事内で使用する画像
-```
-
-### フロントマター例
+The generated `index.md` contains the following front matter:
 
 ```yaml
 ---
-date: "2024-01-08 22:57:23+09:00"
+title: "Article title"
+date: "2026-09-20T16:48:00+09:00"
 categories:
-  - "Computer"
-  - "What I Bought"
 tags:
-  - "hardware"
-  - "apple"
-  - "review"
-title: "記事タイトル"
-description: "記事の説明文"
-summary: "記事の要約"
+description:
+summary:
+draft: true
 ---
 ```
 
-## 画像最適化
+Edit the post and its images, then preview it with `hugo server -D`. Set `draft: false` when the post is ready to publish.
 
-pyvipsを使用して画像のリサイズとWebP/AVIF形式への変換変換を行うスクリプトを提供しています。
+## Optimizing images
 
-### 必要な環境
-
-- Python 3.10+
-- uv (Python パッケージマネージャー)
-- libvips (画像処理ライブラリ)
-
-### 使い方
+After adding or modifying images, run the optimizer for that post:
 
 ```bash
-# 未処理の画像を処理
-uv run scripts/optimize_images.py
-
-# 特定のパスのみ処理
-uv run scripts/optimize_images.py --path content/posts/new-article/
-
-# 強制的に再処理
-uv run scripts/optimize_images.py --force
-
-# 実行せずに対象を確認（ドライラン）
-uv run scripts/optimize_images.py --dry-run
+uv run scripts/optimize_images.py --path content/posts/<slug>/
 ```
 
-### 生成されるファイル
+Add `--dry-run` to preview which images would be processed, or `--force` to reprocess unchanged images. The script creates resized and AVIF variants at widths of 400, 800, 1200, 1600, and 2400 pixels under `static/img/optimized/` and records their status in `.manifest.json`. Outputs wider than the source retain the source dimensions instead of being upscaled. The `static/img/optimized/` directory contains build artifacts and should not be committed.
 
-各画像に対して以下のサイズ・フォーマットが生成されます：
+## Building
 
-- サイズ: 400w, 800w, 1200w, 1600w, 2400w
-- フォーマット: 元形式 (JPG/PNG), WebP, AVIF
+Run a production-equivalent build with:
 
-出力先: `static/img/optimized/`
+```bash
+hugo --gc --minify
+```
 
-処理済み画像は `.manifest.json` で管理され、再実行時にスキップされます。
+Hugo writes the generated site to `public/`. The AWS Amplify build steps and image cache are configured in `amplify.yml`.
 
+## Updating Blowfish
 
+Review the Blowfish release notes before updating, then run:
+
+```bash
+scripts/update_blowfish.sh
+hugo --gc --minify
+```
+
+The script updates the submodule to the latest tag. If upstream changed any overridden layouts, it displays the diffs and offers merge options. After it finishes, review the changes to the submodule and `layouts/`.
+
+## License
+
+The contents of this repository are available under the [Creative Commons Attribution-ShareAlike 4.0 International](LICENSE) license.

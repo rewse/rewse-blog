@@ -37,7 +37,7 @@ frontend:
 
         - echo "Running image optimization..."
         # - bash scripts/clean_optimized_images.sh
-        - uv run --with pyvips scripts/optimize_images.py || uv run --with pyvips scripts/optimize_images.py
+        - uv run scripts/optimize_images.py || uv run scripts/optimize_images.py
     build:
       commands:
         - hugo --gc --minify
