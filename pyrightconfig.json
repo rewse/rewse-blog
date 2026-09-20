@@ -1,0 +1,9 @@
+{
+  "include": [
+    "scripts/optimize_images.py",
+    "tests"
+  ],
+  "pythonVersion": "3.10",
+  "reportMissingModuleSource": false,
+  "stubPath": "typings"
+}
