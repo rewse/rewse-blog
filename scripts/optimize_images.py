@@ -149,6 +149,29 @@ def _as_object_dict(value: object, context: str) -> dict[object, object]:
     return cast(dict[object, object], value)
 
 
+def _parse_manifest_entry(source: str, raw_entry: object) -> ManifestEntry:
+    """Validate one manifest entry for a normalized source path."""
+    entry_data = _as_object_dict(raw_entry, f"entry for {source!r}")
+    file_hash = entry_data.get("hash")
+    raw_outputs = entry_data.get("outputs")
+    timestamp = entry_data.get("timestamp", "")
+
+    if not isinstance(file_hash, str):
+        raise ValueError(f"Manifest hash for {source!r} must be a string")
+    if not isinstance(raw_outputs, list) or not raw_outputs:
+        raise ValueError(f"Manifest outputs for {source!r} must be a non-empty array")
+    output_values = cast(list[object], raw_outputs)
+    if not all(isinstance(output, str) for output in output_values):
+        raise ValueError(f"Manifest outputs for {source!r} must contain only strings")
+    outputs = [output for output in output_values if isinstance(output, str)]
+    for output in outputs:
+        _ = resolve_output_path(Path(output))
+    if not isinstance(timestamp, str):
+        raise ValueError(f"Manifest timestamp for {source!r} must be a string")
+
+    return {"hash": file_hash, "outputs": outputs, "timestamp": timestamp}
+
+
 def parse_manifest(data: object) -> Manifest:
     """Validate and normalize data loaded from the manifest file."""
     root = _as_object_dict(data, "root")
@@ -161,34 +184,7 @@ def parse_manifest(data: object) -> Manifest:
         normalized_source = normalize_source_path(Path(source))
         if str(normalized_source) != source:
             raise ValueError(f"Manifest source path is not normalized: {source!r}")
-
-        entry_data = _as_object_dict(raw_entry, f"entry for {source!r}")
-        file_hash = entry_data.get("hash")
-        raw_outputs = entry_data.get("outputs")
-        timestamp = entry_data.get("timestamp", "")
-
-        if not isinstance(file_hash, str):
-            raise ValueError(f"Manifest hash for {source!r} must be a string")
-        if not isinstance(raw_outputs, list) or not raw_outputs:
-            raise ValueError(
-                f"Manifest outputs for {source!r} must be a non-empty array"
-            )
-        output_values = cast(list[object], raw_outputs)
-        if not all(isinstance(output, str) for output in output_values):
-            raise ValueError(
-                f"Manifest outputs for {source!r} must contain only strings"
-            )
-        outputs = [output for output in output_values if isinstance(output, str)]
-        for output in outputs:
-            _ = resolve_output_path(Path(output))
-        if not isinstance(timestamp, str):
-            raise ValueError(f"Manifest timestamp for {source!r} must be a string")
-
-        processed[source] = {
-            "hash": file_hash,
-            "outputs": outputs,
-            "timestamp": timestamp,
-        }
+        processed[source] = _parse_manifest_entry(source, raw_entry)
 
     return {"processed": processed}
 
@@ -234,6 +230,11 @@ def save_manifest(manifest: Manifest) -> None:
             temporary_path.unlink(missing_ok=True)
 
 
+def _has_supported_extension(path: Path) -> bool:
+    """Return whether path has a supported image extension."""
+    return path.suffix.lower() in SUPPORTED_EXTENSIONS
+
+
 def find_images(base_path: Path | None = None) -> list[Path]:
     """Find supported images and return normalized repository-relative paths."""
     if base_path is None:
@@ -245,7 +246,7 @@ def find_images(base_path: Path | None = None) -> list[Path]:
     images: set[Path] = set()
     for search_dir in search_dirs:
         if search_dir.is_file():
-            if search_dir.suffix.lower() in SUPPORTED_EXTENSIONS:
+            if _has_supported_extension(search_dir):
                 images.add(normalize_source_path(search_dir))
             continue
         if not search_dir.exists():
@@ -253,7 +254,7 @@ def find_images(base_path: Path | None = None) -> list[Path]:
         images.update(
             normalize_source_path(path)
             for path in search_dir.rglob("*")
-            if path.is_file() and path.suffix.lower() in SUPPORTED_EXTENSIONS
+            if path.is_file() and _has_supported_extension(path)
         )
     return sorted(images)
 
@@ -307,6 +308,69 @@ def discard_staged_outputs(result: OptimizationResult) -> None:
     result.staged_outputs.clear()
 
 
+def _discard_result(result: OptimizationResult) -> None:
+    """Drop every staged and planned output of an uncommitted result."""
+    discard_staged_outputs(result)
+    result.outputs.clear()
+
+
+def _fail(result: OptimizationResult, message: str) -> None:
+    """Record an error and drop the result's outputs."""
+    result.errors.append(message)
+    _discard_result(result)
+
+
+def _raise_if_cancelled(stop_event: Event | None) -> None:
+    """Abort optimization when another task has requested a stop."""
+    if stop_event is not None and stop_event.is_set():
+        raise RuntimeError("Optimization cancelled")
+
+
+def _planned_outputs(source: Path, source_hash: str) -> list[Path]:
+    """Return every output path for a source, ordered by width then format."""
+    return [
+        get_output_path(source, width, output_format, source_hash)
+        for width in IMAGE_SIZES
+        for output_format in OUTPUT_FORMATS
+    ]
+
+
+def _create_snapshot(
+    result: OptimizationResult,
+    temporary_directory: Path,
+) -> Path | None:
+    """Copy the source aside and verify it still matches the recorded hash."""
+    snapshot_path = temporary_directory / f"source{result.source.suffix.lower()}"
+    try:
+        _ = shutil.copyfile(_repository_path(result.source), snapshot_path)
+        snapshot_hash = _hash_file(snapshot_path)
+        if (
+            result.source_hash != snapshot_hash
+            or get_file_hash(result.source) != snapshot_hash
+        ):
+            _fail(result, f"Source changed while creating snapshot: {result.source}")
+            return None
+    except OSError as error:
+        _fail(result, f"Failed to create source snapshot: {error}")
+        return None
+    return snapshot_path
+
+
+def _save_variant(
+    image: pyvips.Image,
+    path: Path,
+    output_format: OutputFormat,
+    is_png: bool,
+) -> None:
+    """Encode one resized image in the requested output format."""
+    if output_format == "avif":
+        image.heifsave(str(path), Q=AVIF_QUALITY, compression="av1", strip=True)
+    elif is_png:
+        image.pngsave(str(path), compression=PNG_COMPRESSION, strip=True)
+    else:
+        image.jpegsave(str(path), Q=JPEG_QUALITY, strip=True)
+
+
 def optimize_image(
     source_path: Path,
     dry_run: bool = False,
@@ -318,85 +382,39 @@ def optimize_image(
     result = OptimizationResult(source=source, source_hash=source_hash)
 
     if dry_run:
-        for width in IMAGE_SIZES:
-            for output_format in OUTPUT_FORMATS:
-                result.outputs.append(
-                    get_output_path(source, width, output_format, source_hash)
-                )
+        result.outputs.extend(_planned_outputs(source, source_hash))
         return result
 
     output_root = _repository_path(OUTPUT_DIR)
     output_root.mkdir(parents=True, exist_ok=True)
-    result.temporary_directory = Path(
-        tempfile.mkdtemp(prefix=".image-", dir=output_root)
-    )
-    snapshot_path = result.temporary_directory / f"source{source.suffix.lower()}"
-    try:
-        _ = shutil.copyfile(_repository_path(source), snapshot_path)
-        snapshot_hash = _hash_file(snapshot_path)
-        if source_hash != snapshot_hash or get_file_hash(source) != snapshot_hash:
-            result.errors.append(f"Source changed while creating snapshot: {source}")
-            discard_staged_outputs(result)
-            return result
-    except OSError as error:
-        result.errors.append(f"Failed to create source snapshot: {error}")
-        discard_staged_outputs(result)
+    temporary_directory = Path(tempfile.mkdtemp(prefix=".image-", dir=output_root))
+    result.temporary_directory = temporary_directory
+    snapshot_path = _create_snapshot(result, temporary_directory)
+    if snapshot_path is None:
         return result
-    source_hash = snapshot_hash
-    result.source_hash = snapshot_hash
 
     current_width: int | None = None
     try:
         image = VIPS_IMAGE_CLASS.new_from_file(str(snapshot_path))
         original_width = image.width
+        is_png = source.suffix.lower() == ".png"
         for width in IMAGE_SIZES:
             current_width = width
-            if stop_event is not None and stop_event.is_set():
-                raise RuntimeError("Optimization cancelled")
+            _raise_if_cancelled(stop_event)
             resized = (
                 image if width > original_width else image.resize(width / original_width)
             )
-            is_png = source.suffix.lower() == ".png"
 
             for output_format in OUTPUT_FORMATS:
-                if stop_event is not None and stop_event.is_set():
-                    raise RuntimeError("Optimization cancelled")
-                output_path = get_output_path(
-                    source,
-                    width,
-                    output_format,
-                    source_hash,
-                )
-                staged_path = result.temporary_directory / output_path.relative_to(
-                    OUTPUT_DIR
-                )
+                _raise_if_cancelled(stop_event)
+                output_path = get_output_path(source, width, output_format, source_hash)
+                staged_path = temporary_directory / output_path.relative_to(OUTPUT_DIR)
                 staged_path.parent.mkdir(parents=True, exist_ok=True)
-
-                if output_format == "original" and is_png:
-                    image_to_save = resized
-                    image_to_save.pngsave(
-                        str(staged_path),
-                        compression=PNG_COMPRESSION,
-                        strip=True,
-                    )
-                elif output_format == "original":
-                    resized.jpegsave(
-                        str(staged_path),
-                        Q=JPEG_QUALITY,
-                        strip=True,
-                    )
-                else:
-                    resized.heifsave(
-                        str(staged_path),
-                        Q=AVIF_QUALITY,
-                        compression="av1",
-                        strip=True,
-                    )
+                _save_variant(resized, staged_path, output_format, is_png)
                 result.outputs.append(output_path)
                 result.staged_outputs.append(staged_path)
 
-        if stop_event is not None and stop_event.is_set():
-            raise RuntimeError("Optimization cancelled")
+        _raise_if_cancelled(stop_event)
         if get_file_hash(source) != source_hash:
             result.errors.append(f"Source changed during optimization: {source}")
 
@@ -409,8 +427,7 @@ def optimize_image(
                 stop_event.set()
 
     if result.errors:
-        discard_staged_outputs(result)
-        result.outputs.clear()
+        _discard_result(result)
     return result
 
 
@@ -430,14 +447,65 @@ def remove_old_outputs(old_outputs: list[str], current_outputs: list[Path]) -> N
             log(f"  Failed to remove {output}: {error}")
 
 
+def _ensure_source_unchanged(result: OptimizationResult) -> None:
+    """Raise SourceChangedError when the source no longer matches the result."""
+    if get_file_hash(result.source) != result.source_hash:
+        raise SourceChangedError
+
+
+def _publish_staged_outputs(
+    result: OptimizationResult,
+    backup_directory: Path,
+    published: list[tuple[Path, Path | None]],
+) -> None:
+    """Move staged files into place, recording each move before making it."""
+    for index, (staged_path, output_path) in enumerate(
+        zip(result.staged_outputs, result.outputs, strict=True)
+    ):
+        final_path = resolve_output_path(output_path)
+        final_path.parent.mkdir(parents=True, exist_ok=True)
+        backup_path: Path | None = None
+        if final_path.exists():
+            backup_directory.mkdir(parents=True, exist_ok=True)
+            backup_path = backup_directory / str(index)
+        published.append((final_path, backup_path))
+        if backup_path is not None:
+            _ = final_path.replace(backup_path)
+        _ = staged_path.replace(final_path)
+
+
+def _rollback_commit(
+    result: OptimizationResult,
+    manifest: Manifest,
+    old_entry: ManifestEntry | None,
+    published: list[tuple[Path, Path | None]],
+    manifest_saved: bool,
+) -> None:
+    """Restore the manifest entry and published files from before a commit."""
+    source_key = str(result.source)
+    if old_entry is None:
+        _ = manifest["processed"].pop(source_key, None)
+    else:
+        manifest["processed"][source_key] = old_entry
+
+    for final_path, backup_path in reversed(published):
+        if backup_path is None:
+            final_path.unlink(missing_ok=True)
+        elif backup_path.exists():
+            final_path.unlink(missing_ok=True)
+            _ = backup_path.replace(final_path)
+
+    if manifest_saved:
+        save_manifest(manifest)
+    _discard_result(result)
+
+
 def commit_result(result: OptimizationResult, manifest: Manifest) -> bool:
     """Publish a complete result and roll back every partial update on failure."""
     if result.errors or result.temporary_directory is None:
         return False
     if get_file_hash(result.source) != result.source_hash:
-        result.errors.append(f"Source changed before commit: {result.source}")
-        discard_staged_outputs(result)
-        result.outputs.clear()
+        _fail(result, f"Source changed before commit: {result.source}")
         return False
 
     source_key = str(result.source)
@@ -446,23 +514,12 @@ def commit_result(result: OptimizationResult, manifest: Manifest) -> bool:
     published: list[tuple[Path, Path | None]] = []
     manifest_saved = False
     try:
-        backup_directory = result.temporary_directory / ".backups"
-        for index, (staged_path, output_path) in enumerate(
-            zip(result.staged_outputs, result.outputs, strict=True)
-        ):
-            final_path = resolve_output_path(output_path)
-            final_path.parent.mkdir(parents=True, exist_ok=True)
-            backup_path: Path | None = None
-            if final_path.exists():
-                backup_directory.mkdir(parents=True, exist_ok=True)
-                backup_path = backup_directory / str(index)
-            published.append((final_path, backup_path))
-            if backup_path is not None:
-                _ = final_path.replace(backup_path)
-            _ = staged_path.replace(final_path)
-
-        if get_file_hash(result.source) != result.source_hash:
-            raise SourceChangedError
+        _publish_staged_outputs(
+            result,
+            result.temporary_directory / ".backups",
+            published,
+        )
+        _ensure_source_unchanged(result)
 
         manifest["processed"][source_key] = {
             "hash": result.source_hash,
@@ -471,26 +528,10 @@ def commit_result(result: OptimizationResult, manifest: Manifest) -> bool:
         }
         save_manifest(manifest)
         manifest_saved = True
-        if get_file_hash(result.source) != result.source_hash:
-            raise SourceChangedError
+        _ensure_source_unchanged(result)
 
     except BaseException as error:
-        if old_entry is None:
-            _ = manifest["processed"].pop(source_key, None)
-        else:
-            manifest["processed"][source_key] = old_entry
-
-        for final_path, backup_path in reversed(published):
-            if backup_path is None:
-                final_path.unlink(missing_ok=True)
-            elif backup_path.exists():
-                final_path.unlink(missing_ok=True)
-                _ = backup_path.replace(final_path)
-
-        if manifest_saved:
-            save_manifest(manifest)
-        discard_staged_outputs(result)
-        result.outputs.clear()
+        _rollback_commit(result, manifest, old_entry, published, manifest_saved)
         if isinstance(error, SourceChangedError):
             result.errors.append(f"Source changed during commit: {result.source}")
             return False
@@ -505,6 +546,49 @@ def _cancel_pending(futures: Sequence[Future[OptimizationResult]]) -> None:
     """Cancel tasks that have not started."""
     for future in futures:
         _ = future.cancel()
+
+
+def _run_optimizations(
+    images: Sequence[Path],
+) -> tuple[list[OptimizationResult], bool]:
+    """Optimize images in parallel and report whether the run was interrupted."""
+    stop_event = Event()
+    results: list[OptimizationResult] = []
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_to_path = {
+            executor.submit(optimize_image, image, False, stop_event): image
+            for image in images
+        }
+        try:
+            for future in as_completed(future_to_path):
+                image_path = future_to_path[future]
+                try:
+                    result = future.result()
+                except Exception as error:
+                    result = OptimizationResult(source=image_path)
+                    result.errors.append(str(error))
+                results.append(result)
+                if result.fatal:
+                    stop_event.set()
+                    _cancel_pending(tuple(future_to_path))
+        except KeyboardInterrupt:
+            stop_event.set()
+            _cancel_pending(tuple(future_to_path))
+            return results, True
+    return results, False
+
+
+def _discard_all(results: Sequence[OptimizationResult]) -> None:
+    """Remove staged outputs for every result."""
+    for result in results:
+        discard_staged_outputs(result)
+
+
+def _log_failure(result: OptimizationResult) -> None:
+    """Log a failed source and each of its errors."""
+    log(f"✗ {result.source}")
+    for error in result.errors:
+        log(f"  {error}")
 
 
 def process_images(
@@ -533,44 +617,17 @@ def process_images(
                 log(f"    → {output_path}")
         return 0
 
-    stop_event = Event()
-    results: list[OptimizationResult] = []
-    interrupted = False
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        future_to_path = {
-            executor.submit(optimize_image, image, False, stop_event): image
-            for image in to_process
-        }
-        try:
-            for future in as_completed(future_to_path):
-                image_path = future_to_path[future]
-                try:
-                    result = future.result()
-                except Exception as error:
-                    result = OptimizationResult(source=image_path)
-                    result.errors.append(str(error))
-                results.append(result)
-                if result.fatal:
-                    stop_event.set()
-                    _cancel_pending(tuple(future_to_path))
-        except KeyboardInterrupt:
-            interrupted = True
-            stop_event.set()
-            _cancel_pending(tuple(future_to_path))
-
+    results, interrupted = _run_optimizations(to_process)
     if interrupted:
-        for result in results:
-            discard_staged_outputs(result)
+        _discard_all(results)
         log("Interrupted. Cancelled remaining tasks.")
         return 1
 
     if any(result.fatal for result in results):
+        _discard_all(results)
         for result in results:
-            discard_staged_outputs(result)
             if result.errors:
-                log(f"✗ {result.source}")
-                for error in result.errors:
-                    log(f"  {error}")
+                _log_failure(result)
         log("FATAL: AVIF encoder not available. Stopped all image updates.")
         return 1
 
@@ -578,9 +635,7 @@ def process_images(
     processed_count = 0
     for result in results:
         if result.errors or not commit_result(result, manifest):
-            log(f"✗ {result.source}")
-            for error in result.errors:
-                log(f"  {error}")
+            _log_failure(result)
             error_count += 1
             continue
         log(f"✓ {result.source} ({len(result.outputs)} files)")
