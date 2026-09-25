@@ -4,6 +4,8 @@ class Image:
     @classmethod
     def new_from_file(cls, vips_filename: str, **kwargs: object) -> "Image": ...
 
+    def get_fields(self) -> list[str]: ...
+
     def heifsave(
         self,
         filename: str,
@@ -12,6 +14,14 @@ class Image:
         compression: str,
         strip: bool,
     ) -> None: ...
+
+    def icc_transform(
+        self,
+        output_profile: str,
+        *,
+        embedded: bool,
+        intent: str,
+    ) -> "Image": ...
 
     def jpegsave(
         self,

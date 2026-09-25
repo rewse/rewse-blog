@@ -64,7 +64,7 @@ After adding or modifying images, run the optimizer for that post:
 uv run scripts/optimize_images.py --path content/posts/<slug>/
 ```
 
-Add `--dry-run` to preview which images would be processed, or `--force` to reprocess unchanged images. The script creates resized and AVIF variants at widths of 400, 800, 1200, 1600, and 2400 pixels under `static/img/optimized/` and records their status in `.manifest.json`. Outputs wider than the source retain the source dimensions instead of being upscaled. The `static/img/optimized/` directory contains build artifacts and should not be committed.
+Add `--dry-run` to preview which images would be processed, or `--force` to reprocess unchanged images. The script creates resized and AVIF variants at widths of 400, 800, 1200, 1600, and 2400 pixels under `static/img/optimized/` and records their status in `.manifest.json`. Outputs wider than the source retain the source dimensions instead of being upscaled. Images with an embedded ICC profile, such as Display P3 or Adobe RGB, are converted to sRGB before the profile is stripped. The `static/img/optimized/` directory contains build artifacts and should not be committed.
 
 ## Building
 

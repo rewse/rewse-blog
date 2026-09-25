@@ -44,6 +44,11 @@ JPEG_QUALITY = 85
 MAX_WORKERS = 3
 PNG_COMPRESSION = 9
 
+# Increment when a change alters generated pixels so cached outputs are rebuilt.
+PROCESSING_VERSION = 2
+# Version assumed for manifest entries written before versions were recorded.
+LEGACY_PROCESSING_VERSION = 1
+
 OutputFormat = Literal["original", "avif"]
 OUTPUT_FORMATS: tuple[OutputFormat, ...] = ("original", "avif")
 
@@ -54,6 +59,7 @@ class ManifestEntry(TypedDict):
     hash: str
     outputs: list[str]
     timestamp: str
+    version: int
 
 
 class Manifest(TypedDict):
@@ -155,6 +161,7 @@ def _parse_manifest_entry(source: str, raw_entry: object) -> ManifestEntry:
     file_hash = entry_data.get("hash")
     raw_outputs = entry_data.get("outputs")
     timestamp = entry_data.get("timestamp", "")
+    version = entry_data.get("version", LEGACY_PROCESSING_VERSION)
 
     if not isinstance(file_hash, str):
         raise ValueError(f"Manifest hash for {source!r} must be a string")
@@ -168,8 +175,15 @@ def _parse_manifest_entry(source: str, raw_entry: object) -> ManifestEntry:
         _ = resolve_output_path(Path(output))
     if not isinstance(timestamp, str):
         raise ValueError(f"Manifest timestamp for {source!r} must be a string")
+    if not isinstance(version, int) or isinstance(version, bool):
+        raise ValueError(f"Manifest version for {source!r} must be an integer")
 
-    return {"hash": file_hash, "outputs": outputs, "timestamp": timestamp}
+    return {
+        "hash": file_hash,
+        "outputs": outputs,
+        "timestamp": timestamp,
+        "version": version,
+    }
 
 
 def parse_manifest(data: object) -> Manifest:
@@ -293,6 +307,8 @@ def needs_processing(source_path: Path, manifest: Manifest, force: bool) -> bool
     entry = manifest["processed"].get(str(normalized_source))
     if entry is None or entry["hash"] != get_file_hash(normalized_source):
         return True
+    if entry["version"] != PROCESSING_VERSION:
+        return True
     for output_path in entry["outputs"]:
         if not resolve_output_path(Path(output_path)).exists():
             log(f"Output file missing: {output_path}")
@@ -356,6 +372,17 @@ def _create_snapshot(
     return snapshot_path
 
 
+def _to_srgb(image: pyvips.Image) -> pyvips.Image:
+    """Convert an image with an embedded ICC profile to sRGB.
+
+    Saving strips the profile, so browsers read the pixels as sRGB. Leaving
+    wide-gamut pixels unconverted would shift their colors.
+    """
+    if "icc-profile-data" not in image.get_fields():
+        return image
+    return image.icc_transform("srgb", embedded=True, intent="relative")
+
+
 def _save_variant(
     image: pyvips.Image,
     path: Path,
@@ -395,7 +422,7 @@ def optimize_image(
 
     current_width: int | None = None
     try:
-        image = VIPS_IMAGE_CLASS.new_from_file(str(snapshot_path))
+        image = _to_srgb(VIPS_IMAGE_CLASS.new_from_file(str(snapshot_path)))
         original_width = image.width
         is_png = source.suffix.lower() == ".png"
         for width in IMAGE_SIZES:
@@ -525,6 +552,7 @@ def commit_result(result: OptimizationResult, manifest: Manifest) -> bool:
             "hash": result.source_hash,
             "outputs": [str(output) for output in result.outputs],
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "version": PROCESSING_VERSION,
         }
         save_manifest(manifest)
         manifest_saved = True
