@@ -4,10 +4,13 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from typing import Protocol, cast
+from typing import TYPE_CHECKING, Protocol, cast
 from unittest import mock
 
 from scripts import optimize_images
+
+if TYPE_CHECKING:
+    import pyvips
 
 
 class Writable(Protocol):
@@ -32,6 +35,39 @@ class ManifestTest(unittest.TestCase):
             manifest["processed"]["content/posts/example/image.jpg"]["hash"],
             "abc123",
         )
+
+    def test_parse_manifest_treats_missing_version_as_legacy(self) -> None:
+        data: object = {
+            "processed": {
+                "content/posts/example/image.jpg": {
+                    "hash": "abc123",
+                    "outputs": ["static/img/optimized/example-400w-abc123.jpg"],
+                    "timestamp": "2026-09-20 17:00:00",
+                }
+            }
+        }
+
+        manifest = optimize_images.parse_manifest(data)
+
+        self.assertEqual(
+            manifest["processed"]["content/posts/example/image.jpg"]["version"],
+            optimize_images.LEGACY_PROCESSING_VERSION,
+        )
+
+    def test_parse_manifest_rejects_non_integer_version(self) -> None:
+        data: object = {
+            "processed": {
+                "content/posts/example/image.jpg": {
+                    "hash": "abc123",
+                    "outputs": ["static/img/optimized/example-400w-abc123.jpg"],
+                    "timestamp": "2026-09-20 17:00:00",
+                    "version": True,
+                }
+            }
+        }
+
+        with self.assertRaisesRegex(ValueError, "version"):
+            _ = optimize_images.parse_manifest(data)
 
     def test_parse_manifest_rejects_invalid_processed_value(self) -> None:
         with self.assertRaisesRegex(ValueError, "processed"):
@@ -133,6 +169,7 @@ class ProcessingDecisionTest(unittest.TestCase):
                         "hash": "abc123",
                         "outputs": [str(output)],
                         "timestamp": "2026-09-20 17:00:00",
+                        "version": optimize_images.PROCESSING_VERSION,
                     }
                 }
             }
@@ -158,6 +195,68 @@ class ProcessingDecisionTest(unittest.TestCase):
             self.assertFalse(needs_processing)
 
 
+    def test_entry_with_older_processing_version_needs_processing(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repository_root = Path(temp_dir)
+            output = Path("static/img/optimized/output.jpg")
+            output_path = repository_root / output
+            output_path.parent.mkdir(parents=True)
+            output_path.touch()
+            source = Path("content/posts/example/photo.jpg")
+            manifest: optimize_images.Manifest = {
+                "processed": {
+                    str(source): {
+                        "hash": "abc123",
+                        "outputs": [str(output)],
+                        "timestamp": "2026-09-20 17:00:00",
+                        "version": optimize_images.PROCESSING_VERSION - 1,
+                    }
+                }
+            }
+
+            with (
+                mock.patch.object(
+                    optimize_images,
+                    "REPOSITORY_ROOT",
+                    repository_root,
+                ),
+                mock.patch.object(
+                    optimize_images,
+                    "get_file_hash",
+                    return_value="abc123",
+                ),
+            ):
+                needs_processing = optimize_images.needs_processing(
+                    source,
+                    manifest,
+                    force=False,
+                )
+
+            self.assertTrue(needs_processing)
+
+
+class ColorSpaceTest(unittest.TestCase):
+    def test_image_with_icc_profile_is_converted_to_srgb(self) -> None:
+        converted = FakeImage()
+        image = FakeImage(icc_profile=True, converted=converted)
+
+        result = optimize_images._to_srgb(cast("pyvips.Image", image))
+
+        self.assertIs(result, converted)
+        self.assertEqual(
+            image.icc_transform_calls,
+            [("srgb", {"embedded": True, "intent": "relative"})],
+        )
+
+    def test_image_without_icc_profile_is_unchanged(self) -> None:
+        image = FakeImage()
+
+        result = optimize_images._to_srgb(cast("pyvips.Image", image))
+
+        self.assertIs(result, image)
+        self.assertFalse(image.icc_transform_calls)
+
+
 class ArgumentsTest(unittest.TestCase):
     def test_parse_arguments_returns_typed_values(self) -> None:
         arguments = optimize_images.parse_arguments(
@@ -172,8 +271,23 @@ class ArgumentsTest(unittest.TestCase):
 class FakeImage:
     width: int = 1000
 
-    def __init__(self, fail_heif: bool = False) -> None:
+    def __init__(
+        self,
+        fail_heif: bool = False,
+        icc_profile: bool = False,
+        converted: "FakeImage | None" = None,
+    ) -> None:
         self.fail_heif: bool = fail_heif
+        self.icc_profile: bool = icc_profile
+        self.converted: FakeImage | None = converted
+        self.icc_transform_calls: list[tuple[str, dict[str, object]]] = []
+
+    def get_fields(self) -> list[str]:
+        return ["icc-profile-data"] if self.icc_profile else []
+
+    def icc_transform(self, output_profile: str, **options: object) -> "FakeImage":
+        self.icc_transform_calls.append((output_profile, options))
+        return self if self.converted is None else self.converted
 
     def resize(self, _scale: float) -> "FakeImage":
         return self
@@ -317,6 +431,8 @@ class FailureSafetyTest(unittest.TestCase):
                 "hash": "old-hash",
                 "outputs": [str(output)],
                 "timestamp": "2026-09-20 17:00:00",
+
+                "version": optimize_images.PROCESSING_VERSION,
             }
             manifest: optimize_images.Manifest = {
                 "processed": {str(source): old_entry.copy()}
@@ -415,6 +531,8 @@ class FailureSafetyTest(unittest.TestCase):
                 "hash": "old-hash",
                 "outputs": [str(output)],
                 "timestamp": "2026-09-20 17:00:00",
+
+                "version": optimize_images.PROCESSING_VERSION,
             }
             manifest: optimize_images.Manifest = {
                 "processed": {str(source): old_entry.copy()}
@@ -490,6 +608,44 @@ class FailureSafetyTest(unittest.TestCase):
             self.assertEqual(final_path.read_text(encoding="utf-8"), "old image")
             self.assertNotIn(str(source), manifest["processed"])
 
+
+    def test_successful_commit_records_processing_version(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repository_root = Path(temp_dir)
+            source = Path("content/posts/example/photo.jpg")
+            output = Path("static/img/optimized/posts/example/photo-400w-hash.jpg")
+            staging_directory = repository_root / "static/img/optimized/.staging"
+            staged_path = staging_directory / "output.jpg"
+            staged_path.parent.mkdir(parents=True)
+            _ = staged_path.write_text("new image", encoding="utf-8")
+            manifest: optimize_images.Manifest = {"processed": {}}
+            result = optimize_images.OptimizationResult(
+                source=source,
+                source_hash="source-hash",
+                outputs=[output],
+                staged_outputs=[staged_path],
+                temporary_directory=staging_directory,
+            )
+
+            with (
+                mock.patch.object(
+                    optimize_images,
+                    "REPOSITORY_ROOT",
+                    repository_root,
+                ),
+                mock.patch.object(
+                    optimize_images,
+                    "get_file_hash",
+                    return_value="source-hash",
+                ),
+            ):
+                committed = optimize_images.commit_result(result, manifest)
+
+            self.assertTrue(committed)
+            self.assertEqual(
+                manifest["processed"][str(source)]["version"],
+                optimize_images.PROCESSING_VERSION,
+            )
 
 if __name__ == "__main__":
     _ = unittest.main()
