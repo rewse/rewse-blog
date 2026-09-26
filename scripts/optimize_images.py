@@ -648,16 +648,28 @@ def _run_optimizations(
     collected: set[Future[OptimizationResult]] = set()
     future_to_path: dict[Future[OptimizationResult], Path] = {}
     interrupted = False
-    executor = ProcessPoolExecutor(
-        max_workers=MAX_WORKERS,
-        mp_context=context,
-        max_tasks_per_child=TASKS_PER_WORKER,
-        initializer=_init_worker,
-        initargs=(stop_event, staging_root),
-    )
+    # Workers inherit the signal mask of the thread that starts them, and a
+    # terminal Ctrl-C would otherwise reach a worker that is still importing
+    # before _init_worker ignores SIGINT. The parent receives the signal once
+    # its mask is restored after the tasks are submitted.
+    previous_mask = signal.pthread_sigmask(signal.SIG_BLOCK, {signal.SIGINT})
     try:
-        for image in images:
-            future_to_path[executor.submit(_optimize_in_worker, image)] = image
+        executor = ProcessPoolExecutor(
+            max_workers=MAX_WORKERS,
+            mp_context=context,
+            max_tasks_per_child=TASKS_PER_WORKER,
+            initializer=_init_worker,
+            initargs=(stop_event, staging_root),
+        )
+    except BaseException:
+        _ = signal.pthread_sigmask(signal.SIG_SETMASK, previous_mask)
+        raise
+    try:
+        try:
+            for image in images:
+                future_to_path[executor.submit(_optimize_in_worker, image)] = image
+        finally:
+            _ = signal.pthread_sigmask(signal.SIG_SETMASK, previous_mask)
         for future in as_completed(future_to_path):
             collected.add(future)
             image_path = future_to_path[future]
