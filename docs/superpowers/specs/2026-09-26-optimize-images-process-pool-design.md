@@ -33,7 +33,7 @@
 flowchart TD
     P[process_images] --> R[_run_optimizations]
     R -->|作成| D[".run-&lt;random&gt;/ ステージング"]
-    R -->|spawn, max_tasks_per_child=10| W1[ワーカー 1]
+    R -->|spawn, max_tasks_per_child=1| W1[ワーカー 1]
     R --> W2[ワーカー 2]
     R --> W3[ワーカー 3]
     W1 -->|_init_worker| S[停止フラグ・ステージング先を保存<br/>SIGINT を無視]
@@ -45,7 +45,7 @@ flowchart TD
     P -->|公開と破棄の後に finally で| X[".run-* を削除"]
 ```
 
-`ProcessPoolExecutor` は `max_workers=MAX_WORKERS`（3）、`mp_context` に `spawn` のコンテキスト、`max_tasks_per_child=TASKS_PER_WORKER`（新しい定数で値は 10）、`initializer=_init_worker` で作る。ワーカーは 10 枚を処理すると終了して新しいプロセスに入れ替わるので、リークは 1 プロセスあたり約 1.3 GB で頭打ちになる。libvips は内部でスレッドを使うため、`fork` で子プロセスを作ると安全でない。そのため `spawn` を使う。
+`ProcessPoolExecutor` は `max_workers=MAX_WORKERS`（3）、`mp_context` に `spawn` のコンテキスト、`max_tasks_per_child=TASKS_PER_WORKER`（新しい定数で値は 1）、`initializer=_init_worker` で作る。ワーカーは 1 枚処理するごとに終了して新しいプロセスに入れ替わるので、リークは 1 プロセスあたり 1 枚分で頭打ちになる。1 より大きい値にすると、ワーカーの入れ替わりが起きる量のタスクでプールがハングする（python/cpython#115634）。libvips は内部でスレッドを使うため、`fork` で子プロセスを作ると安全でない。そのため `spawn` を使う。
 
 `_init_worker(stop_event, staging_root)` は、共有の停止フラグとステージング先をモジュール変数に保存し、SIGINT を無視するよう設定する。`_optimize_in_worker(source)` は、保存した値を使って `optimize_image` を呼ぶだけの入口にする。`spawn` のワーカーはスクリプトを import し直すが、`if __name__ == "__main__"` のガードがあるので `main()` は実行されない。
 
