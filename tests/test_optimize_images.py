@@ -235,6 +235,49 @@ class ProcessingDecisionTest(unittest.TestCase):
             self.assertTrue(needs_processing)
 
 
+class ProgressLoggingTest(unittest.TestCase):
+    def test_each_finished_image_is_logged_with_progress(self) -> None:
+        images = [
+            Path("content/posts/example/first.jpg"),
+            Path("content/posts/example/second.jpg"),
+        ]
+
+        def fake_optimize(
+            source: Path,
+            _dry_run: bool,
+            _stop_event: object,
+        ) -> optimize_images.OptimizationResult:
+            return optimize_images.OptimizationResult(source=source)
+
+        with (
+            mock.patch.object(
+                optimize_images,
+                "optimize_image",
+                side_effect=fake_optimize,
+            ),
+            mock.patch.object(optimize_images, "log") as log,
+        ):
+            results, interrupted = optimize_images._run_optimizations(images)
+
+        self.assertFalse(interrupted)
+        self.assertEqual(len(results), 2)
+        messages = [call.args[0] for call in log.call_args_list]
+        self.assertEqual(
+            sorted(message.split(":")[0] for message in messages),
+            ["Finished 1/2", "Finished 2/2"],
+        )
+        self.assertEqual(
+            {message.split(": ", 1)[1] for message in messages},
+            {str(image) for image in images},
+        )
+
+    def test_log_flushes_output(self) -> None:
+        with mock.patch("builtins.print") as print_mock:
+            optimize_images.log("message")
+
+        self.assertTrue(print_mock.call_args.kwargs.get("flush"))
+
+
 class ColorSpaceTest(unittest.TestCase):
     def test_image_with_icc_profile_is_converted_to_srgb(self) -> None:
         converted = FakeImage()
