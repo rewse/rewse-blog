@@ -242,6 +242,10 @@ class ProcessingDecisionTest(unittest.TestCase):
             self.assertTrue(needs_processing)
 
 
+def _sigint_blocked() -> bool:
+    return signal.SIGINT in signal.pthread_sigmask(signal.SIG_BLOCK, set())
+
+
 class FakeProcessPool:
     """Process pool fake that completes tasks inline and interrupts shutdown."""
 
@@ -254,9 +258,11 @@ class FakeProcessPool:
         self.error: Exception | None = error
         self.shutdown_calls: int = 0
         self.options: dict[str, object] = {}
+        self.sigint_blocked: list[bool] = []
 
     def create(self, **options: object) -> "FakeProcessPool":
         self.options = options
+        self.sigint_blocked.append(_sigint_blocked())
         return self
 
     @property
@@ -272,6 +278,7 @@ class FakeProcessPool:
         _function: object,
         source: Path,
     ) -> "Future[optimize_images.OptimizationResult]":
+        self.sigint_blocked.append(_sigint_blocked())
         future: Future[optimize_images.OptimizationResult] = Future()
         if self.error is None:
             future.set_result(optimize_images.OptimizationResult(source=source))
@@ -348,6 +355,22 @@ class ProgressLoggingTest(unittest.TestCase):
         self.assertIs(pool.options["initializer"], optimize_images._init_worker)
         initargs = cast(tuple[object, Path], pool.options["initargs"])
         self.assertEqual(initargs[1], STAGING_ROOT)
+
+    def test_workers_start_with_sigint_blocked(self) -> None:
+        pool = FakeProcessPool()
+
+        with (
+            mock.patch.object(
+                optimize_images,
+                "ProcessPoolExecutor",
+                side_effect=pool.create,
+            ),
+            mock.patch.object(optimize_images, "log"),
+        ):
+            _ = optimize_images._run_optimizations(IMAGES, STAGING_ROOT)
+
+        self.assertEqual(pool.sigint_blocked, [True, True, True])
+        self.assertFalse(_sigint_blocked())
 
     def test_repeated_interrupt_waits_for_workers_and_keeps_results(self) -> None:
         pool = FakeProcessPool(shutdown_interrupts=1)
