@@ -44,8 +44,9 @@ AVIF_QUALITY = 65
 JPEG_QUALITY = 85
 MAX_WORKERS = 3
 # Worker processes exit after this many images, which returns memory leaked
-# by native encoders to the system.
-TASKS_PER_WORKER = 10
+# by native encoders to the system. Keep it at 1: ProcessPoolExecutor hangs
+# when a larger limit forces workers to be replaced (python/cpython#115634).
+TASKS_PER_WORKER = 1
 PNG_COMPRESSION = 9
 
 # Increment when a change alters generated pixels so cached outputs are rebuilt.
