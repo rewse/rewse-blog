@@ -2,6 +2,9 @@ class Image:
     width: int
 
     @classmethod
+    def black(cls, width: int, height: int, **kwargs: object) -> "Image": ...
+
+    @classmethod
     def new_from_file(cls, vips_filename: str, **kwargs: object) -> "Image": ...
 
     def get_fields(self) -> list[str]: ...
