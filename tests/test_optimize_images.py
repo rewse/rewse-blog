@@ -3,6 +3,8 @@
 import json
 import multiprocessing.context
 import signal
+import subprocess
+import sys
 import tempfile
 import unittest
 from concurrent.futures import Future
@@ -994,6 +996,64 @@ class FailureSafetyTest(unittest.TestCase):
                 manifest["processed"][str(source)]["version"],
                 optimize_images.PROCESSING_VERSION,
             )
+
+class EndToEndTest(unittest.TestCase):
+    def test_cli_run_recycles_worker_processes_and_cleans_up(self) -> None:
+        import pyvips
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repository_root = Path(temp_dir)
+            script_text = Path(optimize_images.__file__).read_text(encoding="utf-8")
+            self.assertIn("TASKS_PER_WORKER = 10", script_text)
+            self.assertIn("MAX_WORKERS = 3", script_text)
+            script_text = script_text.replace(
+                "TASKS_PER_WORKER = 10",
+                "TASKS_PER_WORKER = 1",
+            ).replace("MAX_WORKERS = 3", "MAX_WORKERS = 2")
+            script_path = repository_root / "scripts/optimize_images.py"
+            script_path.parent.mkdir()
+            _ = script_path.write_text(script_text, encoding="utf-8")
+            post = repository_root / "content/posts/example"
+            post.mkdir(parents=True)
+            for index in range(3):
+                pyvips.Image.black(64, 48, bands=3).pngsave(
+                    str(post / f"image-{index}.png"),
+                    compression=0,
+                    strip=True,
+                )
+
+            completed = subprocess.run(
+                [sys.executable, str(script_path)],
+                cwd=repository_root,
+                capture_output=True,
+                text=True,
+                timeout=300,
+                check=False,
+            )
+
+            self.assertEqual(
+                completed.returncode,
+                0,
+                completed.stdout + completed.stderr,
+            )
+            output_root = repository_root / "static/img/optimized"
+            manifest = cast(
+                dict[str, dict[str, dict[str, object]]],
+                json.loads((output_root / ".manifest.json").read_text("utf-8")),
+            )
+            self.assertEqual(len(manifest["processed"]), 3)
+            for entry in manifest["processed"].values():
+                outputs = cast(list[str], entry["outputs"])
+                self.assertEqual(len(outputs), 10)
+                for output in outputs:
+                    self.assertTrue((repository_root / output).is_file(), output)
+            leftovers = [
+                path.name
+                for path in output_root.iterdir()
+                if path.is_dir() and path.name.startswith(".")
+            ]
+            self.assertEqual(leftovers, [])
+
 
 if __name__ == "__main__":
     _ = unittest.main()
