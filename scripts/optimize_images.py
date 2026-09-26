@@ -23,11 +23,12 @@ import json
 import os
 from pathlib import Path
 import shutil
+import signal
 import tempfile
 from threading import Event
 import time
 import traceback
-from typing import Literal, TypedDict, cast
+from typing import Literal, Protocol, TypedDict, cast
 
 import pyvips
 
@@ -91,6 +92,14 @@ class Arguments(argparse.Namespace):
 
 class SourceChangedError(RuntimeError):
     """Signal that a source changed while its outputs were being published."""
+
+
+class StopSignal(Protocol):
+    """Cancellation flag shared by the parent and its workers."""
+
+    def is_set(self) -> bool: ...
+
+    def set(self) -> None: ...
 
 
 def log(message: str) -> None:
@@ -336,7 +345,7 @@ def _fail(result: OptimizationResult, message: str) -> None:
     _discard_result(result)
 
 
-def _raise_if_cancelled(stop_event: Event | None) -> None:
+def _raise_if_cancelled(stop_event: StopSignal | None) -> None:
     """Abort optimization when another task has requested a stop."""
     if stop_event is not None and stop_event.is_set():
         raise RuntimeError("Optimization cancelled")
@@ -401,9 +410,14 @@ def _save_variant(
 def optimize_image(
     source_path: Path,
     dry_run: bool = False,
-    stop_event: Event | None = None,
+    stop_event: StopSignal | None = None,
+    staging_root: Path | None = None,
 ) -> OptimizationResult:
-    """Optimize one image without replacing currently published outputs."""
+    """Optimize one image without replacing currently published outputs.
+
+    Staged files go into a new directory under staging_root, which defaults
+    to the output directory.
+    """
     source = normalize_source_path(source_path)
     source_hash = get_file_hash(source)
     result = OptimizationResult(source=source, source_hash=source_hash)
@@ -412,9 +426,10 @@ def optimize_image(
         result.outputs.extend(_planned_outputs(source, source_hash))
         return result
 
-    output_root = _repository_path(OUTPUT_DIR)
-    output_root.mkdir(parents=True, exist_ok=True)
-    temporary_directory = Path(tempfile.mkdtemp(prefix=".image-", dir=output_root))
+    if staging_root is None:
+        staging_root = _repository_path(OUTPUT_DIR)
+    staging_root.mkdir(parents=True, exist_ok=True)
+    temporary_directory = Path(tempfile.mkdtemp(prefix=".image-", dir=staging_root))
     result.temporary_directory = temporary_directory
     snapshot_path = _create_snapshot(result, temporary_directory)
     if snapshot_path is None:
@@ -568,6 +583,23 @@ def commit_result(result: OptimizationResult, manifest: Manifest) -> bool:
     discard_staged_outputs(result)
     remove_old_outputs(old_outputs, result.outputs)
     return True
+
+
+_worker_stop_event: StopSignal | None = None
+_worker_staging_root: Path | None = None
+
+
+def _init_worker(stop_event: StopSignal, staging_root: Path) -> None:
+    """Prepare a worker process; the parent alone handles SIGINT."""
+    global _worker_stop_event, _worker_staging_root
+    _ = signal.signal(signal.SIGINT, signal.SIG_IGN)
+    _worker_stop_event = stop_event
+    _worker_staging_root = staging_root
+
+
+def _optimize_in_worker(source: Path) -> OptimizationResult:
+    """Optimize one image with the state stored by _init_worker."""
+    return optimize_image(source, False, _worker_stop_event, _worker_staging_root)
 
 
 def _cancel_pending(futures: Sequence[Future[OptimizationResult]]) -> None:
