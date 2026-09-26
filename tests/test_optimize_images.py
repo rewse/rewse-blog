@@ -999,37 +999,41 @@ class FailureSafetyTest(unittest.TestCase):
 
 class EndToEndTest(unittest.TestCase):
     def test_cli_run_recycles_worker_processes_and_cleans_up(self) -> None:
+        # One worker must be replaced at least twice. ProcessPoolExecutor hangs
+        # when 1 < max_tasks_per_child and tasks outnumber max_workers times
+        # max_tasks_per_child (python/cpython#115634), so this run times out
+        # if TASKS_PER_WORKER is raised above 1.
         import pyvips
 
+        image_count = 2 * optimize_images.TASKS_PER_WORKER + 1
         with tempfile.TemporaryDirectory() as temp_dir:
             repository_root = Path(temp_dir)
             script_text = Path(optimize_images.__file__).read_text(encoding="utf-8")
-            self.assertIn("TASKS_PER_WORKER = 10", script_text)
             self.assertIn("MAX_WORKERS = 3", script_text)
-            script_text = script_text.replace(
-                "TASKS_PER_WORKER = 10",
-                "TASKS_PER_WORKER = 1",
-            ).replace("MAX_WORKERS = 3", "MAX_WORKERS = 2")
+            script_text = script_text.replace("MAX_WORKERS = 3", "MAX_WORKERS = 1")
             script_path = repository_root / "scripts/optimize_images.py"
             script_path.parent.mkdir()
             _ = script_path.write_text(script_text, encoding="utf-8")
             post = repository_root / "content/posts/example"
             post.mkdir(parents=True)
-            for index in range(3):
+            for index in range(image_count):
                 pyvips.Image.black(64, 48, bands=3).pngsave(
                     str(post / f"image-{index}.png"),
                     compression=0,
                     strip=True,
                 )
 
-            completed = subprocess.run(
-                [sys.executable, str(script_path)],
-                cwd=repository_root,
-                capture_output=True,
-                text=True,
-                timeout=300,
-                check=False,
-            )
+            try:
+                completed = subprocess.run(
+                    [sys.executable, str(script_path)],
+                    cwd=repository_root,
+                    capture_output=True,
+                    text=True,
+                    timeout=120,
+                    check=False,
+                )
+            except subprocess.TimeoutExpired as error:
+                self.fail(f"optimizer hung: {error.stdout!r}")
 
             self.assertEqual(
                 completed.returncode,
@@ -1041,7 +1045,7 @@ class EndToEndTest(unittest.TestCase):
                 dict[str, dict[str, dict[str, object]]],
                 json.loads((output_root / ".manifest.json").read_text("utf-8")),
             )
-            self.assertEqual(len(manifest["processed"]), 3)
+            self.assertEqual(len(manifest["processed"]), image_count)
             for entry in manifest["processed"].values():
                 outputs = cast(list[str], entry["outputs"])
                 self.assertEqual(len(outputs), 10)
