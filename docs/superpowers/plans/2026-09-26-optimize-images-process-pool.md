@@ -4,7 +4,7 @@
 
 **Goal:** AVIF 保存時のネイティブなメモリリークがあっても、全 530 枚の作り直しが Amplify の 16 GiB 環境で完了するようにし、最後に `PROCESSING_VERSION` を 2 に上げて全出力を sRGB 変換済みにする。
 
-**Architecture:** `_run_optimizations` の `ThreadPoolExecutor` を、`spawn` で起動し `max_tasks_per_child=10` で入れ替わる `ProcessPoolExecutor` に置き換える。ワーカーは初期化関数で共有の停止フラグと実行ごとのステージング先を受け取り、SIGINT を無視する。親プロセスは実行ごとに `OUTPUT_DIR/.run-<random>/` を作り、公開と破棄を終えた後に必ず削除する。
+**Architecture:** `_run_optimizations` の `ThreadPoolExecutor` を、`spawn` で起動し `max_tasks_per_child=1` で入れ替わる `ProcessPoolExecutor` に置き換える。ワーカーは初期化関数で共有の停止フラグと実行ごとのステージング先を受け取り、SIGINT を無視する。親プロセスは実行ごとに `OUTPUT_DIR/.run-<random>/` を作り、公開と破棄を終えた後に必ず削除する。
 
 **Tech Stack:** Python 3.11 以上（標準ライブラリの `concurrent.futures`、`multiprocessing`、`signal`）、pyvips 3.2.0、unittest、pyright、Amplify Hosting。
 
@@ -14,7 +14,7 @@
 
 - スクリプトの `requires-python` は `>=3.11`、`pyrightconfig.json` の `pythonVersion` は `"3.11"`。
 - 依存の追加はしない。使うのは標準ライブラリと既存の `pyvips==3.2.0` だけ。
-- `MAX_WORKERS = 3`、`TASKS_PER_WORKER = 10`、起動方式は `spawn`。
+- `MAX_WORKERS = 3`、`TASKS_PER_WORKER = 1`（python/cpython#115634 のため。当初の計画では 10）、起動方式は `spawn`。
 - ステージングは実行ごとに `OUTPUT_DIR/.run-<random>/`、画像ごとの一時ディレクトリはその中の `.image-*`。
 - `process_images` の戻り値、ログの文言、`commit_result`、マニフェスト形式は変えない。
 - 成功条件: `v4` イメージの amd64 コンテナ（8 CPU、16 GB）で全 530 枚を処理したピーク使用メモリが 6 GB 以下。Amplify の作り直しが 60 分のタイムアウト内に成功する。
