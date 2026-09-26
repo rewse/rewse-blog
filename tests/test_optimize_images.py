@@ -1,10 +1,12 @@
 """Tests for the image optimization script."""
 
 import json
+import multiprocessing.context
 import signal
 import tempfile
 import unittest
 from concurrent.futures import Future
+from concurrent.futures.process import BrokenProcessPool
 from pathlib import Path
 from threading import Event
 from typing import TYPE_CHECKING, Protocol, cast
@@ -238,24 +240,41 @@ class ProcessingDecisionTest(unittest.TestCase):
             self.assertTrue(needs_processing)
 
 
-class InterruptingExecutor:
-    """Executor fake that completes tasks inline and interrupts shutdown."""
+class FakeProcessPool:
+    """Process pool fake that completes tasks inline and interrupts shutdown."""
 
-    def __init__(self, shutdown_interrupts: int) -> None:
+    def __init__(
+        self,
+        shutdown_interrupts: int = 0,
+        error: Exception | None = None,
+    ) -> None:
         self.shutdown_interrupts: int = shutdown_interrupts
+        self.error: Exception | None = error
         self.shutdown_calls: int = 0
-        self.stop_events: list[Event] = []
+        self.options: dict[str, object] = {}
+
+    def create(self, **options: object) -> "FakeProcessPool":
+        self.options = options
+        return self
+
+    @property
+    def stop_event(self) -> optimize_images.StopSignal:
+        initargs = cast(
+            tuple[optimize_images.StopSignal, Path],
+            self.options["initargs"],
+        )
+        return initargs[0]
 
     def submit(
         self,
         _function: object,
         source: Path,
-        _dry_run: bool,
-        stop_event: Event,
     ) -> "Future[optimize_images.OptimizationResult]":
-        self.stop_events.append(stop_event)
         future: Future[optimize_images.OptimizationResult] = Future()
-        future.set_result(optimize_images.OptimizationResult(source=source))
+        if self.error is None:
+            future.set_result(optimize_images.OptimizationResult(source=source))
+        else:
+            future.set_exception(self.error)
         return future
 
     def shutdown(self, wait: bool = True, *, cancel_futures: bool = False) -> None:
@@ -265,29 +284,29 @@ class InterruptingExecutor:
             raise KeyboardInterrupt
 
 
+STAGING_ROOT = Path("/tmp/staging")
+IMAGES = [
+    Path("content/posts/example/first.jpg"),
+    Path("content/posts/example/second.jpg"),
+]
+
+
 class ProgressLoggingTest(unittest.TestCase):
     def test_each_finished_image_is_logged_with_progress(self) -> None:
-        images = [
-            Path("content/posts/example/first.jpg"),
-            Path("content/posts/example/second.jpg"),
-        ]
-
-        def fake_optimize(
-            source: Path,
-            _dry_run: bool,
-            _stop_event: object,
-        ) -> optimize_images.OptimizationResult:
-            return optimize_images.OptimizationResult(source=source)
+        pool = FakeProcessPool()
 
         with (
             mock.patch.object(
                 optimize_images,
-                "optimize_image",
-                side_effect=fake_optimize,
+                "ProcessPoolExecutor",
+                side_effect=pool.create,
             ),
             mock.patch.object(optimize_images, "log") as log,
         ):
-            results, interrupted = optimize_images._run_optimizations(images)
+            results, interrupted = optimize_images._run_optimizations(
+                IMAGES,
+                STAGING_ROOT,
+            )
 
         self.assertFalse(interrupted)
         self.assertEqual(len(results), 2)
@@ -298,21 +317,44 @@ class ProgressLoggingTest(unittest.TestCase):
         )
         self.assertEqual(
             {message.split(": ", 1)[1] for message in messages},
-            {str(image) for image in images},
+            {str(image) for image in IMAGES},
         )
 
-    def test_repeated_interrupt_waits_for_workers_and_keeps_results(self) -> None:
-        images = [
-            Path("content/posts/example/first.jpg"),
-            Path("content/posts/example/second.jpg"),
-        ]
-        executor = InterruptingExecutor(shutdown_interrupts=1)
+    def test_pool_uses_recycled_spawned_workers(self) -> None:
+        pool = FakeProcessPool()
 
         with (
             mock.patch.object(
                 optimize_images,
-                "ThreadPoolExecutor",
-                return_value=executor,
+                "ProcessPoolExecutor",
+                side_effect=pool.create,
+            ),
+            mock.patch.object(optimize_images, "log"),
+        ):
+            _ = optimize_images._run_optimizations(IMAGES, STAGING_ROOT)
+
+        context = cast(
+            multiprocessing.context.BaseContext,
+            pool.options["mp_context"],
+        )
+        self.assertEqual(context.get_start_method(), "spawn")
+        self.assertEqual(pool.options["max_workers"], optimize_images.MAX_WORKERS)
+        self.assertEqual(
+            pool.options["max_tasks_per_child"],
+            optimize_images.TASKS_PER_WORKER,
+        )
+        self.assertIs(pool.options["initializer"], optimize_images._init_worker)
+        initargs = cast(tuple[object, Path], pool.options["initargs"])
+        self.assertEqual(initargs[1], STAGING_ROOT)
+
+    def test_repeated_interrupt_waits_for_workers_and_keeps_results(self) -> None:
+        pool = FakeProcessPool(shutdown_interrupts=1)
+
+        with (
+            mock.patch.object(
+                optimize_images,
+                "ProcessPoolExecutor",
+                side_effect=pool.create,
             ),
             mock.patch.object(
                 optimize_images,
@@ -321,38 +363,135 @@ class ProgressLoggingTest(unittest.TestCase):
             ),
             mock.patch.object(optimize_images, "log"),
         ):
-            results, interrupted = optimize_images._run_optimizations(images)
+            results, interrupted = optimize_images._run_optimizations(
+                IMAGES,
+                STAGING_ROOT,
+            )
 
         self.assertTrue(interrupted)
-        self.assertEqual(executor.shutdown_calls, 2)
-        self.assertTrue(all(event.is_set() for event in executor.stop_events))
-        self.assertEqual(
-            {result.source for result in results},
-            set(images),
-        )
+        self.assertEqual(pool.shutdown_calls, 2)
+        self.assertTrue(pool.stop_event.is_set())
+        self.assertEqual({result.source for result in results}, set(IMAGES))
 
     def test_interrupt_during_shutdown_is_reported(self) -> None:
-        images = [Path("content/posts/example/first.jpg")]
-        executor = InterruptingExecutor(shutdown_interrupts=1)
+        pool = FakeProcessPool(shutdown_interrupts=1)
 
         with (
             mock.patch.object(
                 optimize_images,
-                "ThreadPoolExecutor",
-                return_value=executor,
+                "ProcessPoolExecutor",
+                side_effect=pool.create,
             ),
             mock.patch.object(optimize_images, "log"),
         ):
-            results, interrupted = optimize_images._run_optimizations(images)
+            results, interrupted = optimize_images._run_optimizations(
+                IMAGES[:1],
+                STAGING_ROOT,
+            )
 
         self.assertTrue(interrupted)
         self.assertEqual(len(results), 1)
+
+    def test_broken_pool_turns_into_error_results(self) -> None:
+        pool = FakeProcessPool(error=BrokenProcessPool("worker died"))
+
+        with (
+            mock.patch.object(
+                optimize_images,
+                "ProcessPoolExecutor",
+                side_effect=pool.create,
+            ),
+            mock.patch.object(optimize_images, "log"),
+        ):
+            results, interrupted = optimize_images._run_optimizations(
+                IMAGES,
+                STAGING_ROOT,
+            )
+
+        self.assertFalse(interrupted)
+        self.assertEqual({result.source for result in results}, set(IMAGES))
+        self.assertTrue(all(result.errors == ["worker died"] for result in results))
 
     def test_log_flushes_output(self) -> None:
         with mock.patch("builtins.print") as print_mock:
             optimize_images.log("message")
 
         self.assertTrue(print_mock.call_args.kwargs.get("flush"))
+
+
+class RunStagingTest(unittest.TestCase):
+    def _process_with(
+        self,
+        repository_root: Path,
+        fake_run: object,
+    ) -> int:
+        with (
+            mock.patch.object(optimize_images, "REPOSITORY_ROOT", repository_root),
+            mock.patch.object(
+                optimize_images,
+                "load_manifest",
+                return_value={"processed": {}},
+            ),
+            mock.patch.object(
+                optimize_images,
+                "find_images",
+                return_value=[IMAGES[0]],
+            ),
+            mock.patch.object(
+                optimize_images,
+                "needs_processing",
+                return_value=True,
+            ),
+            mock.patch.object(
+                optimize_images,
+                "_run_optimizations",
+                side_effect=fake_run,
+            ),
+            mock.patch.object(optimize_images, "log"),
+        ):
+            return optimize_images.process_images()
+
+    def test_run_staging_is_removed_after_success(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repository_root = Path(temp_dir)
+            seen: list[Path] = []
+
+            def fake_run(
+                _images: list[Path],
+                staging_root: Path,
+            ) -> tuple[list[optimize_images.OptimizationResult], bool]:
+                self.assertTrue(staging_root.is_dir())
+                seen.append(staging_root)
+                return [], False
+
+            exit_code = self._process_with(repository_root, fake_run)
+
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(len(seen), 1)
+            self.assertEqual(
+                seen[0].parent,
+                (repository_root / "static/img/optimized").resolve(),
+            )
+            self.assertTrue(seen[0].name.startswith(".run-"))
+            self.assertFalse(seen[0].exists())
+
+    def test_run_staging_is_removed_when_processing_raises(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repository_root = Path(temp_dir)
+            seen: list[Path] = []
+
+            def fake_run(
+                _images: list[Path],
+                staging_root: Path,
+            ) -> tuple[list[optimize_images.OptimizationResult], bool]:
+                seen.append(staging_root)
+                raise KeyboardInterrupt
+
+            with self.assertRaises(KeyboardInterrupt):
+                _ = self._process_with(repository_root, fake_run)
+
+            self.assertEqual(len(seen), 1)
+            self.assertFalse(seen[0].exists())
 
 
 class ColorSpaceTest(unittest.TestCase):
