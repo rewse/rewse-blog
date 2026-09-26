@@ -45,7 +45,7 @@ MAX_WORKERS = 3
 PNG_COMPRESSION = 9
 
 # Increment when a change alters generated pixels so cached outputs are rebuilt.
-PROCESSING_VERSION = 2
+PROCESSING_VERSION = 1
 # Version assumed for manifest entries written before versions were recorded.
 LEGACY_PROCESSING_VERSION = 1
 
