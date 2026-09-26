@@ -1,6 +1,6 @@
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11"
 # dependencies = [
 #   "pyvips==3.2.0",
 # ]
@@ -16,16 +16,16 @@ Usage:
 
 import argparse
 from collections.abc import Sequence
-from concurrent.futures import Future, ThreadPoolExecutor, as_completed
+from concurrent.futures import Executor, Future, ProcessPoolExecutor, as_completed
 from dataclasses import dataclass, field
 import hashlib
 import json
+import multiprocessing
 import os
 from pathlib import Path
 import shutil
 import signal
 import tempfile
-from threading import Event
 import time
 import traceback
 from typing import Literal, Protocol, TypedDict, cast
@@ -43,6 +43,9 @@ SOURCE_DIRS = (Path("content"), Path("assets/img"))
 AVIF_QUALITY = 65
 JPEG_QUALITY = 85
 MAX_WORKERS = 3
+# Worker processes exit after this many images, which returns memory leaked
+# by native encoders to the system.
+TASKS_PER_WORKER = 10
 PNG_COMPRESSION = 9
 
 # Increment when a change alters generated pixels so cached outputs are rebuilt.
@@ -608,7 +611,7 @@ def _cancel_pending(futures: Sequence[Future[OptimizationResult]]) -> None:
         _ = future.cancel()
 
 
-def _shutdown_executor(executor: ThreadPoolExecutor, stop_event: Event) -> bool:
+def _shutdown_executor(executor: Executor, stop_event: StopSignal) -> bool:
     """Wait for every worker to stop and report whether an interrupt arrived.
 
     Interrupts during the wait are absorbed so workers can discard their own
@@ -627,6 +630,7 @@ def _shutdown_executor(executor: ThreadPoolExecutor, stop_event: Event) -> bool:
 
 def _run_optimizations(
     images: Sequence[Path],
+    staging_root: Path,
 ) -> tuple[list[OptimizationResult], bool]:
     """Optimize images in parallel and report whether the run was interrupted.
 
@@ -635,17 +639,24 @@ def _run_optimizations(
     result is returned, including ones finished after an interrupt, so the
     caller can discard their staged files.
     """
-    stop_event = Event()
+    # libvips runs its own threads, so forking a process that has used it is
+    # unsafe.
+    context = multiprocessing.get_context("spawn")
+    stop_event = context.Event()
     results: list[OptimizationResult] = []
     collected: set[Future[OptimizationResult]] = set()
     future_to_path: dict[Future[OptimizationResult], Path] = {}
     interrupted = False
-    executor = ThreadPoolExecutor(max_workers=MAX_WORKERS)
+    executor = ProcessPoolExecutor(
+        max_workers=MAX_WORKERS,
+        mp_context=context,
+        max_tasks_per_child=TASKS_PER_WORKER,
+        initializer=_init_worker,
+        initargs=(stop_event, staging_root),
+    )
     try:
         for image in images:
-            future_to_path[
-                executor.submit(optimize_image, image, False, stop_event)
-            ] = image
+            future_to_path[executor.submit(_optimize_in_worker, image)] = image
         for future in as_completed(future_to_path):
             collected.add(future)
             image_path = future_to_path[future]
@@ -672,6 +683,13 @@ def _run_optimizations(
             continue
         results.append(future.result())
     return results, interrupted
+
+
+def _create_run_staging() -> Path:
+    """Create the directory that holds every staged file of one run."""
+    output_root = _repository_path(OUTPUT_DIR)
+    output_root.mkdir(parents=True, exist_ok=True)
+    return Path(tempfile.mkdtemp(prefix=".run-", dir=output_root))
 
 
 def _discard_all(results: Sequence[OptimizationResult]) -> None:
@@ -713,29 +731,35 @@ def process_images(
                 log(f"    → {output_path}")
         return 0
 
-    results, interrupted = _run_optimizations(to_process)
-    if interrupted:
-        _discard_all(results)
-        log("Interrupted. Cancelled remaining tasks.")
-        return 1
+    staging_root = _create_run_staging()
+    try:
+        results, interrupted = _run_optimizations(to_process, staging_root)
+        if interrupted:
+            _discard_all(results)
+            log("Interrupted. Cancelled remaining tasks.")
+            return 1
 
-    if any(result.fatal for result in results):
-        _discard_all(results)
+        if any(result.fatal for result in results):
+            _discard_all(results)
+            for result in results:
+                if result.errors:
+                    _log_failure(result)
+            log("FATAL: AVIF encoder not available. Stopped all image updates.")
+            return 1
+
+        error_count = 0
+        processed_count = 0
         for result in results:
-            if result.errors:
+            if result.errors or not commit_result(result, manifest):
                 _log_failure(result)
-        log("FATAL: AVIF encoder not available. Stopped all image updates.")
-        return 1
-
-    error_count = 0
-    processed_count = 0
-    for result in results:
-        if result.errors or not commit_result(result, manifest):
-            _log_failure(result)
-            error_count += 1
-            continue
-        log(f"✓ {result.source} ({len(result.outputs)} files)")
-        processed_count += 1
+                error_count += 1
+                continue
+            log(f"✓ {result.source} ({len(result.outputs)} files)")
+            processed_count += 1
+    finally:
+        # Removing the run directory also clears files staged by workers that
+        # died before returning a result.
+        shutil.rmtree(staging_root, ignore_errors=True)
 
     log("Summary:")
     log(f"  Processed: {processed_count}")
