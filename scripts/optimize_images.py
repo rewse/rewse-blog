@@ -94,9 +94,9 @@ class SourceChangedError(RuntimeError):
 
 
 def log(message: str) -> None:
-    """Print a timestamped message."""
+    """Print a timestamped message immediately, even when stdout is a pipe."""
     timestamp = time.strftime("%H:%M:%S")
-    print(f"[{timestamp}] {message}")
+    print(f"[{timestamp}] {message}", flush=True)
 
 
 def _repository_path(path: Path) -> Path:
@@ -579,7 +579,11 @@ def _cancel_pending(futures: Sequence[Future[OptimizationResult]]) -> None:
 def _run_optimizations(
     images: Sequence[Path],
 ) -> tuple[list[OptimizationResult], bool]:
-    """Optimize images in parallel and report whether the run was interrupted."""
+    """Optimize images in parallel and report whether the run was interrupted.
+
+    Each finished image is logged so long runs keep producing output; CI
+    runners may kill a build that stays silent for too long.
+    """
     stop_event = Event()
     results: list[OptimizationResult] = []
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -596,6 +600,7 @@ def _run_optimizations(
                     result = OptimizationResult(source=image_path)
                     result.errors.append(str(error))
                 results.append(result)
+                log(f"Finished {len(results)}/{len(images)}: {result.source}")
                 if result.fatal:
                     stop_event.set()
                     _cancel_pending(tuple(future_to_path))
