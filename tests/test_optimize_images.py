@@ -3,7 +3,9 @@
 import json
 import tempfile
 import unittest
+from concurrent.futures import Future
 from pathlib import Path
+from threading import Event
 from typing import TYPE_CHECKING, Protocol, cast
 from unittest import mock
 
@@ -235,6 +237,33 @@ class ProcessingDecisionTest(unittest.TestCase):
             self.assertTrue(needs_processing)
 
 
+class InterruptingExecutor:
+    """Executor fake that completes tasks inline and interrupts shutdown."""
+
+    def __init__(self, shutdown_interrupts: int) -> None:
+        self.shutdown_interrupts: int = shutdown_interrupts
+        self.shutdown_calls: int = 0
+        self.stop_events: list[Event] = []
+
+    def submit(
+        self,
+        _function: object,
+        source: Path,
+        _dry_run: bool,
+        stop_event: Event,
+    ) -> "Future[optimize_images.OptimizationResult]":
+        self.stop_events.append(stop_event)
+        future: Future[optimize_images.OptimizationResult] = Future()
+        future.set_result(optimize_images.OptimizationResult(source=source))
+        return future
+
+    def shutdown(self, wait: bool = True, *, cancel_futures: bool = False) -> None:
+        del wait, cancel_futures
+        self.shutdown_calls += 1
+        if self.shutdown_calls <= self.shutdown_interrupts:
+            raise KeyboardInterrupt
+
+
 class ProgressLoggingTest(unittest.TestCase):
     def test_each_finished_image_is_logged_with_progress(self) -> None:
         images = [
@@ -270,6 +299,53 @@ class ProgressLoggingTest(unittest.TestCase):
             {message.split(": ", 1)[1] for message in messages},
             {str(image) for image in images},
         )
+
+    def test_repeated_interrupt_waits_for_workers_and_keeps_results(self) -> None:
+        images = [
+            Path("content/posts/example/first.jpg"),
+            Path("content/posts/example/second.jpg"),
+        ]
+        executor = InterruptingExecutor(shutdown_interrupts=1)
+
+        with (
+            mock.patch.object(
+                optimize_images,
+                "ThreadPoolExecutor",
+                return_value=executor,
+            ),
+            mock.patch.object(
+                optimize_images,
+                "as_completed",
+                side_effect=KeyboardInterrupt,
+            ),
+            mock.patch.object(optimize_images, "log"),
+        ):
+            results, interrupted = optimize_images._run_optimizations(images)
+
+        self.assertTrue(interrupted)
+        self.assertEqual(executor.shutdown_calls, 2)
+        self.assertTrue(all(event.is_set() for event in executor.stop_events))
+        self.assertEqual(
+            {result.source for result in results},
+            set(images),
+        )
+
+    def test_interrupt_during_shutdown_is_reported(self) -> None:
+        images = [Path("content/posts/example/first.jpg")]
+        executor = InterruptingExecutor(shutdown_interrupts=1)
+
+        with (
+            mock.patch.object(
+                optimize_images,
+                "ThreadPoolExecutor",
+                return_value=executor,
+            ),
+            mock.patch.object(optimize_images, "log"),
+        ):
+            results, interrupted = optimize_images._run_optimizations(images)
+
+        self.assertTrue(interrupted)
+        self.assertEqual(len(results), 1)
 
     def test_log_flushes_output(self) -> None:
         with mock.patch("builtins.print") as print_mock:

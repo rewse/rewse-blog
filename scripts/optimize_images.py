@@ -576,39 +576,70 @@ def _cancel_pending(futures: Sequence[Future[OptimizationResult]]) -> None:
         _ = future.cancel()
 
 
+def _shutdown_executor(executor: ThreadPoolExecutor, stop_event: Event) -> bool:
+    """Wait for every worker to stop and report whether an interrupt arrived.
+
+    Interrupts during the wait are absorbed so workers can discard their own
+    staged files; the stop event makes them finish at the next checkpoint.
+    """
+    interrupted = False
+    while True:
+        try:
+            executor.shutdown(wait=True, cancel_futures=True)
+        except KeyboardInterrupt:
+            interrupted = True
+            stop_event.set()
+        else:
+            return interrupted
+
+
 def _run_optimizations(
     images: Sequence[Path],
 ) -> tuple[list[OptimizationResult], bool]:
     """Optimize images in parallel and report whether the run was interrupted.
 
     Each finished image is logged so long runs keep producing output; CI
-    runners may kill a build that stays silent for too long.
+    runners may kill a build that stays silent for too long. Every completed
+    result is returned, including ones finished after an interrupt, so the
+    caller can discard their staged files.
     """
     stop_event = Event()
     results: list[OptimizationResult] = []
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        future_to_path = {
-            executor.submit(optimize_image, image, False, stop_event): image
-            for image in images
-        }
-        try:
-            for future in as_completed(future_to_path):
-                image_path = future_to_path[future]
-                try:
-                    result = future.result()
-                except Exception as error:
-                    result = OptimizationResult(source=image_path)
-                    result.errors.append(str(error))
-                results.append(result)
-                log(f"Finished {len(results)}/{len(images)}: {result.source}")
-                if result.fatal:
-                    stop_event.set()
-                    _cancel_pending(tuple(future_to_path))
-        except KeyboardInterrupt:
-            stop_event.set()
-            _cancel_pending(tuple(future_to_path))
-            return results, True
-    return results, False
+    collected: set[Future[OptimizationResult]] = set()
+    future_to_path: dict[Future[OptimizationResult], Path] = {}
+    interrupted = False
+    executor = ThreadPoolExecutor(max_workers=MAX_WORKERS)
+    try:
+        for image in images:
+            future_to_path[
+                executor.submit(optimize_image, image, False, stop_event)
+            ] = image
+        for future in as_completed(future_to_path):
+            collected.add(future)
+            image_path = future_to_path[future]
+            try:
+                result = future.result()
+            except Exception as error:
+                result = OptimizationResult(source=image_path)
+                result.errors.append(str(error))
+            results.append(result)
+            log(f"Finished {len(results)}/{len(images)}: {result.source}")
+            if result.fatal:
+                stop_event.set()
+                _cancel_pending(tuple(future_to_path))
+    except KeyboardInterrupt:
+        interrupted = True
+        stop_event.set()
+        log("Interrupted. Waiting for running tasks to stop...")
+    finally:
+        if _shutdown_executor(executor, stop_event):
+            interrupted = True
+
+    for future in future_to_path:
+        if future in collected or future.cancelled() or future.exception():
+            continue
+        results.append(future.result())
+    return results, interrupted
 
 
 def _discard_all(results: Sequence[OptimizationResult]) -> None:
