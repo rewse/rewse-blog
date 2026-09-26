@@ -1,6 +1,7 @@
 """Tests for the image optimization script."""
 
 import json
+import signal
 import tempfile
 import unittest
 from concurrent.futures import Future
@@ -374,6 +375,95 @@ class ColorSpaceTest(unittest.TestCase):
 
         self.assertIs(result, image)
         self.assertFalse(image.icc_transform_calls)
+
+
+class WorkerTest(unittest.TestCase):
+    def test_init_worker_ignores_sigint_and_stores_state(self) -> None:
+        stop_event = Event()
+        staging_root = Path("/tmp/staging")
+
+        with (
+            mock.patch.object(optimize_images, "_worker_stop_event", None),
+            mock.patch.object(optimize_images, "_worker_staging_root", None),
+            mock.patch.object(optimize_images.signal, "signal") as signal_mock,
+        ):
+            optimize_images._init_worker(stop_event, staging_root)
+
+            self.assertIs(optimize_images._worker_stop_event, stop_event)
+            self.assertEqual(optimize_images._worker_staging_root, staging_root)
+
+        signal_mock.assert_called_once_with(signal.SIGINT, signal.SIG_IGN)
+
+    def test_optimize_in_worker_passes_stored_state(self) -> None:
+        stop_event = Event()
+        staging_root = Path("/tmp/staging")
+        source = Path("content/posts/example/photo.jpg")
+        expected = optimize_images.OptimizationResult(source=source)
+
+        with (
+            mock.patch.object(optimize_images, "_worker_stop_event", stop_event),
+            mock.patch.object(
+                optimize_images,
+                "_worker_staging_root",
+                staging_root,
+            ),
+            mock.patch.object(
+                optimize_images,
+                "optimize_image",
+                return_value=expected,
+            ) as optimize,
+        ):
+            result = optimize_images._optimize_in_worker(source)
+
+        self.assertIs(result, expected)
+        optimize.assert_called_once_with(source, False, stop_event, staging_root)
+
+    def test_optimize_image_stages_inside_given_root(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repository_root = Path(temp_dir)
+            source = Path("content/posts/example/photo.jpg")
+            source_path = repository_root / source
+            source_path.parent.mkdir(parents=True)
+            _ = source_path.write_text("source", encoding="utf-8")
+            staging_root = repository_root / "static/img/optimized/.run-test"
+
+            with (
+                mock.patch.object(
+                    optimize_images,
+                    "REPOSITORY_ROOT",
+                    repository_root,
+                ),
+                mock.patch.object(optimize_images, "IMAGE_SIZES", (400,)),
+                mock.patch.object(
+                    optimize_images,
+                    "get_file_hash",
+                    return_value="abc123456789",
+                ),
+                mock.patch.object(
+                    optimize_images,
+                    "_hash_file",
+                    return_value="abc123456789",
+                ),
+                mock.patch.object(
+                    optimize_images.VIPS_IMAGE_CLASS,
+                    "new_from_file",
+                    return_value=FakeImage(),
+                ),
+            ):
+                result = optimize_images.optimize_image(
+                    source,
+                    staging_root=staging_root,
+                )
+
+            self.assertFalse(result.errors)
+            temporary_directory = result.temporary_directory
+            assert temporary_directory is not None
+            self.assertEqual(temporary_directory.parent, staging_root)
+            self.assertEqual(len(result.staged_outputs), 2)
+            self.assertTrue(
+                all(path.is_relative_to(staging_root) for path in result.staged_outputs)
+            )
+            optimize_images.discard_staged_outputs(result)
 
 
 class ArgumentsTest(unittest.TestCase):
