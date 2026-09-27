@@ -15,19 +15,19 @@ Usage:
 """
 
 import argparse
-from collections.abc import Sequence
-from concurrent.futures import Executor, Future, ProcessPoolExecutor, as_completed
-from dataclasses import dataclass, field
 import hashlib
 import json
 import multiprocessing
 import os
-from pathlib import Path
 import shutil
 import signal
 import tempfile
 import time
 import traceback
+from collections.abc import Sequence
+from concurrent.futures import Executor, Future, ProcessPoolExecutor, as_completed
+from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Literal, Protocol, TypedDict, cast
 
 import pyvips
@@ -166,7 +166,7 @@ def get_file_hash(filepath: Path) -> str:
 def _as_object_dict(value: object, context: str) -> dict[object, object]:
     """Return a JSON object with a useful validation error."""
     if not isinstance(value, dict):
-        raise ValueError(f"Manifest {context} must be an object")
+        raise ValueError(f"Manifest {context} must be an object")  # noqa: TRY004  external manifest data, not a caller's argument type; ValueError matches this module's convention and is what main() catches
     return cast(dict[object, object], value)
 
 
@@ -179,7 +179,7 @@ def _parse_manifest_entry(source: str, raw_entry: object) -> ManifestEntry:
     version = entry_data.get("version", LEGACY_PROCESSING_VERSION)
 
     if not isinstance(file_hash, str):
-        raise ValueError(f"Manifest hash for {source!r} must be a string")
+        raise ValueError(f"Manifest hash for {source!r} must be a string")  # noqa: TRY004  external manifest data, not a caller's argument type; ValueError matches this module's convention and is what main() catches
     if not isinstance(raw_outputs, list) or not raw_outputs:
         raise ValueError(f"Manifest outputs for {source!r} must be a non-empty array")
     output_values = cast(list[object], raw_outputs)
@@ -189,9 +189,9 @@ def _parse_manifest_entry(source: str, raw_entry: object) -> ManifestEntry:
     for output in outputs:
         _ = resolve_output_path(Path(output))
     if not isinstance(timestamp, str):
-        raise ValueError(f"Manifest timestamp for {source!r} must be a string")
+        raise ValueError(f"Manifest timestamp for {source!r} must be a string")  # noqa: TRY004  external manifest data, not a caller's argument type; ValueError matches this module's convention and is what main() catches
     if not isinstance(version, int) or isinstance(version, bool):
-        raise ValueError(f"Manifest version for {source!r} must be an integer")
+        raise ValueError(f"Manifest version for {source!r} must be an integer")  # noqa: TRY004  external manifest data, not a caller's argument type; ValueError matches this module's convention and is what main() catches
 
     return {
         "hash": file_hash,
@@ -209,7 +209,7 @@ def parse_manifest(data: object) -> Manifest:
 
     for source, raw_entry in processed_data.items():
         if not isinstance(source, str):
-            raise ValueError("Manifest processed keys must be strings")
+            raise ValueError("Manifest processed keys must be strings")  # noqa: TRY004  external manifest data, not a caller's argument type; ValueError matches this module's convention and is what main() catches
         normalized_source = normalize_source_path(Path(source))
         if str(normalized_source) != source:
             raise ValueError(f"Manifest source path is not normalized: {source!r}")
@@ -468,7 +468,7 @@ def optimize_image(
         if get_file_hash(source) != source_hash:
             result.errors.append(f"Source changed during optimization: {source}")
 
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001  error boundary for one image so a bad file does not abort the batch; pyvips can raise many exception types
         context = "Load error" if current_width is None else f"Width {current_width}"
         result.errors.append(f"{context}: {error}\n{traceback.format_exc()}")
         if "Unsupported compression" in str(error):
@@ -679,7 +679,7 @@ def _run_optimizations(
             image_path = future_to_path[future]
             try:
                 result = future.result()
-            except Exception as error:
+            except Exception as error:  # noqa: BLE001  a worker can re-raise any exception type; record it against this image instead of aborting the batch
                 result = OptimizationResult(source=image_path)
                 result.errors.append(str(error))
             results.append(result)
