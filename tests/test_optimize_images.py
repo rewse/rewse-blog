@@ -201,7 +201,6 @@ class ProcessingDecisionTest(unittest.TestCase):
 
             self.assertFalse(needs_processing)
 
-
     def test_entry_with_older_processing_version_needs_processing(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             repository_root = Path(temp_dir)
@@ -787,7 +786,6 @@ class FailureSafetyTest(unittest.TestCase):
             )
             self.assertFalse(result.outputs)
 
-
     def test_commit_failure_restores_existing_output_and_manifest(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             repository_root = Path(temp_dir)
@@ -804,7 +802,6 @@ class FailureSafetyTest(unittest.TestCase):
                 "hash": "old-hash",
                 "outputs": [str(output)],
                 "timestamp": "2026-09-20 17:00:00",
-
                 "version": optimize_images.PROCESSING_VERSION,
             }
             manifest: optimize_images.Manifest = {
@@ -904,7 +901,6 @@ class FailureSafetyTest(unittest.TestCase):
                 "hash": "old-hash",
                 "outputs": [str(output)],
                 "timestamp": "2026-09-20 17:00:00",
-
                 "version": optimize_images.PROCESSING_VERSION,
             }
             manifest: optimize_images.Manifest = {
@@ -981,7 +977,6 @@ class FailureSafetyTest(unittest.TestCase):
             self.assertEqual(final_path.read_text(encoding="utf-8"), "old image")
             self.assertNotIn(str(source), manifest["processed"])
 
-
     def test_successful_commit_records_processing_version(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             repository_root = Path(temp_dir)
@@ -1019,6 +1014,7 @@ class FailureSafetyTest(unittest.TestCase):
                 manifest["processed"][str(source)]["version"],
                 optimize_images.PROCESSING_VERSION,
             )
+
 
 class EndToEndTest(unittest.TestCase):
     def test_cli_run_recycles_worker_processes_and_cleans_up(self) -> None:
