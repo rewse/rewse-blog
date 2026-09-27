@@ -131,7 +131,9 @@ def normalize_source_path(source_path: Path) -> Path:
     absolute_path = _repository_path(source_path)
     allowed_roots = tuple(_repository_path(root) for root in SOURCE_DIRS)
     if not any(_is_within(absolute_path, root) for root in allowed_roots):
-        raise ValueError(f"Source path must be inside source directories: {source_path}")
+        raise ValueError(
+            f"Source path must be inside source directories: {source_path}"
+        )
     return absolute_path.relative_to(REPOSITORY_ROOT.resolve())
 
 
@@ -448,7 +450,9 @@ def optimize_image(
             current_width = width
             _raise_if_cancelled(stop_event)
             resized = (
-                image if width > original_width else image.resize(width / original_width)
+                image
+                if width > original_width
+                else image.resize(width / original_width)
             )
 
             for output_format in OUTPUT_FORMATS:
@@ -726,9 +730,7 @@ def process_images(
     """Process images and return a process exit code."""
     manifest = load_manifest()
     images = find_images(path)
-    to_process = [
-        image for image in images if needs_processing(image, manifest, force)
-    ]
+    to_process = [image for image in images if needs_processing(image, manifest, force)]
 
     if not to_process:
         log("No images need processing.")
