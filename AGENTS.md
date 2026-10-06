@@ -24,3 +24,7 @@ Run `uv run scripts/optimize_images.py` after adding or changing article images.
 - Fetch Amplify build logs with `curl` from the signed `logUrl` returned by `aws amplify get-job`; generic web fetchers may not support the signed URL.
 - In `amplify.yml`, avoid colons in unquoted echo commands and YAML multiline commands. Use relative cache paths without `${PWD}` or unnecessary wildcards.
 - The custom build image is `public.ecr.aws/v5r5z4u0/amplify-hugo-vips`. Amplify runs on x86_64, so build the image with `container build --platform linux/amd64` on Apple Silicon. ECR Public authentication must use `us-east-1`.
+
+## Validation
+
+Before pushing, run `uvx pre-commit run --all-files`, `uv run --with pyvips python -m unittest discover -s tests`, and `tests/test_update_blowfish.sh`, and commit any files the hooks reformat. Stage new files first, because `--all-files` skips untracked files. CI runs the same hooks, and `core.hooksPath` points at git-defender, so `pre-commit install` cannot run them at commit time. CI does not run the tests.
