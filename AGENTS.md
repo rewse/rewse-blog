@@ -23,7 +23,8 @@ Published originals keep their metadata, so remove GPS data from new photos with
 - The Amplify app ID is `d8gzy6xdskncg`; the production URL is `https://blog.rewse.jp/`.
 - Fetch Amplify build logs with `curl` from the signed `logUrl` returned by `aws amplify get-job`; generic web fetchers may not support the signed URL.
 - In `amplify.yml`, avoid colons in unquoted echo commands and YAML multiline commands. Use relative cache paths without `${PWD}` or unnecessary wildcards.
-- The custom build image is `public.ecr.aws/v5r5z4u0/amplify-hugo-vips`. Amplify runs on x86_64, so build the image with `container build --platform linux/amd64` on Apple Silicon. ECR Public authentication must use `us-east-1`.
+- When changing `HUGO_VERSION` in `amplify.yml`, set `HUGO_SHA256` to the extended linux-amd64 tarball's hash from that release's `hugo_<version>_checksums.txt`; the build fails on a mismatch.
+- The custom build image is `public.ecr.aws/v5r5z4u0/amplify-hugo-vips`. Amplify runs on x86_64, so build the image with `container build --platform linux/amd64` on Apple Silicon. ECR Public authentication must use `us-east-1`. Rebuild and push the image after Dependabot bumps a digest in `Dockerfile`, since Amplify pulls the pushed image, not the Dockerfile.
 
 ## Validation
 
