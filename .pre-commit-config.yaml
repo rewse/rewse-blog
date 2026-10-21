@@ -28,3 +28,10 @@ repos:
     hooks:
       - id: basedpyright
         additional_dependencies: [pyvips==3.2.0]
+  - repo: local
+    hooks:
+      - id: strip-gps
+        name: Check JPEG files for GPS metadata
+        entry: python scripts/strip_gps.py
+        language: python
+        types: [jpeg]
