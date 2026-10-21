@@ -1,4 +1,6 @@
-FROM public.ecr.aws/ubuntu/ubuntu:26.04
+FROM ghcr.io/astral-sh/uv:0.13.1@sha256:4a1f3666816dafadd20ceb71eac9a7d56d7ef30279f7d64048519ab901ada336 AS uv
+
+FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:51e35c02a42cf2a6646c5879f5752b38098ed0a20056a989f0af3a3c5e697c9a
 
 # Amplify required packages: curl, git, openssh, bash
 # Plus: libvips for image optimization, python3 for uv
@@ -25,7 +27,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rav1e \
     && rm -rf /var/lib/apt/lists/*
 
-# Install uv
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-
-ENV PATH="/root/.local/bin:${PATH}"
+# Copy uv from its image, pinned by digest, instead of piping an installer into sh.
+COPY --from=uv /uv /uvx /usr/local/bin/
