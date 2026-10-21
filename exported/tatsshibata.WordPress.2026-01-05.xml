@@ -29454,7 +29454,7 @@ mqtt_address='hass.rewse.jp'
 mqtt_user='monitor'
 
 # MQTT BROKER PASSWORD
-mqtt_password='abcd1234'
+mqtt_password='YOUR_MQTT_PASSWORD'
 
 # MQTT PUBLISH TOPIC ROOT 
 mqtt_topicpath='monitor'
