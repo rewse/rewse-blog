@@ -9,7 +9,7 @@
 
 ## Images
 
-Run `uv run scripts/optimize_images.py` after adding or changing article images. Use `--path <post-directory>` to limit processing, `--dry-run` to inspect targets, and `--force` only when reprocessing is required.
+Published originals keep their metadata, so remove GPS data from new photos with `uv run scripts/strip_gps.py --fix <files>`; the `strip-gps` pre-commit hook rejects JPEG files that still carry it. Run `uv run scripts/optimize_images.py` after adding or changing article images. Use `--path <post-directory>` to limit processing, `--dry-run` to inspect targets, and `--force` only when reprocessing is required.
 
 ## Hugo and theme
 
