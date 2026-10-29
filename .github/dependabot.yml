@@ -23,6 +23,13 @@ updates:
     groups:
       docker:
         patterns: ["*"]
+    # Stay on the Ubuntu LTS release: still take digest updates of the current
+    # tag, but never propose an interim release. Move to the next LTS by hand.
+    ignore:
+      - dependency-name: ubuntu/ubuntu
+        update-types:
+          - version-update:semver-major
+          - version-update:semver-minor
 
   - package-ecosystem: pre-commit
     directory: /
