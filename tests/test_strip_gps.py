@@ -75,6 +75,57 @@ class StripGpsTest(unittest.TestCase):
         assert out is not None
         self.assertIsNone(strip_gps.strip_gps(out))
 
+    def test_skips_fill_bytes_before_markers(self):
+        data = jpeg()
+        padded = b"\xff\xd8\xff\xff" + data[2:]
+        out = strip_gps.strip_gps(padded)
+        self.assertIsNotNone(out)
+        assert out is not None
+        self.assertNotIn(LATITUDE, out)
+        self.assertNotIn(strip_gps.XMP_HEADER, out)
+
+    def test_skips_standalone_markers(self):
+        data = jpeg()
+        out = strip_gps.strip_gps(b"\xff\xd8\xff\x01\xff\xd0" + data[2:])
+        self.assertIsNotNone(out)
+        assert out is not None
+        self.assertNotIn(LATITUDE, out)
+
+    def test_rejects_segment_past_end_of_file(self):
+        with self.assertRaises(ValueError):
+            strip_gps.strip_gps(b"\xff\xd8\xff\xe1\x7f\xff" + b"\x00" * 16)
+
+    def test_rejects_file_without_start_of_scan(self):
+        data = jpeg()
+        with self.assertRaises(ValueError):
+            strip_gps.strip_gps(data[: data.index(SCAN)])
+
+    def test_rejects_garbage_between_segments(self):
+        data = jpeg()
+        scan = data.index(SCAN)
+        with self.assertRaises(ValueError):
+            strip_gps.strip_gps(data[:scan] + b"\x00" + data[scan:])
+
+    def test_rejects_unknown_exif_byte_order(self):
+        tiff = b"XX" + exif_with_gps()[2:]
+        data = b"\xff\xd8" + segment(0xE1, strip_gps.EXIF_HEADER + tiff) + SCAN
+        with self.assertRaises(ValueError):
+            strip_gps.strip_gps(data)
+
+    def test_rejects_exif_offsets_out_of_range(self):
+        tiff = bytearray(exif_with_gps())
+        # Point the GPS latitude value past the end of the TIFF data.
+        struct.pack_into("<I", tiff, 8 + 2 + 12 * 2 + 4 + 2 + 12 + 8, 0xFFFFFF)
+        data = b"\xff\xd8" + segment(0xE1, strip_gps.EXIF_HEADER + bytes(tiff)) + SCAN
+        with self.assertRaises(ValueError):
+            strip_gps.strip_gps(data)
+
+    def test_check_mode_fails_on_unparsable_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = pathlib.Path(tmp) / "photo.jpg"
+            path.write_bytes(b"\xff\xd8\xff\xe1\x7f\xff")
+            self.assertEqual(strip_gps.main([str(path)]), 1)
+
     def test_check_mode_fails_and_fix_mode_rewrites(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = pathlib.Path(tmp) / "photo.jpg"

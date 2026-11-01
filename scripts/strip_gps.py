@@ -2,7 +2,8 @@
 """Finds or removes GPS metadata in JPEG files.
 
 Without --fix, prints each file that carries GPS data and exits 1 if any does.
-With --fix, removes the data in place and exits 0. Only metadata bytes change,
+With --fix, removes the data in place and exits 0. Either mode exits 1 when a
+file cannot be parsed, so it is never passed as clean. Only metadata bytes change,
 so the image is not re-encoded:
 
 - In the Exif segment, every byte of the GPS IFD and its values is zeroed and
@@ -24,28 +25,57 @@ TYPE_SIZES = {1: 1, 2: 1, 3: 2, 4: 4, 5: 8, 6: 1, 7: 1, 8: 2, 9: 4, 10: 8, 11: 4
 
 
 def _segments(data: bytes) -> list[tuple[int, int, int]]:
-    """Returns (marker, start, end) of each segment before the image data."""
+    """Returns (marker, start, end) of each segment before the image data.
+
+    Raises ValueError unless the walk reaches the start of scan, so a file
+    that cannot be parsed is never reported as free of GPS data.
+    """
     if data[:2] != b"\xff\xd8":
         raise ValueError("not a JPEG file")
     segments = []
     pos = 2
-    while pos + 4 <= len(data) and data[pos] == 0xFF:
-        marker = data[pos + 1]
+    while True:
+        if pos >= len(data) or data[pos] != 0xFF:
+            raise ValueError(f"expected a JPEG marker at offset {pos}")
+        # Any number of 0xFF fill bytes may precede a marker.
+        while pos < len(data) and data[pos] == 0xFF:
+            pos += 1
+        if pos >= len(data):
+            raise ValueError("JPEG ends before the start of scan")
+        marker = data[pos]
+        start = pos - 1
+        pos += 1
         if marker == 0xDA:  # Start of scan: the rest is image data.
-            break
-        (length,) = struct.unpack(">H", data[pos + 2 : pos + 4])
-        segments.append((marker, pos, pos + 2 + length))
-        pos += 2 + length
-    return segments
+            return segments
+        if marker == 0x01 or 0xD0 <= marker <= 0xD7:  # TEM and RSTn: no length.
+            continue
+        if marker in (0x00, 0xD8, 0xD9):
+            raise ValueError(f"unexpected JPEG marker 0x{marker:02X} at {start}")
+        if pos + 2 > len(data):
+            raise ValueError("JPEG ends inside a segment header")
+        (length,) = struct.unpack(">H", data[pos : pos + 2])
+        end = pos + length
+        if length < 2 or end > len(data):
+            raise ValueError(f"JPEG segment at offset {start} runs past the end")
+        segments.append((marker, start, end))
+        pos = end
 
 
 def _strip_exif_gps(tiff: bytearray) -> bool:
-    """Removes the GPS IFD from TIFF data in place; returns whether it had one."""
+    """Removes the GPS IFD from TIFF data in place; returns whether it had one.
+
+    Raises ValueError when the data is not TIFF or an offset points outside it.
+    """
     order = {b"II": "<", b"MM": ">"}.get(bytes(tiff[:2]))
     if order is None:
-        return False
+        raise ValueError("Exif data has an unknown byte order")
+
+    def check(offset: int, size: int) -> None:
+        if offset + size > len(tiff):
+            raise ValueError(f"Exif offset {offset} is out of range")
 
     def read(fmt: str, offset: int) -> tuple[int, ...]:
+        check(offset, struct.calcsize(order + fmt))
         return struct.unpack_from(order + fmt, tiff, offset)
 
     (ifd0,) = read("I", 4)
@@ -62,11 +92,14 @@ def _strip_exif_gps(tiff: bytearray) -> bool:
             _, kind, values, offset = read("HHII", gps_entry)
             size = TYPE_SIZES.get(kind, 1) * values
             if size > 4:
+                check(offset, size)
                 tiff[offset : offset + size] = bytes(size)
         gps_end = gps + 2 + 12 * gps_count + 4
+        check(gps, gps_end - gps)
         tiff[gps:gps_end] = bytes(gps_end - gps)
         # Shift the later entries and the next-IFD offset up by one entry.
         tail_end = entries + 12 * count + 4
+        check(entries, tail_end - entries)
         tiff[entry : tail_end - 12] = tiff[entry + 12 : tail_end]
         tiff[tail_end - 12 : tail_end] = bytes(12)
         struct.pack_into(order + "H", tiff, ifd0, count - 1)
@@ -102,7 +135,12 @@ def main(argv: list[str] | None = None) -> int:
 
     found = False
     for path in args.files:
-        stripped = strip_gps(path.read_bytes())
+        try:
+            stripped = strip_gps(path.read_bytes())
+        except ValueError as error:
+            print(f"cannot parse {path}: {error}", file=sys.stderr)
+            found = True
+            continue
         if stripped is None:
             continue
         if args.fix:
