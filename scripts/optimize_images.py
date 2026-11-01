@@ -4,6 +4,11 @@
 # dependencies = [
 #   "pyvips==3.2.0",
 # ]
+#
+# # Resolve only releases at least 4 days old; the Amplify build has no
+# # user-level uv config to supply this.
+# [tool.uv]
+# exclude-newer = "4 days"
 # ///
 """Optimize source images for responsive delivery.
 

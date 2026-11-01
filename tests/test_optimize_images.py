@@ -2,10 +2,12 @@
 
 import json
 import multiprocessing.context
+import re
 import signal
 import subprocess
 import sys
 import tempfile
+import tomllib
 import unittest
 from concurrent.futures import Future
 from concurrent.futures.process import BrokenProcessPool
@@ -1076,6 +1078,24 @@ class EndToEndTest(unittest.TestCase):
                 if path.is_dir() and path.name.startswith(".")
             ]
             self.assertEqual(leftovers, [])
+
+
+class ScriptMetadataTest(unittest.TestCase):
+    def test_dependency_resolution_has_cooldown(self) -> None:
+        source = Path(optimize_images.__file__).read_text(encoding="utf-8")
+        match = re.search(
+            r"^# /// script$\s(?P<content>(^#(| .*)$\s)+)^# ///$",
+            source,
+            re.MULTILINE,
+        )
+        assert match is not None
+        content = "".join(
+            line[2:] if line.startswith("# ") else line[1:]
+            for line in match.group("content").splitlines(keepends=True)
+        )
+        metadata = tomllib.loads(content)
+
+        self.assertEqual(metadata["tool"]["uv"]["exclude-newer"], "4 days")
 
 
 if __name__ == "__main__":
