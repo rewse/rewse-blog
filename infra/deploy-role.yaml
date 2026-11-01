@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+  Role that operators assume to manage the blog.rewse.jp Amplify app and push
+  the custom build image. Deploy as stack "rewse-blog-deploy-access" in
+  ap-northeast-1 with admin credentials.
+
+Resources:
+  # Permissions are granted per service at full-access granularity. Custom
+  # domain, DNS, and IAM changes are outside this role and need admin
+  # credentials.
+  DeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: rewse-blog-deploy
+      Description: Manages the blog.rewse.jp Amplify app and its build image.
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS:
+                - !Sub arn:${AWS::Partition}:iam::${AWS::AccountId}:role/Admin
+                - !Sub arn:${AWS::Partition}:iam::${AWS::AccountId}:user/tats
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AmazonElasticContainerRegistryPublicPowerUser
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/ReadOnlyAccess
+      Policies:
+        # AdministratorAccess-Amplify also grants IAM and CloudFormation for
+        # Amplify backends, which this hosting-only app does not use.
+        - PolicyName: amplify-full-access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: amplify:*
+                Resource: "*"
+        # ReadOnlyAccess does not cover the AWS MCP Server.
+        - PolicyName: aws-mcp-full-access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: aws-mcp:*
+                Resource: "*"
+
+Outputs:
+  DeployRoleArn:
+    Description: Role ARN for the rewse-blog AWS CLI profile.
+    Value: !GetAtt DeployRole.Arn

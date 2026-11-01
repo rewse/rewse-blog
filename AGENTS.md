@@ -19,7 +19,7 @@ Published originals keep their metadata, so remove GPS data from new photos with
 
 ## AWS Amplify
 
-- Use the AWS CLI profile `hugo` for this project.
+- Use the AWS CLI profile `rewse-blog` for this project. It assumes the role `rewse-blog-deploy`, which `infra/deploy-role.yaml` defines and which has no DNS, CloudFront, or IAM write access; deploy that template as stack `rewse-blog-deploy-access` in `ap-northeast-1` with admin credentials.
 - The Amplify app ID is `d8gzy6xdskncg`; the production URL is `https://blog.rewse.jp/`.
 - Fetch Amplify build logs with `curl` from the signed `logUrl` returned by `aws amplify get-job`; generic web fetchers may not support the signed URL.
 - In `amplify.yml`, avoid colons in unquoted echo commands and YAML multiline commands. Use relative cache paths without `${PWD}` or unnecessary wildcards.
