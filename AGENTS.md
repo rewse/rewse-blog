@@ -9,7 +9,7 @@
 
 ## Images
 
-Published originals keep their metadata, so remove GPS data from new photos with `uv run scripts/strip_gps.py --fix <files>`; the `strip-gps` pre-commit hook rejects JPEG files that still carry it. Run `uv run scripts/optimize_images.py` after adding or changing article images. Use `--path <post-directory>` to limit processing, `--dry-run` to inspect targets, and `--force` only when reprocessing is required.
+Hugo publishes original images as they are, so remove their metadata with `uv run scripts/strip_metadata.py --fix <files>` before committing. It keeps only the Exif Copyright and Artist (or PNG Copyright and Author text), a non-default Orientation, and color profiles, and edits bytes without re-encoding. The `strip-metadata` pre-commit hook rejects JPEG and PNG files with any other metadata, and GIF and WebP files, which the script does not support. Run `uv run scripts/optimize_images.py` after adding or changing article images. Use `--path <post-directory>` to limit processing, `--dry-run` to inspect targets, and `--force` only when reprocessing is required.
 
 ## Hugo and theme
 

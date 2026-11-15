@@ -56,6 +56,16 @@ draft: true
 
 Edit the post and its images, then preview it with `hugo server -D`. Set `draft: false` when the post is ready to publish.
 
+## Removing image metadata
+
+Hugo publishes the original images alongside the optimized variants, so remove their metadata before committing:
+
+```bash
+uv run scripts/strip_metadata.py --fix content/posts/<slug>/*.jpg content/posts/<slug>/*.png
+```
+
+The script keeps the Exif Copyright and Artist tags (or the PNG Copyright and Author text), an Orientation other than 1, and color profiles, and drops everything else, including camera serial numbers, XMP, and Photoshop data. It edits only metadata bytes, so the pixels are not re-encoded. Without `--fix`, it lists the files that still carry metadata; the `strip-metadata` pre-commit hook runs it in that mode. Only JPEG and PNG are supported.
+
 ## Optimizing images
 
 After adding or modifying images, run the optimizer for that post:
