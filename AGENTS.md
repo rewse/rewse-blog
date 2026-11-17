@@ -9,7 +9,7 @@
 
 ## Images
 
-Hugo publishes original images as they are, so remove their metadata with `uv run scripts/strip_metadata.py --fix <files>` before committing. It keeps only the Exif Copyright and Artist (or PNG Copyright and Author text), a non-default Orientation, and color profiles, and edits bytes without re-encoding. The `strip-metadata` pre-commit hook rejects JPEG and PNG files with any other metadata, and GIF and WebP files, which the script does not support. Run `uv run scripts/optimize_images.py` after adding or changing article images. Use `--path <post-directory>` to limit processing, `--dry-run` to inspect targets, and `--force` only when reprocessing is required.
+Hugo publishes original images as they are, so remove their metadata with `uv run scripts/strip_metadata.py --fix <files>` before committing. It keeps only the Exif Copyright and Artist (or PNG Copyright and Author text), a non-default Orientation, and color profiles, and edits bytes without re-encoding. The `strip-metadata` pre-commit hook rejects JPEG and PNG files with any other metadata, and GIF and WebP files, which the script does not support. Run `uv run scripts/optimize_images.py` after adding or changing article images. Use `--path <post-directory>` to limit processing, `--dry-run` to inspect targets, and `--force` only when reprocessing is required. Amplify runs the script with `uv run --locked`, so after changing its inline metadata, run `XDG_CONFIG_HOME=$(mktemp -d /tmp/uvcfg.XXXXXX) uv lock --script scripts/optimize_images.py` and commit `scripts/optimize_images.py.lock`; Dependabot does not update the inline metadata or the lockfile.
 
 ## Hugo and theme
 

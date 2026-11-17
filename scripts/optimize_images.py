@@ -9,6 +9,15 @@
 # # user-level uv config to supply this.
 # [tool.uv]
 # exclude-newer = "4 days"
+# # pyvips ships only an sdist, and the lockfile does not cover the packages
+# # that build it, so pin them here. Keep cffi and pycparser at the versions
+# # in optimize_images.py.lock.
+# build-constraint-dependencies = [
+#   "cffi==2.1.1",
+#   "pkgconfig==1.6.0",
+#   "pycparser==3.12",
+#   "setuptools==84.2.1",
+# ]
 # ///
 """Optimize source images for responsive delivery.
 

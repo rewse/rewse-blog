@@ -43,7 +43,9 @@ frontend:
 
         - echo "Running image optimization..."
         # - bash scripts/clean_optimized_images.sh
-        - uv run scripts/optimize_images.py || uv run scripts/optimize_images.py
+        # --locked installs the versions and hashes in
+        # scripts/optimize_images.py.lock and fails if the lockfile is stale.
+        - uv run --locked scripts/optimize_images.py || uv run --locked scripts/optimize_images.py
     build:
       commands:
         - hugo --gc --minify
