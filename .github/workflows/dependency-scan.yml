@@ -1,0 +1,60 @@
+name: Dependency Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "10 11 * * 3"  # Every Wednesday at 20:10 JST (11:10 UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  safe-chain:
+    name: Aikido Safe Chain Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
+
+      - name: Setup Aikido Safe Chain
+        uses: rewse/actions/setup-safe-chain@f336e87609e41dacccd0831db7f49a785e827d40  # v1.1.9
+
+      - name: Install dependencies with Aikido Safe Chain
+        run: uv sync --script scripts/optimize_images.py --locked --safe-chain-skip-minimum-package-age
+
+  # OSV-Scanner finds uv lockfiles only by the name uv.lock, so name the
+  # script's lockfile and its format.
+  osv-scan:
+    name: OSV-Scanner
+    if: github.event_name != 'pull_request'
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@b1d267aea5211fa648d9d442fa64b90dbdcbdd36  # v2.7.0
+    with:
+      scan-args: --lockfile=uv.lock:scripts/optimize_images.py.lock
+
+  # Fails only on vulnerabilities the PR introduces, so a PR is not blocked
+  # by ones already on main.
+  osv-scan-pr:
+    name: OSV-Scanner PR
+    if: github.event_name == 'pull_request'
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@b1d267aea5211fa648d9d442fa64b90dbdcbdd36  # v2.7.0
+    with:
+      scan-args: --lockfile=uv.lock:scripts/optimize_images.py.lock
