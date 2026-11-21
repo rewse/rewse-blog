@@ -27,8 +27,11 @@ pagination:
 
 imaging:
   anchor: "Center"
-  quality: 85
+  jpeg:
+    quality: 85
   resampleFilter: "Lanczos"
+  webp:
+    quality: 85
   formats:
     - "jpg"
     - "png"
