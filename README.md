@@ -7,7 +7,7 @@ This repository contains the source for [blog.rewse.jp](https://blog.rewse.jp/).
 Regular development requires the following tools:
 
 - Git
-- Hugo Extended 0.163.3
+- Hugo Extended 0.166.0 to 0.169.0
 
 To add or modify images, also install [uv](https://docs.astral.sh/uv/) and a build of libvips with AVIF support.
 

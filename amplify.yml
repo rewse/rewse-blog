@@ -1,10 +1,10 @@
 version: 1
 env:
   variables:
-    HUGO_VERSION: 0.163.3
+    HUGO_VERSION: 0.169.0
     # SHA-256 of hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz from the
     # release's checksums file. Update it together with HUGO_VERSION.
-    HUGO_SHA256: 1234302ece1167cef2c252aaa69c89b4f0afc5851f1a30536d693e8e7fc4d1bf
+    HUGO_SHA256: c41672a0725d307758a132bc94a962e59760eb33f9ba08c991b81f9881d6fa7d
     TZ: Asia/Tokyo
     OPTIMIZED_IMAGES_DIR: static/img/optimized
 frontend:
