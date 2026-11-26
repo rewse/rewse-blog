@@ -1,6 +1,6 @@
-FROM ghcr.io/astral-sh/uv:0.13.9@sha256:d3b601f0c7b118bc1753febf7c41cc80981df678445e0254284eecf84db79a7d AS uv
+FROM ghcr.io/astral-sh/uv:0.13.10@sha256:a3ea1357342c1a4bf9a0c53a3deb1b55379aefa037338d8113d5771efa01774f AS uv
 
-FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:1cec10ad04e9e13d1107ae55c475ea3e8305871bd644fe39d7a926e91eaa3642
+FROM public.ecr.aws/ubuntu/ubuntu:26.04@sha256:51c73e2050b35e6f280a3dc97094b0f511ff56ae62f1cf008e3796626555ac89
 
 # Amplify required packages: curl, git, openssh, bash
 # Plus: libvips for image optimization, python3 for uv
